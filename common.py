@@ -667,9 +667,15 @@ SHEET_CSV = ("https://docs.google.com/spreadsheets/d/{id}"
              "/gviz/tq?tqx=out:csv&sheet={tab}")
 
 
-def sheet_grid(sheet_id: str, tab: str, fetch,
-               max_age_hours: float = 0) -> list[list[str]]:
-    """One tab of a link-viewable Google Sheet, as a grid of cell text."""
+def sheet_grid(sheet_id: str, tab: str, fetch, max_age_hours: float = 0,
+               expect: set | None = None) -> list[list[str]]:
+    """One tab of a link-viewable Google Sheet, as a grid of cell text.
+
+    `expect` is a set of column names the header must contain. Pass it whenever
+    you can: a tab name that does not exist does NOT error -- Google silently
+    returns the FIRST tab instead. Without this check a typo in the config
+    would quietly feed the wrong sheet's data into the pipeline.
+    """
     from urllib.parse import quote
     text = fetch(SHEET_CSV.format(id=sheet_id, tab=quote(tab)),
                  slug=f"sheet-{sheet_id[:10]}-{tab.lower()}",
@@ -678,7 +684,22 @@ def sheet_grid(sheet_id: str, tab: str, fetch,
         print(f"[warn] sheet tab {tab!r} did not return CSV -- is the sheet "
               f"shared 'anyone with the link can view'?")
         return []
-    return [row for row in csv.reader(io.StringIO(text))]
+    grid = [row for row in csv.reader(io.StringIO(text))]
+
+    if expect:
+        if not grid:
+            print(f"[warn] sheet tab {tab!r} is empty -- expected a header row "
+                  f"with {sorted(expect)}")
+            return []
+        header = {str(c).strip().lower() for c in grid[0]}
+        missing = {c.lower() for c in expect} - header
+        if missing:
+            print(f"[warn] sheet tab {tab!r} is missing column(s) "
+                  f"{sorted(missing)} -- got {sorted(header)}. A tab name that "
+                  f"does not exist silently returns the FIRST tab, so check the "
+                  f"name as well as the columns.")
+            return []
+    return grid
 
 
 def newest_import(sport: str, pattern: str) -> Path | None:

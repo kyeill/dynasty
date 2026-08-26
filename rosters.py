@@ -102,7 +102,8 @@ def override_rows(rcfg: dict, sport: str, fetch) -> list[dict]:
     """
     sheet_id, tab = rcfg.get("sheet_id"), rcfg.get("overrides_tab")
     if sheet_id and tab:
-        grid = sheet_grid(sheet_id, tab, fetch, float(rcfg.get("cache_hours", 0)))
+        grid = sheet_grid(sheet_id, tab, fetch, float(rcfg.get("cache_hours", 0)),
+                          expect={"player", "fantasy_team"})
         if len(grid) < 2:
             return []
         header = [_clean(h).lower() for h in grid[0]]
@@ -190,7 +191,8 @@ def team_mapping(rcfg: dict, sport: str, fetch) -> dict:
     sheet_id, tab = rcfg.get("sheet_id"), rcfg.get("mapping_tab")
     if not (sheet_id and tab):
         return {}
-    grid = sheet_grid(sheet_id, tab, fetch, float(rcfg.get("cache_hours", 0)))
+    grid = sheet_grid(sheet_id, tab, fetch, float(rcfg.get("cache_hours", 0)),
+                      expect={sport})
     if len(grid) < 2:
         return {}
     header = [_clean(h).upper() for h in grid[0]]
