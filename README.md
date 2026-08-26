@@ -391,32 +391,51 @@ Get-ChildItem output\history -Recurse -File |
 
 ## Automatic daily refresh
 
-Windows scheduled task **"dynasty daily refresh"** runs `run-daily.cmd` at
-07:00, 13:00 and five minutes after logon, appending to `run.log`.
+**Runs in GitHub Actions — no local machine involved.**
+`.github/workflows/refresh.yml` refreshes the boards and rosters each morning
+and commits whatever changed back to this repo. Your Sheets read those files
+from `raw.githubusercontent.com`.
 
-```powershell
-Get-ScheduledTaskInfo -TaskName "dynasty daily refresh"
-Start-ScheduledTask   -TaskName "dynasty daily refresh"
+Three UTC cron slots with an Eastern-hour gate, because GitHub cron has no
+timezone and 7am Eastern moves with DST. The 08 and 09 slots are catch-ups:
+GitHub *queues* scheduled runs rather than guaranteeing them, so a later slot
+refreshes only if the day hasn't been done. `[skip ci]` on the commit stops the
+push retriggering the workflow forever.
+
+`actions/cache` restores `.cache` between runs. Without it every run refetches
+everything — Yahoo alone is 45 paginated requests for names that barely change.
+
+To run it by hand: Actions -> Refresh boards and rosters -> Run workflow. A
+manual run bypasses the time gate.
+
+**History lives in git.** Each refresh is a dated commit, so to see an old
+board:
+
+```bash
+git log --oneline -- output/combined_rankings_nba.csv
+git show <sha>:output/combined_rankings_nba.csv
 ```
 
-It runs `rankings.py --sport all --if-stale 20` then `rosters.py --sport all`,
-so a new roster export or an edited `_overrides.csv` is picked up without
-having to remember. Rosters have no stale guard — they're cheap, since the
-naming authority is cached for a week.
+`output/history/` is still written when running locally but is gitignored — it
+would only duplicate what the commits already hold.
 
-Three triggers because the machine isn't reliably on at any fixed hour;
-`--if-stale 20` means whichever lands first does the ranking work and the rest
-no-op.
-It runs only while you're logged in — anything else means storing your Windows
-password.
+### Running locally
 
-`run.log` is UTF-8. PowerShell's `Get-Content` defaults to ANSI and will show
-`DonÄiÄ‡`; read it with `-Encoding UTF8`.
+Still works, for debugging or a change you want to see before pushing:
 
-**Request cost.** Cold runs are expensive, warm runs are cheap. Player-list
-pages are cached a week (`cache_hours`) because names and positions barely
-change; ranking pages refresh every run. NBA: ~30 cold, 3 warm. NFL: ~45 cold,
-1 warm.
+```bash
+python rankings.py --sport all
+python rosters.py --sport all
+```
+
+## Superseded: the old local schedule
+
+A Windows scheduled task used to do this on Kyle's PC via `run-daily.cmd`. Both
+are gone as of 2026-08-26 -- the task is disabled (not deleted, so
+`Enable-ScheduledTask "dynasty daily refresh"` brings it back) and the script is
+removed. It was also the only tracked file carrying a hard-coded local path,
+which does not belong in a public repo.
+
 
 ## Google Sheets
 
