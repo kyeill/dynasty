@@ -1,0 +1,10 @@
+# Manual overrides for names that do not match automatically.
+# Only needed when the FIRST INITIAL differs between the two sites -- accents,
+# suffixes, punctuation, abbreviated first names ("G. Antetokounmpo") and
+# space-less exported names ("JoshAllen") are all handled automatically.
+#
+# Format: source_spelling,authority_spelling
+#
+# Check output/unmatched_nfl.csv after each run -- rows labelled
+# "ranked, no name match" are the actionable ones.
+marquise brown,Hollywood Brown

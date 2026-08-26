@@ -1,0 +1,11 @@
+# Manual overrides for names that do not match automatically.
+# Format: source_spelling,yahoo_spelling
+#
+# Only needed when the FIRST INITIAL differs between the two sites. Everything
+# else is handled automatically: accents (Jokić/Jokic), suffixes (Jr/III),
+# punctuation (P.J.), and Yahoo's abbreviated or nickname first names
+# ("G. Antetokounmpo", "Alex Sarr" for Alexandre, "Nic Claxton" for Nicolas).
+#
+# Check unmatched.csv after each run -- rows with a dynasty_rank are the ones
+# worth fixing here.
+carlton carrington,Bub Carrington

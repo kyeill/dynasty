@@ -1,0 +1,5 @@
+# Manual overrides for names that do not match automatically.
+# Only needed when the FIRST INITIAL differs between two sites --
+# accents, suffixes, punctuation, abbreviated first names and
+# space-less names are all handled automatically.
+# Format: source_spelling,authority_spelling

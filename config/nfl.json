@@ -1,0 +1,71 @@
+{
+  "sources": {
+    "fp_dynasty": {
+      "url": "https://www.fantasypros.com/nfl/rankings/dynasty-superflex.php",
+      "weight": 0.67,
+      "note": "FantasyPros expert consensus, dynasty superflex"
+    },
+    "ktc": {
+      "url": "https://keeptradecut.com/dynasty-rankings",
+      "value_key": "superflexValues",
+      "cache_hours": 12,
+      "weight": 0.33,
+      "note": "KeepTradeCut crowd-sourced trade values; playersArray carries both formats"
+    }
+  },
+  "name_authority": {
+    "kind": "yahoo",
+    "url_template": "https://football.fantasysports.yahoo.com/f1/101/players?pos=O&sort=OR&sdir=1&status=ALL&eteam=ALL&fteam=NONE&count={offset}",
+    "slug": "yahoo-nfl-101",
+    "page_size": 25,
+    "max_pages": 120,
+    "cache_hours": 168
+  },
+  "current": {
+    "windows": [
+      {
+        "months": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "url": "https://www.fantasypros.com/nfl/rankings/half-point-ppr-superflex-cheatsheets.php",
+        "note": "offseason / preseason, superflex"
+      },
+      {
+        "months": [
+          10,
+          11,
+          12
+        ],
+        "url": "https://www.fantasypros.com/nfl/rankings/ros-half-point-ppr-overall.php",
+        "note": "in season, rest-of-season"
+      }
+    ]
+  },
+  "missing_policy": "penalty",
+  "sanity_floor": {
+    "fp_dynasty": 300,
+    "ktc": 300,
+    "authority": 200,
+    "current": 10
+  },
+  "request_delay_seconds": 2,
+  "google_sheets": {
+    "enabled": false,
+    "service_account_json": "",
+    "spreadsheet_id": "",
+    "worksheet": "NFL"
+  },
+  "value": {
+    "replacement_rank": 303,
+    "top_20_ratio": 2.1,
+    "note": "0 at replacement (10 teams x ~30 rostered)"
+  }
+}

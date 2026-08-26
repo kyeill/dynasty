@@ -1,0 +1,92 @@
+{
+  "sources": {
+    "hkb": {
+      "url": "https://harryknowsball.com/rankings",
+      "weight": 1.0
+    }
+  },
+  "name_authority": {
+    "kind": "fantrax",
+    "league_id": "zl44w1hxm6k1h9ab",
+    "page_size": 500,
+    "max_pages": 30,
+    "cache_hours": 168
+  },
+  "current": {
+    "windows": [
+      {
+        "months": [
+          11,
+          12,
+          1,
+          2,
+          3,
+          4
+        ],
+        "url": "https://www.fantasypros.com/mlb/rankings/overall.php",
+        "note": "offseason / preseason"
+      },
+      {
+        "months": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "url": "https://www.fantasypros.com/mlb/rankings/ros-overall.php",
+        "note": "in season, rest-of-season"
+      }
+    ]
+  },
+  "missing_policy": "penalty",
+  "sanity_floor": {
+    "hkb": 800,
+    "authority": 5000,
+    "current": 10
+  },
+  "request_delay_seconds": 2,
+  "google_sheets": {
+    "enabled": false,
+    "service_account_json": "",
+    "spreadsheet_id": "",
+    "worksheet": "MLB"
+  },
+  "extra_ranks": {
+    "sp_rank": {
+      "feed": "https://pitcherlist.com/category/fantasy/starting-pitchers/the-list/feed/",
+      "note": "PitcherList 'The List' - weekly top-100 starting pitchers. Last table in the post.",
+      "months": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    "rp_rank": {
+      "feed": "https://pitcherlist.com/category/fantasy/relief-pitchers/svs-hlds/feed/",
+      "note": "PitcherList closers/holds/SOLDs - LAST of three identically-headed tables (SOLDs).",
+      "months": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    }
+  },
+  "rosters": {
+    "id_col": "ID",
+    "player_col": "Player",
+    "team_col": "Status"
+  },
+  "value": {
+    "replacement_rank": 667,
+    "top_20_ratio": 2.1,
+    "note": "0 at replacement (10 teams x ~67 rostered)"
+  }
+}

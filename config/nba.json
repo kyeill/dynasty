@@ -1,0 +1,67 @@
+{
+  "sources": {
+    "dynasty": {
+      "url": "https://hashtagbasketball.com/fantasy-basketball-dynasty-rankings",
+      "weight": 0.67
+    },
+    "keeper": {
+      "url": "https://hashtagbasketball.com/keeper",
+      "weight": 0.33
+    }
+  },
+  "name_authority": {
+    "kind": "yahoo",
+    "url_template": "https://basketball.fantasysports.yahoo.com/nba/667/players?status=ALL&pos=P&sort=OR&count={offset}",
+    "slug": "yahoo-667",
+    "page_size": 25,
+    "max_pages": 40,
+    "cache_hours": 168
+  },
+  "current": {
+    "windows": [
+      {
+        "months": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "url": "https://www.fantasypros.com/nba/rankings/overall-points-yahoo.php",
+        "note": "offseason / preseason"
+      },
+      {
+        "months": [
+          11,
+          12,
+          1,
+          2,
+          3,
+          4
+        ],
+        "url": "https://www.fantasypros.com/nba/rankings/ros-overall-points-yahoo.php",
+        "note": "in season, rest-of-season"
+      }
+    ]
+  },
+  "missing_policy": "penalty",
+  "sanity_floor": {
+    "dynasty": 200,
+    "keeper": 400,
+    "authority": 400,
+    "current": 10
+  },
+  "request_delay_seconds": 2,
+  "google_sheets": {
+    "enabled": false,
+    "service_account_json": "",
+    "spreadsheet_id": "",
+    "worksheet": "NBA"
+  },
+  "value": {
+    "replacement_rank": 337,
+    "top_20_ratio": 2.1,
+    "note": "0 at replacement (10 teams x ~34 rostered). top_20_ratio = how many top-20 players the #1 is worth"
+  }
+}

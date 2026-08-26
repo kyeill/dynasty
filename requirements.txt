@@ -1,0 +1,13 @@
+# NO pandas, NO numpy -- deliberately. Windows Smart App Control blocks
+# numpy's ARM64 binaries on this machine (unsigned, and too rarely downloaded
+# to have earned a reputation), which took the whole project down on
+# 2026-08-22. Everything now runs on the standard library plus these four.
+# Don't reintroduce pandas.
+
+requests>=2.31
+beautifulsoup4>=4.12
+lxml>=5.0          # also replaces pd.read_html, via common.html_tables()
+openpyxl>=3.1      # replaces pd.read_excel; pure Python, no numpy
+
+# On win-arm64, install with --prefer-binary: pip otherwise resolves an older
+# version whose sdist needs a compiler toolchain.
