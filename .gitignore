@@ -1,17 +1,12 @@
-# Downloaded pages and API responses. ~99MB, entirely regenerable, and
-# rewritten on every run -- by far the biggest thing in this folder.
+﻿# Downloaded pages and API responses. ~99MB, entirely regenerable. On Actions
+# it is restored by actions/cache instead of living here.
 .cache/
 
-# Regenerated on every run. The committed snapshots in tests/ are what the
-# regression check compares against.
-output/
 run.log
-
 __pycache__/
 *.pyc
 
-# Service-account keys, if the disabled gspread path is ever enabled. These are
-# live credentials and must never be committed.
+# Live credentials. Must never be committed.
 *.json.key
 service_account*.json
 
@@ -19,3 +14,8 @@ service_account*.json
 # superseded anyway once rosters are read from the Google Sheet. Public git
 # history is permanent, so this must stay excluded from the first push onward.
 rosters/
+
+# Outputs ARE published now -- Actions commits them so Apps Script can read
+# them from raw.githubusercontent.com. Only the dated duplicates stay out:
+# every run is already a commit, so git IS the history.
+output/history/

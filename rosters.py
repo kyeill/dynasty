@@ -34,8 +34,9 @@ from pathlib import Path
 
 from common import (HERE, OUTPUT_DIR, Fetcher, build_resolver, load_aliases,
                     load_fullnames, normalize_name, prepare_authority,
-                    read_csv, snapshot, write_csv)
-from roster_readers import read_mapped_csv, read_yahoo_paste
+                    read_csv, sheet_grid, snapshot, write_csv)
+from roster_readers import (_clean, parse_mapped_grid, parse_yahoo_grid,
+                            read_mapped_csv, read_yahoo_paste)
 
 ROSTERS_DIR = HERE / "rosters"
 CONFIG_DIR = HERE / "config"
@@ -155,18 +156,62 @@ def newest_roster(sport: str) -> Path | None:
     return max(files, key=lambda p: p.stat().st_mtime) if files else None
 
 
+def team_mapping(rcfg: dict, sport: str, fetch) -> dict:
+    """Source team name -> Kyle's stable code, from the Sheet's mapping tab.
+
+    Without this, someone renaming their fantasy team reads as every player on
+    it being traded at once. The codes also make one owner the same label in
+    all three sports.
+    """
+    sheet_id, tab = rcfg.get("sheet_id"), rcfg.get("mapping_tab")
+    if not (sheet_id and tab):
+        return {}
+    grid = sheet_grid(sheet_id, tab, fetch, float(rcfg.get("cache_hours", 0)))
+    if len(grid) < 2:
+        return {}
+    header = [_clean(h).upper() for h in grid[0]]
+    if sport.upper() not in header:
+        print(f"[warn] mapping tab has no {sport.upper()} column -- "
+              f"found {header}")
+        return {}
+    code_i, src_i = 0, header.index(sport.upper())
+
+    out, seen = {}, {}
+    for row in grid[1:]:
+        if len(row) <= src_i:
+            continue
+        src, code = _clean(row[src_i]), _clean(row[code_i])
+        if not src or not code:
+            continue
+        # A duplicate silently merges two teams into one, which looks like
+        # plausible data. Refuse rather than guess.
+        if src in out:
+            print(f"[warn] mapping: {src!r} listed twice -- ignoring the second")
+            continue
+        seen.setdefault(code, []).append(src)
+        out[src] = code
+    dupe_codes = {c: v for c, v in seen.items() if len(v) > 1}
+    if dupe_codes:
+        print(f"[warn] mapping: code(s) used for more than one team: {dupe_codes}")
+    return out
+
+
 def run_sport(sport: str, args) -> int:
-    path = newest_roster(sport)
-    if path is None:
-        print(f"[skip] {sport}: no roster file in rosters/{sport}/")
+    cfg = json.loads((CONFIG_DIR / f"{sport}.json").read_text(encoding="utf-8-sig"))
+    rcfg = cfg.get("rosters", {})
+    sheet_id, tab = rcfg.get("sheet_id"), rcfg.get("tab", sport.upper())
+
+    path = None if sheet_id else newest_roster(sport)
+    if not sheet_id and path is None:
+        print(f"[skip] {sport}: no sheet configured and no file in rosters/{sport}/")
         return 0
 
     print(f"\n=== {sport.upper()} ===")
-    age_h = (time.time() - path.stat().st_mtime) / 3600
-    print(f"[roster] {path.name} ({age_h:.0f}h old)")
-
-    cfg = json.loads((CONFIG_DIR / f"{sport}.json").read_text(encoding="utf-8-sig"))
-    rcfg = cfg.get("rosters", {})
+    if sheet_id:
+        print(f"[roster] Google Sheet tab {tab!r}")
+    else:
+        age_h = (time.time() - path.stat().st_mtime) / 3600
+        print(f"[roster] {path.name} ({age_h:.0f}h old, local fallback)")
 
     # The authority loads BEFORE parsing so the Yahoo reader can undecorate
     # names by matching against real players rather than stripping suffixes.
@@ -177,11 +222,23 @@ def run_sport(sport: str, args) -> int:
     resolve = build_resolver(auth)
     known_names = {a["name"] for a in auth.values()}
 
+    id_col = rcfg.get("id_col")
+    player_col = rcfg.get("player_col", "Player")
+    team_col = rcfg.get("team_col", "Status")
+
     try:
-        if path.suffix.lower() == ".csv":
-            raw = read_mapped_csv(path, rcfg.get("id_col"),
-                                  rcfg.get("player_col", "Player"),
-                                  rcfg.get("team_col", "Status"))
+        if sheet_id:
+            grid = sheet_grid(sheet_id, tab, fetch,
+                              float(rcfg.get("cache_hours", 0)))
+            # Detect the shape rather than configuring it: a Fantrax export has
+            # the declared columns in its header, a Yahoo paste does not.
+            header = [c.strip() for c in (grid[0] if grid else [])]
+            if player_col in header and team_col in header:
+                raw = parse_mapped_grid(grid, id_col, player_col, team_col)
+            else:
+                raw = parse_yahoo_grid(grid, known_names)
+        elif path.suffix.lower() == ".csv":
+            raw = read_mapped_csv(path, id_col, player_col, team_col)
         else:
             raw = read_yahoo_paste(path, known_names)
     except KeyError as exc:
@@ -191,6 +248,16 @@ def run_sport(sport: str, args) -> int:
     if not raw:
         print("!! roster parsed to zero players")
         return 1
+
+    mapping = team_mapping(rcfg, sport, fetch)
+    if mapping:
+        unmapped = sorted({r["fantasy_team"] for r in raw
+                           if _clean(r["fantasy_team"]) not in mapping})
+        for r in raw:
+            r["fantasy_team"] = mapping.get(_clean(r["fantasy_team"]),
+                                            r["fantasy_team"])
+        print(f"[map]    {len(mapping)} team codes applied"
+              + (f" -- UNMAPPED: {unmapped}" if unmapped else ""))
 
     sizes = Counter(r["fantasy_team"] for r in raw)
     print(f"[parse]  {len(raw)} players across {len(sizes)} teams "
@@ -216,8 +283,12 @@ def run_sport(sport: str, args) -> int:
             uid = resolve(key, r.get("team") or None, r.get("pos") or None)
             canonical = auth[uid]["name"] if uid is not None else None
         if canonical is None:
+            # KEPT, not dropped -- Kyle's call, and right: the roster and the
+            # naming authority come from the same site, so an unmatched name is
+            # rare and its spelling is already that site's own convention.
+            # Dropping it would quietly shrink a real roster. Still reported.
             unresolved.append({"player": r["name"], "fantasy_team": r["fantasy_team"]})
-            continue
+            canonical = r["name"]
         rows.append({"player": canonical, "fantasy_team": r["fantasy_team"]})
 
     # Apply the same expansions rankings.py worked out, so a player isn't

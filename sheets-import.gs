@@ -1,8 +1,9 @@
-/**
+﻿/**
  * dynasty -> Google Sheets
  *
- * Pulls this sport's outputs from Drive into tabs of the current spreadsheet.
- * Runs as YOU, so the files stay private and there are no credentials to store.
+ * Pulls this sport's outputs from the public GitHub repo into tabs of the
+ * current spreadsheet. GitHub Actions refreshes them every morning, so this
+ * depends on no local machine and no credentials.
  *
  * ONE SHEET PER SPORT. Paste this into each sheet and set SPORT below.
  * Keeping them separate means a broken import in one can't blank the others.
@@ -15,13 +16,18 @@
  *       Advanced -> Go to <project> is the way through.)
  *   4. Run `createDailyTrigger` once to schedule it.
  *
- * Already set up from an earlier version? Just re-paste this file and Save.
- * The entry point is still called `importRankings`, so your existing trigger
- * keeps working -- it now fills the roster tab as well.
+ * Updating from an earlier version? Re-paste and Save. The entry point is
+ * still `importRankings`, so existing triggers keep working. It now reads
+ * GitHub rather than Drive, so it no longer needs Drive permission -- Google
+ * may re-prompt for authorization once.
  */
 
 var SPORT = 'nba';                                    // <-- 'nba' | 'nfl' | 'mlb'
-var FOLDER_PATH = ['Documents', 'Claude', 'dynasty', 'output'];
+
+// Reads straight from the public GitHub repo, which GitHub Actions refreshes
+// every morning. No Drive, no local PC, no credentials -- the repo is public so
+// UrlFetchApp needs no token.
+var RAW = 'https://raw.githubusercontent.com/kyeill/dynasty/main/output/';
 
 // Each output gets its own tab. A missing file is skipped with a note rather
 // than failing the run, so a sport with no roster yet still imports its board.
@@ -33,18 +39,19 @@ var IMPORTS = [
 
 function importRankings() {
   var book = SpreadsheetApp.getActiveSpreadsheet();
-  var folder = findFolder_();
   var done = [];
 
   IMPORTS.forEach(function (spec) {
     var name = spec.prefix + SPORT + '.csv';
-    var files = folder.getFilesByName(name);
-    if (!files.hasNext()) {
-      Logger.log('skipped %s - not found in %s', name, FOLDER_PATH.join('/'));
+    // cache-bust: raw.githubusercontent caches aggressively, and a stale copy
+    // would look exactly like "the refresh didn't run".
+    var url = RAW + name + '?t=' + Date.now();
+    var resp = UrlFetchApp.fetch(url, { muteHttpExceptions: true });
+    if (resp.getResponseCode() !== 200) {
+      Logger.log('skipped %s - HTTP %s', name, resp.getResponseCode());
       return;
     }
-    var file = files.next();
-    var values = parseCsv_(file);
+    var values = parseCsv_(resp.getContentText());
     if (!values.length) {
       Logger.log('skipped %s - parsed to zero rows', name);
       return;
@@ -54,19 +61,16 @@ function importRankings() {
   });
 
   if (!done.length) {
-    throw new Error('Nothing imported. Check FOLDER_PATH and that SPORT ("'
-                    + SPORT + '") matches the file names in Drive.');
+    throw new Error('Nothing imported. Check SPORT ("' + SPORT + '") and that '
+                    + RAW + ' has the files.');
   }
   book.toast(done.join(', '), SPORT.toUpperCase() + ' imported', 5);
   Logger.log('imported: %s', done.join(', '));
 }
 
 
-/** CSV -> rows, with the BOM stripped and numerics restored. */
-function parseCsv_(file) {
-  // getDataAsString defaults to UTF-8, which keeps Dončić / Şengün intact.
-  var text = file.getBlob().getDataAsString('UTF-8');
-
+/** CSV text -> rows, with the BOM stripped and numerics restored. */
+function parseCsv_(text) {
   // The CSVs carry a BOM so Excel reads accents correctly. Left in place it
   // would turn the first header into "﻿combined_rank".
   if (text.charCodeAt(0) === 0xFEFF) {
@@ -96,20 +100,6 @@ function writeTab_(book, title, values) {
   tab.setFrozenRows(1);
   tab.getRange(1, 1, 1, values[0].length).setFontWeight('bold');
   tab.autoResizeColumns(1, Math.min(values[0].length, 12));
-}
-
-
-/** Walk My Drive down FOLDER_PATH. */
-function findFolder_() {
-  var folder = DriveApp.getRootFolder();
-  for (var i = 0; i < FOLDER_PATH.length; i++) {
-    var next = folder.getFoldersByName(FOLDER_PATH[i]);
-    if (!next.hasNext()) {
-      throw new Error('Folder not found: ' + FOLDER_PATH.slice(0, i + 1).join('/'));
-    }
-    folder = next.next();
-  }
-  return folder;
 }
 
 

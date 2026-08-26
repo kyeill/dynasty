@@ -1,0 +1,97 @@
+name: Refresh boards and rosters
+
+on:
+  schedule:
+    # GitHub cron is UTC only, so 7am Eastern is 11:00 UTC in summer and 12:00
+    # in winter. Both fire; the gate below lets exactly one through, so this
+    # really is once a day at 7am Eastern all year.
+    - cron: "0 11 * * *"
+    - cron: "0 12 * * *"
+    - cron: "0 13 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write        # needed to commit the refreshed CSVs back
+
+concurrency:
+  group: dynasty-refresh
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.check.outputs.run }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: check
+        run: |
+          hour=$(TZ=America/New_York date +%H)
+          today=$(TZ=America/New_York date +%F)
+          built=$(cat output/_last_refresh.txt 2>/dev/null || echo none)
+
+          # 07 Eastern is the intended slot. 08 and 09 are catch-ups: GitHub
+          # queues scheduled runs rather than guaranteeing them, so a later
+          # slot refreshes only if the day has not already been done.
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            reason="manual run"; go=yes
+          elif [ "$hour" = "07" ]; then
+            reason="the 7am slot"; go=yes
+          elif [ "$hour" = "08" ] || [ "$hour" = "09" ]; then
+            if [ "$built" != "$today" ]; then
+              reason="catch-up at $hour: nothing refreshed for $today yet"; go=yes
+            else
+              reason="already refreshed for $today"; go=no
+            fi
+          else
+            reason="Eastern hour $hour, last refresh $built"; go=no
+          fi
+
+          if [ "$go" = "yes" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"; echo "refreshing ($reason)"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"; echo "skipping ($reason)"
+          fi
+
+  refresh:
+    needs: gate
+    if: needs.gate.outputs.run == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+
+      # Without this the split cache is defeated and every run refetches the
+      # lot -- Yahoo alone is 45 paginated requests for names that barely
+      # change. Keyed by week so it expires in step with cache_hours: 168.
+      - name: Restore the page cache
+        uses: actions/cache@v4
+        with:
+          path: .cache
+          key: dynasty-cache-${{ github.run_id }}
+          restore-keys: |
+            dynasty-cache-
+
+      - name: Refresh the boards
+        run: python rankings.py --sport all
+
+      - name: Refresh the rosters
+        run: python rosters.py --sport all
+
+      - name: Commit whatever changed
+        run: |
+          TZ=America/New_York date +%F > output/_last_refresh.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A output
+          if git diff --cached --quiet; then
+            echo "nothing changed today"
+          else
+            # [skip ci] matters: without it this push retriggers the workflow,
+            # which commits again, forever.
+            git commit -m "Refresh: $(TZ=America/New_York date +%F) [skip ci]"
+            git push
+          fi

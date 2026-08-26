@@ -116,14 +116,22 @@ def _team_blocks(col0: list[str]) -> list:
 
 
 def read_yahoo_paste(path, known: set | None = None) -> list[dict]:
-    """Parse a spreadsheet of pasted Yahoo roster pages into player/fantasy_team.
+    """Local .xlsx fallback. The live path is parse_yahoo_grid via the Sheet."""
+    return parse_yahoo_grid(_sheet_rows(path), known)
+
+
+def parse_yahoo_grid(grid: list[list[str]], known: set | None = None) -> list[dict]:
+    """Parse pasted Yahoo roster pages into player/fantasy_team.
+
+    Takes a grid rather than a file so the same code serves a Google Sheet tab
+    (fetched as CSV) and a local .xlsx.
 
     `known` is the naming authority's player names. When supplied, decorated
     cells are resolved by longest-known-prefix, which is immune to new Yahoo
     suffixes. Without it the parser falls back to stripping known decoration.
     """
     known = known or set()
-    grid = _sheet_rows(path)
+    grid = [[_clean(c) for c in row] for row in grid]
     if not grid:
         return []
     width = max(len(r) for r in grid)
@@ -178,9 +186,21 @@ def read_yahoo_paste(path, known: set | None = None) -> list[dict]:
     return [r for r in rows if len(r["name"]) > 1]
 
 
+def parse_mapped_grid(grid, id_col, player_col, team_col) -> list[dict]:
+    """A clean export (Fantrax) whose columns are declared in config."""
+    if not grid or len(grid) < 2:
+        return []
+    header = [_clean(h) for h in grid[0]]
+    raw = [dict(zip(header, [_clean(c) for c in row])) for row in grid[1:]]
+    return _mapped_rows(raw, id_col, player_col, team_col)
+
+
 def read_mapped_csv(path, id_col, player_col, team_col) -> list[dict]:
-    """A clean export whose columns are declared in config."""
-    raw = read_csv(path)
+    """Local CSV fallback. The live path is parse_mapped_grid via the Sheet."""
+    return _mapped_rows(read_csv(path), id_col, player_col, team_col)
+
+
+def _mapped_rows(raw, id_col, player_col, team_col) -> list[dict]:
     if not raw:
         return []
     missing = [c for c in (player_col, team_col) if c not in raw[0]]

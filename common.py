@@ -15,6 +15,7 @@ Tables are plain `list[dict]`. Indexed tables are `dict[key, row]`.
 from __future__ import annotations
 
 import csv
+import io
 import json
 import math
 import re
@@ -657,6 +658,27 @@ def fantasypros(url: str, fetch: Fetcher) -> list[dict]:
 
 
 # --------------------------------------------------------------- imports ----
+
+
+# A Google Sheet shared "anyone with the link can view" exposes each tab as CSV
+# here, with no credentials at all. That is what lets rosters live in a sheet
+# Kyle edits from anywhere while GitHub Actions reads them unauthenticated.
+SHEET_CSV = ("https://docs.google.com/spreadsheets/d/{id}"
+             "/gviz/tq?tqx=out:csv&sheet={tab}")
+
+
+def sheet_grid(sheet_id: str, tab: str, fetch,
+               max_age_hours: float = 0) -> list[list[str]]:
+    """One tab of a link-viewable Google Sheet, as a grid of cell text."""
+    from urllib.parse import quote
+    text = fetch(SHEET_CSV.format(id=sheet_id, tab=quote(tab)),
+                 slug=f"sheet-{sheet_id[:10]}-{tab.lower()}",
+                 max_age_hours=max_age_hours)
+    if "docs.google.com/accounts" in text[:400] or text.lstrip().startswith("<"):
+        print(f"[warn] sheet tab {tab!r} did not return CSV -- is the sheet "
+              f"shared 'anyone with the link can view'?")
+        return []
+    return [row for row in csv.reader(io.StringIO(text))]
 
 
 def newest_import(sport: str, pattern: str) -> Path | None:
