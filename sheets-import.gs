@@ -1,71 +1,78 @@
-﻿/**
+/**
  * dynasty -> Google Sheets
  *
- * Pulls this sport's outputs from the public GitHub repo into tabs of the
- * current spreadsheet. GitHub Actions refreshes them every morning, so this
- * depends on no local machine and no credentials.
+ * Pulls every board and roster from the public GitHub repo into tabs of the
+ * spreadsheet this script is attached to. GitHub Actions refreshes them each
+ * morning, so this depends on no local machine and no credentials.
  *
- * ONE SHEET PER SPORT. Paste this into each sheet and set SPORT below.
- * Keeping them separate means a broken import in one can't blank the others.
+ * ONE SHEET, SIX TABS -- it does all three sports in one pass:
  *
- * SETUP (once per sheet):
- *   1. Open the spreadsheet -> Extensions -> Apps Script.
- *   2. Delete the placeholder code, paste this file, set SPORT, Save.
- *   3. Run `importRankings` once and approve the authorization prompt.
+ *     NBA Rankings   NBA Rosters
+ *     NFL Rankings   NFL Rosters
+ *     MLB Rankings   MLB Rosters
+ *
+ * It only ever touches tabs with those exact names, so it is safe to attach to
+ * the same spreadsheet that holds your roster input tabs (MLB / NFL / NBA /
+ * Mapping) -- those names do not collide and will not be overwritten.
+ *
+ * SETUP (once):
+ *   1. Extensions -> Apps Script.
+ *   2. Delete the placeholder code, paste this file, Save.
+ *   3. Run `importAll` once and approve the authorization prompt.
  *      (Google warns the app is "unverified" because you wrote it.
  *       Advanced -> Go to <project> is the way through.)
  *   4. Run `createDailyTrigger` once to schedule it.
- *
- * Updating from an earlier version? Re-paste and Save. The entry point is
- * still `importRankings`, so existing triggers keep working. It now reads
- * GitHub rather than Drive, so it no longer needs Drive permission -- Google
- * may re-prompt for authorization once.
  */
 
-var SPORT = 'nba';                                    // <-- 'nba' | 'nfl' | 'mlb'
-
-// Reads straight from the public GitHub repo, which GitHub Actions refreshes
-// every morning. No Drive, no local PC, no credentials -- the repo is public so
-// UrlFetchApp needs no token.
 var RAW = 'https://raw.githubusercontent.com/kyeill/dynasty/main/output/';
+var SPORTS = ['NBA', 'NFL', 'MLB'];
 
-// Each output gets its own tab. A missing file is skipped with a note rather
-// than failing the run, so a sport with no roster yet still imports its board.
+// prefix in the repo -> suffix of the tab name here
 var IMPORTS = [
-  { prefix: 'combined_rankings_', tab: 'Rankings' },
-  { prefix: 'rosters_',           tab: 'Rosters'  }
+  { prefix: 'combined_rankings_', suffix: 'Rankings' },
+  { prefix: 'rosters_',           suffix: 'Rosters'  }
 ];
 
 
-function importRankings() {
+function importAll() {
   var book = SpreadsheetApp.getActiveSpreadsheet();
-  var done = [];
+  var done = [], missed = [];
 
-  IMPORTS.forEach(function (spec) {
-    var name = spec.prefix + SPORT + '.csv';
-    // cache-bust: raw.githubusercontent caches aggressively, and a stale copy
-    // would look exactly like "the refresh didn't run".
-    var url = RAW + name + '?t=' + Date.now();
-    var resp = UrlFetchApp.fetch(url, { muteHttpExceptions: true });
-    if (resp.getResponseCode() !== 200) {
-      Logger.log('skipped %s - HTTP %s', name, resp.getResponseCode());
-      return;
-    }
-    var values = parseCsv_(resp.getContentText());
-    if (!values.length) {
-      Logger.log('skipped %s - parsed to zero rows', name);
-      return;
-    }
-    writeTab_(book, spec.tab, values);
-    done.push(spec.tab + ' ' + (values.length - 1));
+  SPORTS.forEach(function (sport) {
+    IMPORTS.forEach(function (spec) {
+      var file = spec.prefix + sport.toLowerCase() + '.csv';
+      // cache-bust: raw.githubusercontent caches hard, and a stale copy would
+      // look exactly like "the refresh didn't run".
+      var resp = UrlFetchApp.fetch(RAW + file + '?t=' + Date.now(),
+                                   { muteHttpExceptions: true });
+      if (resp.getResponseCode() !== 200) {
+        missed.push(file + ' (HTTP ' + resp.getResponseCode() + ')');
+        return;
+      }
+      var values = parseCsv_(resp.getContentText());
+      if (!values.length) {
+        missed.push(file + ' (empty)');
+        return;
+      }
+      writeTab_(book, sport + ' ' + spec.suffix, values);
+      done.push(sport + ' ' + spec.suffix + ': ' + (values.length - 1));
+    });
   });
 
-  if (!done.length) {
-    throw new Error('Nothing imported. Check SPORT ("' + SPORT + '") and that '
-                    + RAW + ' has the files.');
+  if (missed.length) {
+    Logger.log('could not import: %s', missed.join(', '));
   }
-  book.toast(done.join(', '), SPORT.toUpperCase() + ' imported', 5);
+  if (!done.length) {
+    throw new Error('Nothing imported. Check ' + RAW + ' is reachable.');
+  }
+  book.toast(done.join('  |  '), 'dynasty imported', 6);
   Logger.log('imported: %s', done.join(', '));
+}
+
+
+/** Kept so triggers created against the old name still work. */
+function importRankings() {
+  importAll();
 }
 
 
@@ -106,11 +113,12 @@ function writeTab_(book, title, values) {
 /** Schedule a daily refresh. Safe to re-run -- it clears its own duplicates. */
 function createDailyTrigger() {
   ScriptApp.getProjectTriggers().forEach(function (t) {
-    if (t.getHandlerFunction() === 'importRankings') {
+    var fn = t.getHandlerFunction();
+    if (fn === 'importAll' || fn === 'importRankings') {
       ScriptApp.deleteTrigger(t);
     }
   });
-  // 9am, comfortably after the machine-side refresh has had its chances.
-  ScriptApp.newTrigger('importRankings').timeBased().atHour(9).everyDays(1).create();
+  // 9am Eastern-ish, comfortably after the 7am Actions refresh.
+  ScriptApp.newTrigger('importAll').timeBased().atHour(9).everyDays(1).create();
   Logger.log('Daily trigger created for 9am.');
 }
