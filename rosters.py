@@ -90,7 +90,34 @@ def validate(rows: list[dict], sizes: Counter, sport: str) -> list[str]:
     return problems
 
 
-def apply_overrides(out: list[dict], path: Path, resolve_name):
+def override_rows(rcfg: dict, sport: str, fetch) -> list[dict]:
+    """Manual ownership edits, from the Sheet's Overrides tab or a local file.
+
+    The Sheet is the live path. The local `rosters/<sport>/_overrides.csv` is a
+    fallback -- it cannot be the primary any more, because `rosters/` is
+    gitignored and so GitHub Actions never sees it.
+
+    Sheet tab columns: sport, player, fantasy_team. One tab covers all three
+    sports; rows are filtered by the `sport` column.
+    """
+    sheet_id, tab = rcfg.get("sheet_id"), rcfg.get("overrides_tab")
+    if sheet_id and tab:
+        grid = sheet_grid(sheet_id, tab, fetch, float(rcfg.get("cache_hours", 0)))
+        if len(grid) < 2:
+            return []
+        header = [_clean(h).lower() for h in grid[0]]
+        rows = [dict(zip(header, [_clean(c) for c in r])) for r in grid[1:]]
+        return [r for r in rows
+                if (r.get("player") or "").strip()
+                and (not r.get("sport") or r["sport"].lower() == sport.lower())]
+
+    path = ROSTERS_DIR / sport / "_overrides.csv"
+    if not path.exists():
+        return []
+    return [r for r in read_csv(path, comment="#") if (r.get("player") or "").strip()]
+
+
+def apply_overrides(out: list[dict], ov: list[dict], resolve_name):
     """Layer manual ownership edits on top of the parsed roster.
 
     Yahoo leagues go dormant out of season, so from roughly January the pasted
@@ -104,9 +131,6 @@ def apply_overrides(out: list[dict], path: Path, resolve_name):
         player,fantasy_team      move or add
         player,                  blank team = drop
     """
-    if not path.exists():
-        return out, []
-    ov = [r for r in read_csv(path, comment="#") if (r.get("player") or "").strip()]
     if not ov:
         return out, []
 
@@ -310,27 +334,18 @@ def run_sport(sport: str, args) -> int:
             deduped.append(r)
     out = sorted(deduped, key=lambda r: (r["fantasy_team"], r["player"]))
 
-    ov_path = ROSTERS_DIR / sport / "_overrides.csv"
-
     def _resolve_name(raw_name: str):
         key = normalize_name(raw_name)
         key = aliases.get(key, key)
         uid = resolve(key)
         return auth[uid]["name"] if uid is not None else None
 
-    out, ov_notes = apply_overrides(out, ov_path, _resolve_name)
+    out, ov_notes = apply_overrides(out, override_rows(rcfg, sport, fetch),
+                                    _resolve_name)
     if ov_notes:
-        ov_age_d = (time.time() - ov_path.stat().st_mtime) / 86400
-        print(f"[manual]  {len(ov_notes)} override(s) from _overrides.csv "
-              f"({ov_age_d:.0f}d old)")
+        print(f"[manual]  {len(ov_notes)} override(s)")
         for n in ov_notes:
             print(f"          {n}")
-        # A base file newer than the overrides usually means a fresh export has
-        # landed and some of these edits are now baked in -- or worse, about to
-        # undo something newer.
-        if path.stat().st_mtime > ov_path.stat().st_mtime:
-            print(f"[warn]    {path.name} is NEWER than _overrides.csv -- "
-                  f"check whether these edits are still needed")
 
     dest = OUTPUT_DIR / f"rosters_{sport}.csv"
     write_csv(dest, out, ["player", "fantasy_team"])

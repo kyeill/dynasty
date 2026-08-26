@@ -80,7 +80,8 @@
     "sheet_id": "1BwB1kpgt3D1YgOTgRKJZWrWBpq6lx1OC74S3n07-oWA",
     "tab": "MLB",
     "mapping_tab": "Mapping",
-    "cache_hours": 0
+    "cache_hours": 0,
+    "overrides_tab": "Overrides"
   },
   "value": {
     "replacement_rank": 667,

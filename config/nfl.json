@@ -68,6 +68,7 @@
     "mapping_tab": "Mapping",
     "cache_hours": 0,
     "player_col": "Player",
-    "team_col": "Status"
+    "team_col": "Status",
+    "overrides_tab": "Overrides"
   }
 }
