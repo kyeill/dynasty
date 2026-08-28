@@ -78,10 +78,17 @@ jobs:
       - name: Refresh the boards
         run: python rankings.py --sport all
 
+      # One sport failing must not throw away the others. rankings.py already
+      # isolates them -- it returns non-zero but still writes the boards that
+      # worked -- so these run anyway and the run stays red for the one that
+      # did not. Without this, an NBA source going quiet silently discarded
+      # fresh NFL and MLB boards.
       - name: Refresh the rosters
+        if: ${{ !cancelled() }}
         run: python rosters.py --sport all
 
       - name: Commit whatever changed
+        if: ${{ !cancelled() }}
         run: |
           TZ=America/New_York date +%F > output/_last_refresh.txt
           git config user.name "github-actions[bot]"
