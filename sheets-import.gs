@@ -1,4 +1,4 @@
-/**
+﻿/**
  * dynasty -> Google Sheets
  *
  * Pulls every board and roster from the public GitHub repo into tabs of the
@@ -59,6 +59,8 @@ function importAll() {
     });
   });
 
+  importStatus_(book);
+
   if (missed.length) {
     Logger.log('could not import: %s', missed.join(', '));
   }
@@ -73,6 +75,31 @@ function importAll() {
 /** Kept so triggers created against the old name still work. */
 function importRankings() {
   importAll();
+}
+
+
+/**
+ * All three sports' source status, merged into one tab.
+ *
+ * This is the tab to look at when a board seems wrong. A source that has gone
+ * dark falls back to its last good copy rather than failing, which keeps the
+ * board alive -- but means a stale column looks exactly like a fresh one. Here
+ * it says so: `stale = YES` with how many days old the data is.
+ */
+function importStatus_(book) {
+  var rows = [['sport', 'source', 'rows', 'stale', 'age_days', 'note']];
+  SPORTS.forEach(function (sport) {
+    var url = RAW + '_source_status_' + sport.toLowerCase() + '.csv?t=' + Date.now();
+    var resp = UrlFetchApp.fetch(url, { muteHttpExceptions: true });
+    if (resp.getResponseCode() !== 200) return;
+    var parsed = parseCsv_(resp.getContentText());
+    parsed.slice(1).forEach(function (r) {
+      rows.push([sport].concat(r));
+    });
+  });
+  if (rows.length > 1) {
+    writeTab_(book, 'Source Status', rows);
+  }
 }
 
 
