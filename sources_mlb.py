@@ -1,4 +1,4 @@
-"""
+﻿"""
 MLB sources: HarryKnowsBall dynasty rankings, Fantrax names, FantasyPros Roto,
 plus two weekly PitcherList boards as reference columns.
 
@@ -20,7 +20,7 @@ from datetime import date
 from bs4 import BeautifulSoup
 
 from common import (Fetcher, fantasypros, grid_to_rows, html_tables, is_player,
-                    pick_seasonal_url, to_num)
+                    pick_seasonal_url, sheet_grid, to_num)
 
 FANTRAX_API = "https://www.fantrax.com/fxpa/req?leagueId={league_id}"
 
@@ -198,8 +198,66 @@ def extra_ranks(cfg: dict, fetch: Fetcher) -> dict:
     return out
 
 
+# Fantrax's pool marks corner/middle infielders with a catch-all "INF" alongside
+# the real position. It is never the answer on its own and only adds noise.
+_DROP_POSITIONS = {"INF"}
+
+
+def _clean_positions(value) -> str:
+    kept = [p.strip() for p in str(value or "").split(",")
+            if p.strip() and p.strip().upper() not in _DROP_POSITIONS]
+    return ",".join(kept)
+
+
 def name_authority(cfg: dict, fetch: Fetcher) -> list[dict]:
-    return _fantrax(cfg["name_authority"], fetch)
+    """Fantrax's pool, with positions from Kyle's own roster sheet where it has them.
+
+    The roster export is the better source for a player he actually owns: it is
+    his league's own eligibility, not a generic pool's. It only covers rostered
+    players, so the pool still supplies everyone else.
+
+    Joined on Fantrax's scorer id, not on name -- the roster export wraps the
+    same global id in asterisks (*05ucd*), so this is exact even for the three
+    Jose Ramirezes.
+    """
+    rows = _fantrax(cfg["name_authority"], fetch)
+    for r in rows:
+        r["pos"] = _clean_positions(r.get("pos"))
+
+    rcfg = cfg.get("rosters") or {}
+    sheet_id, tab = rcfg.get("sheet_id"), rcfg.get("tab")
+    if not (sheet_id and tab):
+        return rows
+
+    grid = sheet_grid(sheet_id, tab, fetch, float(rcfg.get("cache_hours", 0)))
+    if len(grid) < 2:
+        return rows
+    header = [c.strip() for c in grid[0]]
+    id_col, pos_col = rcfg.get("id_col", "ID"), "Position"
+    if id_col not in header or pos_col not in header:
+        print(f"[warn] roster tab has no {id_col}/{pos_col} column -- "
+              f"keeping the pool's positions")
+        return rows
+
+    i_id, i_pos = header.index(id_col), header.index(pos_col)
+    by_id = {}
+    for row in grid[1:]:
+        if len(row) <= max(i_id, i_pos):
+            continue
+        sid = str(row[i_id]).strip().strip("*")
+        pos = _clean_positions(row[i_pos])
+        if sid and pos:
+            by_id[sid] = pos
+
+    applied = 0
+    for r in rows:
+        override = by_id.get(str(r.get("scorer_id") or ""))
+        if override and override != r["pos"]:
+            r["pos"] = override
+            applied += 1
+    print(f"[pos]   roster positions applied to {applied} of {len(by_id)} "
+          f"rostered players")
+    return rows
 
 
 def current_rank(cfg: dict, fetch: Fetcher) -> list[dict]:

@@ -553,7 +553,11 @@ def value_scale(replacement: int, top20_ratio: float = 2.1, anchor: int = 20):
 # ------------------------------------------------------- shared sources ----
 
 
-_YAHOO_POS_RE = re.compile(r"^([A-Za-z]{2,3})\s*-\s*(.+)$")
+# "SAS - C", "Det - RB". The spaces around the hyphen are load-bearing: Yahoo
+# puts an injury badge in an EARLIER span -- "PUP-P" for the physically-unable-
+# to-perform list -- which without them parses as team "PUP", position "P" and
+# beat the real "Ind - WR" to it. Six NFL players were mis-positioned that way.
+_YAHOO_POS_RE = re.compile(r"^([A-Za-z]{2,3})\s+-\s+(.+)$")
 
 
 def yahoo_rows(html: str) -> list[dict]:
