@@ -101,17 +101,32 @@ python rosters.py --sport mlb
 python rosters.py --sport all --cache
 ```
 
-Reads the newest CSV or XLSX in `rosters/<sport>/` (files starting with `_`
-ignored) and writes `output/rosters_<sport>.csv`:
+Reads a **Google Sheet** — one tab per sport, plus `Mapping` and `Overrides` —
+and writes `output/rosters_<sport>.csv`:
 
 ```csv
 player,fantasy_team
-Shohei Ohtani,SBB
-Bobby Witt Jr.,TT
+Shohei Ohtani,Jonathan (4)
+Bobby Witt Jr.,Tommy (1)
 ```
 
+The sheet is shared "anyone with the link can view", so each tab is fetchable
+as CSV with no credentials — which is what lets GitHub Actions read it. Paste
+each site's roster page in exactly as it comes; the shape is *detected* rather
+than configured, so the Fantrax export and the two Yahoo pastes all work
+through one path.
+
 `player` is the naming authority's spelling, so it joins straight onto
-`combined_rankings_<sport>.csv`.
+`combined_rankings_<sport>.csv`. `fantasy_team` is your own code from the
+Mapping tab, so one owner reads the same across all three sports and a renamed
+fantasy team doesn't look like every player on it being traded at once.
+
+A player the authority doesn't recognise is **kept**, using the site's own
+spelling, and reported separately — the roster and the authority come from the
+same site, so dropping him would quietly shrink a real roster.
+
+Local files under `rosters/<sport>/` still work as a fallback if `sheet_id` is
+removed from a config, but nothing uses that path now.
 
 **Matching is id-first where the export carries ids.** Fantrax exports wrap them
 in asterisks (`*05ucd*`) and they're the same global player ids the API
@@ -161,28 +176,38 @@ Yahoo leagues go dormant, so from roughly January the NFL pages stop reflecting
 reality — but teams keep trading. Editing `output/rosters_<sport>.csv` is no
 good; it's regenerated on every run.
 
-Manual edits live in **`rosters/<sport>/_overrides.csv`** and are re-applied on
-top of the parsed roster every time:
+Manual edits live in the **`Overrides` tab** of the roster Sheet and are
+re-applied on top of the parsed roster every run:
 
-```csv
-player,fantasy_team
-Josh Allen,RB Retirement Home     move an existing player, or add a new one
-Released Guy,                     blank team = drop him
-```
+| sport | player | fantasy_team |
+|---|---|---|
+| nfl | Josh Allen | Tommy (1) |
+| nfl | Bo Nix | |
 
-The leading underscore matters — `newest_roster()` skips files starting with
-one, so an overrides file can never be mistaken for an input.
+Fill `fantasy_team` to move or add; leave it blank to drop. One tab covers all
+three sports — rows are filtered by the `sport` column.
+
+It has to live in the Sheet rather than a file: `rosters/` is gitignored, so
+GitHub Actions would never see it. That gap made the feature dead on arrival
+when the pipeline moved to the cloud, and it would only have surfaced in
+January when a trade failed to stick.
 
 Names go through the same matcher, so `josh jacobs` resolves. A name matching
 nothing is still added, but prints a **WARNING**, because that's exactly what a
 typo looks like. Every edit is reported as it's applied:
 
 ```
-[manual]  3 override(s) from _overrides.csv (12d old)
-          moved 'Josh Allen' RB Retirement Home -> Coffee & Mayo
-          dropped 'Bo Nix' from Geriatric Gridiron Gang
+[manual]  3 override(s)
+          moved 'Josh Allen' Tommy (1) -> Blake (2)
+          dropped 'Bo Nix' from Kevin (5)
           moved 'Josh Jacobs' ... (matched 'josh jacobs')
 ```
+
+**Traded twice? Add two rows.** They apply top to bottom and the last wins, so
+append as trades happen rather than hunting for a row to edit — just never
+re-sort the tab, because order is what makes the sequence work. Clear the tab
+when a fresh export already reflects those trades; a stale override can undo a
+newer one.
 
 When a fresh export lands, the run warns that it's newer than the overrides —
 edits already baked into the new export are redundant, and a stale one can
