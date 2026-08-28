@@ -251,6 +251,11 @@ fallback prints, and `output/_source_status_<sport>.csv` carries it to a Sheet
 tab, because stale data blended into a fresh board is the quiet-wrong-answer
 case.
 
+When a source comes back, the run says so: `[RECOVERED]` with how long it was
+gone, and a matching note in the status file. Recovery used to be silent -- the
+`[STALE]` line simply stopped appearing -- and that is the moment worth seeing,
+because it is when a board stops being partly historical.
+
 The banked date lives in a `.banked` sidecar, **not** in the file's mtime.
 Actions clones fresh every run, so checkout stamps every file with the current
 time and a copy banked three weeks ago would report as 0.0 days old -- exactly

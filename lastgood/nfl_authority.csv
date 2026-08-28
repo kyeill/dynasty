@@ -515,8 +515,8 @@ Ben Sims,MIA,TE
 David Moore,CAR,WR
 Foster Moreau,HOU,TE
 Cam Grandy,CIN,TE
-Jackson Meeks,DET,"WR,TE"
-Justin Shorter,LV,"WR,TE"
+Jackson Meeks,DET,TE
+Justin Shorter,LV,TE
 Drew Sample,CIN,TE
 Zay Jones,HOU,WR
 Chris Moore,BAL,WR
@@ -739,8 +739,8 @@ Lucky Jackson,DET,WR
 Will Pauling,SF,WR
 Chris Brazzell II,CAR,WR
 Justin Watson,HOU,WR
-Riley Nowakowski,PIT,"RB,TE"
-Robbie Ouzts,SEA,"RB,TE"
+Riley Nowakowski,PIT,TE
+Robbie Ouzts,SEA,TE
 Luke Schoonmaker,DAL,TE
 Michael Bandy,DEN,WR
 Jaylin Lane,WAS,WR
@@ -755,7 +755,7 @@ K.J. Osborn,TEN,WR
 Stone Smartt,PHI,TE
 Mecole Hardman Jr.,BUF,WR
 Luke Farrell,SF,TE
-Max Hurleman,PIT,"WR,RB"
+Max Hurleman,PIT,RB
 Nick Westbrook-Ikhine,IND,WR
 Johnny Mundt,PHI,TE
 Ja'Lynn Polk,NO,WR
@@ -973,8 +973,8 @@ Quinn Ewers,MIA,QB
 Kameron Johnson,TB,WR
 AJ Dillon,CAR,RB
 Deven Thompkins,LV,WR
-Velus Jones Jr.,SEA,"WR,RB"
-Jack Westover,NE,"RB,TE"
+Velus Jones Jr.,SEA,RB
+Jack Westover,NE,TE
 Dee Eskridge,MIA,WR
 Britain Covey,PHI,WR
 Dare Ogunbowale,LV,RB
@@ -1007,7 +1007,7 @@ Isaac Guerendo,SF,RB
 Aidan O'Connell,LV,QB
 Ronnie Rivers,LAR,RB
 Hassan Haskins,NE,RB
-Brady Russell,SEA,"RB,TE"
+Brady Russell,SEA,TE
 Will Shipley,PHI,RB
 D'Ernest Johnson,TEN,RB
 Xavier Gipson,NYG,WR

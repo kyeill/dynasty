@@ -72,8 +72,31 @@ def rank_sources(cfg: dict, fetch: Fetcher) -> dict:
     }
 
 
+def _one_position(pos) -> str:
+    """Yahoo lists dual eligibility as "RB,TE". Keep the last -- Kyle's call.
+
+    Deliberately NFL-only, and it must stay that way. One player out of 501 is
+    dual-eligible here, so a single position costs nothing. MLB (352 multi-
+    position rows) and NBA (193) are the opposite case: that eligibility is the
+    useful part, and collapsing "UT,SP" would strip Ohtani of the hitter half.
+    """
+    parts = [p.strip() for p in str(pos or "").split(",") if p.strip()]
+    return parts[-1] if parts else ""
+
+
 def name_authority(cfg: dict, fetch: Fetcher) -> list[dict]:
-    return yahoo_player_list(cfg["name_authority"], fetch)
+    rows = yahoo_player_list(cfg["name_authority"], fetch)
+    for r in rows:
+        r["pos"] = _one_position(r.get("pos"))
+
+    # The column is supposed to be QB/RB/WR/TE and nothing else -- the list is
+    # offence-only. Anything else here means a parse has gone wrong somewhere
+    # upstream, which is exactly how the "PUP-P" injury badge got as far as the
+    # published board. Report it rather than letting it ride a second time.
+    odd = sorted({r["pos"] for r in rows if r["pos"] and r["pos"] not in REAL_POSITIONS})
+    if odd:
+        print(f"[warn] yahoo: position(s) outside {sorted(REAL_POSITIONS)}: {odd}")
+    return rows
 
 
 def current_rank(cfg: dict, fetch: Fetcher) -> list[dict]:

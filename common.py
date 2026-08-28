@@ -736,6 +736,42 @@ def _bank_stamp(path: Path, mode: str):
         return (time.time() - path.stat().st_mtime) / 86400
 
 
+def _outage_marker(path: Path, mode: str):
+    """Remember, across runs, that a source is currently falling back."""
+    marker = path.with_suffix(".stale")
+    if mode == "open":
+        if not marker.exists():
+            marker.write_text(datetime.now(timezone.utc).isoformat(timespec="seconds"),
+                              encoding="utf-8")
+        return None
+    return marker
+
+
+def _recovery_note(path: Path) -> str:
+    """Announce a source coming back, and say how long it was gone.
+
+    Recovery was previously silent -- the [STALE] line simply stopped
+    appearing, and `stale` in the status file went from YES to blank. That is
+    the one moment worth seeing: it is when a board stops being partly
+    historical, and when a seeded fallback can be retired. Hashtag's keeper
+    page has been down since 2026-08-26 and this is how its return gets
+    noticed without anyone watching for it.
+    """
+    marker = _outage_marker(path, "check")
+    if not marker.exists():
+        return ""
+    try:
+        since = datetime.fromisoformat(marker.read_text(encoding="utf-8").strip())
+        days = (datetime.now(timezone.utc) - since).total_seconds() / 86400
+        when = f"after {days:.1f} days"
+    except (OSError, ValueError):
+        when = "after an outage of unknown length"
+    print(f"[RECOVERED] {path.stem}: live pull is healthy again {when} -- the "
+          f"board is fully current, and any seeded fallback can go")
+    marker.unlink(missing_ok=True)
+    return f"recovered {when}"
+
+
 def guard_source(rows: list[dict], sport: str, source: str,
                  floor: int) -> tuple[list[dict], dict]:
     """Bank a healthy pull; fall back to the last good one when a source dies.
@@ -760,10 +796,11 @@ def guard_source(rows: list[dict], sport: str, source: str,
             for k in r:
                 if k not in keys:
                     keys.append(k)
+        note = _recovery_note(path)
         write_csv(path, rows, keys)
         _bank_stamp(path, "write")
         return rows, {"source": source, "rows": len(rows), "stale": "",
-                      "age_days": "", "note": ""}
+                      "age_days": "", "note": note}
 
     prev = read_csv(path) if path.exists() else []
     if not prev:
@@ -778,6 +815,7 @@ def guard_source(rows: list[dict], sport: str, source: str,
     if age > 14:
         print(f"[warn] {source}: that fallback is {age:.0f} days old. If the "
               f"source is not coming back, replace it rather than coasting.")
+    _outage_marker(path, "open")
     return prev, {"source": source, "rows": len(prev), "stale": "YES",
                   "age_days": round(age, 1), "note": f"live pull had {len(rows)}"}
 
