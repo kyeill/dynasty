@@ -655,3 +655,22 @@ Hard-won traps, each of which cost a real debugging pass:
   right now, so the deep end of the board has no current rank. Expected.
 - Hashtag's dynasty page serves its default 400 of ~750. Going deeper needs an
   ASP.NET postback a plain GET can't do.
+
+## When a source goes quiet
+
+`rankings.py` refuses to build a board from a source that parsed to zero rows,
+which is right: a silently half-built board is worse than none. It isolates the
+sports, so one failing does not stop the others -- it returns non-zero but still
+writes every board that worked.
+
+The workflow did not respect that. A failed step skipped the commit, so a run
+could compute fresh NFL and MLB boards and throw both away because NBA's source
+had gone quiet. The rosters and commit steps now run unless the job was
+cancelled, and the run still goes red for the sport that failed.
+
+**Known outage:** Hashtag Basketball pulled its keeper table in August 2026 --
+the page says the 2026 draft class is being loaded into the voting system and
+will take a few days. NBA fails daily until it returns; NFL and MLB are
+unaffected. Nothing to fix here, and `_parse_keeper` needs no change: the page
+now renders client-side and serves no `<table>` at all, so if it does not come
+back the source needs replacing rather than repairing.
