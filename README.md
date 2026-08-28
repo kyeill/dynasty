@@ -239,6 +239,21 @@ are missing from the *naming authority* instead, because those public leagues
 carry a narrower player pool than yours: Brandon Clarke isn't among Yahoo 667's
 662 players, and two MLB prospects aren't in the Fantrax pool.
 
+## Rostered but unranked
+
+Someone can be owned in the league while no ranking source covers him -- a deep
+prospect, a recent call-up. Those players are appended to the **bottom** of the
+board with `sources_matched = 0` and `value = 0`, so the board never silently
+disagrees with the roster.
+
+They are **derived from the roster on every run**, not added permanently. Drop a
+player and he simply stops being appended -- there is no list to maintain and
+nothing to clean up.
+
+Matched on name **and** team, never name alone: MLB has 152 duplicated names in
+the pool, so Fernando Cruz is both a Yankees reliever and a Cubs shortstop.
+Keying on name alone skipped 15 real players who happened to share one.
+
 ## The blend
 
 `blended_score = Σ(weight × rank) / Σ(weight)`, sorted ascending. Lower is

@@ -171,6 +171,76 @@ def apply_overrides(out: list[dict], ov: list[dict], resolve_name):
     return merged, notes
 
 
+def append_rostered_to_board(sport: str, roster: list[dict], auth: dict,
+                             aliases: dict, resolve) -> int:
+    """Put rostered-but-unranked players at the bottom of the board.
+
+    Someone can be owned in Kyle's league while no ranking source covers him --
+    a deep prospect, a recent call-up. He belongs on the board, at the bottom,
+    or the board silently disagrees with the roster.
+
+    They are DERIVED from the roster each run rather than added permanently, so
+    removal is automatic: drop him and he stops being appended. There is no
+    list to maintain and nothing to clean up.
+
+    `sources_matched = 0` marks them -- a ranked player always has at least
+    one -- and `value` is 0 because they sit below replacement by definition.
+
+    Lives here rather than in rankings.py because this is the only point where
+    both the freshly built board and the freshly resolved roster exist. It also
+    rewrites the day's history snapshot, so the archive matches the live file.
+    """
+    board_path = OUTPUT_DIR / f"combined_rankings_{sport}.csv"
+    if not board_path.exists() or not roster:
+        return 0
+    board = read_csv(board_path)
+    if not board:
+        return 0
+
+    cols = list(board[0])
+    if "sources_matched" not in cols:
+        return 0
+
+    # Keyed on name AND team, not name alone. MLB has 152 duplicated names in
+    # the pool -- Fernando Cruz is both a Yankees reliever and a Cubs shortstop
+    # -- so matching on name would skip a rostered player just because someone
+    # else shares his name.
+    def ident(name, team):
+        return (normalize_name(name), str(team or "").upper())
+
+    on_board = {ident(r["player"], r.get("team")) for r in board}
+
+    extra, seen = [], set()
+    for r in roster:
+        key = normalize_name(r["player"])
+        uid = resolve(aliases.get(key, key))
+        a = auth.get(uid) if uid else None
+        who = ident(r["player"], (a or {}).get("team"))
+        if who in on_board or who in seen:
+            continue
+        seen.add(who)
+        row = {c: "" for c in cols}
+        row["player"] = r["player"]
+        row["pos"] = (a or {}).get("pos", "")
+        row["team"] = (a or {}).get("team", "")
+        if "value" in row:
+            row["value"] = 0.0
+        row["sources_matched"] = 0
+        extra.append(row)
+
+    if not extra:
+        return 0
+
+    extra.sort(key=lambda r: r["player"])
+    start = len(board)
+    for i, row in enumerate(extra, start + 1):
+        row["combined_rank"] = i
+    board.extend(extra)
+    write_csv(board_path, board, cols)
+    snapshot(board, sport, "boards", cols)   # keep the archive matching
+    return len(extra)
+
+
 def newest_roster(sport: str) -> Path | None:
     folder = ROSTERS_DIR / sport
     if not folder.exists():
@@ -358,6 +428,11 @@ def run_sport(sport: str, args) -> int:
     snap = snapshot(out, sport, "rosters", ["player", "fantasy_team"])
     if snap:
         print(f"[hist]   archived -> output/history/rosters/{sport}/{snap.name}")
+
+    added = append_rostered_to_board(sport, out, auth, aliases, resolve)
+    if added:
+        print(f"[board]  appended {added} rostered-but-unranked player(s) to the "
+              f"bottom of combined_rankings_{sport}.csv (sources_matched=0)")
 
     # Written, not just printed -- otherwise the only record of a miss is
     # scrollback, and these are exactly the rows worth reviewing later.
