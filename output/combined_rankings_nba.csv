@@ -184,7 +184,7 @@
 183,Tobias Harris,F,SAS,10.2,230.51,215,262,138,14.9,2
 184,Danny Wolf,"F,C",BKN,10.1,231.27,258,177,,,2
 185,Justin Champagnie,F,WAS,10.0,232.29,261,174,,,2
-186,Jonathan Kuminga,F,ATL,9.9,233.13,180,341,158,12.6,2
+186,Jonathan Kuminga,F,MIN,9.9,233.13,180,341,158,12.6,2
 187,Joan Beringer,"F,C",MIN,9.8,238.66,172,374,172,11.2,2
 188,Collin Sexton,G,LAL,9.7,239.59,199,322,134,15.4,2
 189,Nickeil Alexander-Walker,G,ATL,9.6,239.91,66,593,143,14.3,2
@@ -438,12 +438,12 @@
 437,Kam Jones,"G,F",MIL,0.0,417.17,,450,,,1
 438,Jonathan Isaac,"F,C",ORL,0.0,417.28,379,495,275,3.4,2
 439,Tyler Nickel,F,NYK,0.0,419.15,,456,,,1
-440,Henri Veesaar,C,ATL,0.0,419.95,250,,,,1
+440,Henri Veesaar,C,ATL,0.0,419.62,250,,,,1
 441,Josh Green,"G,F",MIN,0.0,420.04,391,479,,,2
 442,Dennis Schröder,G,CHA,0.0,420.85,307,652,126,16.4,2
 443,Koby Brea,G,PHX,0.0,421.13,,462,,,1
-444,Clint Capela,C,HOU,0.0,422.45,,466,215,7.5,1
-445,Jaron Pierre Jr.,G,NOP,0.0,422.63,254,,,,1
+444,Jaron Pierre Jr.,G,NOP,0.0,422.3,254,,,,1
+445,Clint Capela,C,HOU,0.0,422.45,,466,215,7.5,1
 446,Corey Kispert,"G,F",ATL,0.0,423.43,367,538,270,3.7,2
 447,Marvin Bagley III,"F,C",DEN,0.0,425.61,321,638,234,6.1,2
 448,Kevin Huerter,"G,F",DET,0.0,425.81,341,598,217,7.3,2
@@ -457,7 +457,7 @@
 456,Brook Lopez,C,LAC,0.0,435.32,335,639,150,13.5,2
 457,Dillon Jones,F,NYK,0.0,437.3,,511,,,1
 458,Ziaire Williams,"G,F",LAL,0.0,437.7,342,632,,,2
-459,Izaiyah Nelson,F,ORL,0.0,438.04,277,,,,1
+459,Izaiyah Nelson,F,ORL,0.0,437.71,277,,,,1
 460,Bobi Klintman,F,DET,0.0,439.61,,518,157,12.7,1
 461,Bogdan Bogdanović,"G,F",HOU,0.0,439.94,,519,235,6.0,1
 462,Royce O'Neale,F,CHA,0.0,440.16,324,676,210,7.9,2
@@ -479,7 +479,7 @@
 478,Pacôme Dadiet,"G,F",NYK,0.0,444.89,,534,,,1
 479,Moritz Wagner,C,BKN,0.0,445.36,349,641,281,3.0,2
 480,A.J. Lawson,"G,F",TOR,0.0,445.55,,536,,,1
-481,Nick Richards,C,CHI,0.0,446.54,,539,238,5.8,1
+481,Nick Richards,C,MIA,0.0,446.54,,539,238,5.8,1
 482,Tyler Smith,F,DAL,0.0,446.87,,540,,,1
 483,PJ Hall,C,CHA,0.0,447.2,,541,,,1
 484,Duop Reath,"F,C",ATL,0.0,448.52,,545,,,1
@@ -518,23 +518,23 @@
 517,Dario Šarić,"F,C",DET,0.0,467.0,,601,,,1
 518,DeAndre Jordan,C,NOP,0.0,468.32,,605,,,1
 519,Bryce McGowens,"G,F",NOP,0.0,469.64,,609,,,1
-520,T.J. McConnell,G,IND,0.0,470.56,361,693,182,10.2,2
-521,Caleb Love,G,PHI,0.0,470.87,326,,,,1
+520,Caleb Love,G,PHI,0.0,470.54,326,,,,1
+521,T.J. McConnell,G,IND,0.0,470.56,361,693,182,10.2,2
 522,Markelle Fultz,G,TOR,0.0,471.62,,615,,,1
 523,Nick Smith Jr.,G,LAL,0.0,471.95,,616,,,1
 524,Kris Murray,"G,F",MEM,0.0,473.46,387,649,,,2
 525,Jonas Valančiūnas,C,DEN,0.0,474.59,,624,160,12.4,1
 526,Terance Mann,"G,F",BKN,0.0,474.92,,625,250,5.0,1
-527,Nae'Qwan Tomlin,F,CLE,0.0,475.56,333,,,,1
+527,Nae'Qwan Tomlin,F,CLE,0.0,475.23,333,,,,1
 528,James Wiseman,C,IND,0.0,477.89,,634,,,1
 529,AJ Green,"G,F",MIL,0.0,480.42,357,731,,,2
 530,Russell Westbrook,G,SAC,0.0,480.73,388,669,132,15.6,2
 531,Kentavious Caldwell-Pope,"G,F",PHI,0.0,481.85,,646,251,4.9,1
 532,Jett Howard,"G,F",DAL,0.0,482.18,,647,,,1
-533,Landry Shamet,"G,F",NYK,0.0,482.93,344,,,,1
+533,Landry Shamet,"G,F",NYK,0.0,482.6,344,,,,1
 534,Jarred Vanderbilt,"F,C",LAL,0.0,483.17,,650,320,0.9,1
 535,Tim Hardaway Jr.,"G,F",MIA,0.0,484.22,374,708,300,1.9,2
-536,Malaki Branham,"G,F",CHA,0.0,485.15,,656,,,1
+536,Malaki Branham,"G,F",ORL,0.0,485.15,,656,,,1
 537,Ochai Agbaji,"G,F",BKN,0.0,486.47,,660,,,1
 538,Caleb Houstan,F,NOP,0.0,487.46,,663,,,1
 539,Dalen Terry,"G,F",PHI,0.0,487.79,,664,,,1
@@ -553,7 +553,7 @@
 552,Kyle Anderson,F,TOR,0.0,494.06,,683,274,3.4,1
 553,Haywood Highsmith,F,PHX,0.0,496.77,375,744,,,2
 554,Drew Eubanks,C,SAC,0.0,497.03,,692,,,1
-555,Will Richard,"G,F",GSW,0.0,497.67,366,,,,1
+555,Will Richard,"G,F",GSW,0.0,497.34,366,,,,1
 556,Patrick Baldwin Jr.,F,SAC,0.0,499.01,,698,,,1
 557,Eric Gordon,"G,F",MEM,0.0,500.0,,701,,,1
 558,Jericho Sims,"F,C",MIL,0.0,500.66,,703,,,1

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 dynasty
 =======
@@ -34,8 +34,8 @@ import sys
 import time
 from pathlib import Path
 
-from common import (CACHE_DIR, HERE, OUTPUT_DIR, Fetcher, blend,
-                    build_resolver, expand_abbreviated, index_by_key,
+from common import (CACHE_DIR, HERE, LASTGOOD_DIR, OUTPUT_DIR, Fetcher, blend,
+                    build_resolver, expand_abbreviated, guard_source, index_by_key,
                     load_aliases, prepare_authority, read_csv, save_fullnames,
                     snapshot, to_num, value_scale, write_csv)
 
@@ -53,37 +53,22 @@ def load_config(sport: str) -> dict:
     return json.loads(path.read_text(encoding="utf-8-sig"))
 
 
-def guard_current(rows: list[dict], sport: str, floor: int) -> list[dict]:
-    """Keep the last healthy 'current rank' pull so a bad day can't erase a good one.
+def sharp_drop_warning(rows: list[dict], sport: str, source: str) -> None:
+    """Flag a source that cleared its floor but collapsed against last time.
 
-    A source can degrade badly while still returning HTTP 200 -- FantasyPros
-    served exactly ONE NBA player on 2026-08-22 with no error. Accepted
-    silently that blanks current_rank for hundreds of players, and since this
-    runs unattended nobody would notice for weeks.
-
-    Two thresholds, because a hard floor alone is blunt: below `floor` the pull
-    is treated as broken and the snapshot is used; above it but collapsed
-    against the last good one, it warns and proceeds. The second check is
-    self-calibrating, so there is no number to retune as a pool grows.
+    A floor catches a source going dark; it does not catch one quietly
+    shedding a third of its list. FantasyPros' NFL dynasty list went
+    547 -> 505 -> 499 over three days, every value above the floor of 300.
+    Self-calibrating, so there is no number to retune as a pool grows.
     """
-    snap = CACHE_DIR / f"current-last-good-{sport}.csv"
-    prev = read_csv(snap) if snap.exists() else None
-
-    if len(rows) >= floor and rows:
-        if prev and len(rows) < len(prev) * 0.5:
-            print(f"[warn] current rank dropped sharply: {len(rows)} players vs "
-                  f"{len(prev)} last time -- using it anyway, but worth a look")
-        write_csv(snap, rows, ["name", "team", "current_rank"])
-        return rows
-
-    print(f"[warn] current rank returned {len(rows)} players, expected >= {floor}")
-    if prev:
-        age_d = (time.time() - snap.stat().st_mtime) / 86400
-        print(f"[warn] falling back to last good snapshot: {len(prev)} players, "
-              f"{age_d:.1f} days old")
-        return prev
-    print("[warn] no snapshot on disk -- current_rank will be blank this run")
-    return rows
+    path = LASTGOOD_DIR / f"{sport}_{source}.csv"
+    if not path.exists() or not rows:
+        return
+    prev = read_csv(path)
+    if prev and len(rows) < len(prev) * 0.75:
+        print(f"[warn] {source}: {len(rows)} rows vs {len(prev)} last time "
+              f"({100 * len(rows) / len(prev):.0f}%) -- above the floor, but "
+              f"worth a look")
 
 
 def run_sport(sport: str, args) -> int:
@@ -109,22 +94,32 @@ def run_sport(sport: str, args) -> int:
     print(f"\n=== {sport.upper()} ===")
     parsed = mod.rank_sources(cfg, fetch)
     authority = mod.name_authority(cfg, fetch)
-    current = guard_current(mod.current_rank(cfg, fetch), sport,
-                            int(floors.get("current", 10)))
+    current = mod.current_rank(cfg, fetch)
 
-    # The ranking sources and the naming authority are load-bearing -- no board
-    # without them. The current rank is only an extra column, so a bad pull
-    # there warns but must not throw away otherwise-good rows.
+    # Every source gets the same treatment: bank it when healthy, fall back to
+    # the last good copy when it dies. Hashtag's keeper page went from 760 rows
+    # to zero while returning HTTP 200, and took the whole NBA board with it.
+    status = []
+    for name in list(parsed):
+        sharp_drop_warning(parsed[name], sport, name)
+        parsed[name], st = guard_source(parsed[name], sport, name,
+                                        int(floors.get(name, 1)))
+        status.append(st)
+    authority, st = guard_source(authority, sport, "authority",
+                                 int(floors.get("authority", 1)))
+    status.append(st)
+    current, st = guard_source(current, sport, "current",
+                               int(floors.get("current", 10)))
+    status.append(st)
+
+    # A fallback only postpones the problem, so an empty source after all that
+    # still aborts -- a half-built board is worse than none.
     for name, rows in list(parsed.items()) + [("authority", authority)]:
         print(f"[parse] {name}: {len(rows)} players")
         if not rows:
-            print(f"\n!! {name} parsed to zero rows. "
+            print(f"\n!! {name} has no data and no last-good copy. "
                   f"Run:  python rankings.py --sport {sport} --cache --inspect")
             return 1
-        floor = floors.get(name)
-        if floor and len(rows) < floor:
-            print(f"[warn] {name}: {len(rows)} rows is below the expected floor "
-                  f"of {floor} -- the page may have changed")
     print(f"[parse] current: {len(current)} players")
 
     aliases = load_aliases(HERE / f"aliases-{sport}.csv")
@@ -218,6 +213,15 @@ def run_sport(sport: str, args) -> int:
     snap = snapshot(board, sport, "boards", cols)
     if snap:
         print(f"[hist]  archived -> output/history/boards/{sport}/{snap.name}")
+
+    # Written where the Sheets can reach it: a board built on a stale source
+    # has to say so somewhere other than a log nobody reads.
+    write_csv(OUTPUT_DIR / f"_source_status_{sport}.csv", status,
+              ["source", "rows", "stale", "age_days", "note"])
+    stale = [s for s in status if s["stale"]]
+    if stale:
+        print(f"[STALE] this board used last-good data for: "
+              + ", ".join(f"{s['source']} ({s['age_days']}d)" for s in stale))
 
     # Two very different problems, so label them. Only the first is actionable:
     # a ranked player missing from the authority is usually a spelling

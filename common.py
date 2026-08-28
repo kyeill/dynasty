@@ -702,6 +702,58 @@ def sheet_grid(sheet_id: str, tab: str, fetch, max_age_hours: float = 0,
     return grid
 
 
+# Last-known-good copies of every source, so one going dark does not take a
+# board with it. Tracked in git, NOT in .cache: GitHub Actions evicts caches
+# after 7 days of no access, and a cache miss would lose the fallback exactly
+# when it is needed.
+LASTGOOD_DIR = HERE / "lastgood"
+
+
+def guard_source(rows: list[dict], sport: str, source: str,
+                 floor: int) -> tuple[list[dict], dict]:
+    """Bank a healthy pull; fall back to the last good one when a source dies.
+
+    Hashtag's keeper page went from 760 rows to zero on 2026-08-28 -- returning
+    HTTP 200 the whole time, just with the table gone while they reloaded their
+    voting system. That took the entire NBA board down for days.
+
+    Returns (rows, status). The status is written to output/_source_status.csv
+    so a board built on stale data says so somewhere the Sheets can see, rather
+    than only in a log nobody reads.
+
+    Deliberately NOT silent: a stale source blended into a fresh board is the
+    quiet-wrong-answer case, so every fallback is reported with its age.
+    """
+    path = LASTGOOD_DIR / f"{sport}_{source}.csv"
+    healthy = bool(rows) and len(rows) >= floor
+
+    if healthy:
+        keys = []
+        for r in rows:
+            for k in r:
+                if k not in keys:
+                    keys.append(k)
+        write_csv(path, rows, keys)
+        return rows, {"source": source, "rows": len(rows), "stale": "",
+                      "age_days": "", "note": ""}
+
+    prev = read_csv(path) if path.exists() else []
+    if not prev:
+        print(f"[warn] {source}: {len(rows)} rows (floor {floor}) and no "
+              f"last-good copy to fall back on")
+        return rows, {"source": source, "rows": len(rows), "stale": "",
+                      "age_days": "", "note": "below floor, no fallback"}
+
+    age = (time.time() - path.stat().st_mtime) / 86400
+    print(f"[STALE] {source}: got {len(rows)} rows (floor {floor}) -- using the "
+          f"last good copy, {len(prev)} rows from {age:.1f} days ago")
+    if age > 14:
+        print(f"[warn] {source}: that fallback is {age:.0f} days old. If the "
+              f"source is not coming back, replace it rather than coasting.")
+    return prev, {"source": source, "rows": len(prev), "stale": "YES",
+                  "age_days": round(age, 1), "note": f"live pull had {len(rows)}"}
+
+
 def newest_import(sport: str, pattern: str) -> Path | None:
     """Most recent manually-exported CSV matching a pattern."""
     folder = IMPORTS_DIR / sport

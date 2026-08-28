@@ -93,7 +93,11 @@ jobs:
           TZ=America/New_York date +%F > output/_last_refresh.txt
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A output
+          # lastgood/ matters as much as output/: it is the fallback that keeps
+          # a board alive when a source goes dark, and it is banked during the
+          # run. Left uncommitted, every Actions run would start with no
+          # fallback and the whole mechanism would be local-only.
+          git add -A output lastgood
           if git diff --cached --quiet; then
             echo "nothing changed today"
           else
