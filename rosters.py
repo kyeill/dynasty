@@ -184,7 +184,8 @@ def append_rostered_to_board(sport: str, roster: list[dict], auth: dict,
     list to maintain and nothing to clean up.
 
     `sources_matched = 0` marks them -- a ranked player always has at least
-    one -- and `value` is 0 because they sit below replacement by definition.
+    one. `value` is left BLANK rather than 0, so they read as "not valued"
+    instead of "valued at nothing" and never average in as a real zero.
 
     Lives here rather than in rankings.py because this is the only point where
     both the freshly built board and the freshly resolved roster exist. It also
@@ -223,9 +224,7 @@ def append_rostered_to_board(sport: str, roster: list[dict], auth: dict,
         row["player"] = r["player"]
         row["pos"] = (a or {}).get("pos", "")
         row["team"] = (a or {}).get("team", "")
-        if "value" in row:
-            row["value"] = 0.0
-        row["sources_matched"] = 0
+        row["sources_matched"] = 0   # every other column, `value` included, stays blank
         extra.append(row)
 
     if not extra:

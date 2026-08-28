@@ -243,8 +243,9 @@ carry a narrower player pool than yours: Brandon Clarke isn't among Yahoo 667's
 
 Someone can be owned in the league while no ranking source covers him -- a deep
 prospect, a recent call-up. Those players are appended to the **bottom** of the
-board with `sources_matched = 0` and `value = 0`, so the board never silently
-disagrees with the roster.
+board with `sources_matched = 0` and a **blank** `value` -- blank rather than 0
+so they read as "not valued" rather than "valued at nothing" -- and the board
+never silently disagrees with the roster.
 
 They are **derived from the roster on every run**, not added permanently. Drop a
 player and he simply stops being appended -- there is no list to maintain and
