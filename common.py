@@ -21,7 +21,7 @@ import math
 import re
 import time
 import unicodedata
-from datetime import date
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 import requests
@@ -713,6 +713,29 @@ def sheet_grid(sheet_id: str, tab: str, fetch, max_age_hours: float = 0,
 LASTGOOD_DIR = HERE / "lastgood"
 
 
+def _bank_stamp(path: Path, mode: str):
+    """When a last-good copy was banked, in days -- or record that it is now.
+
+    File mtime cannot answer this in GitHub Actions. Every run is a fresh
+    clone, so checkout stamps every file with the current time and a fallback
+    banked three weeks ago reports as 0.0 days old -- which is exactly the
+    reading the 14-day warning exists to prevent. So the moment is written
+    beside the data and committed with it.
+
+    mtime stays the fallback for a copy banked before this existed.
+    """
+    stamp = path.with_suffix(".banked")
+    if mode == "write":
+        stamp.write_text(datetime.now(timezone.utc).isoformat(timespec="seconds"),
+                         encoding="utf-8")
+        return None
+    try:
+        when = datetime.fromisoformat(stamp.read_text(encoding="utf-8").strip())
+        return (datetime.now(timezone.utc) - when).total_seconds() / 86400
+    except (OSError, ValueError):
+        return (time.time() - path.stat().st_mtime) / 86400
+
+
 def guard_source(rows: list[dict], sport: str, source: str,
                  floor: int) -> tuple[list[dict], dict]:
     """Bank a healthy pull; fall back to the last good one when a source dies.
@@ -738,6 +761,7 @@ def guard_source(rows: list[dict], sport: str, source: str,
                 if k not in keys:
                     keys.append(k)
         write_csv(path, rows, keys)
+        _bank_stamp(path, "write")
         return rows, {"source": source, "rows": len(rows), "stale": "",
                       "age_days": "", "note": ""}
 
@@ -748,7 +772,7 @@ def guard_source(rows: list[dict], sport: str, source: str,
         return rows, {"source": source, "rows": len(rows), "stale": "",
                       "age_days": "", "note": "below floor, no fallback"}
 
-    age = (time.time() - path.stat().st_mtime) / 86400
+    age = _bank_stamp(path, "read")
     print(f"[STALE] {source}: got {len(rows)} rows (floor {floor}) -- using the "
           f"last good copy, {len(prev)} rows from {age:.1f} days ago")
     if age > 14:

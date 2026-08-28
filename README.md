@@ -239,6 +239,23 @@ are missing from the *naming authority* instead, because those public leagues
 carry a narrower player pool than yours: Brandon Clarke isn't among Yahoo 667's
 662 players, and two MLB prospects aren't in the Fantrax pool.
 
+## When a source goes dark
+
+Hashtag's keeper page went from 760 rows to zero on 2026-08-26 -- HTTP 200 the
+whole time, just with the table gone. That took the NBA board down for days.
+
+Every source now passes through `guard_source()`. A pull at or above the config
+floor is banked to `lastgood/<sport>_<source>.csv`; one below it falls back to
+the banked copy, and the board is built rather than lost. Never silently: the
+fallback prints, and `output/_source_status_<sport>.csv` carries it to a Sheet
+tab, because stale data blended into a fresh board is the quiet-wrong-answer
+case.
+
+The banked date lives in a `.banked` sidecar, **not** in the file's mtime.
+Actions clones fresh every run, so checkout stamps every file with the current
+time and a copy banked three weeks ago would report as 0.0 days old -- exactly
+the reading the 14-day staleness warning exists to catch.
+
 ## Rostered but unranked
 
 Someone can be owned in the league while no ranking source covers him -- a deep
