@@ -14,8 +14,8 @@ from __future__ import annotations
 
 import json
 
-from common import (Fetcher, fantasypros, pick_seasonal_url, to_num,
-                    yahoo_player_list)
+from common import (Fetcher, apply_roster_positions, fantasypros,
+                    pick_seasonal_url, to_num, yahoo_player_list)
 
 # KTC ships the whole board inline as `playersArray`, carrying BOTH formats --
 # superflexValues and oneQBValues -- so one fetch covers either. The rank we
@@ -85,7 +85,15 @@ def _one_position(pos) -> str:
 
 
 def name_authority(cfg: dict, fetch: Fetcher) -> list[dict]:
+    """Yahoo's player list, with positions from the roster tab where it has them.
+
+    The override lands BEFORE _one_position, so a dual-eligible roster row is
+    collapsed by the same rule as a list row rather than reaching the board as
+    "RB,TE". Restricting it to REAL_POSITIONS also keeps the warning below
+    meaningful: anything odd it reports came from Yahoo's list, not the paste.
+    """
     rows = yahoo_player_list(cfg["name_authority"], fetch)
+    rows = apply_roster_positions(rows, cfg, fetch, REAL_POSITIONS)
     for r in rows:
         r["pos"] = _one_position(r.get("pos"))
 

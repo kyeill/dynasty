@@ -75,7 +75,9 @@ Adding a sport means writing one module and one config. Nothing else changes.
 
 The Yahoo and Fantrax leagues are **arbitrary public leagues**, used only as a
 source of canonical names and positions. No rosters, no ownership, and their
-scoring format is irrelevant.
+scoring format is irrelevant. Where your own roster covers a player, **his
+position comes from there instead** — see [Roster positions override the
+generic ones](#roster-positions-override-the-generic-ones).
 
 ## Manual imports (currently unused)
 
@@ -304,6 +306,58 @@ Fourteen of twenty-two MLB appends were phantoms.
 Appended rows take their **position from the roster** rather than the
 authority. For a player the authority never heard of, his roster row is the
 only place a position for him exists.
+
+### Roster positions override the generic ones
+
+This is broader than the append above: for **every** rostered player, the
+position on the board is the one your roster carries, not the one the generic
+player list does. Your league's eligibility is the answer you actually want;
+the pool only has to cover everyone you don't own.
+
+| | joined on | source of the override |
+|---|---|---|
+| MLB | Fantrax scorer id | the export's `Position` column |
+| NBA | player name | the `TEAM - POS` line in the paste (`BKN - G,F`) |
+| NFL | player name | the `Bal - QB` tail on the decorated line |
+
+**MLB joins on the id** because names do not identify players there — 152
+duplicated names in the pool. The two Yahoo lists have **zero** duplicate names
+between them, so a name is a real key and no id is needed. If either list ever
+grows a duplicate, the override silently follows whichever row the paste
+matched.
+
+**A position outside the sport's vocabulary is dropped and reported.** This is
+what stops a roster *slot* — `BN`, `IL`, `Util`, `W/R/T` — from reaching the
+board if a paste drifts or a parser slips:
+
+```
+[warn] roster position(s) outside ['QB', 'RB', 'TE', 'WR'] ignored: ['BN']
+```
+
+The allowed sets are `NBA_POSITIONS` (`PG SG SF PF G F C` — Yahoo speaks both
+granularities) and NFL's existing `REAL_POSITIONS` (`QB RB WR TE`). MLB instead
+drops `INF`, Fantrax's catch-all, which is never the answer on its own.
+
+NFL applies the override **before** `_one_position`, so a dual-eligible roster
+row is collapsed by the same rule as a list row — Taysom Hill's `QB,TE` becomes
+`TE` — rather than reaching the board uncollapsed. NBA deliberately keeps
+multi-position eligibility whole: `G,F` is the useful part of the row.
+
+Each run reports what landed:
+
+```
+[pos]   roster positions applied to 14 of 143 rostered players
+```
+
+The count is *conflicts resolved*, not rows read — a roster position that
+already agrees with the pool isn't counted. Expect it to be small for NBA and
+NFL, where roster and list come from the same Yahoo pages.
+
+Parsing is covered without a Sheet behind it:
+
+```bash
+python tests/test_roster_positions.py
+```
 
 The append also strips the previous run's appends before recomputing. Normally
 `rankings.py` has just rewritten the board, but running `rosters.py` twice

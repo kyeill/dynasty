@@ -5,8 +5,9 @@ from __future__ import annotations
 
 import re
 
-from common import (Fetcher, fantasypros, grid_to_rows, html_tables, is_player,
-                    page_text, pick_seasonal_url, to_num, yahoo_player_list)
+from common import (Fetcher, apply_roster_positions, fantasypros, grid_to_rows,
+                    html_tables, is_player, page_text, pick_seasonal_url, to_num,
+                    yahoo_player_list)
 
 POS = r"(?:PG|SG|SF|PF|C)"
 
@@ -95,8 +96,20 @@ def rank_sources(cfg: dict, fetch: Fetcher) -> dict:
     }
 
 
+# Yahoo speaks both granularities here: the player list is coarse (G/F/C and
+# the two pairs), while a roster paste can carry PG/SG/SF/PF. Both are accepted
+# -- the roster's answer is the league's own, whichever vocabulary it uses.
+NBA_POSITIONS = {"PG", "SG", "SF", "PF", "G", "F", "C"}
+
+
 def name_authority(cfg: dict, fetch: Fetcher) -> list[dict]:
-    return yahoo_player_list(cfg["name_authority"], fetch)
+    """Yahoo's player list, with positions from the roster tab where it has them.
+
+    Multi-position eligibility is kept whole -- "G,F" is the useful part of an
+    NBA row, and collapsing it the way NFL does would throw away half of it.
+    """
+    rows = yahoo_player_list(cfg["name_authority"], fetch)
+    return apply_roster_positions(rows, cfg, fetch, NBA_POSITIONS)
 
 
 def current_rank(cfg: dict, fetch: Fetcher) -> list[dict]:

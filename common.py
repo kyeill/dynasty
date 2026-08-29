@@ -706,6 +706,86 @@ def sheet_grid(sheet_id: str, tab: str, fetch, max_age_hours: float = 0,
     return grid
 
 
+def apply_roster_positions(rows: list[dict], cfg: dict, fetch,
+                           allowed: set) -> list[dict]:
+    """Overwrite a player list's positions with the roster's own, by name.
+
+    The Yahoo player lists carry a GENERIC position; the roster paste carries
+    the one the league actually assigns. Both come from Yahoo, so the two share
+    a vocabulary and this is a straight swap rather than a translation. It only
+    covers rostered players -- the list still supplies everyone else.
+
+    Joined on name, where MLB's equivalent in sources_mlb.name_authority()
+    needs Fantrax's scorer id. That is not a shortcut: baseball's pool has 152
+    duplicated names, while the NBA and NFL lists have none, so here a name IS
+    a key. If either list ever grows a duplicate, this silently picks whichever
+    row the paste matched -- validate() is the place that would notice.
+
+    Positions outside `allowed` are dropped and reported. A paste that has
+    drifted, or a slot label that slipped through the parser, must not be able
+    to write "BN" or "IL" onto the board.
+    """
+    rcfg = cfg.get("rosters") or {}
+    sheet_id, tab = rcfg.get("sheet_id"), rcfg.get("tab")
+    if not (sheet_id and tab):
+        return rows
+
+    grid = sheet_grid(sheet_id, tab, fetch, float(rcfg.get("cache_hours", 0)))
+    if len(grid) < 2:
+        return rows
+
+    overrides = roster_position_map(grid, rcfg, {r["name"] for r in rows},
+                                    allowed)
+    if not overrides:
+        return rows
+
+    applied = 0
+    for r in rows:
+        override = overrides.get(r["name"])
+        if override and override != r.get("pos"):
+            r["pos"] = override
+            applied += 1
+    print(f"[pos]   roster positions applied to {applied} of {len(overrides)} "
+          f"rostered players")
+    return rows
+
+
+def roster_position_map(grid: list[list[str]], rcfg: dict, known: set,
+                        allowed: set) -> dict:
+    """{player name: position} from a roster tab. The parsing half of the above.
+
+    Split out from apply_roster_positions so the grid handling is testable
+    without a Sheet behind it.
+    """
+    from roster_readers import parse_mapped_grid, parse_yahoo_grid
+
+    # Detect the shape the same way rosters.py does: a clean export declares
+    # its columns in the header, a Yahoo paste does not.
+    player_col = rcfg.get("player_col", "Player")
+    team_col = rcfg.get("team_col", "Status")
+    header = [str(c).strip() for c in grid[0]]
+    if player_col in header and team_col in header:
+        rows = parse_mapped_grid(grid, rcfg.get("id_col"), player_col, team_col)
+    else:
+        rows = parse_yahoo_grid(grid, known)
+
+    out, rejected = {}, set()
+    for r in rows:
+        name = (r.get("name") or "").strip()
+        parts = [p.strip().upper()
+                 for p in str(r.get("pos") or "").split(",") if p.strip()]
+        if not name or not parts:
+            continue
+        keep = [p for p in parts if p in allowed]
+        rejected.update(p for p in parts if p not in allowed)
+        if keep:
+            out[name] = ",".join(keep)
+    if rejected:
+        print(f"[warn] roster position(s) outside {sorted(allowed)} ignored: "
+              f"{sorted(rejected)}")
+    return out
+
+
 # Last-known-good copies of every source, so one going dark does not take a
 # board with it. Tracked in git, NOT in .cache: GitHub Actions evicts caches
 # after 7 days of no access, and a cache miss would lose the fallback exactly
