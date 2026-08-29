@@ -32,9 +32,10 @@ import time
 from collections import Counter
 from pathlib import Path
 
-from common import (HERE, OUTPUT_DIR, Fetcher, build_resolver, load_aliases,
-                    load_fullnames, normalize_name, prepare_authority,
-                    read_csv, sheet_grid, snapshot, write_csv)
+from common import (HERE, LASTGOOD_DIR, OUTPUT_DIR, Fetcher, build_resolver,
+                    load_aliases, load_fullnames, normalize_name,
+                    prepare_authority, read_csv, sheet_grid, snapshot,
+                    write_csv)
 from roster_readers import (_clean, parse_mapped_grid, parse_yahoo_grid,
                             read_mapped_csv, read_yahoo_paste)
 
@@ -171,6 +172,45 @@ def apply_overrides(out: list[dict], ov: list[dict], resolve_name):
     return merged, notes
 
 
+def _levels_from_sources(sport: str, taken: set) -> dict:
+    """Minor-league level by name, from whatever a ranking source banked.
+
+    These players are on the board only because they are on a roster -- the
+    blend dropped them for not resolving onto the naming authority, which for
+    MLB is a public Fantrax pool that has not picked up every 17-year-old
+    international signee yet. But HKB does know them, and knows what level
+    they are at, so the level need not be blank just because the join failed.
+
+    Matched on the normalised name, because the absence of a resolver key is
+    the entire reason these players are here -- but ONLY for a name that no
+    RANKED player already holds. That test is the whole safety of this.
+
+    Names do not identify MLB players; the pool holds 152 duplicates, and these
+    rows are disproportionately the obscure half of a shared one, because the
+    famous half resolved and got ranked. So if "Jose Ramirez" is already on the
+    board, HKB's Jose Ramirez is spoken for and this is somebody else -- the
+    level belongs to his namesake, not to him. A plain name join asserted "MLB"
+    for Kyle's minor-league Jose Ramirez, Edwin Diaz, Will Smith and eleven
+    others. Checking that the level values agreed did NOT catch it: both Jose
+    Ramirezes are in the majors, so the values matched and the answer was still
+    the wrong player's.
+
+    They still get no `prospect_rank`. It is derived from combined_rank, and
+    theirs is the bottom of the board -- numbering them would rank a real
+    prospect last on the strength of a name match.
+    """
+    levels = {}
+    for path in sorted(LASTGOOD_DIR.glob(f"{sport}_*.csv")):
+        rows = read_csv(path)
+        if not rows or "level" not in rows[0]:
+            continue
+        for r in rows:
+            lvl = str(r.get("level") or "").strip()
+            if lvl and r.get("name"):
+                levels.setdefault(normalize_name(r["name"]), lvl)
+    return {k: v for k, v in levels.items() if k not in taken}
+
+
 def append_rostered_to_board(sport: str, roster: list[dict], auth: dict,
                              aliases: dict, resolve) -> int:
     """Put rostered-but-unranked players at the bottom of the board.
@@ -210,6 +250,8 @@ def append_rostered_to_board(sport: str, roster: list[dict], auth: dict,
         return (normalize_name(name), str(team or "").upper())
 
     on_board = {ident(r["player"], r.get("team")) for r in board}
+    source_levels = _levels_from_sources(
+        sport, {normalize_name(r["player"]) for r in board})
 
     extra, seen = [], set()
     for r in roster:
@@ -224,6 +266,8 @@ def append_rostered_to_board(sport: str, roster: list[dict], auth: dict,
         row["player"] = r["player"]
         row["pos"] = (a or {}).get("pos", "")
         row["team"] = (a or {}).get("team", "")
+        if "level" in row:
+            row["level"] = source_levels.get(normalize_name(r["player"]), "")
         row["sources_matched"] = 0   # every other column, `value` included, stays blank
         extra.append(row)
 

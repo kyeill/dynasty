@@ -288,6 +288,19 @@ An unknown level leaves `prospect_rank` blank rather than sorting last: a
 player with no level is one no ranking source placed, so ranking him worst
 would assert something nobody measured.
 
+HKB's `fypd` flag is deliberately unused. It marks the *previous* year's draft
+class -- in August 2026 it holds the 2025 picks (Willits, Holliday, Anderson),
+who by then have a full professional season behind them and belong in the
+ranking like anyone else.
+
+**Rostered players who never resolved** get their `level` from HKB by name, but
+only for a name **no ranked player already holds**. These rows are
+disproportionately the obscure half of a shared name -- the famous half
+resolved and got ranked -- so a plain name join labelled the minor-league Jose
+Ramirez, Edwin Diaz and Will Smith "MLB", their namesakes' level. They still
+get no `prospect_rank`: it comes from `combined_rank`, and theirs is the bottom
+of the board.
+
 ## Rostered but unranked
 
 Someone can be owned in the league while no ranking source covers him -- a deep

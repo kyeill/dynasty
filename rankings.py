@@ -37,8 +37,7 @@ from pathlib import Path
 from common import (CACHE_DIR, HERE, LASTGOOD_DIR, OUTPUT_DIR, Fetcher, blend,
                     build_resolver, expand_abbreviated, guard_source, index_by_key,
                     load_aliases, prepare_authority, read_csv, save_fullnames,
-                    carry_forward, snapshot, to_num, value_scale,
-                    write_csv)
+                    snapshot, to_num, value_scale, write_csv)
 
 CONFIG_DIR = HERE / "config"
 SPORTS = ("nba", "nfl", "mlb")
@@ -146,8 +145,6 @@ def run_sport(sport: str, args) -> int:
     # does not, and no other sport is affected by this existing.
     levels = {k: row["level"] for table in frames.values()
               for k, row in table.items() if str(row.get("level") or "").strip()}
-    fypd = {k for table in frames.values()
-            for k, row in table.items() if str(row.get("fypd") or "").strip()}
 
     # Optional reference columns -- resolved onto the same players, but never
     # part of the blended ordering. A sport without them is unaffected.
@@ -224,24 +221,14 @@ def run_sport(sport: str, args) -> int:
     have_prospect = bool(pcfg.get("levels"))
     if have_prospect:
         wanted = set(pcfg["levels"])
-        # This year's draft class is LABELLED, not ranked. They have barely
-        # played, so slotting them among prospects with real minor-league
-        # track records would read as a judgement nobody has made yet. Held
-        # until the calendar year turns even if HKB drops the flag sooner.
-        held = carry_forward(sport, "fypd", fypd,
-                             {r["key"]: r["player"] for r in board})
         n = 0
         for r in board:                      # already in combined_rank order
-            if r["key"] in held:
-                r["prospect_rank"] = "FYPD"
-            elif r.get("level") in wanted:
+            if r.get("level") in wanted:
                 n += 1
                 r["prospect_rank"] = n
             else:
                 r["prospect_rank"] = None
-        marked = sum(1 for r in board if r["prospect_rank"] == "FYPD")
-        print(f"[prospect] {n} ranked at {'/'.join(pcfg['levels'])}, "
-              f"{marked} marked FYPD")
+        print(f"[prospect] {n} players ranked at {'/'.join(pcfg['levels'])}")
 
     cols = (["combined_rank", "player", "pos", "team"]
             + (["value"] if have_value else [])

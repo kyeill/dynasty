@@ -711,7 +711,6 @@ def sheet_grid(sheet_id: str, tab: str, fetch, max_age_hours: float = 0,
 # after 7 days of no access, and a cache miss would lose the fallback exactly
 # when it is needed.
 LASTGOOD_DIR = HERE / "lastgood"
-STATE_DIR = HERE / "state"
 
 
 def _bank_stamp(path: Path, mode: str):
@@ -771,49 +770,6 @@ def _recovery_note(path: Path) -> str:
           f"board is fully current, and any seeded fallback can go")
     marker.unlink(missing_ok=True)
     return f"recovered {when}"
-
-
-def carry_forward(sport: str, tag: str, keys: set[str],
-                  names: dict) -> set[str]:
-    """Remember a per-player flag for the rest of the calendar year.
-
-    A source can stop reporting something before we want to stop showing it.
-    HKB's `fypd` marks this year's draft class, and Kyle wants that label to
-    stick until the year turns regardless of when HKB drops it -- so the flag
-    is banked with the year it was seen and replayed until 1 January, then
-    forgotten. Anything from an earlier year is dropped on read, so the file
-    prunes itself.
-
-    Returns every player flagged this calendar year: what the source says now,
-    plus what it said earlier.
-    """
-    STATE_DIR.mkdir(exist_ok=True)
-    path = STATE_DIR / f"{tag}_{sport}.csv"
-    year = str(date.today().year)
-
-    kept, expired = {}, False
-    for row in (read_csv(path) if path.exists() else []):
-        if str(row.get("year")) == year and row.get("key"):
-            kept[row["key"]] = row.get("player") or ""
-        else:
-            expired = True
-    before = set(kept)
-
-    for k in keys:
-        kept.setdefault(k, names.get(k, ""))
-
-    # `expired` matters: on 1 January every row is last year's, so nothing is
-    # added or removed from the live set and a change-only write would leave
-    # the dead rows sitting in the file forever.
-    if expired or set(kept) != before:
-        write_csv(path, [{"year": year, "key": k, "player": n}
-                         for k, n in sorted(kept.items())],
-                  ["year", "key", "player"])
-    held = set(kept) - keys
-    if held:
-        print(f"[{tag}] {len(kept)} flagged for {year} "
-              f"({len(held)} carried forward past the source dropping them)")
-    return set(kept)
 
 
 def guard_source(rows: list[dict], sport: str, source: str,

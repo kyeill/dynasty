@@ -106,7 +106,7 @@ jobs:
           # a board alive when a source goes dark, and it is banked during the
           # run. Left uncommitted, every Actions run would start with no
           # fallback and the whole mechanism would be local-only.
-          git add -A output lastgood state
+          git add -A output lastgood
           if git diff --cached --quiet; then
             echo "nothing changed today"
           else
