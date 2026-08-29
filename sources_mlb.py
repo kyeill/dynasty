@@ -129,6 +129,9 @@ def _harryknowsball(cfg: dict, fetch: Fetcher) -> list[dict]:
             # new rung, so it shows up in the board rather than silently
             # dropping the player out of the prospect list.
             "level": _HKB_LEVELS.get(str(p.get("level")), p.get("level") or ""),
+            # First-year player draft. Marks this year's draftees so they are
+            # labelled rather than ranked among established prospects.
+            "fypd": "1" if p.get("fypd") else "",
         })
     return rows
 
