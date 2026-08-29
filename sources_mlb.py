@@ -88,6 +88,14 @@ def _fantrax(cfg: dict, fetch: Fetcher) -> list[dict]:
     return rows
 
 
+# HKB spells its minor-league levels differently from the way they are said
+# out loud, which is how Kyle asked for them. Same five rungs, so this is a
+# relabel, not a filter. "MLB" is deliberately absent: a player in the majors
+# is not a prospect no matter what HKB's own `prospect` flag says.
+_HKB_LEVELS = {"LOW_A": "A", "HIGH_A": "A+", "AA": "AA", "AAA": "AAA",
+               "ROOKIE_BALL": "ROK", "MLB": "MLB"}
+
+
 def _harryknowsball(cfg: dict, fetch: Fetcher) -> list[dict]:
     """Rankings come from the Next.js payload, not the rendered page.
 
@@ -117,6 +125,10 @@ def _harryknowsball(cfg: dict, fetch: Fetcher) -> list[dict]:
             # trade) matches neither of the authority's two entries.
             "pos": ",".join(p.get("positions") or []),
             "rank": int(rank),
+            # Feeds prospect_rank. Passed through unmapped when HKB invents a
+            # new rung, so it shows up in the board rather than silently
+            # dropping the player out of the prospect list.
+            "level": _HKB_LEVELS.get(str(p.get("level")), p.get("level") or ""),
         })
     return rows
 

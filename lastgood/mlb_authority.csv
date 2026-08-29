@@ -104,8 +104,8 @@ Michael Wacha,KC,SP,02iug
 Jackson Chourio,MIL,OF,05m1e
 Bryce Harper,PHI,"1B,OF",01fh9
 Ian Happ,CHC,OF,03nmw
-Casey Mize,DET,SP,04mlf
 Nick Kurtz,ATH,1B,062k5
+Casey Mize,DET,SP,04mlf
 William Contreras,MIL,C,03yrz
 Jazz Chisholm Jr.,NYY,"2B,3B",045qo
 Jose Berrios,TOR,SP,02mwk
@@ -2516,7 +2516,6 @@ Jake Miller,DET,SP,066ch
 Cade Smith,NYY,SP,06f15
 Nazzan Zanetello,BOS,SS,067xn
 Nick Madrigal,NYM,"2B,3B",03qu7
-Avery Owusu-Asiedu,PHI,OF,06gij
 Cutter Coffey,TOR,"3B,SS",05u1x
 Kenny Fenelon,MIL,OF,06r5q
 Juan Flores,LAA,C,06iao
@@ -2527,27 +2526,28 @@ Ty Southisene,CHC,SS,062d1
 Josh Stephan,TEX,SP,05y5g
 Kavares Tears,SD,OF,06mx1
 Jack Anderson,BOS,RP,060uk
+Kiefer Lord,BAL,SP,06ca0
 Garrett Stallings,MIL,RP,05142
 Calvin Ziegler,NYM,SP,05uny
-Brody Bumila,TEX,SP,06r73
-Alex Hoppe,BOS,RP,064nv
-Kiefer Lord,BAL,SP,06ca0
-Iker Redona,CIN,SP,06uq0
 Derniche Valdez,CHC,2B,0662n
 Aeverson Arteaga,SF,SS,05gsf
+Brody Bumila,TEX,SP,06r73
 Tegan Kuhns,STL,SP,060lb
 Ricardo Olivar,MIN,C,06437
 Jun-Seok Shim,MIA,RP,0662p
 Eduardo Herrera,CHW,3B,06hip
-Luis Serna,NYY,SP,05uve
+Alex Hoppe,BOS,RP,064nv
 Liberts Aponte,CIN,SS,06rno
 Josue Brito,BOS,OF,06r3g
 Cade Marlowe,SEA,OF,051fl
-Luis Escudero,NYY,2B,06o0h
+Iker Redona,CIN,SP,06uq0
+Luis Serna,NYY,SP,05uve
 Cody Miller,ATL,3B,06yn2
 Cole Schoenwetter,CIN,SP,067xk
 Keoni Cavaco,HOU,SS,050w8
+Luis Escudero,NYY,2B,06o0h
 Wander Franco,TB,SS,04csx
+Avery Owusu-Asiedu,PHI,OF,06gij
 Byron Chourio,MIN,OF,063dn
 Travis Honeyman,STL,UT,062yt
 JoJo Jackson,NYY,OF,06qpp
@@ -2555,14 +2555,14 @@ Brock Jones,TB,OF,05ya3
 Marlon Nieves,LAD,SP,06su3
 Devin Saltiban,PHI,2B,06ekm
 Andres Valor,MIA,OF,06aq4
-Daviel Hurtado,NYM,SP,06c2a
 Tanner Thach,COL,1B,06k4x
 Kyle Wright,KC,SP,04aed
 Wilmer Flores,DET,RP,05ww2
+Daviel Hurtado,NYM,SP,06c2a
 Carlos Sanchez,CIN,"3B,SS",062ys
-Sam Shaw,TOR,2B,06gid
 Jose Bello,SF/BOS,RP,06mmn
 CJ Hughes,MIL,SS,070bu
+Sam Shaw,TOR,2B,06gid
 Will Simpson,TB,1B,051e0
 Max Williams,MIA,OF,06rom
 Eddy Yean,PIT,RP,05a1s
@@ -2587,8 +2587,8 @@ Austin Peterson,CLE,SP,061bn
 Jack Brannigan,PIT,"3B,SS",0630j
 CJ Gray,LAA,SP,06zcz
 Caden Grice,ARI,SP,05u2w
-Ryder Helfrick,ARI,C,05zda
 Adbert Alzolay,NYM,RP,03aqz
+Ryder Helfrick,ARI,C,05zda
 Cameron Millar,KC,SP,06z7r
 Max Rajcic,STL,SP,05jqv
 Jordan Sanchez,BAL,OF,06ie9
@@ -2602,7 +2602,6 @@ Victor Lizarraga,SD,SP,05n5o
 Danny Serretti,DET,"2B,3B,SS",0657b
 Kade Snell,CHC,OF,06zag
 Cristopher Polanco,TOR,SS,06r9c
-Cody Bowker,PHI,SP,06yjw
 Franklin Gomez,NYM,SP,067z1
 Dameury Pena,MIN,UT,06ek8
 Wilson Rodriguez,NYY,OF,06hon
@@ -2614,10 +2613,10 @@ Eddie Rynders,PIT,3B,06o0f
 Cameron Weston,BAL,SP,066b1
 Owen Wild,TB,SP,06fqq
 Felix Arronde,KC,SP,06g2a
-Trent Harris,SF,RP,06hu8
 Hiroto Saiki,(N/A),SP,06ktm
 Jose Acuna,CIN,SP,05iym
 Coleman Borthwick,SD,3B,06yzr
+Cody Bowker,PHI,SP,06yjw
 Lisbel Diaz,SF,OF,06dvu
 Tyler Gentry,KC,OF,05jqw
 Reiner Herrera,CLE,C,06ri4
@@ -2636,40 +2635,41 @@ Ian Mejia,ATL,SP,06585
 Yeison Morrobel,TEX,OF,05rb7
 Jack Wheeler,TEX,3B,06zgw
 Jadyn Fielder,MIL,2B,06ql2
+Trent Harris,SF,RP,06hu8
 Nazier Mule,CHC,SP,05ubs
 Jack Neely,CHC,RP,05y7r
 Evan Shawver,COL,RP,05tzk
 Cristian Santana,DET,SS,05m4a
-Angel Cepeda,CHC,"3B,SS",066ms
 Eriq Swan,LAD/WSH,SP,06f0t
+Angel Cepeda,CHC,"3B,SS",066ms
 Jacob Waguespack,TB/PHI,RP,04y78
 "Ernesto Martínez, Jr.",MIL,1B,04dws
 Nehomar Ochoa,HOU,OF,06fto
 Nick Pratto,KC,1B,04b08
 Yohanfer Santana,MIA,SP,06c2z
-Arol Vera,LAA,SS,050k4
 Max Wagner,BAL,3B,0622n
 Brandon White,MIA,SP,06ajt
 Callan Moss,KC/PIT,1B,06pk8
-Daniel Jackson,COL,C,06mhz
+Arol Vera,LAA,SS,050k4
 Nelly Taylor,BOS,OF,06gjt
+Nicolas Carreno,NYM,RP,06sbc
 Yovanny Duran,MIN,OF,06ytz
 Dom Hamel,NYM/BAL/TEX,SP,05udy
+Daniel Jackson,COL,C,06mhz
 Barrett Kent,LAA,SP,067xl
 Nathan Martorella,MIA,"1B,OF",0648v
 Dominick Reid,CHC,SP,06rua
 Reed Trimble,BAL,OF,05uwb
-Nicolas Carreno,NYM,RP,06sbc
 Ismael Mena,CHC,OF,0527e
 Shane Murphy,CHW,SP,066l9
 Ichiro Cano,CIN,3B,06jh6
 Landon Hairston,(N/A),OF,06tvm
-Logan Hughes,HOU,OF,070dl
 Zach McCambley,MIA,RP,05lb8
 BJ Murray Jr.,CHC,3B,05y6v
 Luis Almeyda,BAL,SS,05u6l
 Alessander De La Cruz,COL,OF,06c3f
 Jose Verdugo,SD,SS,06v3y
+Logan Hughes,HOU,OF,070dl
 Will Hynes,CLE,SP,06z9c
 Jacob Miller,MIA,SP,05yc3
 Keeler Morfe,BAL,SP,06akv
@@ -2720,9 +2720,9 @@ Cole Messina,COL,C,06k7q
 Patrick Reilly,BAL,SP,05jpm
 Ben Ross,MIN,"SS,OF",06658
 Rodney Green,ATH,OF,06ag6
+Pete Hansen,STL,SP,05yks
 Adrian Pinto,TOR,2B,05j6w
 Thomas Sosa,BAL,OF,061zu
-Pete Hansen,STL,SP,05yks
 Core Jackson,NYY,SS,06yyj
 Robert Moore,PHI,"2B,SS",05raq
 Yeiber Cartaya,BAL,SP,06bpr
@@ -2731,7 +2731,6 @@ Nick Dumesnil,DET,OF,06mvf
 Cole Miller,ATH,SP,06ekl
 Robinson Ortiz,LAD,RP,04mu1
 Derek Bernard,COL,OF,0633e
-Daniel Guerra,TOR,SP,06uhj
 Jackson Nezuh,HOU,SP,06dlx
 Edgleen Perez,NYY/PIT,C,06iej
 Luis Suisbel,SEA,3B,05aku
@@ -2744,6 +2743,7 @@ Kevyn Castillo,LAA,OF,06dqm
 Nauris De La Cruz,WSH,OF,06v3v
 Cade Doughty,TOR,2B,05gds
 Jose Fleury,HOU,SP,066qg
+Daniel Guerra,TOR,SP,06uhj
 Mac Heuer,NYY,SP,06zhc
 Julio Mendez,MIA,SP,0620i
 Paul Wilson,DET,SP,067yk
@@ -2754,32 +2754,32 @@ Erick Pena,KC,OF,050k3
 Ben Peoples,CHW,RP,051h5
 Noah Song,BOS,RP,05134
 Santiago Castellanos,MIN,SP,06rm5
+Sabin Ceballos,SF,3B,066b6
 Duncan Davitt,TB/CHW,SP,066f4
 Jostin Florentino,CHC,SP,06ifv
-Jojo Ingrassia,BOS,RP,06hww
 Paxton Kling,TEX,"SS,OF",05y31
 Cameron Sullivan,CLE,SP,06pqm
+Braylin Tavera,BAL,OF,05ygp
 Bryan Balzer,SD,SP,06rsx
-Sabin Ceballos,SF,3B,066b6
+Jojo Ingrassia,BOS,RP,06hww
 Blake Morgan,TB,SP,061bp
 Fernando Perez,TOR,SP,06ek7
-Braylin Tavera,BAL,OF,05ygp
 Tomas Valincius,(N/A),SP,06uwo
 Enrique Jimenez,DET/MIN,C,066mg
 Edward Lantigua,NYM,OF,06ice
-Ryder Ryan,PIT,SP,04aja
 Javier Vaz,KC,2B,066k3
 Maui Ahuna,SF,UT,0622u
 Isaac Coffey,BOS,SP,066d8
-Danny De Andrade,MIN,SS,05m1f
 Branneli Franco,STL,RP,06iby
 Elias Medina,LAD,SS,06cmq
 Ramcell Medina,KC,SS,06ric
+Ryder Ryan,PIT,SP,04aja
 Tanner Schobel,MIN,"3B,SS",0622s
 Kenny Serwa,DET,SP,06r9f
 Ambioris Tavarez,ATL,SS,05r8d
 Carlos Alvarez,SD,SP,06r9q
 Kevin Bazzell,WSH,C,06c5i
+Danny De Andrade,MIN,SS,05m1f
 Jose Escobar,CHC,2B,066qd
 Jakob Christian,SF,OF,06qi6
 Ryan Lasko,ATH,OF,06248
@@ -2803,7 +2803,6 @@ Waner Luciano,HOU,3B,061zq
 Aldrin Batista,CHW,RP,06ce9
 Gleider Figuereo,TEX,3B,05xnt
 RJ Petit,DET,RP,060ui
-Jack Ralston,MIA,RP,0515j
 Jose Rodriguez,PHI,SS,05gcy
 Jack Winnay,BOS,1B,06z0q
 Matt Wood,MIL,C,06482
@@ -2811,32 +2810,33 @@ Romeli Espinosa,PHI,SS,06yex
 Garrett Hawkins,SD,RP,05yc8
 Juan Ortuno,MIL,OF,06mpm
 Carlos Rodríguez,ATL,OF,04loe
+Eguy Rosario,SD,3B,045on
 Jesus Travieso,BOS,SP,06r3d
 Mason White,BOS,"2B,SS",06k4v
 Chandler Champlain,KC,SP,05y7q
 Zach Fruit,BAL,SP,06fu2
+Daiverson Gutierrez,NYM,C,066ml
 John Klein,MIN,RP,06ian
 Trevor Martin,TB,RP,06309
-Eguy Rosario,SD,3B,045on
 Izack Tiger,TEX,SP,06fqy
 Cooper Bowman,ATH,"2B,OF",05xou
 Trace Bright,BAL,SP,0648i
-Isaias Castillo,NYY,OF,06rqr
 Drew Gray,CHC,SP,05up0
-Daiverson Gutierrez,NYM,C,066ml
 David Matoma,PIT,RP,06akq
+Jack Ralston,MIA,RP,0515j
 Mason Auer,TB,OF,05y4w
 Rory Fox,NYY,SP,06yyu
+Spencer Giesting,ARI,SP,0648o
+Jacob Steinmetz,ARI,SP,05xos
+Yoel Tejeda,WSH,SP,067yl
 Wilfred Veras,CHW,OF,05nsi
+Isaias Castillo,NYY,OF,06rqr
 Jeff Criswell,COL,SP,05gx2
 Cade Crossland,STL,SP,06z7l
 Anderson De Los Santos,BAL,SS,05uxv
-Spencer Giesting,ARI,SP,0648o
 Derek Law,WSH,SP,02bx6
 Hector Ramos,BOS,SS,06rnt
 Romeo Sanabria,SD,1B,066ez
-Jacob Steinmetz,ARI,SP,05xos
-Yoel Tejeda,WSH,SP,067yl
 Ricky Vanasco,DET,SP,04eoi
 Leandro Arias,BAL,SS,05yiq
 Chris Arroyo,MIA,1B,06yjv
@@ -2862,7 +2862,6 @@ A.J. Causey,KC,RP,06oo4
 Clark Elliott,ATH,OF,0603n
 Duce Gourson,PIT,2B,062e8
 Kody Hoese,LAD,3B,04zjm
-Jacob Johnson,TEX,SP,070bp
 Angel Salio,CIN,SS,06rrv
 Axel Sanchez,SEA,"2B,SS",05jx9
 Andrew Taylor,HOU,SP,05ubo
@@ -2879,6 +2878,7 @@ Patrick Wisdom,SEA,"1B,3B",02mws
 Ramiro Dominguez,MIN,SS,06r1v
 Jesus Galiz,LAD,C,05mod
 Silvano Hechavarria,TOR,SP,06mdh
+Jacob Johnson,TEX,SP,070bp
 Joshua Liranzo,BAL,3B,06c3o
 Ryan Reckley,SF,2B,05ude
 Caden Sorrell,CHC,OF,06r76
@@ -2891,15 +2891,15 @@ TJayy Walton,PHI,OF,05u9p
 Rayven Antonio,ATL,SP,06rnz
 Micah Bucknam,TOR,SP,06yzf
 J.B. Bukauskas,MIL,RP,03dsj
+Filippo Di Turi,MIL,"2B,SS",066mf
 Kohl Franklin,CHC,SP,04ps3
 Mathias LaCombe,CHW,SP,06fuo
+Mairoshendrick Martinus,LAD,SS,060qg
 Kendry Martínez,SEA,SS,06rfo
 Josh Randall,DET/WSH,SP,06nuh
 Alexander Vargas,NYY/CIN,SS,04tm2
-Filippo Di Turi,MIL,"2B,SS",066mf
 Raimon Gomez,NYM/BAL,RP,066t5
 Skylar Hales,TEX/STL,RP,06ew1
-Mairoshendrick Martinus,LAD,SS,060qg
 Jordan Balazovic,DET,SP,041sc
 Jack Bauer,(N/A),SP,06tf8
 Kervin Castro,NYY,RP,05r1t
@@ -2975,7 +2975,6 @@ Caden Powell,HOU,3B,06pq6
 Abrahan Ramirez,MIA,3B,06ax7
 Anthony Rendon,LAA,3B,01tt9
 Michael Salina,SD,SP,06z9f
-Brian Serven,DET,C,041rz
 Warel Solano,TB,SS,06qhc
 Emaarion Boyd,MIA,OF,064nf
 Landon Hodge,CHW,C,06z7q
@@ -2989,16 +2988,17 @@ Brandon Drury,CHW/LAA,"1B,2B,3B",02hlw
 Hudson Head,PIT,OF,0512p
 Dexter McCleon Jr,(N/A),1B,06igv
 Malcom Nunez,PIT,"1B,3B",04rzr
+Andy Perez,COL,"3B,SS",06aw7
 Jose Rodriguez,LAD,RP,06kwn
+Brian Serven,DET,C,041rz
 Zack Thompson,STL,RP,04n0p
-Juan Villavicencio,PHI,SS,06rgq
 Jordan Woods,KC,RP,0664s
 Tyler Davis,CHW,RP,06qxg
 Shoki Murakami,(N/A),SP,06idg
-Andy Perez,COL,"3B,SS",06aw7
 Danny Thompson,TOR,RP,06ywj
 Willy Vasquez,TB,3B,05xyj
 Henry Williams,KC,SP,05xsp
+Jakob Wright,LAD,SP,06oo5
 Kevin Abel,CIN,SP,05jp8
 Gregory Barrios,TB,SS,05rbt
 David Calabrese,TOR,OF,05js2
@@ -3051,11 +3051,11 @@ DJ Layton,BAL,SS,06pq4
 Camden Lohman,NYM,SP,06zqn
 Naibel Mariano,CIN,SS,06icf
 Joander Suarez,NYM,SP,055hw
+Daniel Brooks,ATL,SP,06zcx
 Abdias De La Cruz,ARI,OF,05yhd
 Darlin Saladin,STL,SP,06lu6
 Casey Saucke,CHW,OF,060q3
 Tristan Smith,CIN,RP,05u9g
-Daniel Brooks,ATL,SP,06zcx
 Miguel Caraballo,SF,C,06ya5
 Ryan Cermak,TB,OF,0622m
 Yeiner Fernandez,LAD,"C,2B",05adw
@@ -3067,6 +3067,7 @@ Jacob Burke,CHW,OF,06584
 Elijah Hainline,LAD,SS,06qul
 Christian Little,SEA,SP,05mlv
 Jack Mahoney,COL,SP,06dq6
+Maxton Martin,TEX,OF,06gjp
 Ethan O'Donnell,CIN,OF,06dqq
 Oswaldo Osorio,LAD,3B,061z0
 Adrian Pena,MIA,SP,06rjl
@@ -3080,17 +3081,16 @@ Adrian Ardines,HOU,RP,06xv4
 Jalvin Arias,PHI,OF,06ibt
 Scott Bandura,SF,OF,06fqt
 Joey Broughton,MIL,SP,06pfg
+Drew Brutcher,HOU,OF,06ujq
 Sebastian Gongora,BAL,SP,06qny
 R.J. Gordon,NYM,SP,06qtf
 Yujanyer Herrera,COL,SP,05iyt
 Hunter Hollan,CIN,SP,068c0
 Matt Manning,DET/PHI,RP,041m1
-Maxton Martin,TEX,OF,06gjp
 Brody McCullough,CHC,SP,06655
 Alex Mooney,CLE,"3B,SS",05rci
 Shane Sasaki,MIA,OF,0512w
 Darius Vines,ATL,SP,05157
-Drew Brutcher,HOU,OF,06ujq
 Irv Carter,TOR,RP,05uy2
 Javen Coleman,TOR,RP,06qjd
 Jake Fox,CLE,OF,05w8n
@@ -3119,6 +3119,7 @@ Bennett Thompson,CLE,C,06qth
 Matt Ager,PIT,SP,06cq5
 Eliezer Alfonzo,DET,C,04ug3
 Anderson Araujo,PHI,"C,1B",06y7q
+Myles Bailey,CHC,1B,06iex
 Daniel Cabrera,DET,OF,05gcu
 Junior Ciprian,ARI,SP,06rmy
 Caden Favors,CLE,SP,06pgp
@@ -3128,7 +3129,6 @@ Hunter Owen,KC,SP,06y01
 Shane Panzini,KC,RP,05xoq
 Cam Appenzeller,(N/A),SP,06qyv
 Andres Arias,TOR,OF,06ic7
-Myles Bailey,CHC,1B,06iex
 Diego Benitez,ATL,SS,05u32
 Dylan Campbell,PHI,OF,06ekr
 Yoelkis Cespedes,CHW,OF,04axv
@@ -3168,6 +3168,7 @@ Christian Cairo,ATL/CLE,"2B,3B,SS",0513m
 Yerlin Confidan,CIN,OF,05j70
 Corey Cousin,KC,OF,06qvl
 J.D. Gonzalez,TB,C,06er4
+Sammy Hernandez,STL,C,065j9
 Cole Irvin,LAD,SP,041ru
 Santiago Leon,MIN,SS,06rhk
 Adam Maier,ATL,SP,05xu6
@@ -3197,7 +3198,6 @@ Caden Bogenpohl,PHI,OF,06ms1
 Ryan Campos,STL,C,06o0g
 Christian Cerda,ARI,C,05m6g
 Gabe Craig,PHI,RP,06zfr
-Sammy Hernandez,STL,C,065j9
 John McMillon,PHI,RP,0423z
 Raymer Medina,TB,SS,06rhw
 Adrian Placencia,LAA,"2B,SS",056j6
@@ -3223,7 +3223,6 @@ Hendry Chivilli,MIN,SS,066ma
 Alejandro Cruz,CHW,3B,06rkn
 Alessandro Ercolani,PIT,SP,06imz
 Kyle Henley,CIN,OF,06fz4
-Jack Leftwich,CLE,RP,05jqj
 Connor Noland,CHC,SP,065iy
 Oscar Pujols,COL,RP,06ic8
 Ryan Sprock,MIN,3B,06zrh
@@ -3233,12 +3232,12 @@ Alfredo Alcantara,CIN,SS,06akh
 Jerson Alejandro,NYY,SP,068z4
 Roni Cabrera,KC,OF,06cf4
 Jack Choate,SF,SP,066cx
-Alex Faedo,TB,RP,04aec
 Luke Fox,LAD,SP,06hol
 Riley Gowens,CHW,SP,06gig
 Grayson Hitt,ARI,RP,05jqe
 Wilfredo Lara,MIA,"2B,SS",06am6
 Alberto Laroche,SF,SP,06yy0
+Jack Leftwich,CLE,RP,05jqj
 Moises Marchán,KC,C,06rhv
 Sabier Marte,NYY,SP,06ie7
 Joseph Montalvo,DET,SP,05yob
@@ -3253,7 +3252,10 @@ Braylen Wimmer,COL,"3B,SS",06fqe
 Chase Allsup,BAL,SP,06oo0
 Sam Carlson,LAD,RP,04ef1
 Allan Cerda,MIN,OF,0529m
+Alex Faedo,TB,RP,04aec
+Austin Gordon,LAA,SP,06oo9
 Ronaldo Hernandez,NYY/BOS,UT,04al0
+Connor Hujsak,TB,OF,06qtp
 Zach Levenson,STL,OF,06f1n
 Po-Chun Lin,SEA,SP,06rmx
 Jorge Marcheco,LAA,RP,061vz
@@ -3271,7 +3273,6 @@ Bobby Boser,ATH,3B,06y7h
 Wyatt Crowell,LAD,SP,066pk
 Ryan Hall,DET,SP,06zgy
 Jonathan Hernandez,SEA/TB,RP,03mgq
-Connor Hujsak,TB,OF,06qtp
 Nick Montgomery,ATL,C,06onq
 Luis Palacios,MIA,RP,04tp0
 Francis Pena,SD,RP,064rr
@@ -3283,7 +3284,6 @@ Yasmil Bucce,BAL,"C,1B",060p1
 Jared Dickey,ATH,OF,060my
 George Feliz,SEA,OF,05ad6
 Evan Fitterer,SD,RP,05146
-Austin Gordon,LAA,SP,06oo9
 Luke Heyman,SEA,"C,1B",067zc
 P.J. Higgins,CIN,"C,1B,3B",03qqe
 Kody Huff,CLE,C,06433
@@ -3366,6 +3366,7 @@ Truitt Madonna,SD,C,070by
 Camden Minacci,LAA,RP,05tzf
 Nestor Miranda,DET,3B,06ici
 Carson Montgomery,SD,SP,05gws
+Emmett Olson,MIA,SP,06ek6
 Holden Powell,WSH,RP,05jqt
 Franklin Rojas,TOR,UT,06ic0
 Cam Schuelke,CLE,RP,06ooi
@@ -3388,7 +3389,6 @@ Matt Koperniak,STL,OF,05wb2
 Nestor Lorant,CIN,SP,06l4z
 Trey Mancini,ARI,1B,031c4
 Nick Monistere,HOU,2B,06yq7
-Emmett Olson,MIA,SP,06ek6
 Luis Patino,SD,SP,04k22
 Cole Peschl,MIN,SP,06qru
 Nolan Sailors,KC,OF,06yy3
@@ -3469,6 +3469,7 @@ Jose Cuas,PHI/ATL,RP,060mz
 Reynaldo De La Paz,ATH,OF,06iez
 Nathan Dettmer,ATH,SP,063e1
 Derlin Figueroa,KC,"1B,3B",066td
+Jason Gilman,BOS,SP,06yyk
 Omar Gonzalez,NYY,SP,062n2
 Payton Green,MIA,SS,060g5
 Daniel Guilarte,MIL,"2B,3B,SS",05rbu
@@ -3478,6 +3479,7 @@ Isaiah Jackson,LAA,OF,06l5p
 Caden Kendle,MIN,OF,06oo8
 Gabriel Lara,NYY,OF,06c3g
 Yaxson Lucena,STL,OF,06xy3
+Mark Manfredi,MIL,RP,06gic
 Tom Murphy,SF,C,02t8m
 Helcris Olivarez,SF,RP,04yjb
 Micah Ottenbreit,PHI,SP,05unj
@@ -3494,7 +3496,7 @@ Hunter Dryden,SF,SP,06qpm
 Garrett Edwards,TB,SP,06gjx
 Lucas Kelly,SEA,RP,06z44
 Grant Lavigne,(N/A),1B,04pmf
-Mark Manfredi,MIL,RP,06gic
+Barrett Morgan,BOS,SP,070br
 Jack Penney,DET,SS,06qie
 Ovis Portes,CIN,RP,06m9q
 Nick Robertson,TOR/HOU/KC,SP,0515s
@@ -3549,14 +3551,12 @@ Edian Espinal,DET,2B,06yyt
 Dayan Frias,CLE,3B,05ydh
 Ryan Galanie,CHW,1B,06huk
 Eliomar Garces,TB,SS,06rnw
-Jason Gilman,BOS,SP,06yyk
 Deinys Gonzalez,TB,C,06k7z
 Nolan Hoffman,TEX/PHI,RP,04pr7
 Nieves Izaguirre,PHI,SS,06rf7
 Kevin Kopps,SD,RP,05tow
 Austin Love,STL,RP,05uo3
 Hans Montero,NYY,SS,05r5l
-Barrett Morgan,BOS,SP,070br
 Felix Morrobel,LAA,SS,066o7
 Pablo Nunez,CIN,OF,06qzo
 Emilio Obispo,NYM,SP,06v2f
@@ -3613,6 +3613,7 @@ John Taylor,TEX,2B,06y07
 Sean Barnett,SD,OF,06qo3
 Yulian Barreto,SF,SS,06rtc
 Branden Boissiere,WSH,1B,05tzh
+Jake Brown,SEA,OF,06l5g
 Daniel Bucciero,ATH,3B,07010
 Ty Cummings,TB,SP,06fqn
 Tague Davis,(N/A),1B,06sj6
@@ -3636,7 +3637,6 @@ Junior Santos,WSH,RP,04yb5
 Justin Thomas,HOU,OF,070bv
 Zavier Warren,(N/A),SS,05jpw
 Koyo Aoyagi,PHI,RP,06qxj
-Jake Brown,SEA,OF,06l5g
 Yeremmy Cabeza,COL,SP,06sb8
 Aiven Cabral,ATL,SP,06c8v
 Manuel Campos,ATL,SS,06ru0
@@ -3907,6 +3907,7 @@ Anthony Scull,LAA,OF,06c2s
 Drew Smith,NYM,RP,03qkc
 Yoffry Solano,MIA,SS,05yj6
 Adrian Sugastey,SF,C,05j8l
+Erik Tolman,WSH,RP,05yfp
 Deward Tovar,TEX,OF,06c4t
 Esmerlin Vinicio,SF,RP,056j3
 Hunter Allen,BAL,SP,06z01
@@ -3944,7 +3945,6 @@ Will Schomberg,MIA,SP,06hu3
 Teddy Sharkey,BAL,RP,06fqs
 Eric Snow,TOR,SS,06zbe
 Griffin Tobias,MIL,RP,06qua
-Erik Tolman,WSH,RP,05yfp
 Wande Torres,MIL,SP,06pee
 Carter Trice,CHC,1B,05wy0
 Bryce Warrecker,NYY,RP,06hnp
@@ -3962,7 +3962,6 @@ Dylan Coleman,BAL,RP,04pq2
 Luke Dotson,ARI,RP,06z13
 Ty Doucette,CIN,1B,06za1
 Jon Jon Gazdar,STL,3B,06qhz
-Joe Glassey,BAL,SP,06qez
 Christian Gonzalez,CHW,OF,06msz
 Jonathan Heasley,CHW/KC,RP,04pwx
 Jacob Jenkins-Cowart,MIA,OF,06pg5
@@ -4003,6 +4002,7 @@ Greg Farone,SF,SP,06qug
 Jack Findlay,STL,RP,062ea
 Luke Gabrysh,PHI,SP,06qrw
 Yhoswar Garcia,MIL,OF,05h2s
+Joe Glassey,BAL,SP,06qez
 Douglas Glod,ATL,OF,060pf
 Owen Hackman,ATL,SP,06qib
 Adam Hall,MIL,OF,04ef3
@@ -4157,6 +4157,7 @@ Nick Zwack,SF,SP,0614d
 Cesar Acosta,NYY,SP,070dm
 Evan Aschenbeck,CHC,SP,06qtn
 Ali Camarillo,ATH,SS,06qns
+Jose Cerice,KC,1B,06kvg
 Nathanael Cijntje,PHI,OF,06lwn
 Harrison Cohen,NYY,RP,06awr
 Jason DeCaro,PIT,SP,06l5c
@@ -4167,6 +4168,7 @@ Jake Faherty,MIA,RP,066io
 Daniel Flames,TEX,SS,06kvh
 Henry Ford,SEA,3B,06kvp
 Luis Frias,CLE,RP,04ysx
+Will Gagnon,LAD,SP,06qsw
 Eric Genther,NYY,OF,06ywe
 Jordan Gottesman,SF,SP,06z41
 Tyson Guerrero,KC,SP,05yns
@@ -4216,7 +4218,6 @@ Phil Bickford,CHC/PHI,RP,03109
 Marcus Brown,WSH,SS,066ep
 Carlos Castillo,PIT,SP,06c9z
 Jose Castro,NYY,OF,06l0k
-Jose Cerice,KC,1B,06kvg
 Everett Cooper III,WSH,SS,0657w
 Dayber Cruceta,PHI,OF,06rrw
 Jason Delay,PIT/ATL,C,041w5
@@ -4231,7 +4232,6 @@ Jackson Finley,ATH,SP,06ajo
 Cam Fisher,HOU,OF,06amp
 Riley Frey,ATL,RP,06hn8
 Hunter Furtado,PIT,RP,06dsb
-Will Gagnon,LAD,SP,06qsw
 Keagan Gillies,BAL,RP,05yof
 Esteban Gonzalez,CLE,OF,05xmx
 Troy Guthrie,TOR,RP,06qo0
@@ -5025,6 +5025,7 @@ Alejo Lopez,ATH,"2B,3B",03wkr
 Eduardo Lopez,PHI,1B,04yd9
 Jordan Lyles,(N/A),SP,01gjf
 Chusei Mannami,(N/A),1B,06ih7
+Roman Martin,ATH,SS,062cz
 Kevin Martinez,COL,SP,06uwd
 Pedro Martinez,TB,SS,04rvw
 Bryce McGowan,COL,RP,05y68
@@ -5180,7 +5181,6 @@ Andrew Navigato,DET,"2B,3B,SS",051fb
 Nicholas Northcut,CIN,3B,04pvt
 Luke Nowak,KC,OF,06zar
 Joe Olsavsky,ATL,SS,06gj1
-Liam Paddack,CHW,RP,06qvr
 Stephen Paolini,(N/A),OF,0514c
 Wyatt Parliament,NYY,SP,06quh
 Carlos Pena,DET,RP,05j8m
@@ -5330,7 +5330,6 @@ Ethan Long,SD,1B,05uc9
 Daniel Lopez,KC,OF,06bj6
 Kyle Luckham,WSH,SP,065v7
 Rylan Lujo,LAA,3B,06v4r
-Alexey Lumpuy,CHC,OF,06ruf
 Jared Lyons,CIN,SP,066le
 Andres Machado,(N/A),RP,04km8
 Antonis Macias,TEX,OF,06nz1
@@ -5369,6 +5368,7 @@ Chris Okey,LAD,C,03ywx
 Adam Oller,(N/A),SP,0422w
 Oliver Ortega,NYM,RP,050ig
 Fredderick Ovalle,PIT,2B,06ytv
+Liam Paddack,CHW,RP,06qvr
 Brainerh Palacios,TB,C,06sap
 Jesus Palacios,BAL,SP,067zk
 Brady Parker,COL,SP,06zae
@@ -5427,7 +5427,6 @@ Tyrone Yulie,NYY,RP,05umy
 Jose Zerpa,SEA,RP,06clo
 Angel Acosta,KC,C,06uj5
 Joe Adametz,DET,RP,065jb
-Dash Albus,KC,RP,06ooc
 Raul Alcantara,SEA/BAL/MIL,RP,060fv
 Brady Allen,DET,OF,05y4h
 Jhan Almeida,CIN,SP,06qzn
@@ -5515,7 +5514,6 @@ Daniel Gomez,STL,SP,06rwj
 Cristopfer Gonzalez,HOU,OF,06cqt
 James Gonzalez,ATH,SP,06kxh
 Josue Gonzalez,NYY,"C,1B",06cmy
-Anthony Gose,NYM/ARI,RP,01sha
 Jace Grady,ATL,OF,06guj
 Spencer Green,LAD,SP,06hn9
 Richard Guasch,WSH/DET,RP,04ym4
@@ -5559,6 +5557,7 @@ Jesus Liranzo,MIL,RP,04af8
 Griffin Lockwood-Powell,LAD,"C,1B",06opa
 Zach Logue,(N/A),RP,04ejq
 Ryan Long,BAL,SP,06bxl
+Alexey Lumpuy,CHC,OF,06ruf
 Esteban Luna,BAL,SP,06njt
 Darrel Lunar,WSH,SP,06ma5
 Wyatt Lunsford-Shenkman,SEA,RP,06qr2
@@ -5656,6 +5655,7 @@ Jesus Abreu,MIA,C,06rhh
 Aldry Acosta,(N/A),RP,04nr0
 Cooper Adams,BOS,RP,06tlh
 Chase Adkison,STL,C,06hu2
+Dash Albus,KC,RP,06ooc
 Eliander Alcalde,TOR,RP,060oe
 Fabian Alcantara,SD,SS,06yr8
 Austin Aldeano,CLE,SP,05r6k
@@ -5997,6 +5997,7 @@ Fulton Lockhart,LAA,RP,06qte
 Jose Lopez,TB,RP,0614f
 Jordan Luplow,(N/A),OF,03dag
 Irvin Machuca,CIN,RP,05uai
+Josh Maciejewski,MIL,RP,04puv
 Bryan Magdaleno,TEX,RP,06pmw
 Nick Margevicius,DET,SP,04eie
 Emilio Marquez,KC,RP,05u1r
@@ -6159,7 +6160,6 @@ Jose Montilla,KC,C,06z63
 Chase Mora,MIL,2B,06alo
 Noah Myers,TB,OF,06o0o
 Luis Parababire,ATL,C,06l55
-Ty Peeples,(N/A),OF,06r4z
 Sebastian Pena,SD,OF,06rrs
 Garrett Pennington,DET,1B,06qk4
 Ryan Picollo,SEA,OF,06qht
@@ -6407,6 +6407,7 @@ Manuel Palencia,NYY,C,06rjq
 Aaron Palensky,(N/A),OF,05t9c
 Yovannki Pascual,SD,RP,06bn3
 Josh Pearson,(N/A),OF,05ud5
+Ty Peeples,(N/A),OF,06r4z
 Jhoan Peguero,BOS,OF,06mp5
 Rafy Peguero,LAD,OF,06kle
 Ezequiel Pena,CHC,2B,06o11

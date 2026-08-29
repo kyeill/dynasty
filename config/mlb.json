@@ -87,5 +87,14 @@
     "replacement_rank": 667,
     "top_20_ratio": 2.1,
     "note": "0 at replacement (10 teams x ~67 rostered)"
+  },
+  "prospect_rank": {
+    "levels": [
+      "ROK",
+      "A",
+      "A+",
+      "AA",
+      "AAA"
+    ]
   }
 }

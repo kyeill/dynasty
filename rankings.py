@@ -140,6 +140,12 @@ def run_sport(sport: str, args) -> int:
 
     cur = index_by_key(current, aliases, resolve) if current else {}
 
+    # Minor-league level, from whichever source carries one (HKB, for MLB).
+    # Generic rather than MLB-specific: a source either supplies `level` or it
+    # does not, and no other sport is affected by this existing.
+    levels = {k: row["level"] for table in frames.values()
+              for k, row in table.items() if str(row.get("level") or "").strip()}
+
     # Optional reference columns -- resolved onto the same players, but never
     # part of the blended ordering. A sport without them is unaffected.
     extras = {}
@@ -155,6 +161,7 @@ def run_sport(sport: str, args) -> int:
         r["player"] = a["name"] if a else None
         r["pos"] = a.get("pos") if a else None
         r["team"] = a.get("team") if a else None
+        r["level"] = levels.get(k, "")
         c = cur.get(k)
         r["current_rank"] = int(c["current_rank"]) if c else None
         for key, table in extras.items():
@@ -198,13 +205,41 @@ def run_sport(sport: str, args) -> int:
         print(f"[value] #1=100, zero at rank {vcfg['replacement_rank']} "
               f"-- {above} players above replacement")
 
+    # A second ranking over the same board, restricted to players still in the
+    # minors: "who is the best prospect available", which combined_rank cannot
+    # answer because established major leaguers sit above them.
+    #
+    # Derived from combined_rank rather than from HKB's own `prospectRank`.
+    # They are not the same question -- HKB counts 691 players as prospects
+    # including ones already up in the majors, so its list interleaves players
+    # this column deliberately excludes.
+    #
+    # Unknown level means blank, not last. A player with no level is one no
+    # ranking source placed (he is here off a Fantrax roster), so calling him
+    # the worst prospect would be asserting something nobody measured.
+    pcfg = cfg.get("prospect_rank") or {}
+    have_prospect = bool(pcfg.get("levels"))
+    if have_prospect:
+        wanted = set(pcfg["levels"])
+        n = 0
+        for r in board:                      # already in combined_rank order
+            if r.get("level") in wanted:
+                n += 1
+                r["prospect_rank"] = n
+            else:
+                r["prospect_rank"] = None
+        print(f"[prospect] {n} players ranked at {'/'.join(pcfg['levels'])}")
+
     cols = (["combined_rank", "player", "pos", "team"]
             + (["value"] if have_value else [])
             + ["blended_score"]
             + [f"{n}_rank" for n in frames]
             + ["current_rank"]
             + (["current_value"] if have_value else [])
-            + list(extras) + ["sources_matched"])
+            + list(extras) + ["sources_matched"]
+            # Appended, not inserted: the Sheet's existing columns keep their
+            # positions, so anything keyed to them still lines up.
+            + (["level", "prospect_rank"] if have_prospect else []))
 
     out_path = OUTPUT_DIR / f"combined_rankings_{sport}.csv"
     write_csv(out_path, board, cols)

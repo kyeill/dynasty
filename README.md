@@ -261,6 +261,33 @@ Actions clones fresh every run, so checkout stamps every file with the current
 time and a copy banked three weeks ago would report as 0.0 days old -- exactly
 the reading the 14-day staleness warning exists to catch.
 
+## prospect_rank (MLB)
+
+A second ranking over the same board, restricted to players still in the minors
+— "who is the best prospect here", which `combined_rank` cannot answer because
+established major leaguers sit above them. Dense 1..N in `combined_rank` order,
+627 players currently.
+
+Which rungs count is config, not code:
+
+```json
+"prospect_rank": { "levels": ["ROK", "A", "A+", "AA", "AAA"] }
+```
+
+Two things worth knowing:
+
+- **HKB spells its levels differently** — `LOW_A`, `HIGH_A`, `ROOKIE_BALL` — and
+  `_HKB_LEVELS` relabels them to the way they are said out loud. An unmapped
+  rung passes through unchanged so it shows up in the `level` column rather
+  than quietly dropping a player out of the prospect list.
+- **It is NOT HKB's own `prospectRank`.** That field counts 691 players as
+  prospects including ones already in the majors, so it answers a different
+  question.
+
+An unknown level leaves `prospect_rank` blank rather than sorting last: a
+player with no level is one no ranking source placed, so ranking him worst
+would assert something nobody measured.
+
 ## Rostered but unranked
 
 Someone can be owned in the league while no ranking source covers him -- a deep
