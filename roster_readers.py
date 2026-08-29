@@ -163,8 +163,9 @@ def parse_yahoo_grid(grid: list[list[str]], known: set | None = None) -> list[di
                         name = strip_decoration(decorated)
                     else:
                         continue
+                tm, _, ps = col0[i].partition("-")
                 rows.append({"name": name, "fantasy_team": team,
-                             "team": col0[i].split("-")[0].strip()})
+                             "team": tm.strip(), "pos": ps.strip()})
         else:
             # Two-column: slot position in col0, clean name in col1. The
             # decorated duplicate is the next row, with an empty col0.
@@ -172,16 +173,20 @@ def parse_yahoo_grid(grid: list[list[str]], known: set | None = None) -> list[di
                 if not col0[i] or not col1[i]:
                     continue
                 decorated = col1[i + 1] if i + 1 < len(col1) else ""
-                real_team = ""
+                real_team, real_pos = "", ""
                 if decorated:
                     m = TEAM_POS_TAIL.search(decorated)
                     if m:
-                        real_team = m.group(0).split("-")[0].strip()
+                        # "Bal - QB": the position half is what a roster append
+                        # needs for a player the authority never listed.
+                        real_team, _, real_pos = m.group(0).partition("-")
+                        real_team = real_team.strip()
+                        real_pos = real_pos.strip()
                 name = (known_prefix(col1[i], known)
                         or known_prefix(decorated, known)
                         or col1[i])
                 rows.append({"name": name, "fantasy_team": team,
-                             "team": real_team})
+                             "team": real_team, "pos": real_pos})
 
     return [r for r in rows if len(r["name"]) > 1]
 
@@ -210,7 +215,12 @@ def _mapped_rows(raw, id_col, player_col, team_col) -> list[dict]:
     for r in raw:
         row = {"name": str(r.get(player_col, "")).strip(),
                "fantasy_team": str(r.get(team_col, "")).strip(),
-               "team": str(r.get("Team", "")).strip()}
+               "team": str(r.get("Team", "")).strip(),
+               # Read like "Team": present in a Fantrax export, absent from a
+               # Yahoo paste, and needed for a player the authority never
+               # heard of -- his roster row is then the ONLY place a position
+               # for him exists.
+               "pos": str(r.get("Position", "")).strip()}
         if id_col and id_col in r:
             # Fantrax wraps its ids in asterisks on export: *05ucd*
             row["source_id"] = str(r.get(id_col, "")).strip().strip("*")

@@ -293,6 +293,23 @@ class -- in August 2026 it holds the 2025 picks (Willits, Holliday, Anderson),
 who by then have a full professional season behind them and belong in the
 ranking like anyone else.
 
+A rostered player is only appended when the board does not already hold
+**enough players of that name**. Counting beats matching here: an earlier
+version keyed on (name, team) and re-resolved the name to get the team, but the
+resolver refuses an ambiguous name by design, so for exactly the duplicated
+names that mattered it returned nothing, the team came out blank, and the pair
+never matched the board's -- appending a second copy of a ranked player.
+Fourteen of twenty-two MLB appends were phantoms.
+
+Appended rows take their **position from the roster** rather than the
+authority. For a player the authority never heard of, his roster row is the
+only place a position for him exists.
+
+The append also strips the previous run's appends before recomputing. Normally
+`rankings.py` has just rewritten the board, but running `rosters.py` twice
+alone used to keep the old rows and then count them as already-on-the-board, so
+stale appends outlived the fix meant to remove them.
+
 **Rostered players who never resolved** get their `level` from HKB by name, but
 only for a name **no ranked player already holds**. These rows are
 disproportionately the obscure half of a shared name -- the famous half

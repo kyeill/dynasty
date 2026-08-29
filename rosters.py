@@ -242,32 +242,52 @@ def append_rostered_to_board(sport: str, roster: list[dict], auth: dict,
     if "sources_matched" not in cols:
         return 0
 
-    # Keyed on name AND team, not name alone. MLB has 152 duplicated names in
-    # the pool -- Fernando Cruz is both a Yankees reliever and a Cubs shortstop
-    # -- so matching on name would skip a rostered player just because someone
-    # else shares his name.
-    def ident(name, team):
-        return (normalize_name(name), str(team or "").upper())
+    # Drop any previous run's appends before recomputing. Normally rankings.py
+    # has just rewritten the board and there are none, but running rosters.py
+    # twice without it kept the old rows and then counted them as "already on
+    # the board", so stale appends survived every later run -- which is how a
+    # batch of duplicates outlived the fix that was supposed to remove them.
+    stale = len(board)
+    board = [r for r in board if str(r.get("sources_matched", "")) != "0"]
+    if len(board) != stale:
+        for i, r in enumerate(board, 1):
+            r["combined_rank"] = i
 
-    on_board = {ident(r["player"], r.get("team")) for r in board}
+    # How many players of each name the board ALREADY has. A roster spot is
+    # covered by a ranked row of the same name, one for one.
+    #
+    # An earlier version keyed on (name, team) and re-resolved the name here to
+    # get the team. That was wrong twice over: the resolver refuses an ambiguous
+    # name by design, so for exactly the duplicated names it matters for it
+    # returned nothing, the team came out blank, and the pair never matched the
+    # board's (name, TEAM) -- appending a phantom. Fourteen of twenty-two MLB
+    # appends were second copies of a player already ranked: Cade Smith, Jose
+    # Ramirez, Will Smith, Julio Rodriguez.
+    #
+    # Counting is exact where matching was not. One rostered Cade Smith and one
+    # ranked Cade Smith cancel. Two rostered Jose Ramirezes against one ranked
+    # still appends the second, which is the case the (name, team) key was
+    # reaching for.
+    covered = Counter(normalize_name(r["player"]) for r in board)
     source_levels = _levels_from_sources(
         sport, {normalize_name(r["player"]) for r in board})
 
-    extra, seen = [], set()
+    extra = []
     for r in roster:
         key = normalize_name(r["player"])
+        if covered[key] > 0:
+            covered[key] -= 1
+            continue
         uid = resolve(aliases.get(key, key))
         a = auth.get(uid) if uid else None
-        who = ident(r["player"], (a or {}).get("team"))
-        if who in on_board or who in seen:
-            continue
-        seen.add(who)
         row = {c: "" for c in cols}
         row["player"] = r["player"]
-        row["pos"] = (a or {}).get("pos", "")
+        # The roster's own position wins. For a player the authority never
+        # heard of -- Angeibel Gomez -- it is the only position that exists.
+        row["pos"] = r.get("roster_pos") or (a or {}).get("pos", "")
         row["team"] = (a or {}).get("team", "")
         if "level" in row:
-            row["level"] = source_levels.get(normalize_name(r["player"]), "")
+            row["level"] = source_levels.get(key, "")
         row["sources_matched"] = 0   # every other column, `value` included, stays blank
         extra.append(row)
 
@@ -428,7 +448,10 @@ def run_sport(sport: str, args) -> int:
             # Dropping it would quietly shrink a real roster. Still reported.
             unresolved.append({"player": r["name"], "fantasy_team": r["fantasy_team"]})
             canonical = r["name"]
-        rows.append({"player": canonical, "fantasy_team": r["fantasy_team"]})
+        rows.append({"player": canonical, "fantasy_team": r["fantasy_team"],
+                     # Not written to rosters_<sport>.csv -- that stays
+                     # player,fantasy_team. Carried for the board append.
+                     "roster_pos": r.get("pos", "")})
 
     # Apply the same expansions rankings.py worked out, so a player isn't
     # "Giannis Antetokounmpo" on one tab and "G. Antetokounmpo" on the other.
