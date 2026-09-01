@@ -87,7 +87,8 @@ function importRankings() {
  * it says so: `stale = YES` with how many days old the data is.
  */
 function importStatus_(book) {
-  var rows = [['sport', 'source', 'rows', 'stale', 'age_days', 'note']];
+  var rows = [refreshLine_(), ['', '', '', '', '', ''],
+              ['sport', 'source', 'rows', 'stale', 'age_days', 'note']];
   SPORTS.forEach(function (sport) {
     var url = RAW + '_source_status_' + sport.toLowerCase() + '.csv?t=' + Date.now();
     var resp = UrlFetchApp.fetch(url, { muteHttpExceptions: true });
@@ -97,9 +98,37 @@ function importStatus_(book) {
       rows.push([sport].concat(r));
     });
   });
-  if (rows.length > 1) {
+  if (rows.length > 3) {
     writeTab_(book, 'Source Status', rows);
   }
+}
+
+
+/**
+ * The single most important line in the sheet: when the data was last rebuilt.
+ *
+ * Without it a dead pipeline is invisible. This script would keep succeeding,
+ * keep writing the same numbers, and the tabs would look completely normal
+ * however long the refresh had been stopped -- which is exactly what happened
+ * while the GitHub schedule was silently never firing. Everything else here
+ * reports on a run that HAPPENED; this reports whether one happened at all.
+ */
+function refreshLine_() {
+  var resp = UrlFetchApp.fetch(RAW + '_last_refresh.txt?t=' + Date.now(),
+                               { muteHttpExceptions: true });
+  if (resp.getResponseCode() !== 200) {
+    return ['LAST REFRESHED', 'unknown', 'could not read _last_refresh.txt',
+            '', '', ''];
+  }
+  var stamp = resp.getContentText().trim();
+  var days = Math.floor(
+      (new Date().setHours(0, 0, 0, 0) - new Date(stamp + 'T00:00:00')) / 86400000);
+  var age = isNaN(days) ? '' :
+            days <= 0 ? 'today' :
+            days === 1 ? 'yesterday' : days + ' days ago';
+  // Two days means a refresh was missed entirely -- it runs daily.
+  var flag = (!isNaN(days) && days >= 2) ? 'STALE -- the daily refresh has not run' : '';
+  return ['LAST REFRESHED', stamp, age, flag, '', ''];
 }
 
 
