@@ -259,7 +259,7 @@ Kirk Cousins,LV,257
 Brandon Aiyuk,SF,258
 Isaiah Davis,NYJ,259
 Brenen Thompson,LAC,260
-Jaydon Blue,FA,261
+Jaydon Blue,PHI,261
 Deshaun Watson,CLE,262
 Colby Parkinson,LAR,263
 Brashard Smith,KC,264
@@ -357,14 +357,14 @@ Josh Cameron,JAC,355
 Nate Boerkircher,JAC,356
 Mitchell Evans,CAR,357
 Joe Royer,CLE,358
-Robert Henry Jr.,FA,359
+Robert Henry Jr.,WAS,359
 Demarcus Robinson,SF,360
 Olamide Zaccheaus,ATL,361
 Nick Westbrook-Ikhine,FA,362
 Roschon Johnson,CHI,363
 Deion Burks,IND,364
 Elijah Higgins,ARI,365
-Tyren Montgomery,FA,366
+Tyren Montgomery,TEN,366
 Jonnu Smith,GB,367
 Eric Rivers Jr.,FA,368
 Tommy Tremble,CAR,369
@@ -391,7 +391,7 @@ Adam Trautman,DEN,389
 Will Kacmarek,MIA,390
 Jaren Kanak,TEN,391
 Carsen Ryan,CLE,392
-Jawhar Jordan,FA,393
+Jawhar Jordan,HOU,393
 Chase Roberts,FA,394
 Elijah Moore,PHI,395
 Jordan Watkins,SF,396
@@ -408,7 +408,7 @@ Jared Wiley,KC,406
 Dean Connors,FA,407
 Vinny Anthony II,ATL,408
 Durham Smythe,BAL,409
-Greg Dortch,FA,410
+Greg Dortch,BUF,410
 Luke Schoonmaker,DAL,411
 Taylen Green,CLE,412
 Mo Alie-Cox,IND,413
@@ -466,8 +466,8 @@ Isaiah Hodgins,FA,464
 RJ Maryland,GB,465
 Foster Moreau,HOU,466
 Van Jefferson,FA,467
-Brevin Jordan,FA,468
-Xavier Restrepo,TEN,469
+Brevin Jordan,HOU,468
+Xavier Restrepo,FA,469
 Austin Ekeler,FA,470
 Gabe Davis,FA,471
 Antonio Gibson,FA,472
@@ -484,7 +484,7 @@ Damien Martinez,FA,482
 Alexander Mattison,FA,483
 Sincere McCormick,FA,484
 Dane Key,DEN,485
-Harrison Wallace III,FA,486
+Harrison Wallace III,ARI,486
 Romello Brinson,FA,487
 Khalil Herbert,FA,488
 Noah Thomas,FA,489
@@ -520,7 +520,7 @@ Jamari Thrash,CLE,518
 Marquez Valdes-Scantling,FA,519
 Arian Smith,NYJ,520
 Tim Patrick,NYJ,521
-Mitch Tinsley,FA,522
+Mitch Tinsley,HOU,522
 Zay Jones,FA,523
 Darius Cooper,PHI,524
 Jonathan Mingo,DAL,525
@@ -531,8 +531,8 @@ David Moore,CAR,529
 Allen Lazard,FA,530
 Cedrick Wilson Jr.,FA,531
 Casey Washington,CAR,532
-Chris Moore,FA,533
-Ricky White III,FA,534
+Chris Moore,BAL,533
+Ricky White III,SEA,534
 Ray-Ray McCloud III,CHI,535
 Dante Pettis,FA,536
 Scotty Miller,FA,537
