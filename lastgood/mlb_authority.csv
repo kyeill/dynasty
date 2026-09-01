@@ -383,7 +383,7 @@ Aaron Nola,PHI,SP,02i3o
 Isiah Kiner-Falefa,PIT/TOR,"2B,3B,SS,OF",031b3
 Eduard Bazardo,SEA,RP,04mjn
 Jordan Leasure,CHW,RP,0614c
-Ryan Gusto,HOU/MIA,SP,0518s
+Ryan Gusto,HOU/MIA,"SP,RP",0518s
 Robert Garcia,TEX,RP,04enz
 Garrett Cleavinger,TB,RP,03qju
 Matt Strahm,PHI,RP,02nax
@@ -670,7 +670,7 @@ Aaron Bummer,ATL,RP,03drc
 Otto Kemp,PHI,"1B,2B,3B,OF",066al
 Cole Henry,WSH,RP,05gs4
 Curtis Mead,TB/CHW,"1B,2B,3B",05ahe
-Jordan Hicks,SF/BOS,"SP,RP",03vcw
+Jordan Hicks,SF/BOS,RP,03vcw
 David Festa,MIN,SP,05yav
 Bowden Francis,TOR,SP,0421k
 Brennan Bernardino,BOS,RP,061t3
@@ -679,7 +679,7 @@ Masataka Yoshida,BOS,UT,05rc3
 Jose Alvarado,PHI,RP,03btm
 Casey Legumina,SEA,RP,0427a
 Troy Melton,DET,"SP,RP",05uc4
-Tim Tawa,ARI,"1B,2B,OF",05y4m
+Tim Tawa,ARI,"1B,2B,3B,OF",05y4m
 Steven Cruz,KC,RP,05tjx
 Tristan Beck,SF,RP,04afk
 Kyle Bradish,BAL,SP,04pq4
@@ -1234,7 +1234,7 @@ Sebastian Rivero,LAA,C,04aod
 Carl Edwards Jr.,LAA/TEX,RP,02of2
 David Villar,SF/NYM,"1B,3B",04pvh
 Sammy Peralta,LAA,RP,051dq
-Denzer Guzman,LAA,"3B,SS",05m1b
+Denzer Guzman,LAA,SS,05m1b
 Pablo Reyes,NYY/NYM,"1B,3B",03azu
 Austin Barnes,LAD/SF,C,02bwt
 Ben Joyce,LAA,RP,060eu
@@ -1635,7 +1635,7 @@ George Klassen,LAA,SP,067xm
 Sandro Gaston,HOU,1B,0629s
 Ethan Holliday,COL,SS,062cx
 Joe Elbis,ARI,SP,05uoy
-Anthony Kay,CHW,SP,041mb
+Anthony Kay,CHW,"SP,RP",041mb
 Noah Schultz,CHW,SP,05uc7
 Hagen Smith,CHW,"SP,RP",05zd4
 Henry Bolte,ATH,OF,05y7t
@@ -1789,7 +1789,7 @@ Max Anderson,DET,2B,06dmp
 Jonathon Long,CHC,1B,06fwm
 Daniel Espino,CLE,"SP,RP",04ya2
 John Gil,ATL,SS,06hsz
-Jacob Gonzalez,CHW,"1B,2B,SS",05tzp
+Jacob Gonzalez,CHW,SS,05tzp
 Jonathan Santucci,NYM,SP,060ue
 Cris Rodriguez,DET,OF,06ps4
 Taitn Gray,TB,C,06y9r
