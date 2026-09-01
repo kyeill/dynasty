@@ -89,6 +89,15 @@ jobs:
         if: ${{ !cancelled() }}
         run: python rosters.py --sport all
 
+      # Runs BEFORE the commit, so `git show HEAD:` is still yesterday's board
+      # to compare against. Failing here does not stop the commit -- a degraded
+      # board is still worth publishing, it just should not be published
+      # quietly. The point is only to turn the run red, because a red run is
+      # the one thing in this pipeline that reaches an inbox.
+      - name: Check the boards are healthy
+        if: ${{ !cancelled() }}
+        run: python check_health.py
+
       - name: Commit whatever changed
         if: ${{ !cancelled() }}
         run: |

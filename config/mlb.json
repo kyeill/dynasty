@@ -96,5 +96,6 @@
       "AA",
       "AAA"
     ]
-  }
+  },
+  "stale_fail_days": 14
 }

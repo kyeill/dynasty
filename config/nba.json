@@ -66,5 +66,6 @@
     "player_col": "Player",
     "team_col": "Status",
     "overrides_tab": "Overrides"
-  }
+  },
+  "stale_fail_days": 14
 }

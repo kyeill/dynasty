@@ -239,6 +239,30 @@ are missing from the *naming authority* instead, because those public leagues
 carry a narrower player pool than yours: Brandon Clarke isn't among Yahoo 667's
 662 players, and two MLB prospects aren't in the Fantrax pool.
 
+## How a failure reaches you
+
+The pipeline has exactly one push notification: GitHub emails on a failed
+workflow run. Everything else is written to a file or a tab and is seen only if
+someone looks. So `check_health.py` deliberately fails the run on the two
+things that never happen legitimately:
+
+- a source stuck on its last-good copy for **14+ days** (`stale_fail_days`)
+- a board **collapsing** -- under 80% of yesterday's rows, or a column going
+  from over half populated to under a fifth
+
+It runs before the commit, so `git show HEAD:` is still yesterday's board, and
+failing does **not** stop the commit: a degraded board is still worth
+publishing, it just should not be published quietly.
+
+It is deliberately not a general diff. The board changes every day, so anything
+reporting ordinary movement would fire constantly and be ignored within a week
+-- and an ignored alarm buries the real one. `check_regression.py` remains the
+tool for "what moved"; this is only for "something is broken".
+
+The Sheet's `Source Status` tab opens with the **last refreshed** date, which
+is the only signal that catches the pipeline stopping entirely. Every other
+signal reports on a run that happened.
+
 ## When a source goes dark
 
 Hashtag's keeper page went from 760 rows to zero on 2026-08-26 -- HTTP 200 the
