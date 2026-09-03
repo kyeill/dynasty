@@ -1,33 +1,33 @@
 ﻿reason,player,hkb_rank,best_rank
 "ranked, no name match (add to aliases)",elmer rodriguez cruz,314,314
-"ranked, no name match (add to aliases)",francisco renteria,399,399
-"ranked, no name match (add to aliases)",angeibel gomez,553,553
-"ranked, no name match (add to aliases)",wandy asigen,590,590
-"ranked, no name match (add to aliases)",yostin pena,723,723
-"ranked, no name match (add to aliases)",jacob webb,733,733
-"ranked, no name match (add to aliases)",johenssy colome,747,747
-"ranked, no name match (add to aliases)",alex wood,852,852
-"ranked, no name match (add to aliases)",angel nunez,852,852
-"ranked, no name match (add to aliases)",anthony rizzo,852,852
-"ranked, no name match (add to aliases)",eduardo herrera,852,852
-"ranked, no name match (add to aliases)",elian rosario,852,852
-"ranked, no name match (add to aliases)",fabricio blanco,852,852
-"ranked, no name match (add to aliases)",gino groover,852,852
-"ranked, no name match (add to aliases)",james paxton,852,852
-"ranked, no name match (add to aliases)",jose ramos,852,852
-"ranked, no name match (add to aliases)",juan rijo,852,852
-"ranked, no name match (add to aliases)",kevin kiermaier,852,852
-"ranked, no name match (add to aliases)",kevin pillar,852,852
-"ranked, no name match (add to aliases)",kyle gibson,852,852
-"ranked, no name match (add to aliases)",ricardo cabrera,852,852
-"ranked, no name match (add to aliases)",ricki moneys,852,852
-"ranked, no name match (add to aliases)",ross stripling,852,852
-"ranked, no name match (add to aliases)",ryan weiss,852,852
-"ranked, no name match (add to aliases)",santiago solarte,852,852
-"ranked, no name match (add to aliases)",sean linan,852,852
-"ranked, no name match (add to aliases)",victor valdez,852,852
-"ranked, no name match (add to aliases)",whit merrifield,852,852
-"ranked, no name match (add to aliases)",yeremi cabrera,852,852
+"ranked, no name match (add to aliases)",francisco renteria,402,402
+"ranked, no name match (add to aliases)",angeibel gomez,552,552
+"ranked, no name match (add to aliases)",wandy asigen,592,592
+"ranked, no name match (add to aliases)",yostin pena,713,713
+"ranked, no name match (add to aliases)",jacob webb,728,728
+"ranked, no name match (add to aliases)",johenssy colome,746,746
+"ranked, no name match (add to aliases)",alex wood,849,849
+"ranked, no name match (add to aliases)",angel nunez,849,849
+"ranked, no name match (add to aliases)",anthony rizzo,849,849
+"ranked, no name match (add to aliases)",eduardo herrera,849,849
+"ranked, no name match (add to aliases)",elian rosario,849,849
+"ranked, no name match (add to aliases)",fabricio blanco,849,849
+"ranked, no name match (add to aliases)",gino groover,849,849
+"ranked, no name match (add to aliases)",james paxton,849,849
+"ranked, no name match (add to aliases)",jose ramos,849,849
+"ranked, no name match (add to aliases)",juan rijo,849,849
+"ranked, no name match (add to aliases)",kevin kiermaier,849,849
+"ranked, no name match (add to aliases)",kevin pillar,849,849
+"ranked, no name match (add to aliases)",kyle gibson,849,849
+"ranked, no name match (add to aliases)",ricardo cabrera,849,849
+"ranked, no name match (add to aliases)",ricki moneys,849,849
+"ranked, no name match (add to aliases)",ross stripling,849,849
+"ranked, no name match (add to aliases)",ryan weiss,849,849
+"ranked, no name match (add to aliases)",santiago solarte,849,849
+"ranked, no name match (add to aliases)",sean linan,849,849
+"ranked, no name match (add to aliases)",victor valdez,849,849
+"ranked, no name match (add to aliases)",whit merrifield,849,849
+"ranked, no name match (add to aliases)",yeremi cabrera,849,849
 "on authority, unranked by all sources",Kyle Hendricks,,
 "on authority, unranked by all sources",Charlie Morton,,
 "on authority, unranked by all sources",Clayton Kershaw,,
@@ -65,6 +65,7 @@
 "on authority, unranked by all sources",Tyler Heineman,,
 "on authority, unranked by all sources",Jorge Alcala,,
 "on authority, unranked by all sources",Kaleb Ort,,
+"on authority, unranked by all sources",Dylan Carlson,,
 "on authority, unranked by all sources",Christian Koss,,
 "on authority, unranked by all sources",Michael Kelly,,
 "on authority, unranked by all sources",Chase Shugart,,
@@ -163,7 +164,6 @@
 "on authority, unranked by all sources",Evan Sisk,,
 "on authority, unranked by all sources",Bryce Johnson,,
 "on authority, unranked by all sources",Easton Lucas,,
-"on authority, unranked by all sources",Bryse Wilson,,
 "on authority, unranked by all sources",Anthony Molina,,
 "on authority, unranked by all sources",Corbin Martin,,
 "on authority, unranked by all sources",Michael Tonkin,,
@@ -432,6 +432,7 @@
 "on authority, unranked by all sources",Bruce Zimmermann,,
 "on authority, unranked by all sources",Jack Little,,
 "on authority, unranked by all sources",John Rooney,,
+"on authority, unranked by all sources",Aaron Schunk,,
 "on authority, unranked by all sources",Drew Avans,,
 "on authority, unranked by all sources",Tucker Barnhart,,
 "on authority, unranked by all sources",Eli Morgan,,
@@ -646,7 +647,6 @@
 "on authority, unranked by all sources",Keyner Martinez,,
 "on authority, unranked by all sources",Aaron Walton,,
 "on authority, unranked by all sources",Eliazar Dishmey,,
-"on authority, unranked by all sources",Alex McFarlane,,
 "on authority, unranked by all sources",Juan Martinez,,
 "on authority, unranked by all sources",Andrew Sears,,
 "on authority, unranked by all sources",Josh Ekness,,
@@ -948,6 +948,7 @@
 "on authority, unranked by all sources",Wilson Rodriguez,,
 "on authority, unranked by all sources",Najer Victor,,
 "on authority, unranked by all sources",Frank Cairone,,
+"on authority, unranked by all sources",Nick Nastrini,,
 "on authority, unranked by all sources",Wen-Hui Pan,,
 "on authority, unranked by all sources",Cameron Weston,,
 "on authority, unranked by all sources",Felix Arronde,,
@@ -956,6 +957,7 @@
 "on authority, unranked by all sources",Jose Acuna,,
 "on authority, unranked by all sources",Coleman Borthwick,,
 "on authority, unranked by all sources",Lisbel Diaz,,
+"on authority, unranked by all sources",Tyler Gentry,,
 "on authority, unranked by all sources",Reiner Herrera,,
 "on authority, unranked by all sources",Will Sanders,,
 "on authority, unranked by all sources",Khadim Diaw,,
@@ -8236,7 +8238,6 @@
 "on authority, unranked by all sources",Zach Pop,,
 "on authority, unranked by all sources",Robert Stock,,
 "on authority, unranked by all sources",Jonathan Pintaro,,
-"on authority, unranked by all sources",Drew Sommers,,
 "on authority, unranked by all sources",Will Banfield,,
 "on authority, unranked by all sources",Greg Allen,,
 "on authority, unranked by all sources",Cody Poteet,,
