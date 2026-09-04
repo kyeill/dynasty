@@ -133,19 +133,33 @@ def _harryknowsball(cfg: dict, fetch: Fetcher) -> list[dict]:
     return rows
 
 
-def _latest_post(feed_url: str, fetch: Fetcher):
-    """Newest post URL and date from a WordPress category feed.
+# Post date per extra-rank source, filled during the fetch and read by
+# rankings.py for the status file. A module-level dict because the source
+# interface returns rows, and widening it for one sport's metadata would
+# change all three.
+_POST_DATES: dict = {}
+
+
+def _recent_posts(feed_url: str, fetch: Fetcher, limit: int = 5):
+    """Recent (url, date) pairs from a WordPress category feed, newest first.
 
     Parse <item> blocks rather than every <link> -- the channel's own <link>
     comes first in an RSS document and is the category page, not a post.
+
+    Several, not one. The category carries whatever the site files under it,
+    and the weekly ranking is not guaranteed to be the newest thing in it: on
+    2026-09-01 PitcherList published a one-off playoff schedule guide, which
+    took the top slot and has no rank column at all. Taking item 1 blindly
+    meant sp_rank silently emptied while the feed was working perfectly.
     """
     xml = fetch(feed_url, max_age_hours=6)
-    items = re.findall(r"<item>(.*?)</item>", xml, re.S)
-    if not items:
-        return None, None
-    link = re.search(r"<link>\s*(https?://[^<\s]+)", items[0])
-    pub = re.search(r"<pubDate>([^<]+)</pubDate>", items[0])
-    return (link.group(1) if link else None, pub.group(1)[:16] if pub else None)
+    out = []
+    for item in re.findall(r"<item>(.*?)</item>", xml, re.S)[:limit]:
+        link = re.search(r"<link>\s*(https?://[^<\s]+)", item)
+        pub = re.search(r"<pubDate>([^<]+)</pubDate>", item)
+        if link:
+            out.append((link.group(1), pub.group(1)[:16] if pub else None))
+    return out
 
 
 def _pitcherlist(feed_url: str, fetch: Fetcher, label: str) -> list[dict]:
@@ -156,28 +170,47 @@ def _pitcherlist(feed_url: str, fetch: Fetcher, label: str) -> list[dict]:
     (100) and SOLDs (100) -- so matching on headers alone silently grabs the
     wrong list. Always take the LAST match, which is the SOLDs board.
     """
-    post, posted = _latest_post(feed_url, fetch)
-    if not post:
+    posts = _recent_posts(feed_url, fetch)
+    if not posts:
         print(f"[warn] {label}: no posts in feed {feed_url}")
         return []
-    print(f"[fetch] {label}: {posted} -- {post.rstrip('/').split('/')[-1][:60]}")
 
-    html = fetch(post, max_age_hours=24)
-    hits = [g for g in html_tables(html)
-            if PL_HEADERS <= {h.strip() for h in g[0]}]
-    if not hits:
-        print(f"[warn] {label}: no table with headers {sorted(PL_HEADERS)}")
-        return []
-
-    rows = []
-    for r in grid_to_rows(hits[-1]):
-        rank = to_num(r.get("Rank"))
-        if rank is None:
+    skipped = []
+    for post, posted in posts:
+        slug = post.rstrip("/").split("/")[-1][:60]
+        html = fetch(post, max_age_hours=24)
+        hits = [g for g in html_tables(html)
+                if PL_HEADERS <= {h.strip() for h in g[0]}]
+        if not hits:
+            skipped.append(f"{posted} ({slug})")
             continue
-        name = _TIER_SUFFIX.sub("", str(r.get("Pitcher", "")).strip()).strip()
-        rows.append({"name": name, "team": str(r.get("Team", "")).strip(),
-                     "rank": int(rank)})
-    return rows
+
+        rows = []
+        for r in grid_to_rows(hits[-1]):
+            rank = to_num(r.get("Rank"))
+            if rank is None:
+                continue
+            name = _TIER_SUFFIX.sub("", str(r.get("Pitcher", "")).strip()).strip()
+            rows.append({"name": name, "team": str(r.get("Team", "")).strip(),
+                         "rank": int(rank)})
+        if not rows:
+            skipped.append(f"{posted} ({slug})")
+            continue
+
+        print(f"[fetch] {label}: {posted} -- {slug}")
+        for s in skipped:
+            print(f"[note]  {label}: skipped {s} -- no ranking table in it")
+        # The date is returned so the run can report how old this week's post
+        # is. A feed that keeps serving a three-week-old ranking is the failure
+        # that looks most like success.
+        _POST_DATES[label] = posted
+        return rows
+
+    print(f"[warn] {label}: none of the {len(posts)} most recent posts had a "
+          f"table with headers {sorted(PL_HEADERS)} -- checked "
+          + ", ".join(skipped))
+    _POST_DATES[label] = None
+    return []
 
 
 # ------------------------------------------------------------ interface ----
@@ -185,6 +218,18 @@ def _pitcherlist(feed_url: str, fetch: Fetcher, label: str) -> list[dict]:
 
 def rank_sources(cfg: dict, fetch: Fetcher) -> dict:
     return {"hkb": _harryknowsball(cfg["sources"]["hkb"], fetch)}
+
+
+def extra_status() -> dict:
+    """Publication date of the post each extra-rank column came from.
+
+    Read by rankings.py into _source_status_<sport>.csv, so the Sheet says how
+    old this week's PitcherList ranking is. These columns had no status line at
+    all before 2026-09-04: no floor, no fallback, no row in the status file.
+    sp_rank silently went to zero players and stayed there, and nothing said so
+    -- the only trace was one [warn] line in a log nobody reads.
+    """
+    return dict(_POST_DATES)
 
 
 def extra_ranks(cfg: dict, fetch: Fetcher) -> dict:

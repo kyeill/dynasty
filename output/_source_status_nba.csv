@@ -1,5 +1,5 @@
 ﻿source,rows,stale,age_days,note
 dynasty,400,,,
-keeper,751,,,
+keeper,751,YES,3.2,live pull had 0
 authority,662,,,
 current,336,,,

@@ -31,6 +31,7 @@ import argparse
 import importlib
 import json
 import sys
+from datetime import datetime
 import time
 from pathlib import Path
 
@@ -51,6 +52,19 @@ def load_config(sport: str) -> dict:
     # utf-8-sig, not utf-8: Notepad (and PowerShell's Set-Content) write a BOM,
     # which plain json.loads rejects outright.
     return json.loads(path.read_text(encoding="utf-8-sig"))
+
+
+def post_age_days(posted: str | None) -> float | None:
+    """Days since an RSS pubDate like 'Tue, 25 Aug 2026'."""
+    if not posted:
+        return None
+    for fmt in ("%a, %d %b %Y", "%d %b %Y"):
+        try:
+            when = datetime.strptime(posted.strip()[:16].strip(), fmt)
+        except ValueError:
+            continue
+        return (datetime.now() - when).total_seconds() / 86400
+    return None
 
 
 def sharp_drop_warning(rows: list[dict], sport: str, source: str) -> None:
@@ -148,12 +162,13 @@ def run_sport(sport: str, args) -> int:
 
     # Optional reference columns -- resolved onto the same players, but never
     # part of the blended ordering. A sport without them is unaffected.
-    extras = {}
+    extras, extra_rows = {}, {}
     if hasattr(mod, "extra_ranks"):
         for key, rows in mod.extra_ranks(cfg, fetch).items():
             extras[key] = index_by_key(rows, aliases, resolve) if rows else {}
             hits = sum(1 for r in board if r["key"] in extras[key])
             print(f"[parse] {key}: {len(rows)} players, {hits} matched onto the board")
+            extra_rows[key] = len(rows)
 
     for r in board:
         k = r["key"]
@@ -249,13 +264,32 @@ def run_sport(sport: str, args) -> int:
     if snap:
         print(f"[hist]  archived -> output/history/boards/{sport}/{snap.name}")
 
+    # Extra-rank columns get a status line too. They are weekly posts rather
+    # than live pages, so "stale" here means a week was missed, not that the
+    # site is down -- but either way the Sheet should say how old the ranking
+    # is instead of showing a column that silently stopped being updated.
+    if hasattr(mod, "extra_status"):
+        for key, posted in mod.extra_status().items():
+            age = post_age_days(posted)
+            weekly_limit = int(cfg.get("extra_stale_days", 10))
+            status.append({
+                "source": key,
+                "rows": extra_rows.get(key, 0),
+                "stale": "YES" if (age is None or age >= weekly_limit) else "",
+                "age_days": "" if age is None else round(age, 1),
+                "note": posted or "no post parsed",
+            })
+
     # Written where the Sheets can reach it: a board built on a stale source
     # has to say so somewhere other than a log nobody reads.
     write_csv(OUTPUT_DIR / f"_source_status_{sport}.csv", status,
               ["source", "rows", "stale", "age_days", "note"])
     stale = [s for s in status if s["stale"]]
     if stale:
-        print(f"[STALE] this board used last-good data for: "
+        # Not "used last-good data": that is true of a guarded source but not
+        # of a weekly post, where stale just means the newest one is old. Same
+        # consequence for the board either way, so say the consequence.
+        print(f"[STALE] this board is carrying stale data: "
               + ", ".join(f"{s['source']} ({s['age_days']}d)" for s in stale))
 
     # Two very different problems, so label them. Only the first is actionable:

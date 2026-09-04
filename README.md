@@ -239,6 +239,23 @@ are missing from the *naming authority* instead, because those public leagues
 carry a narrower player pool than yours: Brandon Clarke isn't among Yahoo 667's
 662 players, and two MLB prospects aren't in the Fantrax pool.
 
+## PitcherList: take the newest post that PARSES
+
+`sp_rank` and `rp_rank` come from weekly PitcherList posts found through a
+WordPress category feed, so each week is a new URL. Do **not** take item 1.
+
+The category carries whatever the site files under it, and the weekly ranking
+is not guaranteed to be the newest thing in it. On 2026-09-01 PitcherList
+published a one-off playoff schedule guide with no rank column; it took the top
+slot, and `sp_rank` went from 99 players to **zero** while the feed itself was
+working perfectly. The reader now walks the five most recent posts and uses the
+first one that yields a ranking table, reporting the ones it skipped.
+
+Both columns now appear in `_source_status_<sport>.csv` with the post date and
+its age, so a weekly ranking that stops being weekly is visible in the Sheet.
+They are still not blended and still have no last-good fallback -- they are
+reference columns, and an empty one is only ever a missing column.
+
 ## How a failure reaches you
 
 The pipeline has exactly one push notification: GitHub emails on a failed
