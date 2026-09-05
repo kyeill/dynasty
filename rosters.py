@@ -453,11 +453,39 @@ def run_sport(sport: str, args) -> int:
                      # player,fantasy_team. Carried for the board append.
                      "roster_pos": r.get("pos", "")})
 
-    # Apply the same expansions rankings.py worked out, so a player isn't
-    # "Giannis Antetokounmpo" on one tab and "G. Antetokounmpo" on the other.
+    # Expansions rankings.py worked out, so a player isn't "Giannis
+    # Antetokounmpo" on one tab and "G. Antetokounmpo" on the other.
     fullnames = load_fullnames(sport)
-    if fullnames:
-        by_display = {auth[k]["name"]: v for k, v in fullnames.items() if k in auth}
+    by_display = ({auth[k]["name"]: v for k, v in fullnames.items() if k in auth}
+                  if fullnames else {})
+
+    def _resolve_name(raw_name: str):
+        key = normalize_name(raw_name)
+        key = aliases.get(key, key)
+        uid = resolve(key)
+        if uid is None:
+            return None
+        # The AUTHORITY's spelling, deliberately not the expanded one, because
+        # the rows this is matched against have not been expanded yet either.
+        # Both sides must name a player identically or an override cannot find
+        # him: resolving to "K. Caldwell-Pope" against rows already reading
+        # "Kentavious Caldwell-Pope" made the override add a second copy under
+        # the old owner instead of moving him, and both rows reached the board.
+        # Expansion happens once, below, after this has done its matching.
+        return auth[uid]["name"]
+
+    # Overrides FIRST, then one expansion pass over everything, then dedup.
+    # Expanding before the overrides were applied is what let the two spellings
+    # coexist; doing it once, afterwards, means every row -- parsed or manually
+    # added -- is spelled the same way before anything is deduplicated.
+    rows, ov_notes = apply_overrides(rows, override_rows(rcfg, sport, fetch),
+                                     _resolve_name)
+    if ov_notes:
+        print(f"[manual]  {len(ov_notes)} override(s)")
+        for n in ov_notes:
+            print(f"          {n}")
+
+    if by_display:
         hit = sum(1 for r in rows if r["player"] in by_display)
         if hit:
             for r in rows:
@@ -471,19 +499,6 @@ def run_sport(sport: str, args) -> int:
             seen.add(pair)
             deduped.append(r)
     out = sorted(deduped, key=lambda r: (r["fantasy_team"], r["player"]))
-
-    def _resolve_name(raw_name: str):
-        key = normalize_name(raw_name)
-        key = aliases.get(key, key)
-        uid = resolve(key)
-        return auth[uid]["name"] if uid is not None else None
-
-    out, ov_notes = apply_overrides(out, override_rows(rcfg, sport, fetch),
-                                    _resolve_name)
-    if ov_notes:
-        print(f"[manual]  {len(ov_notes)} override(s)")
-        for n in ov_notes:
-            print(f"          {n}")
 
     dest = OUTPUT_DIR / f"rosters_{sport}.csv"
     write_csv(dest, out, ["player", "fantasy_team"])

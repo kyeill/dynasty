@@ -170,6 +170,21 @@ require spaces around the hyphen *and* an upper-case position, or
 `N. Alexander-Walker` ends in something that looks exactly like it
 (`der-Walker`) and gets truncated to `N. Alexan`.
 
+### Overrides run BEFORE the name expansion
+
+Order matters here and the failure is silent. An override is matched by name
+against the parsed rows, so both sides must spell a player identically. The
+expansion (`K. Caldwell-Pope` -> `Kentavious Caldwell-Pope`) used to run first,
+so an override resolving to the authority's abbreviated spelling could not find
+the already-expanded row, and **added a second copy under the old owner instead
+of moving the player**. Two rows, one man, both published -- and the give-away
+was an abbreviated name appearing on a board where expansion is supposed to
+have removed them all.
+
+So: resolve and apply overrides against authority spellings, expand once
+afterwards, then deduplicate. Expanding earlier means the two sides disagree;
+expanding later than the dedup means duplicates survive it.
+
 ### Keeping rosters current out of season
 
 Yahoo leagues go dormant, so from roughly January the NFL pages stop reflecting
