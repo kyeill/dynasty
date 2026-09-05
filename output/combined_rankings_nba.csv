@@ -249,7 +249,7 @@
 248,Max Strus,F,LAC,5.1,297.74,206,484,198,8.8,2
 249,Jalen Smith,"F,C",CHI,5.0,297.75,207,482,253,4.8,2
 250,Dillon Brooks,F,PHX,5.0,299.06,173,555,159,12.5,2
-251,Cody Williams,"G,F",UTA,4.9,299.26,259,381,326,0.5,2
+251,Cody Williams,"G,F",MIN,4.9,299.26,259,381,326,0.5,2
 252,Brice Sensabaugh,"G,F",UTA,4.8,299.39,239,422,249,5.0,2
 253,De'Anthony Melton,G,GSW,4.8,300.01,235,432,233,6.1,2
 254,Brandon Williams,G,GSW,4.7,300.53,287,328,,,2
@@ -445,7 +445,7 @@
 444,Jahmir Young,G,MIA,0.0,425.09,,474,,,1
 445,Bronny James,G,LAL,0.0,427.2,348,588,,,2
 446,Marvin Bagley III,"F,C",DEN,0.0,428.25,321,646,234,6.1,2
-447,Josh Green,"G,F",MIN,0.0,430.27,391,510,,,2
+447,Josh Green,"G,F",UTA,0.0,430.27,391,510,,,2
 448,Jonathan Isaac,"F,C",ORL,0.0,430.48,379,535,275,3.4,2
 449,Keaton Wallace,G,ATL,0.0,431.03,,492,,,1
 450,Koby Brea,G,PHX,0.0,434.33,,502,,,1
@@ -503,7 +503,7 @@
 502,Joe Ingles,F,MIN,0.0,461.06,,583,,,1
 503,Duop Reath,"F,C",ATL,0.0,461.39,,584,,,1
 504,Monté Morris,G,IND,0.0,461.72,,585,,,1
-505,JD Davison,G,HOU,0.0,462.05,,586,,,1
+505,JD Davison,G,ORL,0.0,462.05,,586,,,1
 506,Luka Garza,C,BOS,0.0,462.92,389,613,,,2
 507,Jeff Green,"F,C",HOU,0.0,463.37,,590,,,1
 508,Dalano Banton,G,BOS,0.0,464.03,,592,,,1
@@ -564,7 +564,7 @@
 563,Jevon Carter,G,ORL,0.0,504.29,,714,,,1
 564,Patrick Baldwin Jr.,F,SAC,0.0,505.94,,719,,,1
 565,TyTy Washington Jr.,G,LAC,0.0,506.93,,722,,,1
-566,John Konchar,"G,F",UTA,0.0,508.25,,726,,,1
+566,John Konchar,"G,F",MIN,0.0,508.25,,726,,,1
 567,Jalen Slawson,F,IND,0.0,509.57,,730,,,1
 568,Xavier Tillman,"F,C",CHA,0.0,510.56,,733,,,1
 569,Maxi Kleber,"F,C",LAL,0.0,510.89,,734,,,1
@@ -583,7 +583,7 @@
 582,Kenrich Williams,"F,C",OKC,0.0,519.8,,761,,,1
 583,Sidy Cissoko,F,POR,0.0,520.13,,762,,,1
 584,Anthony Gill,"F,C",WAS,0.0,520.79,,764,,,1
-585,Brandon Clarke,"F,C",,,,,,,,0
-586,Julian Reese,"F,C",DEN,,,,,,,0
-587,Micah Potter,"F,C",POR,,,,,,,0
-588,Quenton Jackson,G,IND,,,,,,,0
+585,K. Caldwell-Pope,"G,F",PHI,,,,,,,0
+586,Micah Potter,"F,C",POR,,,,,,,0
+587,Quenton Jackson,G,IND,,,,,,,0
+588,Y. Konan Niederhäuser,C,LAC,,,,,,,0

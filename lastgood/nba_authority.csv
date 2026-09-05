@@ -273,7 +273,7 @@ Aaron Wiggins,ATL,"G,F"
 Ja'Kobe Walter,TOR,G
 Klay Thompson,MIA,"G,F"
 Dominick Barlow,PHI,"F,C"
-John Konchar,UTA,"G,F"
+John Konchar,MIN,"G,F"
 Jose Alvarado,NYK,G
 Jonas Valančiūnas,DEN,C
 Marcus Smart,HOU,G
@@ -324,7 +324,7 @@ Josh Okogie,UTA,"G,F"
 Walter Clayton Jr.,MEM,G
 Svi Mykhailiuk,UTA,"G,F"
 Jarred Vanderbilt,LAL,"F,C"
-Cody Williams,UTA,"G,F"
+Cody Williams,MIN,"G,F"
 Ochai Agbaji,BKN,"G,F"
 Kris Murray,MEM,"G,F"
 Jordan Clarkson,NYK,"G,F"
@@ -334,7 +334,7 @@ Kobe Sanders,LAC,"G,F"
 Obi Toppin,IND,F
 Danny Wolf,BKN,"F,C"
 Pat Spencer,PHX,G
-Josh Green,MIN,"G,F"
+Josh Green,UTA,"G,F"
 Julian Strawther,DEN,"G,F"
 Jamir Watkins,WAS,"G,F"
 Kenrich Williams,OKC,"F,C"
@@ -506,7 +506,7 @@ Orlando Robinson,ORL,C
 Xavier Tillman,CHA,"F,C"
 Taj Gibson,MEM,C
 Mo Bamba,UTA,C
-JD Davison,HOU,G
+JD Davison,ORL,G
 Chris Youngblood,POR,G
 Wendell Moore Jr.,DET,"G,F"
 Alondes Williams,WAS,"G,F"
@@ -643,7 +643,9 @@ Trey Kaufman-Renn,MIN,F
 Christian Anderson Jr.,CHA,G
 Joshua Jefferson,BKN,F
 Ugonna Onyenso,DET,C
+Trey Townsend,CHA,F
 Arthur Kaluma,LAL,F
+Khalifa Diop,CLE,C
 Jaron Pierre Jr.,NOP,G
 Isaiah Evans,MIN,G
 Karim Lopez,MEM,F
