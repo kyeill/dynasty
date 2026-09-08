@@ -1,5 +1,5 @@
 ﻿source,rows,stale,age_days,note
 fp_dynasty,549,,,
-ktc,416,,,
+ktc,416,YES,1.0,live pull had 2
 authority,1107,,,
-current,968,,,
+current,989,,,

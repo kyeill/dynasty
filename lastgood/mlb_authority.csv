@@ -81,7 +81,7 @@ Mookie Betts,LAD,SS,02btf
 Bo Bichette,TOR,"3B,SS",041qb
 Mitch Keller,PIT,SP,03d7h
 Yusei Kikuchi,LAA,SP,04ml0
-CJ Abrams,WSH,SS,04qk8
+CJ Abrams,WSH,"2B,SS",04qk8
 Seiya Suzuki,CHC,"OF,UT",04b02
 Shane Baz,TB,SP,04cwf
 Willy Adames,SF,SS,03atq
@@ -90,7 +90,7 @@ Michael Busch,CHC,1B,04t9b
 Chris Sale,ATL,SP,01uca
 Ketel Marte,ARI,2B,0326s
 Riley Greene,DET,OF,04nb2
-David Peterson,NYM,"SP,RP",04g1x
+David Peterson,NYM,SP,04g1x
 Brandon Nimmo,NYM,OF,02bq2
 Brandon Pfaadt,ARI,"SP,RP",05lg3
 Tyler Soderstrom,ATH,"1B,OF",05gtn
@@ -356,7 +356,7 @@ Tommy Pham,PIT,OF,025fx
 Brendon Little,TOR,RP,04afl
 Bryan King,HOU,RP,06mi0
 Luke Weaver,NYY,RP,02c5l
-Willi Castro,MIN/CHC,"1B,2B,3B,SS,OF",03btu
+Willi Castro,MIN/CHC,"2B,3B,SS,OF",03btu
 Kyle Leahy,STL,"SP,RP",04q08
 Gabe Speier,SEA,RP,031fj
 Angel Martinez,CLE,"2B,SS,OF",04ydd
@@ -679,7 +679,7 @@ Masataka Yoshida,BOS,UT,05rc3
 Jose Alvarado,PHI,RP,03btm
 Casey Legumina,SEA,RP,0427a
 Troy Melton,DET,"SP,RP",05uc4
-Tim Tawa,ARI,"1B,2B,3B,OF",05y4m
+Tim Tawa,ARI,"1B,2B,OF",05y4m
 Steven Cruz,KC,RP,05tjx
 Tristan Beck,SF,RP,04afk
 Kyle Bradish,BAL,SP,04pq4
@@ -1305,7 +1305,7 @@ Bryan De La Cruz,ATL/NYY,OF,03bud
 Rhylan Thomas,SEA,OF,06653
 Manuel Margot,MIL/DET,OF,02i3d
 Colin Poche,WSH/NYM,RP,02mz1
-Craig Yoho,MIL,"SP,RP",06fzq
+Craig Yoho,MIL,SP,06fzq
 Isaiah Campbell,BOS,SP,04q6c
 Christian Montes De Oca,ARI,RP,069xv
 Nate Pearson,CHC,"SP,RP",04eec
@@ -1725,7 +1725,7 @@ Druw Jones,ARI,OF,05tdk
 Tommy White,ATH,"1B,3B",05tp7
 Kevin Alvarez,HOU,OF,06psn
 Eduardo Valencia,DET,"C,1B",06rkk
-Vaughn Grissom,BOS,"1B,2B,3B",0518n
+Vaughn Grissom,BOS,2B,0518n
 Joshua Kuroda-Grauer,ATH,"3B,SS",06nue
 Tanner McDougal,CHW,SP,05xpj
 Patrick Sandoval,BOS,SP,03qpi
@@ -1763,7 +1763,7 @@ Cooper Ingle,CLE,C,06f0p
 Samy Natera Jr.,LAA,RP,066dd
 Caden Bodine,BAL,C,06c5r
 Drew Thorpe,CHW,SP,05yb1
-Edwin Arroyo,CIN,"2B,SS",05rcj
+Edwin Arroyo,CIN,"2B,3B,SS",05rcj
 Blake Burke,MIL,1B,062jb
 Braxton Garrett,MIA,SP,041e3
 Roldy Brito,COL,"2B,OF",06kui
@@ -1819,7 +1819,7 @@ Brayden Taylor,TB,"3B,SS",05wy1
 Kevin Defrank,MIA,SP,06rgh
 Gabriel Gonzalez,MIN,OF,05rcs
 Sung Mun Song,SD,3B,070bf
-Kendry Rojas,TOR/MIN,SP,05rgq
+Kendry Rojas,TOR/MIN,"SP,RP",05rgq
 Kahlil Watson,CLE,"2B,OF",05rau
 David Shields,KC,SP,06kke
 Riley Quick,MIN,SP,06rrl
