@@ -710,6 +710,10 @@ def sheet_grid(sheet_id: str, tab: str, fetch, max_age_hours: float = 0,
 # board with it. Tracked in git, NOT in .cache: GitHub Actions evicts caches
 # after 7 days of no access, and a cache miss would lose the fallback exactly
 # when it is needed.
+# Written into a source-status row when a column is blank BY DESIGN, so the
+# Sheet distinguishes "we chose not to fetch this" from "the fetch failed".
+OFF_SEASON = "out of season"
+
 LASTGOOD_DIR = HERE / "lastgood"
 
 

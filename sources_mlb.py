@@ -19,8 +19,9 @@ from datetime import date
 
 from bs4 import BeautifulSoup
 
-from common import (Fetcher, fantasypros, grid_to_rows, html_tables, is_player,
-                    pick_seasonal_url, sheet_grid, to_num)
+from common import (OFF_SEASON, Fetcher, fantasypros, grid_to_rows,
+                    html_tables, is_player, pick_seasonal_url, sheet_grid,
+                    to_num)
 
 FANTRAX_API = "https://www.fantrax.com/fxpa/req?leagueId={league_id}"
 
@@ -250,6 +251,7 @@ def extra_ranks(cfg: dict, fetch: Fetcher) -> dict:
         if months and month not in months:
             print(f"[skip] {key}: out of season (month {month}) -- column null")
             out[key] = []
+            _POST_DATES[key] = OFF_SEASON
             continue
         out[key] = _pitcherlist(feed["feed"], fetch, key)
     return out

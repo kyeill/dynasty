@@ -35,7 +35,8 @@ from datetime import datetime
 import time
 from pathlib import Path
 
-from common import (CACHE_DIR, HERE, LASTGOOD_DIR, OUTPUT_DIR, Fetcher, blend,
+from common import (CACHE_DIR, HERE, LASTGOOD_DIR, OFF_SEASON, OUTPUT_DIR,
+                    Fetcher, blend,
                     build_resolver, expand_abbreviated, guard_source, index_by_key,
                     load_aliases, prepare_authority, read_csv, save_fullnames,
                     snapshot, to_num, value_scale, write_csv)
@@ -272,10 +273,14 @@ def run_sport(sport: str, args) -> int:
         for key, posted in mod.extra_status().items():
             age = post_age_days(posted)
             weekly_limit = int(cfg.get("extra_stale_days", 10))
+            # A column switched off for the season is not stale, it is closed.
+            # Calling it stale would raise an alarm about a decision already
+            # taken, every morning, until someone silenced the alarm itself.
+            off = posted == OFF_SEASON
             status.append({
                 "source": key,
                 "rows": extra_rows.get(key, 0),
-                "stale": "YES" if (age is None or age >= weekly_limit) else "",
+                "stale": "" if off else ("YES" if (age is None or age >= weekly_limit) else ""),
                 "age_days": "" if age is None else round(age, 1),
                 "note": posted or "no post parsed",
             })

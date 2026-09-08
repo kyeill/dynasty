@@ -1,5 +1,5 @@
 ﻿source,rows,stale,age_days,note
-fp_dynasty,549,,,
-ktc,416,YES,1.0,live pull had 2
+fp_dynasty,432,,,
+ktc,464,,,recovered after 0.1 days
 authority,1107,,,
-current,989,,,
+current,948,,,

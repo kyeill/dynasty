@@ -268,6 +268,14 @@ first one that yields a ranking table, reporting the ones it skipped.
 
 Both columns now appear in `_source_status_<sport>.csv` with the post date and
 its age, so a weekly ranking that stops being weekly is visible in the Sheet.
+
+**`sp_rank` ends its season in August** (`months: [5,6,7,8]`). PitcherList
+stopped publishing the weekly Top-100 SP after 2026-08-25 and pivoted to
+playoff content, so the column would otherwise carry an August ranking that
+still looked current. `rp_rank` runs May-October and is unaffected. An
+off-season column writes a status row reading `out of season` with no stale
+flag -- a column switched off deliberately is closed, not stale, and calling it
+stale would raise an alarm every morning about a decision already taken.
 They are still not blended and still have no last-good fallback -- they are
 reference columns, and an empty one is only ever a missing column.
 
