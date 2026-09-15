@@ -394,7 +394,7 @@ Louis Varland,MIN/TOR,RP,051bm
 Dylan Lee,ATL,RP,041vm
 Mike Vasil,TB/CHW,RP,04ok0
 Jake Meyers,HOU,OF,04emt
-Sean Newcomb,BOS/ATH,"SP,RP",032lk
+Sean Newcomb,BOS/ATH,RP,032lk
 Ryan Walker,SF,RP,066n3
 Luis Ortiz,CLE,SP,05xsq
 Jordan Westburg,BAL,"2B,3B",05gsc
@@ -625,7 +625,7 @@ Kolby Allard,CLE,RP,03nqg
 Kumar Rocker,TEX,SP,04azu
 Justin Topa,MIN,RP,0318i
 Taylor Clarke,KC,RP,03qjz
-Blaze Alexander,ARI,"2B,3B,SS,OF",04pvs
+Blaze Alexander,ARI,"2B,3B,SS",04pvs
 Chase Burns,CIN,"SP,RP",05rb3
 Trey Sweeney,DET,SS,05tuw
 Valente Bellozo,MIA,SP,052c7
@@ -673,7 +673,7 @@ Curtis Mead,TB/CHW,"1B,2B,3B",05ahe
 Jordan Hicks,SF/BOS,RP,03vcw
 David Festa,MIN,SP,05yav
 Bowden Francis,TOR,SP,0421k
-Brennan Bernardino,BOS,RP,061t3
+Brennan Bernardino,BOS,"SP,RP",061t3
 Keibert Ruiz,WSH,C,03rmz
 Masataka Yoshida,BOS,UT,05rc3
 Jose Alvarado,PHI,RP,03btm
@@ -773,7 +773,7 @@ Drew Waters,KC,OF,04eer
 Ryan Weathers,MIA,SP,04mnw
 Christian Moore,LAA,"2B,OF",06cq8
 Yohel Pozo,STL,C,03yr2
-Cristian Javier,HOU,SP,045kb
+Cristian Javier,HOU,"SP,RP",045kb
 Kyle Harrison,SF/BOS,"SP,RP",05js3
 Andrew Saalfrank,ARI,RP,0514i
 Reese McGuire,CHC,C,0310a
@@ -962,7 +962,7 @@ Bryce Johnson,PIT/SD,OF,04ehv
 Easton Lucas,TOR,RP,051am
 JT Brubaker,NYY/SF,RP,03qm8
 Bryse Wilson,CHW,RP,0429h
-Anthony Molina,COL,RP,06879
+Anthony Molina,COL,"SP,RP",06879
 Mitch Farris,LAA,SP,06fz3
 Jonatan Clase,TOR,OF,057zc
 Corbin Martin,BAL,RP,04afj
@@ -1699,7 +1699,7 @@ Ethan Conrad,CHC,OF,06pll
 Karson Milbrandt,MIA,SP,062z7
 Kruz Schoolcraft,SD,SP,064wj
 Joe Mack,MIA,C,05rcd
-Ricky Tiedemann,TOR,SP,05js6
+Ricky Tiedemann,TOR,"SP,RP",05js6
 Felnin Celesten,SEA,SS,05mx9
 Seaver King,WSH,SS,06cq7
 Josiah Hartshorn,CHC,"1B,OF",06ifw
