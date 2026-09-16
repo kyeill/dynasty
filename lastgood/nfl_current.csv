@@ -124,7 +124,7 @@ Kyle Monangai,CHI,122
 Rachaad White,WAS,123
 Dallas Goedert,PHI,124
 De'Zhaun Stribling,SF,125
-KC Concepcion,CLE,126
+KC Concepcion Jr.,CLE,126
 Makai Lemon,PHI,127
 Aaron Rodgers,PIT,128
 Isaiah Likely,NYG,129
@@ -372,7 +372,7 @@ Will Kacmarek,MIA,370
 Nate Boerkircher,JAC,371
 Jackson Hawes,BUF,372
 Chris Brazzell II,CAR,373
-Jimmy Horn Jr.,CAR,374
+Jimmy Horn Jr.,FA,374
 Luke Schoonmaker,DAL,375
 Julius Chestnut,TEN,376
 Kene Nwangwu,NYJ,377
@@ -396,7 +396,7 @@ Durham Smythe,BAL,394
 Kaden Wetjen,PIT,395
 Tanner Koziol,JAC,396
 Mac Jones,SF,397
-Tyler Goodson,ATL,398
+Tyler Goodson,DAL,398
 Alec Ingold,LAC,399
 Patrick Ricard,NYG,400
 Mo Alie-Cox,IND,401
@@ -436,7 +436,7 @@ Drew Ogletree,IND,434
 Brevyn Spann-Ford,DAL,435
 Davis Allen,LAR,436
 Malachi Corley,CLE,437
-Lil'Jordan Humphrey,FA,438
+Lil'Jordan Humphrey,DEN,438
 Khalil Herbert,FA,439
 Payne Durham,TB,440
 Greg Dortch,BUF,441
@@ -462,7 +462,7 @@ Josh Williams,TB,460
 Marcus Mariota,WAS,461
 Dareke Young,LV,462
 Brycen Tremayne,CAR,463
-Marquez Valdes-Scantling,FA,464
+Marquez Valdes-Scantling,LAC,464
 Josh Cuevas,BAL,465
 Jake Briningstool,KC,466
 Jameis Winston,NYG,467
@@ -530,7 +530,7 @@ Dominic Lovett,DET,528
 Jacardia Wright,SEA,529
 Hassan Haskins,FA,530
 Kylen Granson,TEN,531
-Israel Abanikanda,DAL,532
+Israel Abanikanda,FA,532
 J. Michael Sturdivant,GB,533
 Stone Smartt,NO,534
 Montorie Foster Jr.,SEA,535
@@ -553,7 +553,7 @@ Teagan Quitoriano,ARI,551
 Brevin Jordan,HOU,552
 David Sills V,TB,553
 JuJu Smith-Schuster,FA,554
-Jack Stoll,FA,555
+Jack Stoll,SF,555
 Robert Tonyan,PIT,556
 CJ Dippre,TB,557
 Mecole Hardman Jr.,FA,558
@@ -571,14 +571,14 @@ Ko Kieft,TB,569
 Emmanuel Henderson Jr.,SEA,570
 Miles Kitselman,FA,571
 Andrew Beck,NYJ,572
-Eric Gray,FA,573
+Eric Gray,CLE,573
 Ryan Miller,MIA,574
 Kendrick Law,DET,575
 Nate Carter,KC,576
 Carlos Washington Jr.,MIA,577
 Albert Okwuegbunam Jr.,FA,578
 Nick Vannett,BAL,579
-Sterling Shepard,FA,580
+Sterling Shepard,NYJ,580
 Mark Redman,GB,581
 Taysom Hill,FA,582
 James Mitchell,DAL,583
@@ -603,7 +603,7 @@ Zay Jones,FA,601
 Cameron Latu,NE,602
 Tyrod Taylor,GB,603
 David Martin-Robinson,TEN,604
-Gage Larvadain,FA,605
+Gage Larvadain,BAL,605
 Carson Wentz,MIN,606
 Pharaoh Brown,IND,607
 Jamari Thrash,FA,608
@@ -612,9 +612,9 @@ Jeff Caldwell,KC,610
 Lucas Krull,DEN,611
 Avery Williams,FA,612
 E.J. Jenkins,PHI,613
-Josiah Deguara,FA,614
+Josiah Deguara,PHI,614
 Gregory Desrosiers,LAC,615
-Tyler Johnson,FA,616
+Tyler Johnson,NYJ,616
 Austin Trammell,JAC,617
 Montrell Johnson Jr.,FA,618
 Drake Dabney,GB,619
@@ -736,7 +736,7 @@ Nick Boyle,FA,734
 Cam Grandy,MIN,735
 Joe Milton III,DAL,736
 Trenton Irwin,FA,737
-Shane Zylstra,NE,738
+Shane Zylstra,FA,738
 Jameson Geers,ARI,739
 Kaden Prather,FA,740
 Davis Mills,HOU,741
@@ -871,10 +871,10 @@ Omarius Hines,FA,869
 Dale Moss,FA,870
 John Hurst,FA,871
 Case Keenum,CHI,872
-Dalen Cambre,NYG,873
+Dalen Cambre,FA,873
 Omari Evans,KC,874
 Isaiah Neyor,GB,875
-Chris Hilton Jr.,GB,876
+Chris Hilton Jr.,FA,876
 JP Richardson,CHI,877
 Irv Charles,SEA,878
 Jaden Bradley,WAS,879
@@ -946,7 +946,7 @@ Dean Patterson IV,TB,944
 Kye Robichaux,FA,945
 Cameron Ross,FA,946
 Max Tomczak,FA,947
-Brock Lampe,SEA,948
+Brock Lampe,BUF,948
 Hank Beatty,FA,949
 Nick DeGennaro,FA,950
 Keelan Marion,FA,951
@@ -962,7 +962,7 @@ Cortez Braham Jr.,FA,960
 Octavian Smith Jr.,FA,961
 Cornelius Johnson,FA,962
 Phillip Dorsett II,FA,963
-Ihmir Smith-Marsette,ARI,964
+Ihmir Smith-Marsette,FA,964
 Devonte Boyd,FA,965
 Kadarius Toney,FA,966
 Luke Grimm,FA,967
