@@ -13,6 +13,7 @@ FantasyPros (expert consensus) puts Josh Allen at superflex #1, while KTC
 from __future__ import annotations
 
 import json
+import re
 
 from common import (Fetcher, fantasypros, pick_seasonal_url, to_num,
                     yahoo_player_list)
@@ -28,16 +29,50 @@ KTC_VALUE_KEY = "superflexValues"
 REAL_POSITIONS = {"QB", "RB", "WR", "TE"}
 
 
+def _ktc_players(html: str):
+    """The full board out of a KTC page, or None.
+
+    Since 2026-09-08 the board lives in its own block --
+    <script type="application/json" id="ktc-players"> -- and the inline code
+    just reads it: `var playersArray = JSON.parse(document.getElementById(
+    'ktc-players').textContent)`.
+
+    The old reader found the text "playersArray" and decoded the next "[" after
+    it. After the move, the next "[" belonged to `var oneQBPlayers = [...]`, a
+    three-player start/sit widget, so KTC went from 464 players to 2 while the
+    page itself was perfectly healthy. The floor caught it and the board ran on
+    its last-good copy, but only a floor stood between that and a two-player
+    KTC column. So: read the element by id, and require a real board's worth.
+    """
+    m = re.search(r"""<script[^>]*id=["']ktc-players["'][^>]*>(.*?)</script>""",
+                  html, re.S)
+    if m:
+        try:
+            data = json.loads(m.group(1))
+            if isinstance(data, list):
+                return data
+        except ValueError:
+            print("[warn] keeptradecut: ktc-players block did not parse")
+
+    # The pre-2026-09 inline form, kept in case they move it back -- but only
+    # when the "[" belongs to playersArray itself, never merely follows it.
+    m = re.search(r"playersArray\s*=\s*\[", html)
+    if m:
+        try:
+            data, _ = json.JSONDecoder().raw_decode(html, m.end() - 1)
+            if isinstance(data, list):
+                return data
+        except ValueError:
+            pass
+    return None
+
+
 def _keeptradecut(cfg: dict, fetch: Fetcher) -> list[dict]:
     html = fetch(cfg["url"], max_age_hours=float(cfg.get("cache_hours", 0)))
-    i = html.find("playersArray")
-    if i == -1:
-        print("[warn] keeptradecut: no playersArray in the page")
-        return []
-    try:
-        players, _ = json.JSONDecoder().raw_decode(html, html.find("[", i))
-    except ValueError:
-        print("[warn] keeptradecut: playersArray did not parse")
+    players = _ktc_players(html)
+    if players is None:
+        print("[warn] keeptradecut: no player board found in the page "
+              "(neither #ktc-players nor an inline playersArray)")
         return []
 
     key = cfg.get("value_key", KTC_VALUE_KEY)

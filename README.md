@@ -254,6 +254,22 @@ are missing from the *naming authority* instead, because those public leagues
 carry a narrower player pool than yours: Brandon Clarke isn't among Yahoo 667's
 662 players, and two MLB prospects aren't in the Fantrax pool.
 
+## KeepTradeCut: read `#ktc-players`, not "the next `[`"
+
+On 2026-09-08 KTC moved its board out of an inline `var playersArray = [...]`
+into its own `<script type="application/json" id="ktc-players">` block; the
+inline code now just `JSON.parse`s that element. The old reader found the text
+`playersArray` and decoded the next `[` after it -- which, after the move, was
+`var oneQBPlayers = [...]`, a three-player start/sit widget. KTC went from 464
+players to 2 while the page was perfectly healthy.
+
+The floor caught it and the board ran on its last-good copy for eight days, so
+nothing broke visibly -- but only the floor stood between that and a two-player
+column. The reader now takes the element by id, and only falls back to the
+inline form when the `[` belongs to `playersArray =` itself.
+
+Expect ~416 players: the block holds 500 entries, 84 of them draft picks.
+
 ## PitcherList: take the newest post that PARSES
 
 `sp_rank` and `rp_rank` come from weekly PitcherList posts found through a
