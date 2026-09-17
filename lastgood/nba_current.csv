@@ -39,7 +39,7 @@ Amen Thompson,HOU,37
 Deni Avdija,POR,38
 Austin Reaves,LAL,39
 Chet Holmgren,OKC,40
-Kawhi Leonard,LAC,41
+Kawhi Leonard,TOR,41
 Jaren Jackson Jr.,UTH,42
 Franz Wagner,ORL,43
 Desmond Bane,ORL,44
@@ -56,11 +56,11 @@ Jarrett Allen,CLE,54
 Brandon Miller,CHA,55
 Jalen Green,PHO,56
 Josh Hart,NYK,57
-Brandon Ingram,TOR,58
+Brandon Ingram,LAC,58
 Coby White,CHA,59
 Kevin Porter Jr.,MIL,60
 Ivica Zubac,IND,61
-DeMar DeRozan,FA,62
+DeMar DeRozan,DEN,62
 Rudy Gobert,MIN,63
 Dejounte Murray,NOR,64
 Jalen Duren,DET,65
@@ -118,7 +118,7 @@ Jaime Jaquez Jr.,MIL,116
 Ayo Dosunmu,MIN,117
 Santi Aldama,DAL,118
 Malik Monk,SAC,119
-Bennedict Mathurin,LAC,120
+Bennedict Mathurin,NOR,120
 Scoot Henderson,POR,121
 Tyrese Haliburton,IND,122
 Kon Knueppel,CHA,123
@@ -156,7 +156,7 @@ Dylan Harper,SAS,154
 Cam Thomas,FA,155
 Herbert Jones,NOR,156
 Bobi Klintman,FA,157
-Jonathan Kuminga,FA,158
+Jonathan Kuminga,MIN,158
 Dillon Brooks,PHO,159
 Jonas Valanciunas,FA,160
 Ryan Rollins,MIL,161
@@ -187,7 +187,7 @@ Khris Middleton,WAS,185
 Pelle Larsson,MIA,186
 Nikola Jovic,MIA,187
 Zaccharie Risacher,DAL,188
-Klay Thompson,DAL,189
+Klay Thompson,MIA,189
 Paul Reed,DET,190
 Neemias Queta,BOS,191
 Jeremy Sochan,POR,192
@@ -206,7 +206,7 @@ Tolu Smith III,DET,204
 Rui Hachimura,LAC,205
 Al Horford,GSW,206
 Yves Missi,NOR,207
-Cam Whitmore,CLE,208
+Cam Whitmore,FA,208
 Chris Paul,FA,209
 Royce O'Neale,CHA,210
 Zach Collins,CHI,211
@@ -226,7 +226,7 @@ Alex Caruso,OKC,224
 Ariel Hukporti,PHI,225
 Marcus Smart,HOU,226
 Jaylen Wells,MEM,227
-Gradey Dick,TOR,228
+Gradey Dick,LAC,228
 Christian Anderson Jr.,CHA,229
 Vince Williams Jr.,FA,230
 Cam Spencer,MEM,231
@@ -236,7 +236,7 @@ Marvin Bagley III,DEN,234
 Bogdan Bogdanovic,HOU,235
 Karim Lopez,MEM,236
 Isaiah Jackson,LAC,237
-Nick Richards,FA,238
+Nick Richards,MIA,238
 Trayce Jackson-Davis,TOR,239
 Labaron Philon Jr.,PHI,240
 Patrick Williams,CHI,241
@@ -270,7 +270,7 @@ Noah Clowney,BKN,268
 Aday Mara,OKC,269
 Corey Kispert,ATL,270
 Brandon Clarke,MEM,271
-Bruce Brown Jr.,FA,272
+Bruce Brown Jr.,NYK,272
 Sandro Mamukelashvili,LAL,273
 Kyle Anderson,TOR,274
 Jonathan Isaac,ORL,275
@@ -293,7 +293,7 @@ Moses Moody,GSW,291
 Robert Williams III,POR,292
 Yaxel Lendeborg,GSW,293
 Taurean Prince,DET,294
-Ben Simmons,FA,295
+Ben Simmons,SAC,295
 Keaton Wagler,LAC,296
 Goga Bitadze,ORL,297
 Craig Porter Jr.,CLE,298
@@ -324,9 +324,9 @@ Mikel Brown Jr.,FA,322
 Matisse Thybulle,LAL,323
 Sam Merrill,CLE,324
 Walter Clayton Jr.,MEM,325
-Cody Williams,UTH,326
+Cody Williams,MIN,326
 Steven Adams,HOU,327
-Micah Peavy,NOR,328
+Micah Peavy,MEM,328
 Luke Kennard,PHO,329
 Mouhamed Gueye,ATL,330
 Ronald Holland II,DET,331
