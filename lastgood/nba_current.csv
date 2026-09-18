@@ -1,337 +1,288 @@
 ﻿name,team,current_rank
 Nikola Jokic,DEN,1
-Victor Wembanyama,SAS,2
-Luka Doncic,LAL,3
-Shai Gilgeous-Alexander,OKC,4
-Giannis Antetokounmpo,MIA,5
+Luka Doncic,LAL,2
+Victor Wembanyama,SAS,3
+Giannis Antetokounmpo,MIA,4
+Shai Gilgeous-Alexander,OKC,5
 Cade Cunningham,DET,6
 Anthony Edwards,MIN,7
 Tyrese Maxey,PHI,8
 Alperen Sengun,HOU,9
-Anthony Davis,WAS,10
-Donovan Mitchell,CLE,11
+Donovan Mitchell,CLE,10
+Anthony Davis,WAS,11
 Paolo Banchero,ORL,12
-Trae Young,WAS,13
+Jalen Johnson,ATL,13
 LeBron James,PHI,14
-Jalen Brunson,NYK,15
-Josh Giddey,CHI,16
-LaMelo Ball,MIN,17
-Scottie Barnes,TOR,18
-Jalen Johnson,ATL,19
-James Harden,CLE,20
-Karl-Anthony Towns,NYK,21
-Kevin Durant,HOU,22
-Devin Booker,PHO,23
-Bam Adebayo,MIA,24
-Stephen Curry,GSW,25
-Jaylen Brown,PHI,26
-Domantas Sabonis,SAC,27
-Evan Mobley,CLE,28
-Joel Embiid,PHI,29
-De'Aaron Fox,SAS,30
-Jamal Murray,DEN,31
-Ja Morant,POR,32
-Cooper Flagg,DAL,33
-Jalen Williams,OKC,34
+Josh Giddey,CHI,15
+Scottie Barnes,TOR,16
+Trae Young,WAS,17
+Jalen Brunson,NYK,18
+LaMelo Ball,MIN,19
+Cooper Flagg,DAL,20
+Kevin Durant,HOU,21
+Karl-Anthony Towns,NYK,22
+Jamal Murray,DEN,23
+James Harden,CLE,24
+Bam Adebayo,MIA,25
+Devin Booker,PHO,26
+Stephen Curry,GSW,27
+Jaylen Brown,PHI,28
+Deni Avdija,POR,29
+Evan Mobley,CLE,30
+Amen Thompson,HOU,31
+Domantas Sabonis,SAC,32
+Joel Embiid,PHI,33
+Ja Morant,POR,34
 Zion Williamson,NOR,35
 Pascal Siakam,IND,36
-Amen Thompson,HOU,37
-Deni Avdija,POR,38
-Austin Reaves,LAL,39
-Chet Holmgren,OKC,40
-Kawhi Leonard,TOR,41
-Jaren Jackson Jr.,UTH,42
-Franz Wagner,ORL,43
-Desmond Bane,ORL,44
-Tyler Herro,MIL,45
-Walker Kessler,LAL,46
-Derrick White,BOS,47
-Julius Randle,BKN,48
-Miles Bridges,PHO,49
-Trey Murphy III,NOR,50
-Dyson Daniels,ATL,51
-Darius Garland,LAC,52
-Lauri Markkanen,UTH,53
-Jarrett Allen,CLE,54
-Brandon Miller,CHA,55
-Jalen Green,PHO,56
-Josh Hart,NYK,57
-Brandon Ingram,LAC,58
-Coby White,CHA,59
-Kevin Porter Jr.,MIL,60
+Austin Reaves,LAL,37
+Jalen Williams,OKC,38
+Kawhi Leonard,TOR,39
+De'Aaron Fox,SAS,40
+Trey Murphy III,NOR,41
+Chet Holmgren,OKC,42
+Stephon Castle,SAS,43
+Jaren Jackson Jr.,UTH,44
+Desmond Bane,ORL,45
+Brandon Miller,CHA,46
+Julius Randle,BKN,47
+Jalen Duren,DET,48
+Tyler Herro,MIL,49
+Walker Kessler,LAL,50
+Franz Wagner,ORL,51
+Lauri Markkanen,UTH,52
+Keyonte George,UTH,53
+Dejounte Murray,NOR,54
+Dyson Daniels,ATL,55
+Derrick White,BOS,56
+Darius Garland,LAC,57
+Jarrett Allen,CLE,58
+Kyrie Irving,DAL,59
+Brandon Ingram,LAC,60
 Ivica Zubac,IND,61
-DeMar DeRozan,DEN,62
-Rudy Gobert,MIN,63
-Dejounte Murray,NOR,64
-Jalen Duren,DET,65
-Stephon Castle,SAS,66
-RJ Barrett,TOR,67
-Paul George,BOS,68
-Nikola Vucevic,ORL,69
-Zach Edey,MEM,70
-Alex Sarr,WAS,71
-Michael Porter Jr.,BKN,72
-Keyonte George,UTH,73
-Donovan Clingan,POR,74
-Kristaps Porzingis,GSW,75
-CJ McCollum,ATL,76
-Kyrie Irving,DAL,77
-Immanuel Quickley,TOR,78
-OG Anunoby,NYK,79
-Mark Williams,PHO,80
-Mikal Bridges,NYK,81
-Jimmy Butler III,GSW,82
-Shaedon Sharpe,POR,83
-Zach LaVine,SAC,84
-Andrew Nembhard,IND,85
-Onyeka Okongwu,ATL,86
-Jakob Poeltl,TOR,87
-Matas Buzelis,CHI,88
-Jalen Suggs,ORL,89
-Norman Powell,CHI,90
-Naz Reid,CHA,91
-Andrew Wiggins,MIA,92
-Ausar Thompson,DET,93
-Isaiah Hartenstein,OKC,94
-Myles Turner,MIL,95
-Jordan Poole,NOR,96
-Payton Pritchard,BOS,97
-Devin Vassell,SAS,98
-Aaron Gordon,DEN,99
-Isaiah Collier,UTH,100
-John Collins,DET,101
-Draymond Green,GSW,102
-Jaden McDaniels,MIN,103
-Deandre Ayton,WAS,104
-Brandin Podziemski,GSW,105
-Jusuf Nurkic,UTH,106
-Cameron Johnson,DEN,107
-Kel'el Ware,MIL,108
-Nic Claxton,CHI,109
-Keegan Murray,SAC,110
-Jrue Holiday,POR,111
-VJ Edgecombe,PHI,112
-P.J. Washington Jr.,DAL,113
-Christian Braun,DEN,114
-Anfernee Simons,PHI,115
-Jaime Jaquez Jr.,MIL,116
-Ayo Dosunmu,MIN,117
-Santi Aldama,DAL,118
-Malik Monk,SAC,119
+Zach Edey,MEM,62
+Donovan Clingan,POR,63
+Jayson Tatum,BOS,64
+Michael Porter Jr.,BKN,65
+Coby White,CHA,66
+Onyeka Okongwu,ATL,67
+Josh Hart,NYK,68
+Paul George,BOS,69
+Tyrese Haliburton,IND,70
+Miles Bridges,PHO,71
+Jalen Green,PHO,72
+Rudy Gobert,MIN,73
+RJ Barrett,TOR,74
+Alex Sarr,WAS,75
+Damian Lillard,POR,76
+DeMar DeRozan,DEN,77
+Naz Reid,CHA,78
+Matas Buzelis,CHI,79
+CJ McCollum,ATL,80
+Norman Powell,CHI,81
+OG Anunoby,NYK,82
+Immanuel Quickley,TOR,83
+Kristaps Porzingis,GSW,84
+Payton Pritchard,BOS,85
+Jalen Suggs,ORL,86
+Zach LaVine,SAC,87
+VJ Edgecombe,PHI,88
+Ausar Thompson,DET,89
+Mikal Bridges,NYK,90
+Andrew Nembhard,IND,91
+Kel'el Ware,MIL,92
+Kevin Porter Jr.,MIL,93
+Kon Knueppel,CHA,94
+Jusuf Nurkic,UTH,95
+Nic Claxton,CHI,96
+Jakob Poeltl,TOR,97
+Isaiah Hartenstein,OKC,98
+Myles Turner,MIL,99
+Caleb Wilson,CHI,100
+Nickeil Alexander-Walker,ATL,101
+Jaden McDaniels,MIN,102
+Andrew Wiggins,MIA,103
+Nikola Vucevic,ORL,104
+Keegan Murray,SAC,105
+Aaron Gordon,DEN,106
+Jimmy Butler III,GSW,107
+Derik Queen,NOR,108
+Jabari Smith Jr.,HOU,109
+Devin Vassell,SAS,110
+Ryan Rollins,MIL,111
+Ayo Dosunmu,MIN,112
+Jrue Holiday,POR,113
+Isaiah Collier,UTH,114
+Quentin Grimes,LAL,115
+Darius Acuff Jr.,FA,116
+Brandin Podziemski,GSW,117
+P.J. Washington Jr.,DAL,118
+Draymond Green,GSW,119
 Bennedict Mathurin,NOR,120
-Scoot Henderson,POR,121
-Tyrese Haliburton,IND,122
-Kon Knueppel,CHA,123
-Quentin Grimes,LAL,124
-Jabari Smith Jr.,HOU,125
-Dennis Schroder,CHA,126
-Jayson Tatum,BOS,127
-Tari Eason,HOU,128
-Damian Lillard,POR,129
-Toumani Camara,POR,130
-Kyle Kuzma,MIL,131
-Russell Westbrook III,FA,132
-Daniel Gafford,DAL,133
-Collin Sexton,LAL,134
-Ace Bailey,UTH,135
-Bilal Coulibaly,WAS,136
-Reed Sheppard,HOU,137
-Tobias Harris,SAS,138
-Dereck Lively II,DAL,139
-Fred VanVleet,HOU,140
-Kyshawn George,WAS,141
-Scotty Pippen Jr.,MEM,142
-Nickeil Alexander-Walker,ATL,143
-Derik Queen,NOR,144
-Kyle Filipowski,UTH,145
-Caleb Wilson,CHI,146
-Bobby Portis Jr.,MIA,147
-Ty Jerome,MEM,148
-Jerami Grant,MEM,149
-Brook Lopez,LAC,150
-Bub Carrington,WAS,151
-Wendell Carter Jr.,ORL,152
-Darius Acuff Jr.,FA,153
-Dylan Harper,SAS,154
-Cam Thomas,FA,155
-Herbert Jones,NOR,156
-Bobi Klintman,FA,157
-Jonathan Kuminga,MIN,158
-Dillon Brooks,PHO,159
-Jonas Valanciunas,FA,160
-Ryan Rollins,MIL,161
-Davion Mitchell,MIA,162
-De'Andre Hunter,SAC,163
-Egor Demin,BKN,164
-Darryn Peterson,UTH,165
-Anthony Black,ORL,166
-AJ Dybantsa,WAS,167
-D'Angelo Russell,MEM,168
-Cameron Boozer,MEM,169
-Grayson Allen,CHA,170
-Kelly Oubre Jr.,IND,171
-Joan Beringer,MIN,172
-Aaron Nesmith,IND,173
-Tre Johnson,WAS,174
-Cason Wallace,OKC,175
-Tre Jones,CHI,176
-Jeremiah Fears,NOR,177
-Bradley Beal,LAC,178
-Cedric Coward,MEM,179
-Donte DiVincenzo,MIN,180
-Keldon Johnson,SAS,181
-T.J. McConnell,IND,182
-Jordan Clarkson,NYK,183
-Jaden Ivey,FA,184
-Khris Middleton,WAS,185
-Pelle Larsson,MIA,186
-Nikola Jovic,MIA,187
-Zaccharie Risacher,DAL,188
-Klay Thompson,MIA,189
-Paul Reed,DET,190
-Neemias Queta,BOS,191
-Jeremy Sochan,POR,192
-Jaylon Tyson,CLE,193
-Saddiq Bey,NOR,194
-Jared McCain,OKC,195
-Chris Livingston,FA,196
-Caris LeVert,MIL,197
-Max Strus,LAC,198
-Cole Anthony,FA,199
-Jacob Toppin,FA,200
-Buddy Hield,ATL,201
-Tyus Jones,DEN,202
-Naji Marshall,DAL,203
-Tolu Smith III,DET,204
-Rui Hachimura,LAC,205
-Al Horford,GSW,206
-Yves Missi,NOR,207
-Cam Whitmore,FA,208
-Chris Paul,FA,209
-Royce O'Neale,CHA,210
-Zach Collins,CHI,211
-Ajay Mitchell,OKC,212
-Obi Toppin,IND,213
-Maxime Raynaud,SAC,214
-Clint Capela,HOU,215
-Day'Ron Sharpe,BKN,216
-Kevin Huerter,DET,217
-Harrison Barnes,SAS,218
-Mike Conley,BOS,219
-Gary Trent Jr.,MIL,220
-Colby Jones,FA,221
-Luguentz Dort,ATL,222
-Moussa Diabate,CHA,223
-Alex Caruso,OKC,224
-Ariel Hukporti,PHI,225
-Marcus Smart,HOU,226
-Jaylen Wells,MEM,227
-Gradey Dick,LAC,228
-Christian Anderson Jr.,CHA,229
-Vince Williams Jr.,FA,230
-Cam Spencer,MEM,231
-Allen Graves,TOR,232
-De'Anthony Melton,GSW,233
-Marvin Bagley III,DEN,234
-Bogdan Bogdanovic,HOU,235
-Karim Lopez,MEM,236
-Isaiah Jackson,LAC,237
-Nick Richards,MIA,238
-Trayce Jackson-Davis,TOR,239
-Labaron Philon Jr.,PHI,240
-Patrick Williams,CHI,241
-Kelly Olynyk,FA,242
-Javonte Cooke,FA,243
-Jamal Shead,TOR,244
-Terry Rozier,FA,245
-Luke Travers,FA,246
-Jaylin Williams,OKC,247
-Mitchell Robinson,BOS,248
-Brice Sensabaugh,UTH,249
-Terance Mann,BKN,250
-Kentavious Caldwell-Pope,PHI,251
-Grant Williams,CHA,252
-Jalen Smith,CHI,253
-Nique Clifford,SAC,254
-Duncan Robinson,DET,255
-Andre Drummond,NYK,256
-Malcolm Brogdon,FA,257
-KJ Simpson,DEN,258
-Sam Hauser,BOS,259
-Taylor Hendricks,MEM,260
-Alex Karaban,SAC,261
-Kingston Flemings,ATL,262
-Lonzo Ball,FA,263
-Aaron Wiggins,ATL,264
-Precious Achiuwa,SAC,265
-Isaiah Stewart,MEM,266
-Kris Dunn,LAC,267
-Noah Clowney,BKN,268
-Aday Mara,OKC,269
-Corey Kispert,ATL,270
-Brandon Clarke,MEM,271
-Bruce Brown Jr.,NYK,272
-Sandro Mamukelashvili,LAL,273
-Kyle Anderson,TOR,274
-Jonathan Isaac,ORL,275
-David Roddy,DEN,276
-Miles McBride,NYK,277
-Peyton Watson,CLE,278
-Jose Alvarado,NYK,279
-Dariq Whitehead,FA,280
-Moritz Wagner,BKN,281
-Jake LaRavia,LAL,282
-Terrence Shannon Jr.,FA,283
-Keon Ellis,BKN,284
-Julian Champagnie,SAS,285
-Spencer Dinwiddie,FA,286
-Marcus Sasser,DAL,287
-Khaman Maluach,PHO,288
-Caleb Martin,DAL,289
-Morez Johnson Jr.,FA,290
-Moses Moody,GSW,291
-Robert Williams III,POR,292
-Yaxel Lendeborg,GSW,293
-Taurean Prince,DET,294
-Ben Simmons,SAC,295
-Keaton Wagler,LAC,296
-Goga Bitadze,ORL,297
-Craig Porter Jr.,CLE,298
-Mason Plumlee,FA,299
-Tim Hardaway Jr.,MIA,300
-Collin Gillespie,PHO,301
-Jay Huff,IND,302
-Dorian Finney-Smith,CHA,303
-Ryan Dunn,PHO,304
-Collin Murray-Boyles,TOR,305
-Brayden Burries,MIL,306
-Bones Hyland,MIN,307
-Tristan da Silva,ORL,308
-Zeke Nnaji,DEN,309
-Will Riley,WAS,310
-Tre Mann,WAS,311
-Rob Dillingham,CHI,312
-Nate Ament,MIL,313
-E.J. Liddell,FA,314
-Ryan Kalkbrenner,CHA,315
-Jarace Walker,IND,316
-Ben Saraf,BKN,317
-Luke Kornet,SAS,318
-Oso Ighodaro,PHO,319
-Jarred Vanderbilt,LAL,320
-Jock Landale,ATL,321
-Mikel Brown Jr.,FA,322
-Matisse Thybulle,LAL,323
-Sam Merrill,CLE,324
-Walter Clayton Jr.,MEM,325
-Cody Williams,MIN,326
-Steven Adams,HOU,327
-Micah Peavy,MEM,328
-Luke Kennard,PHO,329
-Mouhamed Gueye,ATL,330
-Ronald Holland II,DET,331
-Alijah Martin,TOR,332
-Cameron Payne,FA,333
-Jordan Goodwin,PHO,334
-GG Jackson II,MEM,335
-Tristan Vukcevic,WAS,336
+John Collins,DET,121
+Cameron Boozer,MEM,122
+Jaime Jaquez Jr.,MIL,123
+Dylan Harper,SAS,124
+Cameron Johnson,DEN,125
+Jordan Poole,NOR,126
+Fred VanVleet,HOU,127
+Darryn Peterson,UTH,128
+Deandre Ayton,WAS,129
+Ty Jerome,MEM,130
+Kyshawn George,WAS,131
+AJ Dybantsa,WAS,132
+Mark Williams,PHO,133
+Jonathan Kuminga,MIN,134
+Anfernee Simons,PHI,135
+Dennis Schroder,CHA,136
+Dereck Lively II,DAL,137
+Shaedon Sharpe,POR,138
+Tari Eason,HOU,139
+Reed Sheppard,HOU,140
+Christian Braun,DEN,141
+Santi Aldama,DAL,142
+Cedric Coward,MEM,143
+Toumani Camara,POR,144
+Scoot Henderson,POR,145
+Tobias Harris,SAS,146
+Scotty Pippen Jr.,MEM,147
+Dillon Brooks,PHO,148
+Egor Demin,BKN,149
+Malik Monk,SAC,150
+Davion Mitchell,MIA,151
+Day'Ron Sharpe,BKN,152
+Neemias Queta,BOS,153
+Pelle Larsson,MIA,154
+Kyle Kuzma,MIL,155
+Tre Jones,CHI,156
+Daniel Gafford,DAL,157
+Ace Bailey,UTH,158
+Rui Hachimura,LAC,159
+Bilal Coulibaly,WAS,160
+Anthony Black,ORL,161
+Saddiq Bey,NOR,162
+Kyle Filipowski,UTH,163
+Jeremiah Fears,NOR,164
+Jerami Grant,MEM,165
+Collin Sexton,LAL,166
+Bradley Beal,LAC,167
+Cason Wallace,OKC,168
+Herbert Jones,NOR,169
+Brook Lopez,LAC,170
+Wendell Carter Jr.,ORL,171
+Kelly Oubre Jr.,IND,172
+Bobby Portis Jr.,MIA,173
+Joan Beringer,MIN,174
+Paul Reed,DET,175
+Bub Carrington,WAS,176
+Peyton Watson,CLE,177
+De'Andre Hunter,SAC,178
+Grayson Allen,CHA,179
+Maxime Raynaud,SAC,180
+Jaylon Tyson,CLE,181
+Collin Murray-Boyles,TOR,182
+Naji Marshall,DAL,183
+Jared McCain,OKC,184
+Tre Johnson,WAS,185
+Aaron Nesmith,IND,186
+Moussa Diabate,CHA,187
+Khaman Maluach,PHO,188
+Nikola Jovic,MIA,189
+Keldon Johnson,SAS,190
+Ajay Mitchell,OKC,191
+Collin Gillespie,PHO,192
+Russell Westbrook III,FA,193
+T.J. McConnell,IND,194
+Sandro Mamukelashvili,LAL,195
+Mikel Brown Jr.,FA,196
+Cam Thomas,FA,197
+Bobi Klintman,FA,198
+Yves Missi,NOR,199
+Max Strus,LAC,200
+Jonas Valanciunas,FA,201
+Yaxel Lendeborg,GSW,202
+Cam Spencer,MEM,203
+Klay Thompson,MIA,204
+Jake LaRavia,LAL,205
+D'Angelo Russell,MEM,206
+Kevin Huerter,DET,207
+Marvin Bagley III,DEN,208
+Khris Middleton,WAS,209
+Jaylen Wells,MEM,210
+Donte DiVincenzo,MIN,211
+Jordan Clarkson,NYK,212
+Labaron Philon Jr.,PHI,213
+Al Horford,GSW,214
+Nique Clifford,SAC,215
+Jaden Ivey,FA,216
+Royce O'Neale,CHA,217
+Zaccharie Risacher,DAL,218
+Luguentz Dort,ATL,219
+Alex Caruso,OKC,220
+Jeremy Sochan,POR,221
+Marcus Smart,HOU,222
+Precious Achiuwa,SAC,223
+Chris Livingston,FA,224
+Caris LeVert,MIL,225
+Cole Anthony,FA,226
+Jacob Toppin,FA,227
+Jamal Shead,TOR,228
+Buddy Hield,ATL,229
+Tyus Jones,DEN,230
+Brice Sensabaugh,UTH,231
+Tolu Smith III,DET,232
+Julian Champagnie,SAS,233
+Cam Whitmore,FA,234
+Chris Paul,FA,235
+GG Jackson II,MEM,236
+Keaton Wagler,LAC,237
+Zach Collins,CHI,238
+Jaylin Williams,OKC,239
+Isaiah Stewart,MEM,240
+Allen Graves,TOR,241
+Obi Toppin,IND,242
+Oso Ighodaro,PHO,243
+Clint Capela,HOU,244
+Robert Williams III,POR,245
+Kris Dunn,LAC,246
+Gradey Dick,LAC,247
+Harrison Barnes,SAS,248
+Mike Conley,BOS,249
+Gary Trent Jr.,MIL,250
+Ryan Kalkbrenner,CHA,251
+De'Anthony Melton,GSW,252
+Colby Jones,FA,253
+Will Riley,WAS,254
+Miles McBride,NYK,255
+Terrence Shannon Jr.,FA,256
+Jay Huff,IND,257
+Ariel Hukporti,PHI,258
+Mitchell Robinson,BOS,259
+Christian Anderson Jr.,CHA,260
+Morez Johnson Jr.,FA,261
+Bones Hyland,MIN,262
+Vince Williams Jr.,FA,263
+Brayden Burries,MIL,264
+Duncan Robinson,DET,265
+Jalen Smith,CHI,266
+Andre Drummond,NYK,267
+Bogdan Bogdanovic,HOU,268
+Noah Clowney,BKN,269
+Karim Lopez,MEM,270
+Isaiah Jackson,LAC,271
+Kingston Flemings,ATL,272
+Nick Richards,MIA,273
+Trayce Jackson-Davis,TOR,274
+Rob Dillingham,CHI,275
+Kentavious Caldwell-Pope,PHI,276
+Patrick Williams,CHI,277
+Kelly Olynyk,FA,278
+Ben Simmons,SAC,279
+Javonte Cooke,FA,280
+Tristan da Silva,ORL,281
+Sam Hauser,BOS,282
+Terry Rozier,FA,283
+Luke Travers,FA,284
+Hannes Steinbach,CHA,285
+Aday Mara,OKC,286
+Terance Mann,BKN,287
