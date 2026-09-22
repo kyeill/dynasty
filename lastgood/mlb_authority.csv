@@ -34,7 +34,7 @@ Robbie Ray,SF,SP,025j1
 Fernando Tatis Jr.,SD,"2B,OF",03zbh
 Pete Alonso,NYM,1B,041pz
 Matthew Boyd,CHC,SP,02n4s
-Luis Castillo,SEA,SP,03nuc
+Luis Castillo,SEA,"SP,RP",03nuc
 George Springer,TOR,OF,025he
 Rafael Devers,BOS/SF,1B,030uc
 Junior Caminero,TB,3B,05xch
@@ -366,7 +366,7 @@ Kyle Finnegan,WSH/DET,RP,031bl
 Bryan Baker,BAL/TB,RP,041w4
 Matt Wallner,MIN,OF,04o78
 Adam Frazier,PIT/KC,"2B,OF",0316t
-Kody Clemens,PHI/MIN,"1B,2B,OF",04ppi
+Kody Clemens,PHI/MIN,"1B,2B,3B,OF",04ppi
 Tyler Rogers,SF/NYM,RP,0374m
 Camilo Doval,SF/NYY,RP,04k0w
 Brandon Woodruff,MIL,SP,02bu3
@@ -661,7 +661,7 @@ Seth Halvorsen,COL,RP,06fqx
 Sam Haggerty,TEX,OF,03qz9
 Luis Gil,NYY,SP,04s1h
 Shane Bieber,CLE/TOR,SP,041rf
-Cole Young,SEA,2B,05y7x
+Cole Young,SEA,"2B,SS",05y7x
 Kristian Campbell,BOS,"2B,OF",06f0q
 Thomas Saggese,STL,"2B,3B,SS,OF",05mru
 Jahmai Jones,DET,"2B,OF",03pp6
@@ -864,7 +864,7 @@ Denzel Clarke,ATH,OF,05unf
 Weston Wilson,PHI,"2B,3B,OF",0420h
 Troy Johnston,MIA,"1B,OF",051d0
 Orlando Arcia,ATL/COL,"1B,2B,3B,SS",02i1q
-Spencer Arrighetti,HOU,SP,05y0j
+Spencer Arrighetti,HOU,"SP,RP",05y0j
 Gary Sanchez,BAL,"C,1B",01t9q
 Jake Rogers,DET,C,03av1
 Sam Long,KC,RP,0421l
