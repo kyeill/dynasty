@@ -271,13 +271,13 @@ DeMario Douglas,NE,269
 Darren Waller,CAR,270
 Jaydon Blue,PHI,271
 Michael Mayer,LV,272
-Audric Estime,FA,273
+Audric Estime,MIN,273
 Will Shipley,PHI,274
 Jahan Dotson,ATL,275
 Charlie Kolar,LAC,276
 Jaleel McLaughlin,CLE,277
 Isaac Guerendo,SF,278
-Devin Neal,FA,279
+Devin Neal,MIN,279
 Jacob Saylors,DET,280
 Jake Tonges,SF,281
 Trey Benson,ARI,282
@@ -287,7 +287,7 @@ Jarquez Hunter,MIA,285
 Elijah Arroyo,SEA,286
 Xavier Hutchinson,HOU,287
 Bryce Lance,NO,288
-Jerome Ford,MIN,289
+Jerome Ford,FA,289
 Jalen Tolbert,MIA,290
 Oscar Delp,NO,291
 Dawson Knox,BUF,292
@@ -320,7 +320,7 @@ Max Klare,LAR,318
 Raheim Sanders,CLE,319
 Noah Fant,NO,320
 Eli Heidenreich,PIT,321
-Odell Beckham Jr.,NYG,322
+Odell Beckham Jr.,FA,322
 Rasheen Ali,BAL,323
 Demarcus Robinson,SF,324
 Carson Beck,ARI,325
@@ -381,7 +381,7 @@ Foster Moreau,HOU,379
 Nick Westbrook-Ikhine,IND,380
 John Bates,WAS,381
 Cade Stover,HOU,382
-Austin Ekeler,FA,383
+Austin Ekeler,WAS,383
 Phil Mafah,NYG,384
 Reggie Gilliam,NE,385
 Tanner Hudson,CIN,386
@@ -557,11 +557,11 @@ Jack Stoll,SF,555
 Robert Tonyan,PIT,556
 CJ Dippre,TB,557
 Mecole Hardman Jr.,FA,558
-Ke'Shawn Williams,CIN,559
+Ke'Shawn Williams,FA,559
 Michael Bandy,DEN,560
 Jack Westover,WAS,561
 Curtis Samuel,FA,562
-Bryce Oliver,HOU,563
+Bryce Oliver,FA,563
 Cole Turner,MIA,564
 CJ Donaldson,NO,565
 Devin Culp,FA,566
@@ -650,13 +650,13 @@ Brandon Johnson,PIT,648
 Tanner Conner,NE,649
 Logan Thomas,FA,650
 Charlie Jones,NYG,651
-Dare Ogunbowale,LV,652
+Dare Ogunbowale,HOU,652
 Carter Runyon,LV,653
 Michael Wortham,JAC,654
 Coleman Bennett,FA,655
 D'Onta Foreman,FA,656
 Kenny McIntosh,FA,657
-Jaret Patterson,MIN,658
+Jaret Patterson,FA,658
 Johnny Wilson,PHI,659
 Zack Moss,FA,660
 Dylan Drummond,ATL,661
@@ -730,7 +730,7 @@ Princeton Fant,DAL,728
 Mitchell Wilcox,FA,729
 Carson Towt,IND,730
 Cedrick Wilson Jr.,FA,731
-Messiah Swinson,CLE,732
+Messiah Swinson,FA,732
 Jalin Conyers,FA,733
 Nick Boyle,FA,734
 Cam Grandy,MIN,735
@@ -840,7 +840,7 @@ Isaiah McKenzie,FA,838
 Deontay Burnett,FA,839
 Jalen Guyton,FA,840
 Tyren Montgomery,TEN,841
-Justin Shorter,LV,842
+Justin Shorter,FA,842
 Zach Pascal,FA,843
 Braylon James,FA,844
 Ty James,FA,845
@@ -906,7 +906,7 @@ Terrace Marshall Jr.,FA,904
 Rivaldo Fairweather,FA,905
 Wesley Grimes,SF,906
 Tyler Scott,LV,907
-Dante Pettis,FA,908
+Dante Pettis,SF,908
 Lance Mason,FA,909
 Kenny Fletcher Jr.,IND,910
 Chase Curtis,FA,911
@@ -931,7 +931,7 @@ Jacob De Jesus,FA,929
 Omari Kelly,FA,930
 Sahmir Hagans,FA,931
 Xavier Loyd,FA,932
-Damon Bankston,GB,933
+Damon Bankston,FA,933
 Devonte Ross,FA,934
 Sincere Brown,FA,935
 E.J. Williams Jr.,FA,936
@@ -941,7 +941,7 @@ Junior Bergen,FA,939
 Hakeem Butler,FA,940
 Chamon Metayer,FA,941
 Dennis Houston,FA,942
-Treyvhon Saunders,FA,943
+Treyvhon Saunders,HOU,943
 Dean Patterson IV,TB,944
 Kye Robichaux,FA,945
 Cameron Ross,FA,946
@@ -961,7 +961,7 @@ Bryson Green,FA,959
 Cortez Braham Jr.,FA,960
 Octavian Smith Jr.,FA,961
 Cornelius Johnson,FA,962
-Phillip Dorsett II,FA,963
+Phillip Dorsett II,LV,963
 Ihmir Smith-Marsette,CAR,964
 Devonte Boyd,FA,965
 Kadarius Toney,FA,966
