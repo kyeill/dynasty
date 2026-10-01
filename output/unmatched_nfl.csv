@@ -1,7 +1,7 @@
 ﻿reason,player,fp_dynasty_rank,ktc_rank,best_rank
-"ranked, no name match (add to aliases)",javon baker,473,407,407
 "ranked, no name match (add to aliases)",brandon polk,412,,412
 "ranked, no name match (add to aliases)",eric mcalister,428,,428
+"ranked, no name match (add to aliases)",javon baker,473,407,407
 "ranked, no name match (add to aliases)",jermaine burton,453,,453
 "ranked, no name match (add to aliases)",zack moss,465,,465
 "ranked, no name match (add to aliases)",daylan smothers,474,,474
@@ -121,6 +121,7 @@
 "on authority, unranked by all sources",John Bates,,,
 "on authority, unranked by all sources",Anthony Firkser,,,
 "on authority, unranked by all sources",John FitzPatrick,,,
+"on authority, unranked by all sources",Malik Heath,,,
 "on authority, unranked by all sources",Jeremiah Webb,,,
 "on authority, unranked by all sources",Trayvon Rudolph,,,
 "on authority, unranked by all sources",Courtney Jackson,,,
@@ -397,7 +398,6 @@
 "on authority, unranked by all sources",Jack Stoll,,,
 "on authority, unranked by all sources",Bryce Ford-Wheaton,,,
 "on authority, unranked by all sources",Irv Charles,,,
-"on authority, unranked by all sources",Trey Sermon,,,
 "on authority, unranked by all sources",Jha'Quan Jackson,,,
 "on authority, unranked by all sources",Jordan Mims,,,
 "on authority, unranked by all sources",Payne Durham,,,
@@ -427,11 +427,13 @@
 "on authority, unranked by all sources",Jonathan Ward,,,
 "on authority, unranked by all sources",Carter Runyon,,,
 "on authority, unranked by all sources",Raheem Blackshear,,,
+"on authority, unranked by all sources",Jake Browning,,,
 "on authority, unranked by all sources",Chris Collier,,,
 "on authority, unranked by all sources",Dylan Drummond,,,
 "on authority, unranked by all sources",Drew Ogletree,,,
 "on authority, unranked by all sources",Charlie Woerner,,,
 "on authority, unranked by all sources",Terrell Jennings,,,
+"on authority, unranked by all sources",Tylan Wallace,,,
 "on authority, unranked by all sources",Austin Trammell,,,
 "on authority, unranked by all sources",Ben VanSumeren,,,
 "on authority, unranked by all sources",Josh Williams,,,
@@ -484,10 +486,10 @@
 "on authority, unranked by all sources",British Brooks,,,
 "on authority, unranked by all sources",Anthony Gould,,,
 "on authority, unranked by all sources",Alec Ingold,,,
+"on authority, unranked by all sources",Aidan O'Connell,,,
 "on authority, unranked by all sources",DeeJay Dallas,,,
 "on authority, unranked by all sources",Adam Prentice,,,
 "on authority, unranked by all sources",Patrick Ricard,,,
-"on authority, unranked by all sources",Travis Homer,,,
 "on authority, unranked by all sources",Reggie Gilliam,,,
 "on authority, unranked by all sources",Hunter Dekkers,,,
 "on authority, unranked by all sources",Brett Rypien,,,
@@ -547,7 +549,6 @@
 "on authority, unranked by all sources",Clayton Tune,,,
 "on authority, unranked by all sources",Sam Hartman,,,
 "on authority, unranked by all sources",Andy Dalton,,,
-"on authority, unranked by all sources",Mason Rudolph,,,
 "on authority, unranked by all sources",Max Brosmer,,,
 "on authority, unranked by all sources",Cooper Rush,,,
 "on authority, unranked by all sources",Joshua Dobbs,,,
