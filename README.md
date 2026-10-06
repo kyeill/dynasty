@@ -288,7 +288,7 @@ its age, so a weekly ranking that stops being weekly is visible in the Sheet.
 **`sp_rank` ends its season in August** (`months: [5,6,7,8]`). PitcherList
 stopped publishing the weekly Top-100 SP after 2026-08-25 and pivoted to
 playoff content, so the column would otherwise carry an August ranking that
-still looked current. `rp_rank` runs May-October and is unaffected. An
+still looked current. `rp_rank` ends in September for the same reason -- its last post was 2026-09-22, and the regular season it covers is over. An
 off-season column writes a status row reading `out of season` with no stale
 flag -- a column switched off deliberately is closed, not stale, and calling it
 stale would raise an alarm every morning about a decision already taken.
