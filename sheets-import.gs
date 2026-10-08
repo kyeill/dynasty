@@ -21,7 +21,8 @@
  *   3. Run `importAll` once and approve the authorization prompt.
  *      (Google warns the app is "unverified" because you wrote it.
  *       Advanced -> Go to <project> is the way through.)
- *   4. Run `createDailyTrigger` once to schedule it.
+ *   4. Run `createDailyTrigger` once to schedule it (7pm -- see the note
+ *      there; an earlier import beats the build and copies stale files).
  */
 
 var RAW = 'https://raw.githubusercontent.com/kyeill/dynasty/main/output/';
@@ -175,6 +176,16 @@ function createDailyTrigger() {
     }
   });
   // 9am Eastern-ish, comfortably after the 7am Actions refresh.
-  ScriptApp.newTrigger('importAll').timeBased().atHour(9).everyDays(1).create();
-  Logger.log('Daily trigger created for 9am.');
+  // 7pm, NOT 9am. GitHub delivers this account's scheduled runs hours late, so
+  // the build that used to land at 7am now arrives between roughly 11am and
+  // 3:30pm Eastern. A 9am import therefore ran BEFORE the day's build existed
+  // and faithfully copied yesterday's files -- every day, for weeks, with no
+  // error anywhere: the import succeeded, the repo was fine, and the sheet was
+  // simply always one day behind.
+  //
+  // Evening import, with hours of slack after the latest build seen. If the
+  // sheet ever looks a day stale again, compare this hour against the run times
+  // at github.com/kyeill/dynasty/actions before suspecting anything else.
+  ScriptApp.newTrigger('importAll').timeBased().atHour(19).everyDays(1).create();
+  Logger.log('Daily trigger created for 7pm.');
 }
