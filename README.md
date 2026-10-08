@@ -295,6 +295,33 @@ stale would raise an alarm every morning about a decision already taken.
 They are still not blended and still have no last-good fallback -- they are
 reference columns, and an empty one is only ever a missing column.
 
+## Two schedules that must stay in order
+
+The build runs in Actions; the Sheet imports the result on its own Apps Script
+trigger. **Neither knows the other exists**, and if the import runs first it
+copies yesterday's files -- successfully, with every status row green.
+
+That is exactly what happened: since ~2026-09-25 GitHub has delivered this
+account's scheduled runs four to five hours late, so a build meant for 7am ET
+landed between 11:00 and 15:30, after the 9am import. The Sheet showed
+yesterday's numbers for weeks with nothing anywhere reporting a problem.
+
+Both halves are now set against that delay:
+
+- **Import at 7pm** (`createDailyTrigger`), hours after the latest build seen.
+- **Extra crons at 05:13 / 06:11 / 07:07 UTC** alongside the honest 11-13 UTC
+  slots -- the same workaround sports-daily and games-history adopted. Delayed
+  four hours one lands in the morning; delivered on time they arrive at 1-3am
+  Eastern and the gate's **6am floor** rejects them.
+
+The floor is a floor, not a window: the old "must be exactly 7am" gate threw
+away every late run and meant the schedule never fired at all. It exists only
+because the sources update through the morning -- a 2am build would mark the
+day done with yesterday's numbers and no later slot would correct it.
+
+**When the Sheet looks a day stale, compare the trigger hour against the real
+run times in the Actions tab before suspecting the parsers.**
+
 ## How a failure reaches you
 
 The pipeline has exactly one push notification: GitHub emails on a failed

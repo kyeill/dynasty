@@ -3,11 +3,25 @@ name: Refresh boards and rosters
 on:
   schedule:
     # GitHub cron is UTC only, so 7am Eastern is 11:00 UTC in summer and 12:00
-    # in winter. Both fire; the gate below lets exactly one through, so this
-    # really is once a day at 7am Eastern all year.
-    - cron: "0 11 * * *"
-    - cron: "0 12 * * *"
-    - cron: "0 13 * * *"
+    # in winter. The gate below lets exactly one through per Eastern day.
+    #
+    # Since ~2026-09-25 GitHub has delivered this account's scheduled runs four
+    # to five hours late across every repo, so the honest slots were landing
+    # between 11am and 3:30pm Eastern -- after the Sheet imported, which is why
+    # it showed yesterday's data for weeks. The 05-07 UTC slots are the same
+    # workaround sports-daily and games-history adopted on 2026-09-28: delayed
+    # four or five hours one of them lands in the morning; delivered on time
+    # they arrive at 1-3am Eastern and the 6am floor below throws them out. So
+    # being wrong about the delay costs nothing, and if GitHub ever recovers,
+    # the honest slots take over again.
+    #
+    # Off-the-hour minutes deliberately: exactly :00 is peak scheduling load.
+    - cron: "13 5 * * *"
+    - cron: "11 6 * * *"
+    - cron: "7 7 * * *"
+    - cron: "9 11 * * *"
+    - cron: "9 12 * * *"
+    - cron: "9 13 * * *"
   workflow_dispatch:
 
 permissions:
@@ -40,12 +54,20 @@ jobs:
           # Keyed on the Eastern date, so whichever slot arrives first that day
           # does the work and the rest skip. Late delivery costs freshness, not
           # the refresh itself.
+          # A 6am Eastern floor, which is NOT the old "must be exactly 7am"
+          # gate -- that one discarded every late-delivered run and meant the
+          # schedule never fired at all. This only rejects absurdly early
+          # arrivals, which matter because the sources update through the
+          # morning: a build at 2am would mark the day done with yesterday's
+          # numbers and no later slot would correct it.
           if [ "${{ github.event_name }}" != "schedule" ]; then
             reason="manual run"; go=yes
-          elif [ "$built" != "$today" ]; then
-            reason="nothing refreshed for $today yet (Eastern hour $hour)"; go=yes
-          else
+          elif [ "$built" = "$today" ]; then
             reason="already refreshed for $today"; go=no
+          elif [ "$hour" \< "06" ]; then
+            reason="only $hour:00 Eastern -- too early, sources still stale"; go=no
+          else
+            reason="nothing refreshed for $today yet (Eastern hour $hour)"; go=yes
           fi
 
           if [ "$go" = "yes" ]; then
