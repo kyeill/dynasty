@@ -15,7 +15,7 @@ from __future__ import annotations
 import json
 import re
 
-from common import (Fetcher, fantasypros, pick_seasonal_url, to_num,
+from common import (Fetcher, fantasypros, pick_seasonal_window, to_num,
                     yahoo_player_list)
 
 # KTC ships the whole board inline as `playersArray`, carrying BOTH formats --
@@ -135,7 +135,8 @@ def name_authority(cfg: dict, fetch: Fetcher) -> list[dict]:
 
 
 def current_rank(cfg: dict, fetch: Fetcher) -> list[dict]:
-    return fantasypros(pick_seasonal_url(cfg["current"]), fetch)
+    window = pick_seasonal_window(cfg["current"])
+    return fantasypros(window.get("url", ""), fetch, window.get("expect"))
 
 
 def inspect(cfg: dict, fetch: Fetcher) -> None:

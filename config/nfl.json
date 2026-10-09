@@ -36,7 +36,10 @@
           9
         ],
         "url": "https://www.fantasypros.com/nfl/rankings/half-point-ppr-superflex-cheatsheets.php",
-        "note": "offseason / preseason, superflex"
+        "note": "offseason / preseason, superflex",
+        "expect": {
+          "position_id": "OP"
+        }
       },
       {
         "months": [
@@ -45,7 +48,11 @@
           12
         ],
         "url": "https://www.fantasypros.com/nfl/rankings/ros-half-point-ppr-overall.php",
-        "note": "in season, rest-of-season"
+        "note": "in-season, rest-of-season. NOT superflex, and there is no free FantasyPros page that is: every ros- URL returns position_id ALL, including ros-half-point-ppr-superflex.php, which is the overall list byte for byte. Only weekly and dynasty pages offer OP, and a weekly list drops everyone on bye. Quarterbacks therefore read low in current_rank Oct-Dec. It is a reference column and never touches the ordering.",
+        "expect": {
+          "position_id": "ALL",
+          "ranking_type_name": "ros"
+        }
       }
     ]
   },

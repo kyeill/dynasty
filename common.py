@@ -620,23 +620,38 @@ def pick_seasonal_url(cfg: dict, today=None) -> str:
     (Nov-Apr) and explicit month lists are easier to check than date
     arithmetic.
     """
+    return pick_seasonal_window(cfg, today).get("url", "")
+
+
+def pick_seasonal_window(cfg: dict, today=None) -> dict:
+    """The whole window, not just its URL, so callers can read its `expect`."""
     if "url" in cfg and "windows" not in cfg:
-        return cfg["url"]
+        return cfg
     month = (today or date.today()).month
     for window in cfg.get("windows", []):
         if month in window.get("months", []):
-            return window["url"]
-    fallback = cfg.get("windows", [{}])[0].get("url", cfg.get("url", ""))
-    print(f"[warn] no seasonal window covers month {month} -- using {fallback}")
+            return window
+    fallback = (cfg.get("windows") or [{}])[0]
+    print(f"[warn] no seasonal window covers month {month} -- using "
+          f"{fallback.get('url', cfg.get('url', ''))}")
     return fallback
 
 
-def fantasypros(url: str, fetch: Fetcher) -> list[dict]:
+def fantasypros(url: str, fetch: Fetcher, expect: dict | None = None) -> list[dict]:
     """FantasyPros ships the full ranking inline as `var ecrData = {...}`.
 
     Go after the JSON, not the rendered table: the table abbreviates names
     ("J. Williams" is ambiguous -- OKC has two). Identical structure across
     NBA, NFL and MLB.
+
+    `expect` checks ecrData's own metadata -- `position_id` ("OP" is superflex,
+    "ALL" is one-QB) and `ranking_type_name` ("ros", "weekly", "dynasty") --
+    because **the slug lies**. On 2026-10-09 every ros- URL returned
+    position_id ALL regardless of the word "superflex" in it:
+    ros-half-point-ppr-superflex.php is byte-for-byte the overall list. A page
+    that quietly serves a different ranking than its name promises is the exact
+    silent-wrong-answer this project keeps meeting, and the metadata settles it
+    in one line instead of inferring it from where the quarterbacks landed.
     """
     html = fetch(url)
     i = html.find("var ecrData")
@@ -649,6 +664,14 @@ def fantasypros(url: str, fetch: Fetcher) -> list[dict]:
         obj, _ = json.JSONDecoder().raw_decode(html, start)
     except ValueError:
         return []
+
+    if expect:
+        wrong = {k: (obj.get(k), v) for k, v in expect.items() if obj.get(k) != v}
+        if wrong:
+            detail = ", ".join(f"{k}: got {got!r}, expected {want!r}"
+                               for k, (got, want) in wrong.items())
+            print(f"[warn] fantasypros: {url.rstrip('/').split('/')[-1]} is not "
+                  f"the ranking it was configured as -- {detail}")
 
     rows = []
     for p in obj.get("players", []):

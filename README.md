@@ -295,6 +295,26 @@ stale would raise an alarm every morning about a decision already taken.
 They are still not blended and still have no last-good fallback -- they are
 reference columns, and an empty one is only ever a missing column.
 
+## FantasyPros: the slug lies, check the metadata
+
+`ecrData` carries its own description of what the page is -- `position_id`
+(**OP** is superflex, **ALL** is one-QB) and `ranking_type_name` (`ros`,
+`weekly`, `dynasty`). Trust that, never the URL.
+
+Checked on 2026-10-09, every `ros-` URL returns `position_id: ALL` whatever the
+slug says: `ros-half-point-ppr-superflex.php` is the overall list byte for
+byte, with Josh Allen 24th. Only weekly and dynasty pages offer `OP`.
+
+**So there is no free rest-of-season superflex list**, and NFL `current_rank`
+is one-QB from October. Quarterbacks read low in it for the rest of the year.
+That is a known trade: the alternative, the weekly superflex page, drops
+everyone on bye -- 98 players missing in week 5, including A.J. Brown and Lamar
+Jackson. `current_rank` is a reference column and never touches the ordering.
+
+Each window carries an `expect` block, and `fantasypros()` warns when the page
+disagrees with it. The blended sources are both genuinely superflex
+(`dynasty-superflex.php`, and KTC's `superflexValues`).
+
 ## Two schedules that must stay in order
 
 The build runs in Actions; the Sheet imports the result on its own Apps Script
