@@ -170,6 +170,23 @@ require spaces around the hyphen *and* an upper-case position, or
 `N. Alexander-Walker` ends in something that looks exactly like it
 (`der-Walker`) and gets truncated to `N. Alexan`.
 
+### Positions survive the overrides pass
+
+`apply_overrides` used to rebuild every row as `{player, fantasy_team}`, which
+silently discarded `roster_pos` -- the position read from Kyle's own sheet. It
+went unnoticed for a month because the naming authority supplied a position
+too and masked the loss. When Fantrax shrank its pool at season's end and
+stopped listing those players, 58 rostered MLB players went positionless with
+no change having been made anywhere.
+
+It now carries whole rows through. A player added by hand on the Overrides tab
+still has no position -- there is no roster row to take one from -- and the run
+warns with the count, so a blank position is never just silence.
+
+Roster-sourced positions go through the sport's own `clean_positions` where it
+defines one, so MLB strips `INF` from them exactly as it does the authority's.
+Otherwise the roster path would be the one place `INF` still showed.
+
 ### Overrides run BEFORE the name expansion
 
 Order matters here and the failure is silent. An override is matched by name

@@ -137,13 +137,20 @@ def apply_overrides(out: list[dict], ov: list[dict], resolve_name):
         return out, []
 
     notes = []
-    current = {r["player"]: r["fantasy_team"] for r in out}
+    # Whole rows, not just the team. Rebuilding them as {player, fantasy_team}
+    # silently discarded every other field a row was carrying -- including
+    # roster_pos, the position read from Kyle's own sheet. That went unnoticed
+    # for a month because the naming authority supplied a position too and
+    # masked it; when Fantrax shrank its pool at season's end, the authority
+    # stopped knowing these players and they went positionless with no other
+    # change having been made.
+    current = {r["player"]: dict(r) for r in out}
     for r in ov:
         raw = str(r["player"]).strip()
         matched = resolve_name(raw)
         canonical = matched or raw
         team = str(r.get("fantasy_team") or "").strip()
-        was = current.get(canonical)
+        was = (current.get(canonical) or {}).get("fantasy_team")
 
         if matched is None and team:
             # Adding a name the authority doesn't know is legitimate for a deep
@@ -157,18 +164,19 @@ def apply_overrides(out: list[dict], ov: list[dict], resolve_name):
                 del current[canonical]
                 notes.append(f"dropped {canonical!r} from {was}")
         elif was is None:
-            current[canonical] = team
+            # Added by hand, so there is no roster row and no position for him.
+            current[canonical] = {"player": canonical, "fantasy_team": team}
             notes.append(f"added {canonical!r} to {team}")
         elif was != team:
-            current[canonical] = team
+            current[canonical]["fantasy_team"] = team
             notes.append(f"moved {canonical!r} {was} -> {team}")
         else:
             notes.append(f"no-op {canonical!r} already on {team}")
         if canonical != raw and not notes[-1].startswith("WARNING"):
             notes[-1] += f"  (matched {raw!r})"
 
-    merged = [{"player": p, "fantasy_team": t} for p, t in current.items()]
-    merged.sort(key=lambda r: (r["fantasy_team"], r["player"]))
+    merged = sorted(current.values(),
+                    key=lambda r: (r["fantasy_team"], r["player"]))
     return merged, notes
 
 
@@ -268,6 +276,8 @@ def append_rostered_to_board(sport: str, roster: list[dict], auth: dict,
     # ranked Cade Smith cancel. Two rostered Jose Ramirezes against one ranked
     # still appends the second, which is the case the (name, team) key was
     # reaching for.
+    clean_pos = getattr(importlib.import_module(f"sources_{sport}"),
+                        "clean_positions", None)
     covered = Counter(normalize_name(r["player"]) for r in board)
     source_levels = _levels_from_sources(
         sport, {normalize_name(r["player"]) for r in board})
@@ -284,7 +294,13 @@ def append_rostered_to_board(sport: str, roster: list[dict], auth: dict,
         row["player"] = r["player"]
         # The roster's own position wins. For a player the authority never
         # heard of -- Angeibel Gomez -- it is the only position that exists.
-        row["pos"] = r.get("roster_pos") or (a or {}).get("pos", "")
+        # Through the sport's own cleaner, where it has one. MLB strips "INF",
+        # a catch-all that rides alongside the real position and is never the
+        # answer by itself -- the authority's positions are already cleaned, so
+        # without this the roster-sourced ones would be the only place it
+        # showed, which is exactly the kind of inconsistency nobody notices.
+        pos = r.get("roster_pos") or (a or {}).get("pos", "")
+        row["pos"] = clean_pos(pos) if clean_pos else pos
         row["team"] = (a or {}).get("team", "")
         if "level" in row:
             row["level"] = source_levels.get(key, "")
@@ -293,6 +309,17 @@ def append_rostered_to_board(sport: str, roster: list[dict], auth: dict,
 
     if not extra:
         return 0
+
+    blank = [r["player"] for r in extra if not str(r.get("pos") or "").strip()]
+    if blank:
+        # Only legitimate for a player added by hand on the Overrides tab, who
+        # has no roster row to take a position from. Any other cause is the
+        # position being lost somewhere between the sheet and here, which is
+        # invisible in the output -- it just looks like the source never had one.
+        print(f"[warn]   {len(blank)} appended player(s) have no position: "
+              + ", ".join(sorted(blank)[:4])
+              + (" ..." if len(blank) > 4 else "")
+              + " -- expected only for names added on the Overrides tab")
 
     extra.sort(key=lambda r: r["player"])
     start = len(board)

@@ -262,7 +262,7 @@ def extra_ranks(cfg: dict, fetch: Fetcher) -> dict:
 _DROP_POSITIONS = {"INF"}
 
 
-def _clean_positions(value) -> str:
+def clean_positions(value) -> str:
     kept = [p.strip() for p in str(value or "").split(",")
             if p.strip() and p.strip().upper() not in _DROP_POSITIONS]
     return ",".join(kept)
@@ -281,7 +281,7 @@ def name_authority(cfg: dict, fetch: Fetcher) -> list[dict]:
     """
     rows = _fantrax(cfg["name_authority"], fetch)
     for r in rows:
-        r["pos"] = _clean_positions(r.get("pos"))
+        r["pos"] = clean_positions(r.get("pos"))
 
     rcfg = cfg.get("rosters") or {}
     sheet_id, tab = rcfg.get("sheet_id"), rcfg.get("tab")
@@ -304,7 +304,7 @@ def name_authority(cfg: dict, fetch: Fetcher) -> list[dict]:
         if len(row) <= max(i_id, i_pos):
             continue
         sid = str(row[i_id]).strip().strip("*")
-        pos = _clean_positions(row[i_pos])
+        pos = clean_positions(row[i_pos])
         if sid and pos:
             by_id[sid] = pos
 
