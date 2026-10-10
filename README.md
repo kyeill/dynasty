@@ -462,6 +462,9 @@ Ramirez, Edwin Diaz and Will Smith "MLB", their namesakes' level. They still
 get no `prospect_rank`: it comes from `combined_rank`, and theirs is the bottom
 of the board.
 
+**"UT" is dropped unless it is the only position, or the only non-pitching one.** Kyle's rule. Beside 1B it is noise -- a first baseman is obviously startable at utility -- but alone it is the whole answer, and beside SP/RP it says the player also hits, which for Ohtani (`UT,SP`) is the entire point.
+**"INF" is always stripped**
+
 ## Rostered but unranked
 
 Someone can be owned in the league while no ranking source covers him -- a deep

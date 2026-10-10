@@ -259,12 +259,31 @@ def extra_ranks(cfg: dict, fetch: Fetcher) -> dict:
 
 # Fantrax's pool marks corner/middle infielders with a catch-all "INF" alongside
 # the real position. It is never the answer on its own and only adds noise.
+# Always meaningless: a catch-all that rides alongside the real position.
 _DROP_POSITIONS = {"INF"}
+
+# Pitching slots. They do not count as "a real position" when deciding whether
+# UT is carrying information -- see clean_positions.
+_PITCHING = {"SP", "RP", "P"}
 
 
 def clean_positions(value) -> str:
+    """Normalise an MLB eligibility list.
+
+    INF always goes: it rides alongside the real position and is never the
+    answer by itself.
+
+    UT goes too, UNLESS it is the only thing left or the only non-pitching
+    thing left. Kyle's rule, and it picks out the case where UT means
+    something: next to 1B it is noise, because a first baseman is obviously
+    startable at utility, but on its own it is the whole answer, and beside SP
+    or RP it says the player also hits -- which for Ohtani is the entire point.
+    """
     kept = [p.strip() for p in str(value or "").split(",")
             if p.strip() and p.strip().upper() not in _DROP_POSITIONS]
+    others = [p for p in kept if p.upper() != "UT"]
+    if any(p.upper() not in _PITCHING for p in others):
+        kept = others          # a real fielding position already says it
     return ",".join(kept)
 
 
