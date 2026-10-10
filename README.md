@@ -187,6 +187,20 @@ Roster-sourced positions go through the sport's own `clean_positions` where it
 defines one, so MLB strips `INF` from them exactly as it does the authority's.
 Otherwise the roster path would be the one place `INF` still showed.
 
+### MLB position rules
+
+Both run in `clean_positions`, so the authority's positions and the roster's
+get the same treatment.
+
+- **`INF` always goes.** A catch-all that rides alongside the real position and
+  is never the answer by itself.
+- **`UT` goes unless it is the only position, or the only non-pitching one.**
+  Beside `1B` it is noise -- a first baseman is obviously startable at utility
+  -- but alone it is the whole answer, and beside `SP`/`RP` it says the player
+  also hits, which for Ohtani (`UT,SP`) is the entire point. Pitching slots do
+  not count as "a real position" in that test, which is what keeps the Ohtani
+  case working while `1B,UT,SP` still loses the `UT`.
+
 ### Overrides run BEFORE the name expansion
 
 Order matters here and the failure is silent. An override is matched by name
@@ -461,9 +475,6 @@ resolved and got ranked -- so a plain name join labelled the minor-league Jose
 Ramirez, Edwin Diaz and Will Smith "MLB", their namesakes' level. They still
 get no `prospect_rank`: it comes from `combined_rank`, and theirs is the bottom
 of the board.
-
-**"UT" is dropped unless it is the only position, or the only non-pitching one.** Kyle's rule. Beside 1B it is noise -- a first baseman is obviously startable at utility -- but alone it is the whole answer, and beside SP/RP it says the player also hits, which for Ohtani (`UT,SP`) is the entire point.
-**"INF" is always stripped**
 
 ## Rostered but unranked
 
