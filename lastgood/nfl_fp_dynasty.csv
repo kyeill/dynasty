@@ -6,17 +6,17 @@ Jaxon Smith-Njigba,SEA,4
 Ja'Marr Chase,CIN,5
 Joe Burrow,CIN,6
 Bijan Robinson,ATL,7
-Caleb Williams,CHI,8
-Jahmyr Gibbs,DET,9
+Jahmyr Gibbs,DET,8
+Caleb Williams,CHI,9
 Puka Nacua,LAR,10
-Jayden Daniels,WAS,11
-Amon-Ra St. Brown,DET,12
+Amon-Ra St. Brown,DET,11
+Jayden Daniels,WAS,12
 CeeDee Lamb,DAL,13
 Patrick Mahomes II,KC,14
-Ashton Jeanty,LV,15
-Trevor Lawrence,JAC,16
-Brock Purdy,SF,17
-Malik Nabers,NYG,18
+Trevor Lawrence,JAC,15
+Ashton Jeanty,LV,16
+Malik Nabers,NYG,17
+Brock Purdy,SF,18
 Justin Jefferson,MIN,19
 Jeremiyah Love,ARI,20
 Jalen Hurts,PHI,21
@@ -65,22 +65,22 @@ Tucker Kraft,GB,63
 Jordyn Tyson,NO,64
 Makai Lemon,PHI,65
 Jameson Williams,DET,66
-TreVeyon Henderson,NE,67
+Bucky Irving,TB,67
 Sam LaPorta,DET,68
-Bucky Irving,TB,69
-Rome Odunze,CHI,70
-Harold Fannin Jr.,CLE,71
-Baker Mayfield,TB,72
-Quinshon Judkins,CLE,73
-Saquon Barkley,PHI,74
-Javonte Williams,DAL,75
-Denzel Boston,CLE,76
-KC Concepcion Jr.,CLE,77
-Sam Darnold,SEA,78
+Rome Odunze,CHI,69
+TreVeyon Henderson,NE,70
+Javonte Williams,DAL,71
+Harold Fannin Jr.,CLE,72
+Baker Mayfield,TB,73
+Quinshon Judkins,CLE,74
+Denzel Boston,CLE,75
+KC Concepcion Jr.,CLE,76
+Sam Darnold,SEA,77
+Saquon Barkley,PHI,78
 Dalton Kincaid,BUF,79
 Cam Ward,TEN,80
-Derrick Henry,BAL,81
-Matthew Golden,GB,82
+Matthew Golden,GB,81
+Derrick Henry,BAL,82
 Kyler Murray,MIN,83
 Kenyon Sadiq,NYJ,84
 Cam Skattebo,NYG,85
@@ -104,8 +104,8 @@ Jaylen Warren,PIT,102
 Michael Penix Jr.,ATL,103
 DK Metcalf,PIT,104
 Josh Downs,IND,105
-Kyle Pitts Sr.,ATL,106
-Davante Adams,LAR,107
+Davante Adams,LAR,106
+Kyle Pitts Sr.,ATL,107
 George Kittle,SF,108
 Ty Simpson,LAR,109
 Chuba Hubbard,CAR,110
@@ -120,15 +120,15 @@ Blake Corum,LAR,118
 Josh Jacobs,GB,119
 Terrance Ferguson,LAR,120
 David Montgomery,HOU,121
-Antonio Williams,WAS,122
-Chris Bell,MIA,123
+Chris Bell,MIA,122
+Antonio Williams,WAS,123
 Jonah Coleman,DEN,124
 Brenton Strange,JAC,125
 Juwan Johnson,NO,126
 RJ Harvey,DEN,127
 Chris Godwin Jr.,TB,128
-Michael Pittman Jr.,PIT,129
-Courtland Sutton,DEN,130
+Courtland Sutton,DEN,129
+Michael Pittman Jr.,PIT,130
 Quentin Johnston,LAC,131
 Eli Stowers,PHI,132
 Jake Ferguson,DAL,133
@@ -177,8 +177,8 @@ Jalen McMillan,TB,175
 Dalton Schultz,HOU,176
 Jaylin Noel,HOU,177
 Hunter Henry,NE,178
-Travis Hunter,JAC,179
-Aaron Jones Sr.,MIN,180
+Aaron Jones Sr.,MIN,179
+Travis Hunter,JAC,180
 Deshaun Watson,CLE,181
 Keaton Mitchell,LAC,182
 Aaron Rodgers,PIT,183
@@ -195,16 +195,16 @@ Dylan Sampson,CLE,193
 Nicholas Singleton,TEN,194
 Brian Robinson Jr.,ATL,195
 Max Klare,LAR,196
-Isaac TeSlaa,DET,197
-MarShawn Lloyd,GB,198
+MarShawn Lloyd,GB,197
+Isaac TeSlaa,DET,198
 Ryan Flournoy,DAL,199
 Alvin Kamara,NO,200
 Tank Bigsby,PHI,201
 Tyrone Tracy Jr.,NYG,202
 Rashod Bateman,BAL,203
 Tua Tagovailoa,ATL,204
-Malik Washington,MIA,205
-Troy Franklin,DEN,206
+Troy Franklin,DEN,205
+Malik Washington,MIA,206
 Keon Coleman,BUF,207
 Jerry Jeudy,CLE,208
 Bryce Lance,NO,209
@@ -212,8 +212,8 @@ Eli Raridon,NE,210
 Ollie Gordon II,MIA,211
 Kaleb Johnson,GB,212
 Cade Otton,TB,213
-Zachariah Branch,ATL,214
-Elic Ayomanor,TEN,215
+Elic Ayomanor,TEN,214
+Zachariah Branch,ATL,215
 Carson Beck,ARI,216
 Skyler Bell,BUF,217
 Kirk Cousins,LV,218
@@ -228,13 +228,13 @@ Elijah Sarratt,BAL,226
 Jauan Jennings,MIN,227
 Kimani Vidal,LAC,228
 Calvin Ridley,TEN,229
-Kyle Williams,NE,230
-David Njoku,LAC,231
+David Njoku,LAC,230
+Kyle Williams,NE,231
 Isiah Pacheco,DET,232
 Darnell Mooney,NYG,233
 Kevin Coleman Jr.,MIA,234
-Jack Bech,LV,235
-Tank Dell,HOU,236
+Tank Dell,HOU,235
+Jack Bech,LV,236
 Jaylen Wright,MIA,237
 Ray Davis,BUF,238
 Chimere Dike,TEN,239
@@ -255,8 +255,8 @@ Sean Tucker,TB,253
 Matt Hibner,BAL,254
 Chris Brazzell II,CAR,255
 Roman Wilson,PIT,256
-Marvin Mims Jr.,DEN,257
-Seth McGowan,IND,258
+Seth McGowan,IND,257
+Marvin Mims Jr.,DEN,258
 Xavier Legette,CAR,259
 Jalen Royals,KC,260
 Adam Randall,BAL,261
@@ -298,8 +298,8 @@ Joshua Palmer,BUF,296
 Jaydon Blue,PHI,297
 Konata Mumpfield,LAR,298
 Jameis Winston,NYG,299
-Calvin Austin III,NYG,300
-Tahj Brooks,CIN,301
+Tahj Brooks,CIN,300
+Calvin Austin III,NYG,301
 Isaac Guerendo,SF,302
 Justice Hill,BAL,303
 Devin Neal,WAS,304
