@@ -360,6 +360,11 @@ yesterday's numbers for weeks with nothing anywhere reporting a problem.
 Both halves are now set against that delay:
 
 - **Import at 7pm** (`createDailyTrigger`), hours after the latest build seen.
+- **Two builds a day, morning and afternoon** (`output/_last_slot.txt`). One
+  per day was not enough once the early crons started landing around 7:20am:
+  anything pasted into the sheet later that morning was skipped with "already
+  refreshed" and waited until the next day. The afternoon slot still lands well
+  before the 7pm import.
 - **Extra crons at 05:13 / 06:11 / 07:07 UTC** alongside the honest 11-13 UTC
   slots -- the same workaround sports-daily and games-history adopted. Delayed
   four hours one lands in the morning; delivered on time they arrive at 1-3am

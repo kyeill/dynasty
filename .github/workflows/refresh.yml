@@ -43,6 +43,9 @@ jobs:
           hour=$(TZ=America/New_York date +%H)
           today=$(TZ=America/New_York date +%F)
           built=$(cat output/_last_refresh.txt 2>/dev/null || echo none)
+          # Morning or afternoon. Two builds a day, not one -- see below.
+          if [ "$hour" \< "12" ]; then slot=am; else slot=pm; fi
+          done_slot=$(cat output/_last_slot.txt 2>/dev/null || echo none)
 
           # The gate is "has today been done yet", NOT "is it 7am". GitHub
           # does not deliver scheduled runs on time -- on 2026-08-28 all three
@@ -60,14 +63,24 @@ jobs:
           # arrivals, which matter because the sources update through the
           # morning: a build at 2am would mark the day done with yesterday's
           # numbers and no later slot would correct it.
+          # ONE BUILD PER HALF-DAY, not per day. Once the early crons started
+          # landing around 7:20am Eastern, the day was finished before Kyle was
+          # awake: he pasted a new NFL roster into the sheet at 9am on
+          # 2026-10-28 and every later run that day skipped with "already
+          # refreshed", so his edit waited 22 hours for the next morning.
+          #
+          # An afternoon slot costs one extra run and means a morning edit to
+          # the sheet is published the same day, still comfortably before the
+          # 7pm import. The 6am floor stays: it is not about rationing runs, it
+          # is that the ranking sources update through the morning.
           if [ "${{ github.event_name }}" != "schedule" ]; then
             reason="manual run"; go=yes
-          elif [ "$built" = "$today" ]; then
-            reason="already refreshed for $today"; go=no
           elif [ "$hour" \< "06" ]; then
             reason="only $hour:00 Eastern -- too early, sources still stale"; go=no
+          elif [ "$done_slot" = "$today $slot" ]; then
+            reason="already refreshed for $today $slot"; go=no
           else
-            reason="nothing refreshed for $today yet (Eastern hour $hour)"; go=yes
+            reason="nothing refreshed for $today $slot yet (Eastern hour $hour)"; go=yes
           fi
 
           if [ "$go" = "yes" ]; then
@@ -128,6 +141,11 @@ jobs:
           # complete and stop the remaining slots from retrying.
           if [ "${{ steps.boards.outcome }}" = "success" ]; then
             TZ=America/New_York date +%F > output/_last_refresh.txt
+            # The slot marker is separate because the Sheet parses
+            # _last_refresh.txt as a bare date for its LAST REFRESHED line.
+            h=$(TZ=America/New_York date +%H)
+            if [ "$h" \< "12" ]; then sl=am; else sl=pm; fi
+            echo "$(TZ=America/New_York date +%F) $sl" > output/_last_slot.txt
           else
             echo "boards failed -- leaving _last_refresh.txt alone so a later slot retries"
           fi
