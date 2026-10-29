@@ -21,8 +21,8 @@
  *   3. Run `importAll` once and approve the authorization prompt.
  *      (Google warns the app is "unverified" because you wrote it.
  *       Advanced -> Go to <project> is the way through.)
- *   4. Run `createDailyTrigger` once to schedule it (7pm -- see the note
- *      there; an earlier import beats the build and copies stale files).
+ *   4. Run `createDailyTrigger` once to schedule it (10am and 7pm -- see
+ *      the note there; it deletes its own duplicates, so re-run freely).
  */
 
 var RAW = 'https://raw.githubusercontent.com/kyeill/dynasty/main/output/';
@@ -175,17 +175,22 @@ function createDailyTrigger() {
       ScriptApp.deleteTrigger(t);
     }
   });
-  // 9am Eastern-ish, comfortably after the 7am Actions refresh.
-  // 7pm, NOT 9am. GitHub delivers this account's scheduled runs hours late, so
-  // the build that used to land at 7am now arrives between roughly 11am and
-  // 3:30pm Eastern. A 9am import therefore ran BEFORE the day's build existed
-  // and faithfully copied yesterday's files -- every day, for weeks, with no
-  // error anywhere: the import succeeded, the repo was fine, and the sheet was
-  // simply always one day behind.
+  // TWO imports: 10am and 7pm.
   //
-  // Evening import, with hours of slack after the latest build seen. If the
-  // sheet ever looks a day stale again, compare this hour against the run times
-  // at github.com/kyeill/dynasty/actions before suspecting anything else.
+  // The evening one came first, when GitHub was delivering this account's
+  // scheduled runs so late that the build landed in the early afternoon. A 9am
+  // import then ran BEFORE the day's build existed and copied yesterday's
+  // files -- successfully, every day, for weeks, with no error anywhere.
+  //
+  // Since the early crons were added the build lands around 7:20am, so a lone
+  // 7pm import means a morning build sits unseen for eleven hours. That is the
+  // whole reason Kyle could not see a Wednesday roster paste on Thursday
+  // morning: the build HAD picked it up at 7:33am; the sheet simply had not
+  // looked yet.
+  //
+  // 10am catches the normal morning build. 7pm stays as the backstop for the
+  // days GitHub delivers late, so neither failure mode can strand a day's data.
+  ScriptApp.newTrigger('importAll').timeBased().atHour(10).everyDays(1).create();
   ScriptApp.newTrigger('importAll').timeBased().atHour(19).everyDays(1).create();
-  Logger.log('Daily trigger created for 7pm.');
+  Logger.log('Daily triggers created for 10am and 7pm.');
 }
