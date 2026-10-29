@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 dynasty
 =======
@@ -33,9 +33,8 @@ import json
 import sys
 from datetime import datetime
 import time
-from pathlib import Path
 
-from common import (CACHE_DIR, HERE, LASTGOOD_DIR, OFF_SEASON, OUTPUT_DIR,
+from common import (HERE, LASTGOOD_DIR, OFF_SEASON, OUTPUT_DIR,
                     Fetcher, blend,
                     build_resolver, expand_abbreviated, guard_source, index_by_key,
                     load_aliases, prepare_authority, read_csv, save_fullnames,

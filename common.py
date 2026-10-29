@@ -29,7 +29,6 @@ from bs4 import BeautifulSoup
 
 HERE = Path(__file__).resolve().parent
 CACHE_DIR = HERE / ".cache"
-IMPORTS_DIR = HERE / "imports"
 OUTPUT_DIR = HERE / "output"
 HISTORY_DIR = OUTPUT_DIR / "history"
 
@@ -845,29 +844,6 @@ def guard_source(rows: list[dict], sport: str, source: str,
     _outage_marker(path, "open")
     return prev, {"source": source, "rows": len(prev), "stale": "YES",
                   "age_days": round(age, 1), "note": f"live pull had {len(rows)}"}
-
-
-def newest_import(sport: str, pattern: str) -> Path | None:
-    """Most recent manually-exported CSV matching a pattern."""
-    folder = IMPORTS_DIR / sport
-    if not folder.exists():
-        return None
-    hits = [p for p in folder.glob("*.csv") if re.search(pattern, p.name, re.I)]
-    return max(hits, key=lambda p: p.stat().st_mtime) if hits else None
-
-
-def read_import(sport: str, pattern: str, label: str,
-                stale_days: float = 45) -> list[dict]:
-    """Read the newest matching export, and say how old it is."""
-    path = newest_import(sport, pattern)
-    if path is None:
-        print(f"[warn] no {label} export found in imports/{sport}/ "
-              f"(looking for /{pattern}/)")
-        return []
-    age_d = (time.time() - path.stat().st_mtime) / 86400
-    note = f"  <-- {age_d:.0f} days old, consider re-exporting" if age_d > stale_days else ""
-    print(f"[import] {label}: {path.name} ({age_d:.0f}d){note}")
-    return read_csv(path)
 
 
 def snapshot(rows: list[dict], sport: str, kind: str,

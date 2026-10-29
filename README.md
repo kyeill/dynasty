@@ -71,28 +71,11 @@ Adding a sport means writing one module and one config. Nothing else changes.
 |---|---|---|---|
 | Blended | Hashtag dynasty 0.67 / keeper 0.33 | FantasyPros dynasty SF 0.67 / KeepTradeCut 0.33 | HarryKnowsBall 1.0 |
 | Names | Yahoo league 667 | Yahoo league 101 (offense) | Fantrax league (JSON API) |
-| Current | FantasyPros points-Yahoo | FantasyPros half-PPR SF | FantasyPros Roto |
+| Current | FantasyPros points-Yahoo | FantasyPros half-PPR (superflex Jan–Sep, one-QB Oct–Dec) | FantasyPros Roto |
 
 The Yahoo and Fantrax leagues are **arbitrary public leagues**, used only as a
 source of canonical names and positions. No rosters, no ownership, and their
 scoring format is irrelevant.
-
-## Manual imports (currently unused)
-
-Every source is now scraped, so nothing needs exporting by hand. NFL used to
-read paid DLF exports from `imports/nfl/` until 2026-08-22, when FantasyPros
-dynasty superflex and KeepTradeCut replaced them.
-
-`common.read_import()` remains for the next paywalled source: it takes the
-**newest** file matching a pattern, so the folder never needs clearing, and it
-warns when the newest is over 45 days old. Create `imports/<sport>/` and drop
-files in when something needs it.
-
-The old DLF CSVs were deleted once nothing read them. To get them back:
-
-```bash
-git checkout d362829 -- imports/nfl/
-```
 
 ## Rosters
 
@@ -679,11 +662,12 @@ Get-ChildItem output\history -Recurse -File |
 and commits whatever changed back to this repo. Your Sheets read those files
 from `raw.githubusercontent.com`.
 
-Three UTC cron slots with an Eastern-hour gate, because GitHub cron has no
-timezone and 7am Eastern moves with DST. The 08 and 09 slots are catch-ups:
-GitHub *queues* scheduled runs rather than guaranteeing them, so a later slot
-refreshes only if the day hasn't been done. `[skip ci]` on the commit stops the
-push retriggering the workflow forever.
+Six UTC cron slots and a gate that allows **one build per half-day**, tracked
+in `output/_last_slot.txt`. GitHub cron has no timezone, delivers this
+account's runs hours late, and queues rather than guarantees -- so the gate
+asks "has this half-day been built", never "is it 7am". See **Two schedules
+that must stay in order** for why that shape, and for the 6am floor.
+`[skip ci]` on the commit stops the push retriggering the workflow forever.
 
 `actions/cache` restores `.cache` between runs. Without it every run refetches
 everything — Yahoo alone is 45 paginated requests for names that barely change.
@@ -711,41 +695,32 @@ python rankings.py --sport all
 python rosters.py --sport all
 ```
 
-## Superseded: the old local schedule
-
-A Windows scheduled task used to do this on Kyle's PC via `run-daily.cmd`. Both
-are gone as of 2026-08-26 -- the task is disabled (not deleted, so
-`Enable-ScheduledTask "dynasty daily refresh"` brings it back) and the script is
-removed. It was also the only tracked file carrying a hard-coded local path,
-which does not belong in a public repo.
-
-
 ## Google Sheets
 
-`sheets-import.gs` — Apps Script that reads the CSVs from Drive. Runs as you, so
-the files stay private and there are no credentials to store. **One sheet per
-sport**: paste it into each and set `SPORT` at the top.
+`sheets-import.gs` — Apps Script living in the sheet itself. It reads the
+published CSVs from `raw.githubusercontent.com`, so it runs as you, needs no
+credentials, and depends on no local machine.
 
-Each sheet gets two tabs:
+**One sheet, all three sports.** It writes seven tabs and touches nothing else,
+so the roster tabs you paste into are safe to keep alongside:
 
 | Tab | From |
 |---|---|
-| `Rankings` | `combined_rankings_<sport>.csv` |
-| `Rosters` | `rosters_<sport>.csv` |
+| `NBA Rankings` … `MLB Rankings` | `combined_rankings_<sport>.csv` |
+| `NBA Rosters` … `MLB Rosters` | `rosters_<sport>.csv` |
+| `Source Status` | `_source_status_<sport>.csv`, plus the **last refreshed** date |
 
-A missing file is skipped with a log note rather than failing the run, so a
-sport with no roster yet still imports its board.
+A missing file is skipped with a log note rather than failing, so a sport with
+no roster yet still imports its board.
 
-Setup is in the file's header comment. Short version: Extensions → Apps Script
-→ paste → set `SPORT` → run `importRankings` and approve the "unverified app"
-prompt → run `createDailyTrigger`.
+**Setup / updating:** Extensions → Apps Script → paste the file → Save → run
+`importAll` and approve the "unverified app" prompt → run `createDailyTrigger`.
+That installs imports at **10am and 7pm** and deletes its own duplicates, so
+re-running it is safe. `importRankings` survives as an alias so older triggers
+keep working.
 
-Updating an already-configured sheet is just re-paste and Save — the entry
-point is still `importRankings`, so existing triggers keep working.
-
-A disabled service-account path (`push_to_sheets` + the `google_sheets` config
-block) exists as an alternative. It needs a JSON key, which is a live
-credential in a Drive-synced folder — prefer the Apps Script.
+**The repo file does not sync to the sheet.** Any change here has to be pasted
+in by hand, and `createDailyTrigger` re-run if the hours changed.
 
 ## The "current" rank switches with the season
 
@@ -807,30 +782,6 @@ comes first and is the category page.
   list, same hazard.
 - Names carry welded-on tier markers: `Mason MillerT1`, `Dylan LeeT1`, on the
   first pitcher of each tier. Stripped with a trailing `T\d+` rule.
-
-## When a source degrades
-
-Sources return HTTP 200 and still go useless. On 2026-08-22 FantasyPros served
-exactly **one** NBA player. Accepted silently, that blanks `current_rank` for
-583 players, and since this runs unattended it would go unnoticed for weeks.
-
-So each source declares a row floor (`sanity_floor` in the config). The
-current-rank source gets two tiers:
-
-- **below `sanity_floor.current`** (10) — the pull is treated as broken and
-  `.cache/current-last-good-<sport>.csv` is used instead;
-- **clears the floor but collapsed against the last good pull** (under half) —
-  warns and proceeds. Self-calibrating, so there's no number to retune as a
-  sport's ranked pool grows.
-
-A footnote worth remembering: the NBA "current rank" looked like a dead source
-for a while — one player, `total_experts: 0`. It was the wrong URL. The roto
-overall page is empty out of season; `overall-points-yahoo` has 250. Check the
-URL before concluding a source has died.
-
-Severity is split deliberately: the ranking sources and the naming authority
-are load-bearing and an empty parse aborts the run. The current rank is only an
-extra column, so a bad pull there warns but still ships the good rows.
 
 ## Before you change common.py
 
@@ -903,32 +854,17 @@ Hard-won traps, each of which cost a real debugging pass:
 - **Config files are read as `utf-8-sig`.** Notepad and PowerShell write a BOM
   that plain `json.loads` rejects.
 
-## Not done yet
+## Known gaps
 
-- **MLB `current_rank` covers 1,157 of 1,687.** FantasyPros ranks 1,605 players
-  but HarryKnowsBall ranks deep prospects it doesn't cover — expected, not a fault.
-- **62 MLB names need aliases** (`output/unmatched_mlb.csv`). Mostly prospects
-  where the two sites disagree on spelling. Worth a pass when convenient.
-- **NBA `current_rank` covers 244 of 584** — FantasyPros ranks 250 NBA players
-  right now, so the deep end of the board has no current rank. Expected.
-- Hashtag's dynasty page serves its default 400 of ~750. Going deeper needs an
-  ASP.NET postback a plain GET can't do.
+None of these is a fault; they are the shape of the sources.
 
-## When a source goes quiet
-
-`rankings.py` refuses to build a board from a source that parsed to zero rows,
-which is right: a silently half-built board is worse than none. It isolates the
-sports, so one failing does not stop the others -- it returns non-zero but still
-writes every board that worked.
-
-The workflow did not respect that. A failed step skipped the commit, so a run
-could compute fresh NFL and MLB boards and throw both away because NBA's source
-had gone quiet. The rosters and commit steps now run unless the job was
-cancelled, and the run still goes red for the sport that failed.
-
-**Known outage:** Hashtag Basketball pulled its keeper table in August 2026 --
-the page says the 2026 draft class is being loaded into the voting system and
-will take a few days. NBA fails daily until it returns; NFL and MLB are
-unaffected. Nothing to fix here, and `_parse_keeper` needs no change: the page
-now renders client-side and serves no `<table>` at all, so if it does not come
-back the source needs replacing rather than repairing.
+- **`current_rank` covers only the top of each board** — roughly 280 of 600
+  (NBA), 341 of 556 (NFL), 527 of 1,723 (MLB). FantasyPros ranks far fewer
+  players than the dynasty sources, which go deep into prospects.
+- **Names still needing aliases**: NBA ~150, MLB ~40, NFL ~10
+  (`output/unmatched_<sport>.csv`, rows marked "add to aliases"). Mostly
+  prospects the two sites spell differently. Worth a pass when convenient.
+- **Hashtag's dynasty page serves its default 400 of ~750.** Going deeper needs
+  an ASP.NET postback a plain GET cannot do.
+- **NFL `current_rank` is one-QB from October.** No free FantasyPros
+  rest-of-season superflex list exists — see the FantasyPros section.

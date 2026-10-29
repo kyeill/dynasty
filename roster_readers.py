@@ -27,7 +27,6 @@ XLSX is read with openpyxl, not pandas -- see common.py for why.
 from __future__ import annotations
 
 import re
-from pathlib import Path
 
 from common import read_csv
 

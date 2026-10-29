@@ -1,4 +1,4 @@
-﻿"""
+"""
 MLB sources: HarryKnowsBall dynasty rankings, Fantrax names, FantasyPros Roto,
 plus two weekly PitcherList boards as reference columns.
 
