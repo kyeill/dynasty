@@ -759,12 +759,53 @@ def pick_seasonal_window(cfg: dict, today=None) -> dict:
     return fallback
 
 
-def fantasypros(url: str, fetch: Fetcher, expect: dict | None = None) -> list[dict]:
+# When a FantasyPros page says it last updated, keyed by the name rankings.py
+# knows the source as. Filled as a side effect of reading the page, because the
+# date has to travel from a sources_<sport>.py reader to the status rows that
+# rankings.py builds, and threading it through every reader signature to carry
+# one string would cost more than it saves.
+PUBLISHED: dict = {}
+
+
+def _published_date(obj: dict) -> str | None:
+    """When a FantasyPros page last republished, as an ISO date.
+
+    `last_updated_ts` is a unix timestamp, so it is unambiguous. `last_updated`
+    is "10/08" with no year and needs the year guessed -- take the current one
+    and step back if that lands in the future, which is what a December date
+    read in January looks like. ecrData's own `year` is no help: it is the
+    SEASON's year and says the wrong thing across the turn of one.
+    """
+    ts = obj.get("last_updated_ts")
+    if ts:
+        try:
+            return date.fromtimestamp(int(ts)).isoformat()
+        except (TypeError, ValueError, OSError, OverflowError):
+            pass
+    m = re.match(r"\s*(\d{1,2})/(\d{1,2})\s*$", str(obj.get("last_updated") or ""))
+    if not m:
+        return None
+    today = date.today()
+    try:
+        when = date(today.year, int(m.group(1)), int(m.group(2)))
+    except ValueError:
+        return None
+    if when > today:
+        when = when.replace(year=today.year - 1)
+    return when.isoformat()
+
+
+def fantasypros(url: str, fetch: Fetcher, expect: dict | None = None,
+                name: str | None = None) -> list[dict]:
     """FantasyPros ships the full ranking inline as `var ecrData = {...}`.
 
     Go after the JSON, not the rendered table: the table abbreviates names
     ("J. Williams" is ambiguous -- OKC has two). Identical structure across
     NBA, NFL and MLB.
+
+    `name` is the source's name in the status rows, and asks for its
+    `last_updated` to be recorded in PUBLISHED. Pass it for anything whose
+    freshness matters, which is all of them.
 
     `expect` checks ecrData's own metadata -- `position_id` ("OP" is superflex,
     "ALL" is one-QB) and `ranking_type_name` ("ros", "weekly", "dynasty") --
@@ -786,6 +827,13 @@ def fantasypros(url: str, fetch: Fetcher, expect: dict | None = None) -> list[di
         obj, _ = json.JSONDecoder().raw_decode(html, start)
     except ValueError:
         return []
+
+    # The page's own "last updated". A fetch can succeed, clear the row floor
+    # and still hand back three-week-old numbers -- see rankings.note_published.
+    if name:
+        stamp = _published_date(obj)
+        if stamp:
+            PUBLISHED[name] = stamp
 
     if expect:
         wrong = {k: (obj.get(k), v) for k, v in expect.items() if obj.get(k) != v}

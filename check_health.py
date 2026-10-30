@@ -8,9 +8,11 @@ failures worth an email have to be made to FAIL, deliberately, here.
 
 Two kinds, and both are chosen to be things that never happen legitimately:
 
-  1. A source has been running on its last-good copy for too long. Falling back
-     keeps a board alive, which is the point, but past a couple of weeks it has
-     stopped being a blip and become the answer nobody chose.
+  1. A source has been serving old numbers for too long -- either running on
+     its last-good copy, or answering perfectly while the site itself has not
+     republished in weeks. Falling back keeps a board alive, which is the
+     point, but past a couple of weeks it has stopped being a blip and become
+     the answer nobody chose.
 
   2. A board collapsed structurally -- it lost a fifth of its players, or a
      column that was populated yesterday is empty today. That is what a broken
@@ -91,9 +93,11 @@ def check_staleness(sport: str, limit: int) -> list[str]:
         age = to_num(r.get("age_days"))
         if age is not None and age >= limit:
             problems.append(
-                f"{sport}: {r['source']} has been on its last-good copy for "
-                f"{age:.0f} days (limit {limit}). It is not coming back on its "
-                f"own -- replace the source or disable it deliberately.")
+                f"{sport}: {r['source']} has been serving {age:.0f}-day-old "
+                f"numbers (limit {limit}) -- "
+                f"{r.get('note') or 'running on its last-good copy'}. It is "
+                f"not fixing itself: replace the source or stand it down "
+                f"deliberately.")
     return problems
 
 

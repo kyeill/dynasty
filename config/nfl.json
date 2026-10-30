@@ -3,7 +3,11 @@
     "fp_dynasty": {
       "url": "https://www.fantasypros.com/nfl/rankings/dynasty-superflex.php",
       "weight": 0.67,
-      "note": "FantasyPros expert consensus, dynasty superflex"
+      "note": "FantasyPros expert consensus, dynasty superflex",
+      "expect": {
+        "position_id": "OP",
+        "ranking_type_name": "dynasty"
+      }
     },
     "ktc": {
       "url": "https://keeptradecut.com/dynasty-rankings",
@@ -78,5 +82,6 @@
     "team_col": "Status",
     "overrides_tab": "Overrides"
   },
-  "stale_fail_days": 14
+  "stale_fail_days": 14,
+  "published_stale_days": 14
 }

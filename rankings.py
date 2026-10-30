@@ -34,7 +34,7 @@ import sys
 from datetime import datetime
 import time
 
-from common import (HERE, LASTGOOD_DIR, OFF_SEASON, OUTPUT_DIR,
+from common import (HERE, LASTGOOD_DIR, OFF_SEASON, OUTPUT_DIR, PUBLISHED,
                     Fetcher, blend,
                     build_resolver, expand_abbreviated, guard_source, index_by_key,
                     load_aliases, prepare_authority, read_csv, save_fullnames,
@@ -55,16 +55,51 @@ def load_config(sport: str) -> dict:
 
 
 def post_age_days(posted: str | None) -> float | None:
-    """Days since an RSS pubDate like 'Tue, 25 Aug 2026'."""
+    """Days since an RSS pubDate like 'Tue, 25 Aug 2026', or an ISO date."""
     if not posted:
         return None
-    for fmt in ("%a, %d %b %Y", "%d %b %Y"):
+    for fmt in ("%a, %d %b %Y", "%d %b %Y", "%Y-%m-%d"):
         try:
             when = datetime.strptime(posted.strip()[:16].strip(), fmt)
         except ValueError:
             continue
         return (datetime.now() - when).total_seconds() / 86400
     return None
+
+
+def note_published(st: dict, cfg: dict, flag: bool = True) -> dict:
+    """Fold a source's OWN publish date into its status row.
+
+    guard_source watches whether the FETCH worked, not whether the content
+    moved. A page can answer, clear its row floor and still hand back
+    three-week-old numbers, and nothing else here would see it.
+
+    `stale` already means "these numbers are old" rather than "the site is
+    down" -- that is how the weekly PitcherList columns use it -- so this
+    writes the same field, and `note` carries the date either way. A source
+    already on its last-good copy keeps that status: a dead fetch is the worse
+    of the two problems and must not be painted over by this one.
+
+    `flag=False` records the date but never raises staleness, and that is how
+    the reference columns are read. `current_rank` is an extra column, never
+    part of the ordering, and it tracks a page that legitimately stops: the
+    MLB rest-of-season list froze on 2026-09-07 because the season ended, so
+    flagging it would turn the build red every morning from October to March
+    over a fact nobody can act on. check_regression leaves that column out for
+    the same reason. The date still reaches the Sheet, which is where a
+    genuinely abandoned reference column should be noticed.
+    """
+    posted = PUBLISHED.get(st["source"])
+    if not posted:
+        return st
+    st["note"] = (f"{st['note']}; " if st["note"] else "") + f"published {posted}"
+    age = post_age_days(posted)
+    if not flag or st["stale"] or age is None:
+        return st
+    if age >= int(cfg.get("published_stale_days", 14)):
+        st["stale"] = "YES"
+        st["age_days"] = round(age, 1)
+    return st
 
 
 def sharp_drop_warning(rows: list[dict], sport: str, source: str) -> None:
@@ -118,13 +153,13 @@ def run_sport(sport: str, args) -> int:
         sharp_drop_warning(parsed[name], sport, name)
         parsed[name], st = guard_source(parsed[name], sport, name,
                                         int(floors.get(name, 1)))
-        status.append(st)
+        status.append(note_published(st, cfg))
     authority, st = guard_source(authority, sport, "authority",
                                  int(floors.get("authority", 1)))
-    status.append(st)
+    status.append(note_published(st, cfg, flag=False))
     current, st = guard_source(current, sport, "current",
                                int(floors.get("current", 10)))
-    status.append(st)
+    status.append(note_published(st, cfg, flag=False))
 
     # A fallback only postpones the problem, so an empty source after all that
     # still aborts -- a half-built board is worse than none.

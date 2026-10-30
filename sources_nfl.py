@@ -92,9 +92,16 @@ def _keeptradecut(cfg: dict, fetch: Fetcher) -> list[dict]:
 
 
 def _fantasypros_dynasty(cfg: dict, fetch: Fetcher) -> list[dict]:
-    """Same embedded ecrData as the current-rank pages, just a different URL."""
+    """Same embedded ecrData as the current-rank pages, just a different URL.
+
+    Which means the same trap: the slug lies, so the configured `expect` is
+    checked against the page's own metadata. Without it a silent swap to a 1QB
+    or a redraft list would sail straight through -- the current-rank pages
+    have been guarded since 2026-10-09 and this one had not.
+    """
     return [{"name": r["name"], "team": r.get("team"), "rank": r["current_rank"]}
-            for r in fantasypros(cfg["url"], fetch)]
+            for r in fantasypros(cfg["url"], fetch, cfg.get("expect"),
+                                 name="fp_dynasty")]
 
 
 # ------------------------------------------------------------ interface ----
@@ -138,7 +145,8 @@ def name_authority(cfg: dict, fetch: Fetcher) -> list[dict]:
 
 def current_rank(cfg: dict, fetch: Fetcher) -> list[dict]:
     window = pick_seasonal_window(cfg["current"])
-    return fantasypros(window.get("url", ""), fetch, window.get("expect"))
+    return fantasypros(window.get("url", ""), fetch, window.get("expect"),
+                       name="current")
 
 
 def inspect(cfg: dict, fetch: Fetcher) -> None:

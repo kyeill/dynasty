@@ -288,19 +288,35 @@ Two Luis Hernandezes make the name ambiguous, which is the point —
 `prepare_authority` splits them by team and the resolver picks on team, so
 HKB's SF row reaches the SF player.
 
-**NFL and NBA have the same hole and a different shape of roster.** Yahoo
-removed Travis Hunter from league 101's offence-only pool, having evidently
-reclassified a two-way player as a defensive back. FantasyPros still ranked him
-155th and KTC 227th; he had been 161st on the board with a value of 11.1. The
-next morning he was at the very foot of it as an unranked append, carrying the
-position the paste gave him and nothing else — and the only trace was one line
-in `unmatched_nfl.csv` recommending an alias, which could not have helped,
-because there was nothing left in the list to point an alias at.
-
+**NFL and NBA have the same hole and a different shape of roster**, so
 `roster_readers.absent_from_paste` does the same job from a Yahoo paste. The
-`Jax - WR` anchor under his name carries both halves, and no player id is
-needed: ids matter for joining a *roster* row, and these are names the list
-does not hold twice. NBA uses it too, and currently adds nobody.
+`TEAM - POS` anchor under each name carries both halves, which is everything an
+authority row needs, and no player id is wanted: ids matter for joining a
+*roster* row, and these are names the list does not hold twice. **Both sports
+currently add nobody**, which is the right answer and the one the log should
+give. It is there because the MLB version was not hypothetical — it fixed three
+real players — and the Yahoo pools shrink at season's end exactly as Fantrax's
+does.
+
+#### A `--cache` run looks exactly like a source going dark
+
+This machinery was built on a misdiagnosis, which is worth recording because
+the trap will come back. Travis Hunter appeared to have been dropped from
+Yahoo's offence-only pool: `rosters.py` reported him unresolved, he fell to the
+foot of the board as an unranked append, and `unmatched_nfl.csv` recommended an
+alias that could not have helped. Every symptom of a source quietly losing a
+player.
+
+He had not been dropped. `--cache` was in play, and `Fetcher._fresh` returns
+**true for any cached file regardless of age** when `use_cache` is set — that
+is the point of the flag. The Yahoo pages on disk predated him. The same run
+also reported FantasyPros' dynasty list as 22 days old and down to 371 players
+when it was a day old with 538, because that page was cached from 2026-10-09.
+
+So: a cached run can measure nothing about freshness, and anything it says
+about a source going dark is suspect. Re-check live before believing it. The
+committed board is the better witness — it said #161 with a value of 11.1 all
+along, and disagreeing with a cached local run is exactly what it should do.
 
 Both stand down when the authority is below its own `sanity_floor` — then it is
 broken rather than incomplete, `guard_source` is about to fall back to the
@@ -364,8 +380,36 @@ everyone on bye -- 98 players missing in week 5, including A.J. Brown and Lamar
 Jackson. `current_rank` is a reference column and never touches the ordering.
 
 Each window carries an `expect` block, and `fantasypros()` warns when the page
-disagrees with it. The blended sources are both genuinely superflex
+disagrees with it. So does the NFL dynasty source — it had been unguarded,
+being configured by URL rather than by a window, so a silent swap to a 1QB or
+redraft list would have sailed straight through the one source that carries
+two-thirds of the blend. The blended sources are both genuinely superflex
 (`dynasty-superflex.php`, and KTC's `superflexValues`).
+
+### A page can answer and still be old
+
+`ecrData` also says when the page last republished, and nothing used to read
+it. `guard_source` watches whether the **fetch** worked, not whether the
+content moved, so a source can return HTTP 200, clear its row floor and hand
+back three-week-old numbers every morning for a month.
+
+`last_updated_ts` is a unix timestamp and so unambiguous; `last_updated` is
+`"10/08"` with no year, kept only as a fallback. ecrData's own `year` is no
+help — it is the *season's* year, and says the wrong thing across the turn of
+one.
+
+The date lands in the `note` column of the status file for every FantasyPros
+source, and past `published_stale_days` (14) a **blended** source is marked
+stale, which makes `check_health` fail the run.
+
+**Only blended sources are flagged.** `current_rank` is a reference column that
+never touches the ordering, and the page behind it legitimately stops: the MLB
+rest-of-season list froze on 2026-09-07 because the season ended. Flagging that
+would turn the build red every morning from October to March over a fact nobody
+can act on — which is the alarm-fatigue this whole file is written against.
+`check_regression` leaves the column out for the same reason. The date still
+reaches the Sheet, which is where an abandoned reference column should be
+noticed instead.
 
 ## Two schedules that must stay in order
 

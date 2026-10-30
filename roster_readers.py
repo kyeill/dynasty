@@ -197,23 +197,23 @@ def absent_from_paste(rows: list[dict], cfg: dict, fetch, sport: str,
 
     The authority IS that list, so a player missing from it does not exist as
     far as the rest of the pipeline is concerned -- and his ranking, which the
-    ranking sites still publish, has nothing to land on and is discarded.
+    ranking sites still publish, has nothing to land on and is discarded. He
+    lands at the foot of the board as an unranked append instead, carrying the
+    position the paste gave him and nothing else, and the only sign of it is a
+    line in unmatched_<sport>.csv recommending an alias -- which cannot help,
+    because there is nothing left in the list to point an alias at.
 
-    Yahoo removed Travis Hunter from league 101's offence-only pool, having
-    evidently reclassified a two-way player as a defensive back. FantasyPros
-    still ranked him 155th and KeepTradeCut 227th; he had been 161st on the
-    board with a value of 11.1. The morning after, he was at the very bottom as
-    an unranked append, carrying the position the paste gave him and nothing
-    else, and the only sign of it was one line in unmatched_nfl.csv suggesting
-    an alias -- which could not have helped, because there was no longer
-    anything in the list to point an alias at.
+    The paste has what an authority row needs: the "Jax - WR" anchor under each
+    name carries both halves. No player id is wanted either -- those matter for
+    joining a ROSTER row, and these are names the list does not hold twice.
 
-    The paste has what an authority row needs: the "Jax - WR" anchor under his
-    name carries both halves. No player id is needed either -- those matter for
-    joining a ROSTER row, and these are the names the list does not hold twice.
+    Adds nobody today, for either sport, which is the answer the log should
+    give. It is here because the Fantrax equivalent was not hypothetical --
+    sources_mlb._absent_from_pool recovered three real players -- and the Yahoo
+    pools shrink at season's end exactly as Fantrax's does. The Travis Hunter
+    case that prompted it turned out to be a --cache artifact; see the README.
 
-    Yahoo-paste sports only. MLB's equivalent is sources_mlb._absent_from_pool,
-    which has a clean export with ids to work from instead.
+    Yahoo-paste sports only. MLB has a clean export with ids to work from.
     """
     rcfg = cfg.get("rosters") or {}
     sheet_id, tab = rcfg.get("sheet_id"), rcfg.get("tab")

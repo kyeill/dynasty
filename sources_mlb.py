@@ -387,7 +387,7 @@ def _absent_from_pool(rows: list[dict], by_id: dict, cfg: dict) -> list[dict]:
 
 
 def current_rank(cfg: dict, fetch: Fetcher) -> list[dict]:
-    return fantasypros(pick_seasonal_url(cfg["current"]), fetch)
+    return fantasypros(pick_seasonal_url(cfg["current"]), fetch, name="current")
 
 
 def inspect(cfg: dict, fetch: Fetcher) -> None:

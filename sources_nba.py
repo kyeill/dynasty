@@ -104,7 +104,7 @@ def name_authority(cfg: dict, fetch: Fetcher) -> list[dict]:
 
 
 def current_rank(cfg: dict, fetch: Fetcher) -> list[dict]:
-    return fantasypros(pick_seasonal_url(cfg["current"]), fetch)
+    return fantasypros(pick_seasonal_url(cfg["current"]), fetch, name="current")
 
 
 def inspect(cfg: dict, fetch: Fetcher) -> None:

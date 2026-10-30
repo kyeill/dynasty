@@ -12,6 +12,11 @@ weren't thinking about.
 It re-runs the pipeline with --cache, so it costs no network traffic and
 compares the code's behaviour rather than whatever is sitting in output/.
 
+Which also means a baseline is only meaningful against the cache it was blessed
+on. Refresh .cache -- any live run does -- and every sport will differ on the
+next check, because the inputs moved rather than the code. Re-bless, and do it
+from a run whose cache you have not just replaced.
+
 Rankings legitimately drift as the sources update, so a difference is not
 automatically a bug. A handful of shifted values is the sites moving; a changed
 row count or a vanished player is usually the code.
