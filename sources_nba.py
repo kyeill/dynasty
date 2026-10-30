@@ -7,6 +7,7 @@ import re
 
 from common import (Fetcher, fantasypros, grid_to_rows, html_tables, is_player,
                     page_text, pick_seasonal_url, to_num, yahoo_player_list)
+from roster_readers import absent_from_paste
 
 POS = r"(?:PG|SG|SF|PF|C)"
 
@@ -96,7 +97,10 @@ def rank_sources(cfg: dict, fetch: Fetcher) -> dict:
 
 
 def name_authority(cfg: dict, fetch: Fetcher) -> list[dict]:
-    return yahoo_player_list(cfg["name_authority"], fetch)
+    # No position cleaner: NBA dual eligibility ("G,F") is the useful part,
+    # unlike NFL where Kyle asked for one position. See sources_nfl._one_position.
+    rows = yahoo_player_list(cfg["name_authority"], fetch)
+    return rows + absent_from_paste(rows, cfg, fetch, "nba")
 
 
 def current_rank(cfg: dict, fetch: Fetcher) -> list[dict]:

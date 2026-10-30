@@ -17,6 +17,7 @@ import re
 
 from common import (Fetcher, fantasypros, pick_seasonal_window, to_num,
                     yahoo_player_list)
+from roster_readers import absent_from_paste
 
 # KTC ships the whole board inline as `playersArray`, carrying BOTH formats --
 # superflexValues and oneQBValues -- so one fetch covers either. The rank we
@@ -123,6 +124,7 @@ def name_authority(cfg: dict, fetch: Fetcher) -> list[dict]:
     rows = yahoo_player_list(cfg["name_authority"], fetch)
     for r in rows:
         r["pos"] = _one_position(r.get("pos"))
+    rows += absent_from_paste(rows, cfg, fetch, "nfl", _one_position)
 
     # The column is supposed to be QB/RB/WR/TE and nothing else -- the list is
     # offence-only. Anything else here means a parse has gone wrong somewhere

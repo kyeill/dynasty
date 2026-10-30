@@ -28,7 +28,8 @@ from __future__ import annotations
 
 import re
 
-from common import read_csv
+from common import (HERE, build_resolver, is_player, load_aliases,
+                    normalize_name, prepare_authority, read_csv, sheet_grid)
 
 # The position half must be upper-case codes, and the tail form additionally
 # requires real spaces around the hyphen. Without both, "N. Alexander-Walker"
@@ -188,6 +189,69 @@ def parse_yahoo_grid(grid: list[list[str]], known: set | None = None) -> list[di
                              "team": real_team, "pos": real_pos})
 
     return [r for r in rows if len(r["name"]) > 1]
+
+
+def absent_from_paste(rows: list[dict], cfg: dict, fetch, sport: str,
+                      clean_pos=None) -> list[dict]:
+    """Rostered players the Yahoo list has dropped, as naming-authority rows.
+
+    The authority IS that list, so a player missing from it does not exist as
+    far as the rest of the pipeline is concerned -- and his ranking, which the
+    ranking sites still publish, has nothing to land on and is discarded.
+
+    Yahoo removed Travis Hunter from league 101's offence-only pool, having
+    evidently reclassified a two-way player as a defensive back. FantasyPros
+    still ranked him 155th and KeepTradeCut 227th; he had been 161st on the
+    board with a value of 11.1. The morning after, he was at the very bottom as
+    an unranked append, carrying the position the paste gave him and nothing
+    else, and the only sign of it was one line in unmatched_nfl.csv suggesting
+    an alias -- which could not have helped, because there was no longer
+    anything in the list to point an alias at.
+
+    The paste has what an authority row needs: the "Jax - WR" anchor under his
+    name carries both halves. No player id is needed either -- those matter for
+    joining a ROSTER row, and these are the names the list does not hold twice.
+
+    Yahoo-paste sports only. MLB's equivalent is sources_mlb._absent_from_pool,
+    which has a clean export with ids to work from instead.
+    """
+    rcfg = cfg.get("rosters") or {}
+    sheet_id, tab = rcfg.get("sheet_id"), rcfg.get("tab")
+    if not (sheet_id and tab):
+        return []
+    if len(rows) < (cfg.get("sanity_floor") or {}).get("authority", 0):
+        # The list is broken, not merely incomplete. guard_source is about to
+        # fall back to the last-good copy, and topping up a broken list from
+        # the roster paste would only hide that.
+        return []
+
+    grid = sheet_grid(sheet_id, tab, fetch, float(rcfg.get("cache_hours", 0)))
+    if len(grid) < 2:
+        return []
+    parsed = parse_yahoo_grid(grid, {r["name"] for r in rows})
+    if not parsed:
+        return []
+
+    aliases = load_aliases(HERE / f"aliases-{sport}.csv")
+    resolve = build_resolver(prepare_authority(rows, aliases))
+    added, seen = [], set()
+    for r in parsed:
+        name = str(r.get("name") or "").strip()
+        key = aliases.get(normalize_name(name), normalize_name(name))
+        if not key or key in seen or not is_player(name):
+            continue
+        if resolve(key, r.get("team") or None, r.get("pos") or None) is not None:
+            continue
+        pos = r.get("pos") or ""
+        added.append({"name": name,
+                      "team": (r.get("team") or "").upper(),
+                      "pos": clean_pos(pos) if clean_pos else pos})
+        seen.add(key)
+    if added:
+        print(f"[pool]  {len(added)} rostered player(s) absent from Yahoo's "
+              f"list, taken from the roster paste: "
+              + ", ".join(f"{a['name']} ({a['team']} {a['pos']})" for a in added))
+    return added
 
 
 def parse_mapped_grid(grid, id_col, player_col, team_col) -> list[dict]:

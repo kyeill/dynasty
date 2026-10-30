@@ -265,10 +265,10 @@ silently.
 Players on the roster but absent from the board are simply unranked by the
 dynasty source — expected for deep prospects and fringe relievers. A handful
 are missing from the *naming authority* instead, because those public leagues
-carry a narrower player pool than yours: Brandon Clarke isn't among Yahoo 667's
-662 players. MLB backfills that gap from the roster sheet — see below.
+carry a narrower player pool than yours, and can drop a player they used to
+carry. **All three sports now backfill that gap from the roster** — see below.
 
-### MLB: a rostered player the pool doesn't list is added, not borrowed
+### A rostered player the authority doesn't list is added, not borrowed
 
 The naming authority *is* the pool, so a rostered player it omits does not
 exist as far as the pipeline is concerned — and a player who does not exist
@@ -282,13 +282,29 @@ The same gap hid two more. Angeibel Gomez and Francisco Renteria were ranked
 412th and 521st by HKB, but with no authority row to land on, those ranks went
 nowhere and both were appended to the foot of the board as unranked.
 
-`_absent_from_pool` now adds them from the roster sheet, which carries
+`sources_mlb._absent_from_pool` adds them from the roster sheet, which carries
 everything an authority row needs: Fantrax's own id, name, club and position.
 Two Luis Hernandezes make the name ambiguous, which is the point —
 `prepare_authority` splits them by team and the resolver picks on team, so
-HKB's SF row reaches the SF player. It stands down when the pool is below its
-own `sanity_floor`, because then the pool is broken rather than incomplete and
-topping it up from the roster sheet would only mask that.
+HKB's SF row reaches the SF player.
+
+**NFL and NBA have the same hole and a different shape of roster.** Yahoo
+removed Travis Hunter from league 101's offence-only pool, having evidently
+reclassified a two-way player as a defensive back. FantasyPros still ranked him
+155th and KTC 227th; he had been 161st on the board with a value of 11.1. The
+next morning he was at the very foot of it as an unranked append, carrying the
+position the paste gave him and nothing else — and the only trace was one line
+in `unmatched_nfl.csv` recommending an alias, which could not have helped,
+because there was nothing left in the list to point an alias at.
+
+`roster_readers.absent_from_paste` does the same job from a Yahoo paste. The
+`Jax - WR` anchor under his name carries both halves, and no player id is
+needed: ids matter for joining a *roster* row, and these are names the list
+does not hold twice. NBA uses it too, and currently adds nobody.
+
+Both stand down when the authority is below its own `sanity_floor` — then it is
+broken rather than incomplete, `guard_source` is about to fall back to the
+last-good copy, and topping it up from the roster would only mask that.
 
 ## KeepTradeCut: read `#ktc-players`, not "the next `[`"
 
