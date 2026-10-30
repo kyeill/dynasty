@@ -640,13 +640,22 @@ Max Muncys.
 that reaches a tab — ranked by a source, or on a roster, which together is
 exactly the published board. There are three Jose Ramirezes in the pool and
 only ever one on the board, so labelling the other two would be noise Kyle
-cannot act on: it was 39 rows under the first version of this and is 6 under
+cannot act on: it was 39 rows under the first version of this and is 12 under
 this one. The test is the **displayed** name, not the match key, so
 `Luis Garcia Jr.` and `Luis Garcia` are left alone — one key, two players, but
 they already read differently.
 
-The cost, accepted knowingly: a name can acquire a label, or shed one, because
-a ranking source picked its twin up overnight.
+**Across sports too**, because the Sheet compares across them: Kyle rosters
+Spencer Jones the Nuggets forward and Blake has Spencer Jones the Yankees
+outfielder, and each sport's own pool has exactly one of them. So each sport is
+told what the other two are showing — `_names_elsewhere` reads it off their
+published files. Jose Alvarado (NBA/MLB) and Ty Johnson (NFL/MLB) are the other
+two live cases. The boards there are current, having just been rewritten by
+rankings.py; the other sports' *roster* files are at worst one run old, which
+only shows on the single run after a paste introduces a brand-new collision.
+
+The cost, accepted knowingly and by Kyle: a name can acquire a label, or shed
+one, because a ranking source picked its twin up overnight.
 
 `prepare_authority` works out *what* each twin's label would be;
 `visible_labels` decides *who* gets one, and **only rosters.py can call it**,
@@ -655,11 +664,33 @@ because only there is both the finished board and the resolved roster in hand.
 two points that write a file — the roster CSV, and the board rows rosters.py
 is already rewriting to append to.
 
-`split_label` takes it back off and passes it as a *team hint*, so the name on
-the board is also a name that works on the Overrides tab. A bare
-`Luis Castillo` keeps working while the roster holds only one of the twins;
-without that, 13 existing override rows would have quietly stopped finding
-their player.
+#### What the Overrides tab accepts
+
+Which names carry a label changes with the rankings, so the label on any given
+day is not something Kyle can be expected to track. Every form he might
+reasonably type resolves, and all five are covered by the harness in
+`apply_overrides`' own comment:
+
+| Typed | Means | Handled by |
+|---|---|---|
+| `Max Muncy` | bare, while the label is on | the one-twin rule below |
+| `Max Muncy (LAD)` | labelled, while it is off | `split_label` → team hint |
+| `Max Muncy (ATH)` | the twin nobody owns | resolved, then *added* |
+| `Mason Miller (ATH)` | a club that has since changed | team tokens split on `/` |
+| `Jared Jones (PIT SP)` | club *and* position | hint split on the space |
+
+A bare name resolves while the roster holds exactly one of the twins — without
+that, 13 existing override rows would have quietly stopped finding their
+player. **It only applies when the resolver came up empty**: if the resolver
+named someone, that is the player, and `Max Muncy (ATH)` must not be rewritten
+to whichever Max Muncy happens to be on a roster already.
+
+With *two* owned twins and a bare name, the row is **skipped and reported**,
+naming what to type. It used to add a third row called `Max Muncy` — the worst
+of the three options, since the player is known and only which one isn't.
+
+The tab is also filtered by its own `sport` column, so a name shared across
+sports is never ambiguous there to begin with.
 
 ### aliases-`<sport>`.csv
 

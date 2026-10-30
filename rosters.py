@@ -149,21 +149,40 @@ def apply_overrides(out: list[dict], ov: list[dict], resolve_name):
         raw = str(r["player"]).strip()
         matched = resolve_name(raw)
         canonical = matched or raw
-        # A name two players share now reaches the board carrying its club --
-        # "Luis Castillo (SEA)" -- and the resolver refuses the bare form as
-        # ambiguous, so an Overrides row typed before that would quietly stop
-        # finding its row and the edit would be silently ignored. Accept the
-        # bare name while the roster holds exactly one of the twins; two, and
-        # it really is ambiguous and the warning below is the right answer.
-        if canonical not in current:
-            twins = [p for p in current
-                     if split_label(p)[0].casefold() == canonical.casefold()]
-            if len(twins) == 1:
-                canonical = twins[0]
+        # A name two players share reaches a tab carrying its club --
+        # "Max Muncy (LAD)" -- and only while both are visible, so the label on
+        # any given day is not something Kyle can be expected to track. Every
+        # form he might reasonably type has to work:
+        #
+        #   "Max Muncy"             bare, while the label is on     -> here
+        #   "Max Muncy (LAD)"       labelled, while it is off       -> split_label
+        #   "Mason Miller (ATH)"    a club that has since changed   -> both
+        #   "Jared Jones (PIT SP)"  club and position               -> split_label
+        #
+        # resolve_name handles the bracketed forms by passing the label back as
+        # a hint. This handles the bare one, by accepting it while the roster
+        # holds exactly one of the twins.
+        # Only when the resolver came up empty. If it named a player, that is
+        # the player -- "Max Muncy (ATH)" must not be quietly rewritten to the
+        # Max Muncy who happens to be the one already on a roster.
+        twins = [] if matched else [
+            p for p in current
+            if split_label(p)[0].casefold() == split_label(canonical)[0].casefold()]
+        if canonical not in current and len(twins) == 1:
+            canonical = twins[0]
         team = str(r.get("fantasy_team") or "").strip()
         was = (current.get(canonical) or {}).get("fantasy_team")
 
-        if matched is None and team:
+        if len(twins) > 1:
+            # Two of them, and no way to tell which. Adding a third row called
+            # "Max Muncy" would be the worst of the three options available --
+            # the player IS known, only not which one -- so skip the row and
+            # say what to type instead.
+            notes.append(f"WARNING {raw!r} matches {len(twins)} rostered "
+                         f"players and was SKIPPED -- name the club, "
+                         f"e.g. {twins[0]!r}")
+            continue
+        if matched is None and canonical not in current and team:
             # Adding a name the authority doesn't know is legitimate for a deep
             # prospect, but it is also exactly what a typo looks like.
             notes.append(f"WARNING {raw!r} did not match any known player -- "
@@ -228,6 +247,38 @@ def _levels_from_sources(sport: str, taken: set) -> dict:
             if lvl and r.get("name"):
                 levels.setdefault(normalize_name(r["name"]), lvl)
     return {k: v for k, v in levels.items() if k not in taken}
+
+
+SPORTS = ("nba", "nfl", "mlb")
+
+
+def _names_elsewhere(sport: str) -> list:
+    """Every player name the OTHER sports are currently showing.
+
+    Kyle's Sheet compares across sports, so "Spencer Jones" is ambiguous to him
+    even though each sport's own pool has exactly one -- he rosters the Nuggets
+    forward and Blake the Yankees outfielder. A name is only told apart within
+    the sport that owns the player, so each sport has to be told what the other
+    two are putting in front of him.
+
+    Read off the published files. The boards were all rewritten by rankings.py
+    a moment ago, so those are current; the other sports' roster files are at
+    worst one run old, which only matters on the single run after Kyle pastes a
+    roster that introduces a brand-new collision.
+
+    Labels from a previous run are stripped -- the comparison is between real
+    names, or a name already carrying one would never look like a collision
+    again and would lose its label on the next run.
+    """
+    out = []
+    for other in SPORTS:
+        if other == sport:
+            continue
+        for name in (f"combined_rankings_{other}.csv", f"rosters_{other}.csv"):
+            path = OUTPUT_DIR / name
+            if path.exists():
+                out += [split_label(r.get("player"))[0] for r in read_csv(path)]
+    return out
 
 
 def _board_uids(sport: str, aliases: dict, resolve) -> set:
@@ -526,8 +577,10 @@ def run_sport(sport: str, args) -> int:
     # Two players of one name only matter once both are in front of him, and
     # this is the only place that knows: the board rankings.py has just
     # written, plus the roster just resolved. See visible_labels.
-    labels = visible_labels(auth, _board_uids(sport, aliases, resolve)
-                            | {r["uid"] for r in rows if r["uid"]})
+    labels = visible_labels(auth,
+                            _board_uids(sport, aliases, resolve)
+                            | {r["uid"] for r in rows if r["uid"]},
+                            _names_elsewhere(sport))
     if labels:
         for r in rows:
             if r["uid"] in labels:
@@ -545,13 +598,15 @@ def run_sport(sport: str, args) -> int:
                   if fullnames else {})
 
     def _resolve_name(raw_name: str):
-        # A trailing "(LAD)" is how the board tells two Max Muncys apart, so it
-        # is also what Kyle would copy onto the Overrides tab. Hand it to the
-        # resolver as the team hint rather than let it break the name.
+        # A trailing "(LAD)" is how a tab tells two Max Muncys apart, so it is
+        # also what Kyle would copy onto the Overrides tab. Hand it to the
+        # resolver rather than let it break the name. "(PIT SP)" is a club and
+        # a position, which is exactly the pair the resolver wants.
         plain, hint = split_label(raw_name)
+        team_hint, _, pos_hint = (hint or "").partition(" ")
         key = normalize_name(plain)
         key = aliases.get(key, key)
-        uid = resolve(key, hint)
+        uid = resolve(key, team_hint or None, pos_hint or None)
         if uid is None:
             return None
         # Labelled, because the rows this is matched against are.

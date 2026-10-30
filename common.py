@@ -419,47 +419,55 @@ def prepare_authority(rows: list[dict], aliases: dict) -> dict:
 
 
 def _prepare_labels(auth: dict) -> None:
-    """Work out the label each same-named player would carry, in place.
+    """Work out the label each player would carry if he ever needed one.
 
-    Applied to nobody here -- `name` stays the real one throughout, and the
-    label is put on at the two points that write a file.
+    Every row gets one, not just this sport's twins -- a name can also collide
+    with a player in another sport, where this authority cannot see him. Kyle
+    rosters one Spencer Jones in the NBA and Blake another in MLB.
+
+    Applied to nobody here. `name` stays the real one throughout, and the label
+    is put on at the two points that write a file.
     """
-    def club(row) -> str:
+    for row in auth.values():
         # Fantrax slash-joins a traded player's clubs -- "ATH/SD" for Mason
         # Miller -- and the one he plays for now is the last.
-        return str(row.get("team") or "?").split("/")[-1].strip().upper() or "?"
+        row["label"] = str(row.get("team") or "?").split("/")[-1].strip().upper() or "?"
 
-    seen = Counter(row["key"] for row in auth.values())
-    tied = [row for row in auth.values() if seen[row["key"]] > 1]
-    for row in tied:
-        row["label"] = club(row)
     # Two of a name on one club, told apart only by position: both Jared
     # Joneses are Pirates. Rare, so the position is paid for only where the
     # club alone has not settled it.
+    seen = Counter(row["key"] for row in auth.values())
+    tied = [row for row in auth.values() if seen[row["key"]] > 1]
     for row in tied:
-        if sum(1 for r in tied if r["label"] == row["label"]
-               and r["key"] == row["key"]) > 1:
+        if sum(1 for r in tied
+               if r["key"] == row["key"] and r["label"] == row["label"]) > 1:
             row["label"] += " " + str(row.get("pos") or "?").split(",")[0].upper()
 
 
-def visible_labels(auth: dict, visible: set) -> dict:
+def visible_labels(auth: dict, visible: set, elsewhere=()) -> dict:
     """{uid: label} for the players whose name is about to be shown twice.
 
-    `visible` is every uid that reaches one of Kyle's tabs: ranked by a source,
-    or on a roster, which together is exactly the published board. Two players
-    sharing a name is harmless until both are in front of him -- there are
-    three Jose Ramirezes in the pool but only ever one on the board, and
+    `visible` is every uid of this sport that reaches one of Kyle's tabs:
+    ranked by a source, or on a roster, which together is exactly the published
+    board. `elsewhere` is the names the OTHER sports are showing, because his
+    Sheet compares across them -- he rosters one Spencer Jones in the NBA and
+    Blake another in MLB.
+
+    Two players sharing a name is harmless until both are in front of him.
+    There are three Jose Ramirezes in the pool and only ever one on the board;
     labelling the other two would be noise he cannot act on.
 
     So the test is the DISPLAYED name, not the match key. "Luis Garcia Jr."
     and "Luis Garcia" fold to one key and are two different players, but they
-    already read differently on the tab and need no help.
+    already read differently on a tab and need no help.
 
-    The cost of deciding it this way, accepted knowingly: a name can acquire a
-    label -- or shed one -- because a ranking source picked the twin up
-    overnight. In exchange, six rows carry one instead of thirty-nine.
+    The cost of deciding it this way, accepted knowingly and by Kyle: a name
+    can acquire a label -- or shed one -- because a ranking source picked the
+    twin up overnight. In exchange, a handful of rows carry one instead of
+    every player who happens to have a namesake in a 9,900-player pool.
     """
     shown = Counter(auth[uid]["name"] for uid in visible if uid in auth)
+    shown.update(elsewhere)
     return {uid: auth[uid]["label"] for uid in visible
             if uid in auth and auth[uid].get("label")
             and shown[auth[uid]["name"]] > 1}
