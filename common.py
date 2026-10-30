@@ -11,6 +11,22 @@ here runs on the standard library plus requests, lxml and openpyxl, none of
 which SAC objects to. Do not reintroduce pandas.
 
 Tables are plain `list[dict]`. Indexed tables are `dict[key, row]`.
+
+Laid out in labelled sections, in dependency order:
+
+    tiny table          CSV in and out, number coercion
+    fetch               HTTP with a per-source cache, HTML to tables
+    name keys           the hard part -- normalising, resolving and indexing
+                        player names across sites that disagree about them
+    blend               weighted rank blending
+    value               the 100-at-#1 value curve
+    shared sources      Yahoo, FantasyPros and Google Sheets readers
+    guards and history  last-good fallback, staleness, daily snapshots
+
+It stays one file on purpose. Every function here is sport-agnostic machinery,
+several of the sections lean on each other, and a change to any of them can
+reshuffle all three boards -- which is what check_regression.py is for. Run it
+after touching anything in here.
 """
 from __future__ import annotations
 
@@ -683,7 +699,7 @@ def fantasypros(url: str, fetch: Fetcher, expect: dict | None = None) -> list[di
     return rows
 
 
-# --------------------------------------------------------------- imports ----
+# -------------------------------------------------- guards and history ----
 
 
 # A Google Sheet shared "anyone with the link can view" exposes each tab as CSV
