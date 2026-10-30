@@ -292,7 +292,9 @@ def name_authority(cfg: dict, fetch: Fetcher) -> list[dict]:
 
     The roster export is the better source for a player he actually owns: it is
     his league's own eligibility, not a generic pool's. It only covers rostered
-    players, so the pool still supplies everyone else.
+    players, so the pool still supplies everyone else -- and where the pool
+    omits a rostered player altogether, the export supplies him outright. See
+    _absent_from_pool, which is the only reason that matters.
 
     Joined on Fantrax's scorer id, not on name -- the roster export wraps the
     same global id in asterisks (*05ucd*), so this is exact even for the three
@@ -318,24 +320,70 @@ def name_authority(cfg: dict, fetch: Fetcher) -> list[dict]:
         return rows
 
     i_id, i_pos = header.index(id_col), header.index(pos_col)
+    name_col = rcfg.get("player_col", "Player")
+    i_name = header.index(name_col) if name_col in header else None
+    # The real-life club, which is NOT rcfg["team_col"] -- that one is Kyle's
+    # league ("Status"), and on this tab the two sit side by side.
+    i_team = header.index("Team") if "Team" in header else None
+
+    def cell(row, i):
+        return str(row[i]).strip() if i is not None and len(row) > i else ""
+
     by_id = {}
     for row in grid[1:]:
         if len(row) <= max(i_id, i_pos):
             continue
         sid = str(row[i_id]).strip().strip("*")
-        pos = clean_positions(row[i_pos])
-        if sid and pos:
-            by_id[sid] = pos
+        if sid:
+            by_id[sid] = {"pos": clean_positions(row[i_pos]),
+                          "name": cell(row, i_name),
+                          "team": cell(row, i_team)}
 
     applied = 0
     for r in rows:
-        override = by_id.get(str(r.get("scorer_id") or ""))
-        if override and override != r["pos"]:
-            r["pos"] = override
+        own = by_id.get(str(r.get("scorer_id") or ""))
+        if own and own["pos"] and own["pos"] != r["pos"]:
+            r["pos"] = own["pos"]
             applied += 1
     print(f"[pos]   roster positions applied to {applied} of {len(by_id)} "
           f"rostered players")
-    return rows
+
+    return rows + _absent_from_pool(rows, by_id, cfg)
+
+
+def _absent_from_pool(rows: list[dict], by_id: dict, cfg: dict) -> list[dict]:
+    """Rostered players Fantrax's pool never returns, as authority rows.
+
+    The pool IS the authority, so a player it omits does not exist as far as
+    the rest of the pipeline is concerned -- and a rostered player who does not
+    exist falls through to being matched by NAME, onto whoever else carries it.
+    Kyle rosters Luis Hernandez, a Giants SS; the pool has a different Luis
+    Hernandez (PHI, C, free agent) and nobody else. His roster row bound to the
+    catcher, and so did the SS's HKB ranking: one board row carrying a
+    prospect's rank with a stranger's team and position, and no warning
+    anywhere, because by then only one player of that name was in play.
+
+    The roster sheet holds everything an authority row needs -- Fantrax's own
+    id, name, club and position -- so add him instead of letting him borrow
+    somebody. Two Luis Hernandezes make the name ambiguous, which is the whole
+    point: prepare_authority splits them by team and the resolver chooses on
+    team, so HKB's SF row reaches the SF player.
+    """
+    if len(rows) < (cfg.get("sanity_floor") or {}).get("authority", 0):
+        # The pool is broken, not merely incomplete -- guard_source is about to
+        # fall back to the last-good copy. Topping up a broken pool from the
+        # roster sheet would only hide that.
+        return []
+
+    known = {str(r.get("scorer_id") or "") for r in rows}
+    added = [{"name": v["name"], "team": v["team"], "pos": v["pos"],
+              "scorer_id": sid}
+             for sid, v in sorted(by_id.items()) if sid not in known and v["name"]]
+    if added:
+        print(f"[pool]  {len(added)} rostered player(s) absent from Fantrax's "
+              f"pool, taken from the roster sheet: "
+              + ", ".join(f"{a['name']} ({a['team']} {a['pos']})" for a in added))
+    return added
 
 
 def current_rank(cfg: dict, fetch: Fetcher) -> list[dict]:

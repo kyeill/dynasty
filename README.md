@@ -266,7 +266,29 @@ Players on the roster but absent from the board are simply unranked by the
 dynasty source — expected for deep prospects and fringe relievers. A handful
 are missing from the *naming authority* instead, because those public leagues
 carry a narrower player pool than yours: Brandon Clarke isn't among Yahoo 667's
-662 players, and two MLB prospects aren't in the Fantrax pool.
+662 players. MLB backfills that gap from the roster sheet — see below.
+
+### MLB: a rostered player the pool doesn't list is added, not borrowed
+
+The naming authority *is* the pool, so a rostered player it omits does not
+exist as far as the pipeline is concerned — and a player who does not exist
+falls through to being matched by **name**, onto whoever else carries it. Kyle
+rosters Luis Hernandez, a Giants SS. The pool has a different Luis Hernandez
+(PHI, C, a free agent) and nobody else. His roster row bound to the catcher,
+and so did the shortstop's HKB ranking: one board row carrying a prospect's
+rank with a stranger's team and position, and nothing anywhere said so.
+
+The same gap hid two more. Angeibel Gomez and Francisco Renteria were ranked
+412th and 521st by HKB, but with no authority row to land on, those ranks went
+nowhere and both were appended to the foot of the board as unranked.
+
+`_absent_from_pool` now adds them from the roster sheet, which carries
+everything an authority row needs: Fantrax's own id, name, club and position.
+Two Luis Hernandezes make the name ambiguous, which is the point —
+`prepare_authority` splits them by team and the resolver picks on team, so
+HKB's SF row reaches the SF player. It stands down when the pool is below its
+own `sanity_floor`, because then the pool is broken rather than incomplete and
+topping it up from the roster sheet would only mask that.
 
 ## KeepTradeCut: read `#ktc-players`, not "the next `[`"
 

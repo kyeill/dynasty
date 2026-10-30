@@ -21,6 +21,7 @@ No pandas -- see common.py.
 from __future__ import annotations
 
 import argparse
+import os
 import subprocess
 import sys
 import time
@@ -39,9 +40,13 @@ KEY_COLS = ["combined_rank", "player", "pos", "team", "blended_score"]
 
 def run_pipeline() -> bool:
     print("running: rankings.py --sport all --cache\n")
+    # PYTHONIOENCODING, because a captured child on Windows writes cp1252 and
+    # dies on the first Jokic in the top-10 table rankings.py prints. The
+    # pipeline is fine; only this check's view of it broke, and only locally.
     proc = subprocess.run(
         [sys.executable, str(HERE / "rankings.py"), "--sport", "all", "--cache"],
-        cwd=HERE, capture_output=True, text=True, encoding="utf-8", errors="replace")
+        cwd=HERE, env=dict(os.environ, PYTHONIOENCODING="utf-8"),
+        capture_output=True, text=True, encoding="utf-8", errors="replace")
     if proc.returncode != 0:
         print("!! pipeline failed:\n" + (proc.stdout or "")[-2000:])
         print((proc.stderr or "")[-2000:])
