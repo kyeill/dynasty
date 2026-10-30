@@ -35,13 +35,27 @@ import io
 import json
 import math
 import re
+import sys
 import time
 import unicodedata
+from collections import Counter
 from datetime import date, datetime, timezone
 from pathlib import Path
 
 import requests
 from bs4 import BeautifulSoup
+
+# Every script here prints player names, and Windows hands a piped stdout
+# cp1252, which raises on the first Jokic -- so `python rankings.py > log` or
+# any run captured by another script died partway through the top-10 table
+# while the pipeline itself was perfectly healthy. Done on import because
+# every entry point imports this module and none of them should have to
+# remember. Actions runs UTF-8 already and is unaffected.
+for _stream in (sys.stdout, sys.stderr):
+    try:
+        _stream.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, OSError, ValueError):
+        pass
 
 HERE = Path(__file__).resolve().parent
 CACHE_DIR = HERE / ".cache"
@@ -237,6 +251,22 @@ def normalize_name(raw) -> str:
     return " ".join(parts)
 
 
+_DISPLAY_LABEL = re.compile(r"\s*\(([^)]*)\)\s*$")
+
+
+def split_label(name) -> tuple:
+    """'Max Muncy (LAD)' -> ('Max Muncy', 'LAD'); anything else -> (name, None).
+
+    prepare_authority appends the team to a display name two players share, so
+    the name Kyle reads on the board is also the name he can type on the
+    Overrides tab. This takes it back off and hands it over as a team hint,
+    which is exactly what the resolver needs to tell the two apart.
+    """
+    s = str(name or "")
+    m = _DISPLAY_LABEL.search(s)
+    return (s[:m.start()], m.group(1)) if m else (s, None)
+
+
 def initial_key(key: str) -> str | None:
     """'giannis antetokounmpo' -> 'g antetokounmpo'."""
     parts = key.split()
@@ -369,7 +399,51 @@ def prepare_authority(rows: list[dict], aliases: dict) -> dict:
         row = dict(r)
         row["key"] = k
         out[uid] = row
+    _label_duplicates(out)
     return out
+
+
+def _label_duplicates(auth: dict) -> None:
+    """Give two players who share a display name distinct ones, in place.
+
+    Distinct ids were never enough. The board and the roster tab are joined BY
+    NAME in the Sheet, so a lookup for "Max Muncy" found whichever of the two
+    came first -- it was showing the Dodgers third baseman somebody actually
+    rosters the Athletics infielder's rank, position and value. Appending the
+    club gives the join something unique to land on, and spares the Sheet any
+    formula that has to know baseball contains two Max Muncys.
+
+    Keyed on the AUTHORITY having two of a name, deliberately not on the board
+    having two. The board only carries players some source ranked, so that rule
+    would rename "Jose Ramirez" to "Jose Ramirez (CLE)" on the day HKB happened
+    to rank the Detroit one -- a display name in Kyle's Sheet changing because
+    of something a website did. This way the label is a fact about the player
+    pool, and it holds still.
+
+    plain_name keeps the real one, for whatever matches against raw source text
+    rather than against the board -- undecorating a Yahoo paste above all,
+    where "Max Muncy (LAD)" appears on no cell of the page.
+    """
+    for row in auth.values():
+        row["plain_name"] = row["name"]
+    seen = Counter(row["key"] for row in auth.values())
+    tied = [row for row in auth.values() if seen[row["key"]] > 1]
+
+    def club(row) -> str:
+        # Fantrax slash-joins a traded player's clubs -- "ATH/SD" for Mason
+        # Miller -- and the one he plays for now is the last.
+        return str(row.get("team") or "?").split("/")[-1].strip().upper() or "?"
+
+    for row in tied:
+        row["name"] = f"{row['plain_name']} ({club(row)})"
+
+    # Two of a name on one club, told apart only by position: both Jared
+    # Joneses are Pirates. Rare, so the position is paid for only where the
+    # club alone has not settled it.
+    for row in tied:
+        if sum(1 for r in tied if r["name"] == row["name"]) > 1:
+            pos = str(row.get("pos") or "?").split(",")[0].upper()
+            row["name"] = f"{row['plain_name']} ({club(row)} {pos})"
 
 
 def build_resolver(auth: dict):

@@ -35,7 +35,7 @@ from pathlib import Path
 from common import (HERE, LASTGOOD_DIR, OUTPUT_DIR, Fetcher, build_resolver,
                     load_aliases, load_fullnames, normalize_name,
                     prepare_authority, read_csv, sheet_grid, snapshot,
-                    write_csv)
+                    split_label, write_csv)
 from roster_readers import (_clean, parse_mapped_grid, parse_yahoo_grid,
                             read_mapped_csv, read_yahoo_paste)
 
@@ -149,6 +149,17 @@ def apply_overrides(out: list[dict], ov: list[dict], resolve_name):
         raw = str(r["player"]).strip()
         matched = resolve_name(raw)
         canonical = matched or raw
+        # A name two players share now reaches the board carrying its club --
+        # "Luis Castillo (SEA)" -- and the resolver refuses the bare form as
+        # ambiguous, so an Overrides row typed before that would quietly stop
+        # finding its row and the edit would be silently ignored. Accept the
+        # bare name while the roster holds exactly one of the twins; two, and
+        # it really is ambiguous and the warning below is the right answer.
+        if canonical not in current:
+            twins = [p for p in current
+                     if split_label(p)[0].casefold() == canonical.casefold()]
+            if len(twins) == 1:
+                canonical = twins[0]
         team = str(r.get("fantasy_team") or "").strip()
         was = (current.get(canonical) or {}).get("fantasy_team")
 
@@ -406,7 +417,10 @@ def run_sport(sport: str, args) -> int:
     aliases = load_aliases(HERE / f"aliases-{sport}.csv")
     auth = prepare_authority(mod.name_authority(cfg, fetch), aliases)
     resolve = build_resolver(auth)
-    known_names = {a["name"] for a in auth.values()}
+    # The PLAIN names: this set undecorates Yahoo paste cells by matching
+    # the real player name a cell starts with, and a duplicated display
+    # name carries a "(LAD)" that appears nowhere on Yahoo's page.
+    known_names = {a.get("plain_name") or a["name"] for a in auth.values()}
 
     id_col = rcfg.get("id_col")
     player_col = rcfg.get("player_col", "Player")
@@ -487,9 +501,13 @@ def run_sport(sport: str, args) -> int:
                   if fullnames else {})
 
     def _resolve_name(raw_name: str):
-        key = normalize_name(raw_name)
+        # A trailing "(LAD)" is how the board tells two Max Muncys apart, so it
+        # is also what Kyle would copy onto the Overrides tab. Hand it to the
+        # resolver as the team hint rather than let it break the name.
+        plain, hint = split_label(raw_name)
+        key = normalize_name(plain)
         key = aliases.get(key, key)
-        uid = resolve(key)
+        uid = resolve(key, hint)
         if uid is None:
             return None
         # The AUTHORITY's spelling, deliberately not the expanded one, because

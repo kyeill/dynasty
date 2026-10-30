@@ -623,6 +623,36 @@ Normalization is only ever used for *matching*. Display names come from the
 authority verbatim, so `Dončić`, `Şengün` and `Niederhäuser` keep their
 diacritics. CSVs are UTF-8 with BOM so Excel doesn't mangle them.
 
+### A shared name gets its club appended
+
+Distinct ids were never enough, because the Sheet joins the Rankings and
+Rosters tabs **by name**. A lookup for `Max Muncy` found whichever of the two
+came first — so the Dodgers third baseman someone actually rosters was showing
+the Athletics infielder's rank, position and value.
+
+`_label_duplicates` appends the club to any display name the authority holds
+twice: `Max Muncy (LAD)`, `Max Muncy (ATH)`. Where the club doesn't settle it
+either — both Jared Joneses are Pirates — the position follows it, so
+`Jared Jones (PIT SP)`. Both tabs get the label from the same authority row, so
+they agree, and the Sheet needs no formula that knows baseball has two Max
+Muncys. 39 of 1,723 MLB rows carry one; NBA and NFL currently have none.
+
+Keyed on the **authority** holding two of a name, deliberately not on the
+*board* holding two. The board only carries players some source ranked, so that
+rule would rename `Jose Ramirez` the day HKB happened to rank the Detroit one —
+a name in Kyle's Sheet changing because of something a website did overnight.
+A fact about the player pool holds still.
+
+Two consequences worth knowing:
+
+- `split_label` takes the label back off and hands it over as a *team hint*, so
+  the name you read on the board is also a name you can type on the Overrides
+  tab. A bare `Luis Castillo` still works too, while the roster holds only one
+  of the twins; with both, it is genuinely ambiguous and warns.
+- `plain_name` keeps the real one. Anything matching against raw source text
+  uses that — undecorating a Yahoo paste above all, where `Max Muncy (LAD)`
+  appears on no cell of the page.
+
 ### aliases-`<sport>`.csv
 
 Only needed when the **first initial differs** between the two sites. Currently

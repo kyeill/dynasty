@@ -20,7 +20,7 @@
 19,Tarik Skubal,SP,DET,48.4,19.0,19,10,58.7,,,1,MLB,
 20,Ben Rice,"C,1B",NYY,47.6,20.0,20,31,40.9,,,1,MLB,
 21,Ronald Acuna Jr.,OF,ATL,46.9,21.0,21,9,60.4,,,1,MLB,
-22,Julio Rodriguez,OF,SEA,46.1,22.0,22,,,,,1,MLB,
+22,Julio Rodriguez (SEA),OF,SEA,46.1,22.0,22,,,,,1,MLB,
 23,Chase Burns,"SP,RP",CIN,45.5,23.0,23,66,29.9,,,1,MLB,
 24,Aaron Judge,OF,NYY,44.8,24.0,24,138,19.8,,,1,MLB,
 25,Fernando Tatis Jr.,"2B,OF",SD,44.2,25.0,25,4,74.2,,,1,MLB,
@@ -43,9 +43,9 @@
 42,Vladimir Guerrero Jr.,1B,TOR,36.4,42.0,42,63,30.6,,,1,MLB,
 43,Wyatt Langford,OF,TEX,36.1,43.0,43,73,28.5,,,1,MLB,
 44,Bryan Woo,SP,SEA,35.8,44.0,44,48,34.5,,,1,MLB,
-45,Jose Ramirez,3B,CLE,35.4,45.0,45,15,52.1,,,1,MLB,
+45,Jose Ramirez (CLE),3B,CLE,35.4,45.0,45,15,52.1,,,1,MLB,
 46,Hunter Brown,SP,HOU,35.1,46.0,46,92,25.3,,,1,MLB,
-47,Mason Miller,RP,ATH/SD,34.8,47.0,47,19,48.4,,,1,MLB,
+47,Mason Miller (SD),RP,ATH/SD,34.8,47.0,47,19,48.4,,,1,MLB,
 48,Jackson Merrill,OF,SD,34.5,48.0,48,33,40.0,,,1,MLB,
 49,Munetaka Murakami,"1B,3B",CHW,34.2,49.0,49,95,24.8,,,1,MLB,
 50,Josue De Paula,OF,LAD,33.9,50.0,50,,,,,1,MLB,
@@ -104,7 +104,7 @@
 103,Ryan Sloan,SP,SEA,23.7,103.0,103,,,,,1,AA,8
 104,Bryce Miller,SP,SEA,23.6,104.0,104,128,20.8,,,1,MLB,
 105,A.J. Ewing,OF,NYM,23.5,105.0,105,190,15.6,,,1,MLB,
-106,Jared Jones,SP,PIT,23.3,106.0,106,,,,,1,MLB,
+106,Jared Jones (PIT SP),SP,PIT,23.3,106.0,106,,,,,1,MLB,
 107,Dillon Dingler,C,DET,23.2,107.0,107,162,17.7,,,1,MLB,
 108,Spencer Schwellenbach,SP,ATL,23.1,108.0,108,,,,,1,MLB,
 109,Edward Florentino,OF,PIT,23.0,109.0,109,,,,,1,A+,9
@@ -149,9 +149,9 @@
 148,Jose Soriano,SP,LAA,18.9,149.0,149,130,20.6,,,1,MLB,
 149,Jacob Wilson,SS,ATH,18.8,151.0,151,266,11.3,,,1,MLB,
 150,Sandy Alcantara,SP,MIA,18.7,152.0,152,161,17.7,,,1,MLB,
-151,Cade Smith,RP,CLE,18.6,153.0,153,41,36.8,,,1,MLB,
+151,Cade Smith (CLE),RP,CLE,18.6,153.0,153,41,36.8,,,1,MLB,
 152,Anthony Eyanson,SP,BOS,18.5,154.0,154,,,,,1,AA,16
-153,Luis Garcia Jr.,"1B,2B",WSH,18.4,155.0,155,,,,,1,MLB,
+153,Luis Garcia Jr. (WSH),"1B,2B",WSH,18.4,155.0,155,,,,,1,MLB,
 154,Noah Schultz,SP,CHW,18.3,155.0,155,,,,,1,MLB,
 155,Dylan Crews,OF,WSH,18.2,157.0,157,306,9.5,,,1,MLB,
 156,Emerson Hancock,"SP,RP",SEA,18.2,158.0,158,221,13.6,,,1,MLB,
@@ -213,7 +213,7 @@
 212,Andrew Painter,SP,PHI,14.2,216.0,216,,,,,1,MLB,
 213,Daylen Lile,OF,WSH,14.1,217.0,217,145,19.1,,,1,MLB,
 214,James Tibbs III,OF,SF/BOS/LAD,14.0,218.0,218,,,,,1,AAA,32
-215,Luis Hernandez,SS,SF,14.0,219.0,219,,,,,1,A,33
+215,Luis Hernandez (SF),SS,SF,14.0,219.0,219,,,,,1,A,33
 216,Ryan Weathers,SP,MIA,13.9,220.0,220,,,,,1,MLB,
 217,Justin Wrobleski,"SP,RP",LAD,13.9,221.0,221,280,10.6,,,1,MLB,
 218,Gage Wood,SP,PHI,13.8,222.0,222,,,,,1,AA,34
@@ -227,7 +227,7 @@
 226,Alex Bregman,3B,BOS,13.3,230.0,230,106,23.3,,,1,MLB,
 227,Brandon Lowe,2B,TB,13.3,231.0,231,107,23.2,,,1,MLB,
 228,Bryan Reynolds,OF,PIT,13.2,232.0,232,75,28.1,,,1,MLB,
-229,Will Smith,C,LAD,13.2,233.0,233,311,9.3,,,1,MLB,
+229,Will Smith (LAD),C,LAD,13.2,233.0,233,311,9.3,,,1,MLB,
 230,Bryce Rainer,SS,DET,13.1,234.0,234,,,,,1,A+,36
 231,Andres Munoz,RP,SEA,13.0,235.0,235,65,30.1,,,1,MLB,
 232,Jasson Dominguez,OF,NYY,13.0,235.0,235,354,7.7,,,1,MLB,
@@ -336,7 +336,7 @@
 335,Caleb Durbin,"2B,3B",MIL,8.4,343.0,343,132,20.4,,,1,MLB,
 336,Griffin Jax,"SP,RP",MIN/TB,8.3,345.0,345,191,15.5,,,1,MLB,
 337,Sonny Gray,SP,STL,8.3,346.0,346,113,22.5,,,1,MLB,
-338,Edwin Diaz,RP,NYM,8.2,347.0,347,,,,,1,MLB,
+338,Edwin Diaz (NYM),RP,NYM,8.2,347.0,347,,,,,1,MLB,
 339,Jaison Chourio,OF,CLE,8.2,348.0,348,,,,,1,AA,68
 340,Juneiker Caceres,OF,CLE,8.2,349.0,349,,,,,1,A+,69
 341,Brooks Lee,"2B,3B,SS",MIN,8.1,350.0,350,163,17.6,,,1,MLB,
@@ -381,7 +381,7 @@
 380,Davis Martin,SP,CHW,6.8,391.0,391,290,10.2,,,1,MLB,
 381,Luis Robert Jr.,OF,CHW,6.8,391.0,391,176,16.6,,,1,MLB,
 382,Matt McLain,"2B,SS",CIN,6.7,391.0,391,294,10.0,,,1,MLB,
-383,Max Muncy,"2B,3B,SS",ATH,6.7,395.0,395,,,,,1,MLB,
+383,Max Muncy (ATH),"2B,3B,SS",ATH,6.7,395.0,395,,,,,1,MLB,
 384,Adrian Morejon,RP,SD,6.7,396.0,396,178,16.4,,,1,MLB,
 385,Elian Pena,SS,NYM,6.6,396.0,396,,,,,1,A+,82
 386,Jake McCarthy,OF,ARI,6.6,398.0,398,116,22.1,,,1,MLB,
@@ -418,7 +418,7 @@
 417,Brody Hopkins,SP,TB,5.6,430.0,430,,,,,1,MLB,
 418,Zebby Matthews,SP,MIN,5.6,431.0,431,,,,,1,MLB,
 419,Brandon Nimmo,OF,NYM,5.6,432.0,432,99,24.3,,,1,MLB,
-420,Max Muncy,3B,LAD,5.6,432.0,432,166,17.3,,,1,MLB,
+420,Max Muncy (LAD),3B,LAD,5.6,432.0,432,166,17.3,,,1,MLB,
 421,Michael Forret,SP,BAL,5.5,434.0,434,,,,,1,AAA,92
 422,Bo Davidson,OF,SF,5.5,435.0,435,,,,,1,MLB,
 423,J.T. Ginn,"SP,RP",ATH,5.5,436.0,436,,,,,1,MLB,
@@ -462,7 +462,7 @@
 461,Garrett Whitlock,RP,BOS,4.4,475.0,475,202,14.8,,,1,MLB,
 462,Sal Frelick,OF,MIL,4.4,476.0,476,399,6.2,,,1,MLB,
 463,Ben Joyce,RP,LAA,4.4,477.0,477,251,12.0,,,1,MLB,
-464,Juan Sanchez,"3B,SS",TOR,4.3,477.0,477,,,,,1,A,110
+464,Juan Sanchez (TOR),"3B,SS",TOR,4.3,477.0,477,,,,,1,A,110
 465,Charles Davalan,OF,LAD,4.3,479.0,479,,,,,1,AA,111
 466,Alexander Frias,OF,MIL,4.3,480.0,480,,,,,1,A,112
 467,Brandon Woodruff,SP,MIL,4.3,481.0,481,,,,,1,MLB,
@@ -494,7 +494,7 @@
 493,Grayson Rodriguez,SP,BAL,3.6,508.0,508,,,,,1,MLB,
 494,Harry Ford,C,SEA,3.6,509.0,509,,,,,1,MLB,
 495,Cam Collier,3B,CIN,3.6,510.0,510,,,,,1,AA,128
-496,Jose Fernandez,SS,ARI,3.5,511.0,511,,,,,1,MLB,
+496,Jose Fernandez (ARI),SS,ARI,3.5,511.0,511,,,,,1,MLB,
 497,Yohandy Morales,"1B,3B",WSH,3.5,512.0,512,,,,,1,MLB,
 498,Ernie Clement,"1B,2B,3B,SS",TOR,3.5,513.0,513,323,8.8,,,1,MLB,
 499,Ryne Nelson,"SP,RP",ARI,3.5,513.0,513,,,,,1,MLB,
@@ -541,7 +541,7 @@
 540,Aaron Ashby,RP,MIL,2.5,557.0,557,272,11.0,,,1,MLB,
 541,Cristian Arguelles,OF,COL,2.5,558.0,558,,,,,1,A,141
 542,John Gil,SS,ATL,2.5,559.0,559,,,,,1,AA,142
-543,Luis De Leon,SP,BAL,2.4,559.0,559,,,,,1,MLB,
+543,Luis De Leon (BAL),SP,BAL,2.4,559.0,559,,,,,1,MLB,
 544,Billy Carlson,SS,CHW,2.4,561.0,561,,,,,1,A,143
 545,Andres Gimenez,"2B,SS",TOR,2.4,562.0,562,353,7.7,,,1,MLB,
 546,Matt Chapman,3B,SF,2.4,562.0,562,239,12.6,,,1,MLB,
@@ -615,7 +615,7 @@
 614,George Springer,OF,TOR,1.0,633.0,633,127,20.9,,,1,MLB,
 615,Jeremiah Estrada,RP,SD,1.0,633.0,633,,,,,1,MLB,
 616,Willi Castro,"2B,3B,SS,OF",MIN/CHC,0.9,635.0,635,286,10.3,,,1,MLB,
-617,Luis Castillo,"SP,RP",SEA,0.9,636.0,636,,,,,1,MLB,
+617,Luis Castillo (SEA),"SP,RP",SEA,0.9,636.0,636,,,,,1,MLB,
 618,Matt Wilkinson,SP,CLE,0.9,636.0,636,,,,,1,MLB,
 619,Tommy Edman,"2B,3B,OF",LAD,0.9,636.0,636,174,16.7,,,1,MLB,
 620,Alec Bohm,"1B,3B",PHI,0.9,639.0,639,187,15.8,,,1,MLB,
@@ -783,7 +783,7 @@
 782,Andrew Benintendi,OF,CHW,0.0,815.0,815,382,6.7,,,1,MLB,
 783,Brendan Summerhill,OF,TB,0.0,815.0,815,,,,,1,A+,217
 784,Jameson Taillon,SP,CHC,0.0,815.0,815,,,,,1,MLB,
-785,Ryan Johnson,"SP,RP",LAA,0.0,815.0,815,,,,,1,MLB,
+785,Ryan Johnson (LAA),"SP,RP",LAA,0.0,815.0,815,,,,,1,MLB,
 786,Edwin Uceta,RP,TB,0.0,819.0,819,,,,,1,AAA,218
 787,Jorge Polanco,"2B,SS",SEA,0.0,819.0,819,,,,,1,MLB,
 788,Drew Anderson,"SP,RP",DET,0.0,821.0,821,298,9.8,,,1,MLB,
@@ -800,10 +800,10 @@
 799,Adolis Garcia,OF,TEX,0.0,833.0,833,,,,,1,MLB,
 800,Brody Brecht,SP,COL,0.0,833.0,833,,,,,1,A+,222
 801,Jake Cronenworth,"1B,2B,SS",SD,0.0,833.0,833,384,6.7,,,1,MLB,
-802,Rafael Flores,"C,1B",NYY/PIT,0.0,833.0,833,,,,,1,MLB,
+802,Rafael Flores (PIT),"C,1B",NYY/PIT,0.0,833.0,833,,,,,1,MLB,
 803,Ryan Walker,RP,SF,0.0,833.0,833,,,,,1,MLB,
 804,Seranthony Dominguez,RP,BAL/TOR,0.0,833.0,833,,,,,1,MLB,
-805,Esteban Mejia,SP,BAL,0.0,839.0,839,,,,,1,A,223
+805,Esteban Mejia (BAL),SP,BAL,0.0,839.0,839,,,,,1,A,223
 806,Luis Severino,SP,ATH,0.0,839.0,839,,,,,1,MLB,
 807,Matt Wallner,OF,MIN,0.0,841.0,841,,,,,1,MLB,
 808,Steven Okert,RP,HOU,0.0,841.0,841,,,,,1,MLB,
@@ -984,7 +984,7 @@
 983,Carlos Cortes,OF,ATH,0.0,878.0,878,340,8.2,,,1,MLB,
 984,Carlos Jorge,OF,CIN,0.0,878.0,878,,,,,1,MLB,
 985,Carlos Narvaez,C,BOS,0.0,878.0,878,,,,,1,MLB,
-986,Carlos Rodriguez,SP,MIL,0.0,878.0,878,,,,,1,MLB,
+986,Carlos Rodriguez (MIL),SP,MIL,0.0,878.0,878,,,,,1,MLB,
 987,Carlos Santana,1B,CLE/CHC,0.0,878.0,878,,,,,1,MLB,
 988,Carlos Vargas,RP,SEA,0.0,878.0,878,,,,,1,MLB,
 989,Carlson Reed,RP,PIT,0.0,878.0,878,,,,,1,A+,303
@@ -1042,7 +1042,7 @@
 1041,Craig Yoho,SP,MIL,0.0,878.0,878,,,,,1,MLB,
 1042,Creed Willems,"C,1B",BAL,0.0,878.0,878,,,,,1,AAA,324
 1043,Cristhian Vaquero,OF,WSH,0.0,878.0,878,,,,,1,A+,325
-1044,Cristian Hernandez,"2B,SS",CHC,0.0,878.0,878,,,,,1,AA,326
+1044,Cristian Hernandez (CHC),"2B,SS",CHC,0.0,878.0,878,,,,,1,AA,326
 1045,Cristian Mena,RP,ARI,0.0,878.0,878,,,,,1,AAA,327
 1046,Cristofer Torin,"2B,SS",ARI,0.0,878.0,878,,,,,1,AA,328
 1047,Daiber De Los Santos,SS,MIN,0.0,878.0,878,,,,,1,ROK,329
@@ -1135,8 +1135,8 @@
 1134,Everson Pereira,OF,NYY/TB,0.0,878.0,878,,,,,1,MLB,
 1135,Felipe De La Cruz,RP,NYM,0.0,878.0,878,,,,,1,AAA,364
 1136,Felix Reyes,OF,PHI,0.0,878.0,878,,,,,1,MLB,
-1137,Fernando Cruz,SS,CHC,0.0,878.0,878,,,,,1,A,365
-1138,Fernando Cruz,RP,NYY,0.0,878.0,878,,,,,1,MLB,
+1137,Fernando Cruz (CHC),SS,CHC,0.0,878.0,878,,,,,1,A,365
+1138,Fernando Cruz (NYY),RP,NYY,0.0,878.0,878,,,,,1,MLB,
 1139,Forrest Whitley,SP,HOU/TB,0.0,878.0,878,,,,,1,AAA,366
 1140,Franco Aleman,RP,CLE,0.0,878.0,878,,,,,1,MLB,
 1141,Frank Mozzicato,RP,KC,0.0,878.0,878,,,,,1,AA,367
@@ -1185,7 +1185,7 @@
 1184,Huascar Brazoban,RP,NYM,0.0,878.0,878,,,,,1,MLB,
 1185,Humberto Cruz,SP,SD,0.0,878.0,878,,,,,1,ROK,384
 1186,Hunter Bigge,RP,TB,0.0,878.0,878,,,,,1,MLB,
-1187,Hunter Dobbins,SP,BOS,0.0,878.0,878,,,,,1,MLB,
+1187,Hunter Dobbins (BOS),SP,BOS,0.0,878.0,878,,,,,1,MLB,
 1188,Hunter Harvey,RP,KC,0.0,878.0,878,,,,,1,MLB,
 1189,Hyun-Seok Jang,SP,LAD,0.0,878.0,878,,,,,1,A+,385
 1190,Isaac Collins,"2B,OF",MIL,0.0,878.0,878,393,6.4,,,1,MLB,
@@ -1226,7 +1226,7 @@
 1225,Janson Junk,"SP,RP",MIA,0.0,878.0,878,,,,,1,MLB,
 1226,Jared Koenig,RP,MIL,0.0,878.0,878,,,,,1,MLB,
 1227,Jared Serna,SS,MIA,0.0,878.0,878,,,,,1,MLB,
-1228,Jared Thomas,OF,COL,0.0,878.0,878,,,,,1,AA,402
+1228,Jared Thomas (COL),OF,COL,0.0,878.0,878,,,,,1,AA,402
 1229,Jared Triolo,"1B,2B,3B,SS",PIT,0.0,878.0,878,,,,,1,MLB,
 1230,Jared Young,"3B,OF",NYM,0.0,878.0,878,383,6.7,,,1,MLB,
 1231,Jarred Kelenic,OF,ATL,0.0,878.0,878,,,,,1,MLB,
@@ -1246,7 +1246,7 @@
 1245,Jeremiah Jackson,"3B,SS,OF",BAL,0.0,878.0,878,,,,,1,MLB,
 1246,Jeremy Rodriguez,SS,NYM,0.0,878.0,878,,,,,1,A,409
 1247,Jesse Scholtens,RP,CHW/TB,0.0,878.0,878,,,,,1,MLB,
-1248,Jesus Rodriguez,"C,3B",NYY/SF,0.0,878.0,878,,,,,1,MLB,
+1248,Jesus Rodriguez (SF),"C,3B",NYY/SF,0.0,878.0,878,,,,,1,MLB,
 1249,Jeter Martinez,SP,SEA/PIT,0.0,878.0,878,,,,,1,A,410
 1250,Jhancarlos Lara,RP,ATL,0.0,878.0,878,,,,,1,AA,411
 1251,Jhonkensy Noel,"3B,OF",CLE,0.0,878.0,878,,,,,1,AAA,412
@@ -1290,27 +1290,27 @@
 1289,Jorge Barrosa,OF,ARI,0.0,878.0,878,,,,,1,MLB,
 1290,Jorge Mateo,"2B,SS,OF",BAL,0.0,878.0,878,,,,,1,MLB,
 1291,Jorge Quintana,SS,MIL/SD,0.0,878.0,878,,,,,1,A,423
-1292,Jose Alvarado,RP,PHI,0.0,878.0,878,267,11.2,,,1,MLB,
+1292,Jose Alvarado (PHI),RP,PHI,0.0,878.0,878,267,11.2,,,1,MLB,
 1293,Jose Anderson,OF,MIL,0.0,878.0,878,,,,,1,A,424
 1294,Jose Butto,RP,NYM/SF,0.0,878.0,878,,,,,1,MLB,
-1295,Jose Cabrera,SP,ARI,0.0,878.0,878,,,,,1,MLB,
+1295,Jose Cabrera (ARI),SP,ARI,0.0,878.0,878,,,,,1,MLB,
 1296,Jose Corniell,RP,TEX,0.0,878.0,878,,,,,1,MLB,
 1297,Jose Ferrer,RP,WSH,0.0,878.0,878,,,,,1,MLB,
 1298,Jose Miranda,"1B,3B",MIN,0.0,878.0,878,,,,,1,AAA,425
 1299,Jose Perdomo,SS,ATL,0.0,878.0,878,,,,,1,A,426
 1300,Jose Quintana,SP,MIL,0.0,878.0,878,,,,,1,MLB,
 1301,Jose Siri,OF,NYM,0.0,878.0,878,,,,,1,MLB,
-1302,Jose Suarez,RP,LAA/ATL,0.0,878.0,878,,,,,1,MLB,
+1302,Jose Suarez (ATL),RP,LAA/ATL,0.0,878.0,878,,,,,1,MLB,
 1303,Jose Tena,"3B,SS",WSH,0.0,878.0,878,,,,,1,MLB,
 1304,Jose Trevino,C,CIN,0.0,878.0,878,,,,,1,MLB,
-1305,Jose Urbina,SP,TB,0.0,878.0,878,,,,,1,A+,427
+1305,Jose Urbina (TB),SP,TB,0.0,878.0,878,,,,,1,A+,427
 1306,Jose Urquidy,SP,DET,0.0,878.0,878,,,,,1,MLB,
 1307,Joseph Sullivan,OF,HOU,0.0,878.0,878,,,,,1,AA,428
 1308,Josh Hartle,SP,CLE,0.0,878.0,878,,,,,1,AA,429
 1309,Josh Knoth,SP,MIL,0.0,878.0,878,,,,,1,AA,430
 1310,Josh Owens,SS,TEX,0.0,878.0,878,,,,,1,A,431
 1311,Josh Rojas,"2B,3B",CHW,0.0,878.0,878,,,,,1,MLB,
-1312,Josh Smith,"1B,3B,SS,OF",TEX,0.0,878.0,878,,,,,1,MLB,
+1312,Josh Smith (TEX),"1B,3B,SS,OF",TEX,0.0,878.0,878,,,,,1,MLB,
 1313,Josh White,RP,MIA,0.0,878.0,878,,,,,1,MLB,
 1314,Josiah Gray,SP,WSH,0.0,878.0,878,,,,,1,MLB,
 1315,Joswa Lugo,SS,LAA,0.0,878.0,878,,,,,1,A,432
@@ -1383,7 +1383,7 @@
 1382,Leody Taveras,OF,TEX/SEA,0.0,878.0,878,,,,,1,MLB,
 1383,Levi Sterling,SP,PIT,0.0,878.0,878,,,,,1,A+,459
 1384,Liover Peguero,SS,PIT,0.0,878.0,878,,,,,1,AAA,460
-1385,Logan Allen,SP,CLE,0.0,878.0,878,,,,,1,MLB,
+1385,Logan Allen (CLE),SP,CLE,0.0,878.0,878,,,,,1,MLB,
 1386,Logan Evans,SP,SEA,0.0,878.0,878,,,,,1,AAA,461
 1387,Lonnie White,OF,PIT,0.0,878.0,878,,,,,1,AA,462
 1388,Lourdes Gurriel Jr.,OF,ARI,0.0,878.0,878,,,,,1,MLB,
@@ -1394,7 +1394,7 @@
 1393,Luis Baez,OF,HOU,0.0,878.0,878,,,,,1,AA,465
 1394,Luis Campusano,C,SD,0.0,878.0,878,,,,,1,MLB,
 1395,Luis Cova,OF,MIA,0.0,878.0,878,,,,,1,A,466
-1396,Luis Garcia,SP,HOU,0.0,878.0,878,,,,,1,ROK,467
+1396,Luis Garcia (HOU),SP,HOU,0.0,878.0,878,,,,,1,ROK,467
 1397,Luis Guanipa,OF,ATL,0.0,878.0,878,,,,,1,A+,468
 1398,Luis Matos,OF,SF,0.0,878.0,878,,,,,1,MLB,
 1399,Luis Medina,"SP,RP",ATH,0.0,878.0,878,,,,,1,MLB,
@@ -1413,7 +1413,7 @@
 1412,Malachi Witherspoon,SP,DET,0.0,878.0,878,,,,,1,A,476
 1413,Malcolm Moore,C,TEX,0.0,878.0,878,,,,,1,AA,477
 1414,Manuel Beltre,"2B,3B,SS",TOR,0.0,878.0,878,,,,,1,A+,478
-1415,Manuel Rodriguez,RP,TB,0.0,878.0,878,,,,,1,MLB,
+1415,Manuel Rodriguez (TB),RP,TB,0.0,878.0,878,,,,,1,MLB,
 1416,Marc Church,SP,TEX,0.0,878.0,878,,,,,1,AAA,479
 1417,Marcell Ozuna,UT,ATL,0.0,878.0,878,,,,,1,MLB,
 1418,Marco Dinges,UT,MIL,0.0,878.0,878,,,,,1,AA,480
@@ -1450,7 +1450,7 @@
 1449,Michael Kopech,RP,LAD,0.0,878.0,878,,,,,1,AAA,493
 1450,Michael Lombardi,SP,KC,0.0,878.0,878,,,,,1,A,494
 1451,Michael Lorenzen,SP,KC,0.0,878.0,878,,,,,1,MLB,
-1452,Michael Massey,"2B,OF",KC,0.0,878.0,878,366,7.3,,,1,MLB,
+1452,Michael Massey (KC),"2B,OF",KC,0.0,878.0,878,366,7.3,,,1,MLB,
 1453,Michael Morales,SP,SEA,0.0,878.0,878,,,,,1,AA,495
 1454,Michael Oliveto,C,DET,0.0,878.0,878,,,,,1,A,496
 1455,Michael Petersen,RP,LAA/ATL/MIA,0.0,878.0,878,,,,,1,MLB,
@@ -1527,7 +1527,7 @@
 1526,Prelander Berroa,RP,CHW,0.0,878.0,878,,,,,1,ROK,520
 1527,Quentin Young,SS,MIN,0.0,878.0,878,,,,,1,A,521
 1528,Rafael Marchan,C,PHI,0.0,878.0,878,,,,,1,MLB,
-1529,Ramon Ramirez,C,KC,0.0,878.0,878,,,,,1,A+,522
+1529,Ramon Ramirez (KC),C,KC,0.0,878.0,878,,,,,1,A+,522
 1530,Ramon Urias,"2B,3B",BAL/HOU,0.0,878.0,878,,,,,1,MLB,
 1531,Randal Grichuk,OF,ARI/KC,0.0,878.0,878,,,,,1,MLB,
 1532,Randy Dobnak,SP,MIN/DET,0.0,878.0,878,,,,,1,MLB,
@@ -1588,7 +1588,7 @@
 1587,Scott Barlow,RP,CIN,0.0,878.0,878,,,,,1,MLB,
 1588,Sean Murphy,C,ATL,0.0,878.0,878,,,,,1,MLB,
 1589,Sean Newcomb,RP,BOS/ATH,0.0,878.0,878,,,,,1,MLB,
-1590,Sean Sullivan,SP,COL,0.0,878.0,878,,,,,1,MLB,
+1590,Sean Sullivan (COL),SP,COL,0.0,878.0,878,,,,,1,MLB,
 1591,Sem Robberse,SP,STL,0.0,878.0,878,,,,,1,A,542
 1592,Seth Halvorsen,RP,COL,0.0,878.0,878,,,,,1,MLB,
 1593,Seth Johnson,RP,PHI,0.0,878.0,878,,,,,1,MLB,
@@ -1600,7 +1600,7 @@
 1599,Starling Marte,OF,NYM,0.0,878.0,878,,,,,1,MLB,
 1600,Stephen Kolek,SP,SD/KC,0.0,878.0,878,,,,,1,MLB,
 1601,Sterlin Thompson,OF,COL,0.0,878.0,878,,,,,1,MLB,
-1602,Steven Cruz,RP,KC,0.0,878.0,878,343,8.1,,,1,MLB,
+1602,Steven Cruz (KC),RP,KC,0.0,878.0,878,343,8.1,,,1,MLB,
 1603,Steven Matz,RP,STL/BOS,0.0,878.0,878,,,,,1,MLB,
 1604,Steven Zobac,SP,KC,0.0,878.0,878,,,,,1,MLB,
 1605,Stiven Martinez,OF,BAL,0.0,878.0,878,,,,,1,A,545
@@ -1689,8 +1689,8 @@
 1688,Will Wagner,"1B,2B,3B",TOR/SF/SD,0.0,878.0,878,,,,,1,MLB,
 1689,Will Watson,SP,NYM,0.0,878.0,878,,,,,1,AA,574
 1690,William Bergolla,"2B,SS",CHW,0.0,878.0,878,,,,,1,AAA,575
-1691,Wilmer Flores,RP,DET,0.0,878.0,878,,,,,1,A,576
-1692,Wilmer Flores,"1B,2B",SF,0.0,878.0,878,,,,,1,MLB,
+1691,Wilmer Flores (DET),RP,DET,0.0,878.0,878,,,,,1,A,576
+1692,Wilmer Flores (SF),"1B,2B",SF,0.0,878.0,878,,,,,1,MLB,
 1693,Winston Santos,SP,TEX,0.0,878.0,878,,,,,1,MLB,
 1694,Won-Bin Cho,OF,STL,0.0,878.0,878,,,,,1,AA,577
 1695,Yandel Ricardo,SS,KC,0.0,878.0,878,,,,,1,A,578
