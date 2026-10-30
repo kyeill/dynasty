@@ -399,51 +399,76 @@ def prepare_authority(rows: list[dict], aliases: dict) -> dict:
         row = dict(r)
         row["key"] = k
         out[uid] = row
-    _label_duplicates(out)
+    _prepare_labels(out)
     return out
 
 
-def _label_duplicates(auth: dict) -> None:
-    """Give two players who share a display name distinct ones, in place.
+# ---- two players, one name -------------------------------------------------
+#
+# Distinct uids were never enough, because the Sheet joins the Rankings and
+# Rosters tabs BY NAME. A lookup for "Max Muncy" found whichever of the two
+# came first, so the Dodgers third baseman somebody actually rosters was
+# showing the Athletics infielder's rank, position and value.
+#
+# The answer is to append the club to the name itself -- "Max Muncy (LAD)" --
+# so the join has something unique to land on and the Sheet needs no formula
+# that knows baseball contains two Max Muncys. prepare_authority works out
+# WHAT the label would be; visible_labels decides WHO gets one, and only
+# rosters.py can call it, because only there is it known which players end up
+# on a tab at all.
 
-    Distinct ids were never enough. The board and the roster tab are joined BY
-    NAME in the Sheet, so a lookup for "Max Muncy" found whichever of the two
-    came first -- it was showing the Dodgers third baseman somebody actually
-    rosters the Athletics infielder's rank, position and value. Appending the
-    club gives the join something unique to land on, and spares the Sheet any
-    formula that has to know baseball contains two Max Muncys.
 
-    Keyed on the AUTHORITY having two of a name, deliberately not on the board
-    having two. The board only carries players some source ranked, so that rule
-    would rename "Jose Ramirez" to "Jose Ramirez (CLE)" on the day HKB happened
-    to rank the Detroit one -- a display name in Kyle's Sheet changing because
-    of something a website did. This way the label is a fact about the player
-    pool, and it holds still.
+def _prepare_labels(auth: dict) -> None:
+    """Work out the label each same-named player would carry, in place.
 
-    plain_name keeps the real one, for whatever matches against raw source text
-    rather than against the board -- undecorating a Yahoo paste above all,
-    where "Max Muncy (LAD)" appears on no cell of the page.
+    Applied to nobody here -- `name` stays the real one throughout, and the
+    label is put on at the two points that write a file.
     """
-    for row in auth.values():
-        row["plain_name"] = row["name"]
-    seen = Counter(row["key"] for row in auth.values())
-    tied = [row for row in auth.values() if seen[row["key"]] > 1]
-
     def club(row) -> str:
         # Fantrax slash-joins a traded player's clubs -- "ATH/SD" for Mason
         # Miller -- and the one he plays for now is the last.
         return str(row.get("team") or "?").split("/")[-1].strip().upper() or "?"
 
+    seen = Counter(row["key"] for row in auth.values())
+    tied = [row for row in auth.values() if seen[row["key"]] > 1]
     for row in tied:
-        row["name"] = f"{row['plain_name']} ({club(row)})"
-
+        row["label"] = club(row)
     # Two of a name on one club, told apart only by position: both Jared
     # Joneses are Pirates. Rare, so the position is paid for only where the
     # club alone has not settled it.
     for row in tied:
-        if sum(1 for r in tied if r["name"] == row["name"]) > 1:
-            pos = str(row.get("pos") or "?").split(",")[0].upper()
-            row["name"] = f"{row['plain_name']} ({club(row)} {pos})"
+        if sum(1 for r in tied if r["label"] == row["label"]
+               and r["key"] == row["key"]) > 1:
+            row["label"] += " " + str(row.get("pos") or "?").split(",")[0].upper()
+
+
+def visible_labels(auth: dict, visible: set) -> dict:
+    """{uid: label} for the players whose name is about to be shown twice.
+
+    `visible` is every uid that reaches one of Kyle's tabs: ranked by a source,
+    or on a roster, which together is exactly the published board. Two players
+    sharing a name is harmless until both are in front of him -- there are
+    three Jose Ramirezes in the pool but only ever one on the board, and
+    labelling the other two would be noise he cannot act on.
+
+    So the test is the DISPLAYED name, not the match key. "Luis Garcia Jr."
+    and "Luis Garcia" fold to one key and are two different players, but they
+    already read differently on the tab and need no help.
+
+    The cost of deciding it this way, accepted knowingly: a name can acquire a
+    label -- or shed one -- because a ranking source picked the twin up
+    overnight. In exchange, six rows carry one instead of thirty-nine.
+    """
+    shown = Counter(auth[uid]["name"] for uid in visible if uid in auth)
+    return {uid: auth[uid]["label"] for uid in visible
+            if uid in auth and auth[uid].get("label")
+            and shown[auth[uid]["name"]] > 1}
+
+
+def with_label(name, label) -> str:
+    """'Max Muncy' + 'LAD' -> 'Max Muncy (LAD)'. Idempotent, and None-safe."""
+    plain, _ = split_label(name)
+    return f"{plain} ({label})" if label else plain
 
 
 def build_resolver(auth: dict):

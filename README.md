@@ -623,35 +623,43 @@ Normalization is only ever used for *matching*. Display names come from the
 authority verbatim, so `Dončić`, `Şengün` and `Niederhäuser` keep their
 diacritics. CSVs are UTF-8 with BOM so Excel doesn't mangle them.
 
-### A shared name gets its club appended
+### A shared name gets its club appended — but only when both are on a tab
 
-Distinct ids were never enough, because the Sheet joins the Rankings and
+Distinct uids were never enough, because the Sheet joins the Rankings and
 Rosters tabs **by name**. A lookup for `Max Muncy` found whichever of the two
 came first — so the Dodgers third baseman someone actually rosters was showing
 the Athletics infielder's rank, position and value.
 
-`_label_duplicates` appends the club to any display name the authority holds
-twice: `Max Muncy (LAD)`, `Max Muncy (ATH)`. Where the club doesn't settle it
-either — both Jared Joneses are Pirates — the position follows it, so
-`Jared Jones (PIT SP)`. Both tabs get the label from the same authority row, so
-they agree, and the Sheet needs no formula that knows baseball has two Max
-Muncys. 39 of 1,723 MLB rows carry one; NBA and NFL currently have none.
+The label is the club: `Max Muncy (LAD)`, `Max Muncy (ATH)`. Where the club
+doesn't settle it either — both Jared Joneses are Pirates — the position
+follows it, `Jared Jones (PIT SP)`. Both tabs take it from the same authority
+row, so they agree, and the Sheet needs no formula that knows baseball has two
+Max Muncys.
 
-Keyed on the **authority** holding two of a name, deliberately not on the
-*board* holding two. The board only carries players some source ranked, so that
-rule would rename `Jose Ramirez` the day HKB happened to rank the Detroit one —
-a name in Kyle's Sheet changing because of something a website did overnight.
-A fact about the player pool holds still.
+**Only the players about to be shown twice get one.** `visible` is every uid
+that reaches a tab — ranked by a source, or on a roster, which together is
+exactly the published board. There are three Jose Ramirezes in the pool and
+only ever one on the board, so labelling the other two would be noise Kyle
+cannot act on: it was 39 rows under the first version of this and is 6 under
+this one. The test is the **displayed** name, not the match key, so
+`Luis Garcia Jr.` and `Luis Garcia` are left alone — one key, two players, but
+they already read differently.
 
-Two consequences worth knowing:
+The cost, accepted knowingly: a name can acquire a label, or shed one, because
+a ranking source picked its twin up overnight.
 
-- `split_label` takes the label back off and hands it over as a *team hint*, so
-  the name you read on the board is also a name you can type on the Overrides
-  tab. A bare `Luis Castillo` still works too, while the roster holds only one
-  of the twins; with both, it is genuinely ambiguous and warns.
-- `plain_name` keeps the real one. Anything matching against raw source text
-  uses that — undecorating a Yahoo paste above all, where `Max Muncy (LAD)`
-  appears on no cell of the page.
+`prepare_authority` works out *what* each twin's label would be;
+`visible_labels` decides *who* gets one, and **only rosters.py can call it**,
+because only there is both the finished board and the resolved roster in hand.
+`name` stays the real one throughout and `with_label` puts the label on at the
+two points that write a file — the roster CSV, and the board rows rosters.py
+is already rewriting to append to.
+
+`split_label` takes it back off and passes it as a *team hint*, so the name on
+the board is also a name that works on the Overrides tab. A bare
+`Luis Castillo` keeps working while the roster holds only one of the twins;
+without that, 13 existing override rows would have quietly stopped finding
+their player.
 
 ### aliases-`<sport>`.csv
 

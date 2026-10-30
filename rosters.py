@@ -35,7 +35,7 @@ from pathlib import Path
 from common import (HERE, LASTGOOD_DIR, OUTPUT_DIR, Fetcher, build_resolver,
                     load_aliases, load_fullnames, normalize_name,
                     prepare_authority, read_csv, sheet_grid, snapshot,
-                    split_label, write_csv)
+                    split_label, visible_labels, with_label, write_csv)
 from roster_readers import (_clean, parse_mapped_grid, parse_yahoo_grid,
                             read_mapped_csv, read_yahoo_paste)
 
@@ -230,8 +230,30 @@ def _levels_from_sources(sport: str, taken: set) -> dict:
     return {k: v for k, v in levels.items() if k not in taken}
 
 
+def _board_uids(sport: str, aliases: dict, resolve) -> set:
+    """The uids rankings.py just put on the board, read back off the file.
+
+    Ranked rows carry the team and position the authority gave them, which is
+    exactly what the resolver needs to tell two same-named players apart.
+    Previous runs' appends are skipped -- they are rostered, not ranked, and
+    the roster says so more directly.
+    """
+    path = OUTPUT_DIR / f"combined_rankings_{sport}.csv"
+    if not path.exists():
+        return set()
+    out = set()
+    for r in read_csv(path):
+        if str(r.get("sources_matched", "")) == "0":
+            continue
+        key = normalize_name(split_label(r.get("player"))[0])
+        uid = resolve(aliases.get(key, key), r.get("team"), r.get("pos"))
+        if uid is not None:
+            out.add(uid)
+    return out
+
+
 def append_rostered_to_board(sport: str, roster: list[dict], auth: dict,
-                             aliases: dict, resolve) -> int:
+                             aliases: dict, resolve, labels: dict) -> int:
     """Put rostered-but-unranked players at the bottom of the board.
 
     Someone can be owned in Kyle's league while no ranking source covers him --
@@ -271,6 +293,15 @@ def append_rostered_to_board(sport: str, roster: list[dict], auth: dict,
     if len(board) != stale:
         for i, r in enumerate(board, 1):
             r["combined_rank"] = i
+
+    # Label the ranked rows that need one. rankings.py could not have: whether
+    # a shared name is about to be shown twice depends on the rosters, which
+    # are not known until here.
+    for r in board:
+        key = normalize_name(split_label(r.get("player"))[0])
+        uid = resolve(aliases.get(key, key), r.get("team"), r.get("pos"))
+        if uid in labels:
+            r["player"] = with_label(r["player"], labels[uid])
 
     # How many players of each name the board ALREADY has. A roster spot is
     # covered by a ranked row of the same name, one for one.
@@ -417,10 +448,7 @@ def run_sport(sport: str, args) -> int:
     aliases = load_aliases(HERE / f"aliases-{sport}.csv")
     auth = prepare_authority(mod.name_authority(cfg, fetch), aliases)
     resolve = build_resolver(auth)
-    # The PLAIN names: this set undecorates Yahoo paste cells by matching
-    # the real player name a cell starts with, and a duplicated display
-    # name carries a "(LAD)" that appears nowhere on Yahoo's page.
-    known_names = {a.get("plain_name") or a["name"] for a in auth.values()}
+    known_names = {a["name"] for a in auth.values()}
 
     id_col = rcfg.get("id_col")
     player_col = rcfg.get("player_col", "Player")
@@ -467,37 +495,53 @@ def run_sport(sport: str, args) -> int:
 
     by_id = {}
     if any("source_id" in r for r in raw):
-        by_id = {str(a["scorer_id"]): a["name"] for a in auth.values()
+        by_id = {str(a["scorer_id"]): uid for uid, a in auth.items()
                  if a.get("scorer_id")}
 
     rows, unresolved, id_hits = [], [], 0
     for r in raw:
-        canonical = None
+        uid = None
         if by_id and r.get("source_id"):
-            canonical = by_id.get(str(r["source_id"]))
-            if canonical:
+            uid = by_id.get(str(r["source_id"]))
+            if uid:
                 id_hits += 1
-        if canonical is None:
+        if uid is None:
             key = normalize_name(r["name"])
             key = aliases.get(key, key)
             uid = resolve(key, r.get("team") or None, r.get("pos") or None)
-            canonical = auth[uid]["name"] if uid is not None else None
-        if canonical is None:
+        if uid is None:
             # KEPT, not dropped -- Kyle's call, and right: the roster and the
             # naming authority come from the same site, so an unmatched name is
             # rare and its spelling is already that site's own convention.
             # Dropping it would quietly shrink a real roster. Still reported.
             unresolved.append({"player": r["name"], "fantasy_team": r["fantasy_team"]})
-            canonical = r["name"]
-        rows.append({"player": canonical, "fantasy_team": r["fantasy_team"],
-                     # Not written to rosters_<sport>.csv -- that stays
-                     # player,fantasy_team. Carried for the board append.
+        rows.append({"player": r["name"] if uid is None else auth[uid]["name"],
+                     # Neither reaches rosters_<sport>.csv -- that stays
+                     # player,fantasy_team. Carried for the board append and
+                     # for the labelling below.
+                     "uid": uid,
+                     "fantasy_team": r["fantasy_team"],
                      "roster_pos": r.get("pos", "")})
+
+    # Two players of one name only matter once both are in front of him, and
+    # this is the only place that knows: the board rankings.py has just
+    # written, plus the roster just resolved. See visible_labels.
+    labels = visible_labels(auth, _board_uids(sport, aliases, resolve)
+                            | {r["uid"] for r in rows if r["uid"]})
+    if labels:
+        for r in rows:
+            if r["uid"] in labels:
+                r["player"] = with_label(r["player"], labels[r["uid"]])
+        print(f"[label]  {len(labels)} player(s) share a name with someone else "
+              f"on a tab: " + ", ".join(sorted(
+                  with_label(auth[u]["name"], lab) for u, lab in labels.items())))
 
     # Expansions rankings.py worked out, so a player isn't "Giannis
     # Antetokounmpo" on one tab and "G. Antetokounmpo" on the other.
     fullnames = load_fullnames(sport)
-    by_display = ({auth[k]["name"]: v for k, v in fullnames.items() if k in auth}
+    by_display = ({with_label(auth[k]["name"], labels.get(k)):
+                   with_label(v, labels.get(k))
+                   for k, v in fullnames.items() if k in auth}
                   if fullnames else {})
 
     def _resolve_name(raw_name: str):
@@ -510,6 +554,7 @@ def run_sport(sport: str, args) -> int:
         uid = resolve(key, hint)
         if uid is None:
             return None
+        # Labelled, because the rows this is matched against are.
         # The AUTHORITY's spelling, deliberately not the expanded one, because
         # the rows this is matched against have not been expanded yet either.
         # Both sides must name a player identically or an override cannot find
@@ -517,7 +562,7 @@ def run_sport(sport: str, args) -> int:
         # "Kentavious Caldwell-Pope" made the override add a second copy under
         # the old owner instead of moving him, and both rows reached the board.
         # Expansion happens once, below, after this has done its matching.
-        return auth[uid]["name"]
+        return with_label(auth[uid]["name"], labels.get(uid))
 
     # Overrides FIRST, then one expansion pass over everything, then dedup.
     # Expanding before the overrides were applied is what let the two spellings
@@ -555,7 +600,7 @@ def run_sport(sport: str, args) -> int:
     if snap:
         print(f"[hist]   archived -> output/history/rosters/{sport}/{snap.name}")
 
-    added = append_rostered_to_board(sport, out, auth, aliases, resolve)
+    added = append_rostered_to_board(sport, out, auth, aliases, resolve, labels)
     if added:
         print(f"[board]  appended {added} rostered-but-unranked player(s) to the "
               f"bottom of combined_rankings_{sport}.csv (sources_matched=0)")
