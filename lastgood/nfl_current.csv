@@ -103,9 +103,9 @@ Khalil Shakir,BUF,101
 Chris Godwin Jr.,TB,102
 C.J. Stroud,HOU,103
 Tyler Shough,NO,104
-Dalton Kincaid,BUF,105
-David Montgomery,HOU,106
-Courtland Sutton,DEN,107
+Courtland Sutton,DEN,105
+Dalton Kincaid,BUF,106
+David Montgomery,HOU,107
 Travis Etienne Jr.,NO,108
 Travis Kelce,KC,109
 Braelon Allen,NYJ,110
@@ -123,16 +123,16 @@ Malik Washington,MIA,121
 Kyle Pitts Sr.,ATL,122
 Aaron Rodgers,PIT,123
 Devaughn Vele,NO,124
-Rico Dowdle,PIT,125
-Michael Penix Jr.,ATL,126
-RJ Harvey,DEN,127
-Adonai Mitchell,NYJ,128
+Adonai Mitchell,NYJ,125
+Rico Dowdle,PIT,126
+Michael Penix Jr.,ATL,127
+RJ Harvey,DEN,128
 Dontayvion Wicks,PHI,129
 Ja'Kobi Lane,BAL,130
 Kyler Murray,MIN,131
 Malik Willis,MIA,132
-Emmett Johnson,KC,133
-Quentin Johnston,LAC,134
+Quentin Johnston,LAC,133
+Emmett Johnson,KC,134
 Zach Charbonnet,SEA,135
 Brian Thomas Jr.,JAC,136
 Alvin Kamara,NO,137
@@ -152,17 +152,17 @@ Geno Smith,NYJ,150
 Ryan Flournoy,DAL,151
 Terrance Ferguson,LAR,152
 Hunter Henry,NE,153
-Mark Andrews,BAL,154
-Alec Pierce,IND,155
+Alec Pierce,IND,154
+Mark Andrews,BAL,155
 Rashid Shaheed,SEA,156
 Jadarian Price,SEA,157
 Davante Adams,LAR,158
 Kalif Raymond,CHI,159
 Chris Bell,MIA,160
 Sam Darnold,SEA,161
-Dalton Schultz,HOU,162
-De'Zhaun Stribling,SF,163
-Michael Pittman Jr.,PIT,164
+Michael Pittman Jr.,PIT,162
+Dalton Schultz,HOU,163
+De'Zhaun Stribling,SF,164
 Kendre Miller,NO,165
 Tyler Allgeier,ARI,166
 Pat Freiermuth,PIT,167
@@ -170,9 +170,9 @@ DeMario Douglas,NE,168
 Kenyon Sadiq,NYJ,169
 AJ Barner,SEA,170
 Keaton Mitchell,LAC,171
-Seattle Seahawks,SEA,172
-Chris Rodriguez Jr.,JAC,173
-Malachi Fields,NYG,174
+Malachi Fields,NYG,172
+Seattle Seahawks,SEA,173
+Chris Rodriguez Jr.,JAC,174
 Houston Texans,HOU,175
 Mike Gesicki,CIN,176
 Kenny Gainwell,TB,177
@@ -184,11 +184,11 @@ Greg Dulcich,MIA,182
 Baker Mayfield,TB,183
 Denver Broncos,DEN,184
 Kirk Cousins,LV,185
-MarShawn Lloyd,GB,186
-Justin Herbert,LAC,187
-Samaje Perine,CIN,188
-Los Angeles Rams,LAR,189
-Rashod Bateman,BAL,190
+Rashod Bateman,BAL,186
+MarShawn Lloyd,GB,187
+Justin Herbert,LAC,188
+Samaje Perine,CIN,189
+Los Angeles Rams,LAR,190
 Jacksonville Jaguars,JAC,191
 Pittsburgh Steelers,PIT,192
 Michael Mayer,LV,193
@@ -201,23 +201,23 @@ Oronde Gadsden II,LAC,199
 Tyler Higbee,LAR,200
 Ted Hurst III,TB,201
 Kansas City Chiefs,KC,202
-Cam Little,JAC,203
-Brandon Aubrey,DAL,204
-Ka'imi Fairbairn,HOU,205
-Pat Bryant,DEN,206
+Pat Bryant,DEN,203
+Cam Little,JAC,204
+Brandon Aubrey,DAL,205
+Ka'imi Fairbairn,HOU,206
 New England Patriots,NE,207
 Baltimore Ravens,BAL,208
 Mason Taylor,NYJ,209
-Tyjae Spears,TEN,210
-Jacoby Brissett,ARI,211
+Jacoby Brissett,ARI,210
+Tyjae Spears,TEN,211
 Jaylen Wright,MIA,212
 Jason Myers,SEA,213
 Philadelphia Eagles,PHI,214
 Dylan Sampson,CLE,215
 Jalen Nailor,LV,216
 Colby Parkinson,LAR,217
-Jerry Jeudy,CLE,218
-Isaac TeSlaa,DET,219
+Isaac TeSlaa,DET,218
+Jerry Jeudy,CLE,219
 Evan McPherson,CIN,220
 Cooper Kupp,SEA,221
 Jonathon Brooks,CAR,222
@@ -225,8 +225,8 @@ Cade Otton,TB,223
 Jauan Jennings,MIN,224
 Deshaun Watson,CLE,225
 Tyrone Tracy Jr.,NYG,226
-Darnell Washington,PIT,227
-Cyrus Allen,KC,228
+Cyrus Allen,KC,227
+Darnell Washington,PIT,228
 Evan Engram,DEN,229
 Bryce Lance,NO,230
 Konata Mumpfield,LAR,231
@@ -243,18 +243,18 @@ Travis Hunter,JAC,241
 Will Reichard,MIN,242
 Sean Tucker,TB,243
 Eli Raridon,NE,244
-Daniel Jones,IND,245
-Devin Singletary,NYG,246
-Christian Kirk,SF,247
+Christian Kirk,SF,245
+Daniel Jones,IND,246
+Devin Singletary,NYG,247
 Detroit Lions,DET,248
 Harrison Butker,KC,249
 Justice Hill,BAL,250
 Darnell Mooney,NYG,251
 Jalen McMillan,TB,252
-Tank Bigsby,PHI,253
-Calvin Ridley,TEN,254
-Chase McLaughlin,TB,255
-Kyle Williams,NE,256
+Calvin Ridley,TEN,253
+Tank Bigsby,PHI,254
+Kyle Williams,NE,255
+Chase McLaughlin,TB,256
 Charlie Kolar,LAC,257
 Chris Boswell,PIT,258
 George Holani,SEA,259
@@ -267,8 +267,8 @@ Kaleb Johnson,GB,265
 Los Angeles Chargers,LAC,266
 Mack Hollins,NE,267
 Buffalo Bills,BUF,268
-Troy Franklin,DEN,269
-Zachariah Branch,ATL,270
+Zachariah Branch,ATL,269
+Troy Franklin,DEN,270
 Tyler Bass,BUF,271
 Treylon Burks,WAS,272
 Cincinnati Bengals,CIN,273
@@ -282,10 +282,10 @@ David Njoku,LAC,280
 Ty Johnson,BUF,281
 Austin Ekeler,WAS,282
 Harrison Mevis,FA,283
-New Orleans Saints,NO,284
-Efton Chism III,NE,285
-Spencer Shrader,IND,286
-Demond Claiborne,MIN,287
+Efton Chism III,NE,284
+New Orleans Saints,NO,285
+Demond Claiborne,MIN,286
+Spencer Shrader,IND,287
 Isaiah Davis,NYJ,288
 Chimere Dike,TEN,289
 Will Shipley,PHI,290
@@ -301,20 +301,20 @@ Tank Dell,HOU,299
 Xavier Hutchinson,HOU,300
 Indianapolis Colts,IND,301
 Tanner McKee,PHI,302
-Noah Fant,NO,303
-CJ Donaldson,NO,304
+CJ Donaldson,NO,303
+Noah Fant,NO,304
 Elijah Sarratt,BAL,305
 Chris Brooks,GB,306
 Tyler Goodson,DAL,307
 Eli Stowers,PHI,308
 Tommy Tremble,CAR,309
-Cam Ward,TEN,310
-Joshua Palmer,BUF,311
+Joshua Palmer,BUF,310
+Cam Ward,TEN,311
 Sione Vaki,DET,312
 Erick All Jr.,CIN,313
 Carolina Panthers,CAR,314
-Adam Randall,BAL,315
-Jalen Royals,KC,316
+Jalen Royals,KC,315
+Adam Randall,BAL,316
 Xavier Legette,CAR,317
 Marvin Mims Jr.,DEN,318
 New York Jets,NYJ,319
@@ -354,9 +354,9 @@ Ja'Tavion Sanders,CAR,352
 Max Klare,LAR,353
 Brevyn Spann-Ford,DAL,354
 Oscar Delp,NO,355
-Emari Demercado,HOU,356
-Jameis Winston,NYG,357
-Corey Kiner,NE,358
+Corey Kiner,NE,356
+Emari Demercado,HOU,357
+Jameis Winston,NYG,358
 Jarquez Hunter,NO,359
 Colbie Young,CIN,360
 Jaydon Blue,PHI,361
@@ -379,8 +379,8 @@ Marlin Klein,HOU,377
 Devin Neal,WAS,378
 Isiah Pacheco,DET,379
 Carson Beck,ARI,380
-Jalen Tolbert,MIA,381
-Nick Folk,ATL,382
+Nick Folk,ATL,381
+Jalen Tolbert,MIA,382
 Barion Brown,NO,383
 Mac Jones,SF,384
 Zach Ertz,PHI,385
