@@ -285,7 +285,7 @@ Andrew Painter,PHI,283
 Kyle Teel,CWS,284
 Matt Shaw,CHC,285
 Roki Sasaki,LAD,286
-Clay Holmes,CHC,287
+Clay Holmes,FA,287
 Mark Vientos,NYM,288
 Sean Manaea,NYM,289
 Jordan Westburg,BAL,290
@@ -407,7 +407,7 @@ Cole Young,SEA,405
 Luis Rengifo,FA,406
 Joey Ortiz,MIL,407
 Ryan McMahon,NYY,408
-Jake Meyers,HOU,409
+Jake Meyers,FA,409
 Brandon Sproat,MIL,410
 Bo Naylor,MIL,411
 Tanner Scott,LAD,412
@@ -516,7 +516,7 @@ Cole Henry,WSH,514
 Joshua Baez,STL,515
 Yoan Moncada,FA,516
 Kyle Freeland,FA,517
-Hunter Harvey,CHC,518
+Hunter Harvey,FA,518
 Calvin Faucher,MIA,519
 Brice Matthews,HOU,520
 Jacob Latz,TEX,521
@@ -536,7 +536,7 @@ Jett Williams,MIL,534
 Jose Quintana,FA,535
 David Fry,CLE,536
 Kris Bryant,COL,537
-Jared Koenig,MIL,538
+Jared Koenig,FA,538
 Hyeseong Kim,LAD,539
 Tyler Holton,DET,540
 Orion Kerkering,PHI,541
@@ -544,7 +544,7 @@ Bryan King,HOU,542
 Angel Martinez,CLE,543
 Masataka Yoshida,BOS,544
 Dalton Rushing,LAD,545
-Ryan Mountcastle,BAL,546
+Ryan Mountcastle,FA,546
 Nathaniel Lowe,FA,547
 Mauricio Dubon,FA,548
 Edouard Julien,COL,549
@@ -557,7 +557,7 @@ Luke Raley,SEA,555
 Charlie Condon,COL,556
 Brad Keller,PHI,557
 Bryce Elder,ATL,558
-Caleb Thielbar,CHC,559
+Caleb Thielbar,FA,559
 Davis Schneider,TOR,560
 Zack Gelof,ATH,561
 Adael Amador,COL,562
@@ -654,12 +654,12 @@ Yennier Cano,BAL,652
 German Marquez,MIN,653
 Matt Festa,CLE,654
 Jack Dreyer,LAD,655
-Jose Butto,SF,656
+Jose Butto,TEX,656
 Pierce Johnson,FA,657
 Scott Barlow,FA,658
 Jake Bauers,FA,659
 Griffin Conine,MIA,660
-Ryne Stanek,STL,661
+Ryne Stanek,FA,661
 PJ Poulin,WSH,662
 Henry Davis,PIT,663
 Matt Vierling,DET,664
@@ -688,11 +688,11 @@ Mason Montgomery,PIT,686
 John Schreiber,FA,687
 Nick Fortes,TB,688
 Jake Irvin,WSH,689
-Isaac Mattson,PIT,690
+Isaac Mattson,SEA,690
 George Klassen,LAA,691
 Mason Englert,TB,692
 George Valera,CLE,693
-Graham Pauley,MIA,694
+Graham Pauley,CWS,694
 Jalen Beeks,FA,695
 David Festa,MIN,696
 David Hamilton,MIL,697
@@ -716,7 +716,7 @@ Emmanuel Rodriguez,MIN,714
 Jacob Webb,CHC,715
 Jonny DeLuca,TB,716
 Jerar Encarnacion,SF,717
-Josh White,MIA,718
+Josh White,BAL,718
 Luis Torrens,NYM,719
 Colby Thomas,PHI,720
 Enyel De Los Santos,FA,721
@@ -724,7 +724,7 @@ Carter Baumler,TEX,722
 Jonathan Bowlan,PHI,723
 Ben Williamson,TB,724
 Ryan Ritter,COL,725
-Gary Sanchez,MIL,726
+Gary Sanchez,FA,726
 Mason Fluharty,TOR,727
 Leo De Vries,ATH,728
 Walbert Urena,LAA,729
@@ -743,7 +743,7 @@ Hector Rodriguez,CIN,741
 Ricky Tiedemann,TOR,742
 JJ Bleday,CIN,743
 Sam Bachman,LAA,744
-Dietrich Enns,BAL,745
+Dietrich Enns,FA,745
 JP Sears,SD,746
 Rob Zastryzny,FA,747
 Quinn Mathews,STL,748
@@ -777,7 +777,7 @@ Caleb Ferguson,FA,775
 Cooper Criswell,SEA,776
 Javier Assad,CHC,777
 Casey Legumina,TB,778
-Sawyer Gipson-Long,DET,779
+Sawyer Gipson-Long,FA,779
 Lake Bachar,PIT,780
 Hunter Bigge,ATH,781
 Luinder Avila,KC,782
@@ -897,7 +897,7 @@ Trey Gibson,BAL,895
 Blaine Crim,FA,896
 Enrique Hernandez,FA,897
 Felix Bautista,BAL,898
-Eric Orze,MIN,899
+Eric Orze,CHC,899
 Kai-Wei Teng,HOU,900
 Jack Kochanowicz,LAA,901
 Tyler Ferguson,CHC,902
@@ -927,7 +927,7 @@ Alejandro Osuna,TEX,925
 Yariel Rodriguez,TOR,926
 Luis Campusano,SD,927
 Steven Cruz,KC,928
-Richard Lovelady,WSH,929
+Richard Lovelady,FA,929
 George Lombard,NYY,930
 Justin Hagenman,NYM,931
 Easton McGee,KC,932
@@ -936,7 +936,7 @@ Anthony Nunez,BAL,934
 Eli White,BOS,935
 Luke Little,KC,936
 Kevin Alcantara,CHC,937
-Tristan Beck,SF,938
+Tristan Beck,FA,938
 Ronel Blanco,HOU,939
 Brody Hopkins,TB,940
 Kade Strowd,ARI,941
@@ -990,7 +990,7 @@ John Brebbia,BOS,988
 Andrew Knizner,SF,989
 Kervin Castro,NYY,990
 Leo Rivas,SEA,991
-Philip Abner,NYM,992
+Philip Abner,BAL,992
 Jaden Hill,COL,993
 Brandyn Garcia,ARI,994
 Jeimer Candelario,FA,995
@@ -1004,7 +1004,7 @@ Tyrone Taylor,FA,1002
 Hunter Stratton,SD,1003
 Jhonkensy Noel,FA,1004
 Michael Fulmer,FA,1005
-Mitchell Parker,WSH,1006
+Mitchell Parker,ATL,1006
 Manuel Rodriguez,TB,1007
 Kaleb Ort,LAA,1008
 Keider Montero,DET,1009
@@ -1038,7 +1038,7 @@ Sammy Peralta,FA,1036
 Jose Iglesias,FA,1037
 Luis Medina,ATH,1038
 Nick Allen,HOU,1039
-Paxton Schultz,WSH,1040
+Paxton Schultz,CIN,1040
 Chad Green,FA,1041
 Steven Wilson,FA,1042
 Daniel Espino,CLE,1043
@@ -1051,7 +1051,7 @@ Will Brennan,SF,1049
 Jhony Brito,SD,1050
 Reese McGuire,FA,1051
 Franco Aleman,CLE,1052
-Myles Straw,TOR,1053
+Myles Straw,FA,1053
 Trent Thornton,FA,1054
 Albert Suarez,FA,1055
 Peyton Pallette,CWS,1056
@@ -1115,8 +1115,8 @@ Kemp Alderman,MIA,1113
 Riley Martin,CHC,1114
 Rich Hill,FA,1115
 Carson Seymour,SF,1116
-Bailey Horn,DET,1117
-Shay Whitcomb,SF,1118
+Bailey Horn,FA,1117
+Shay Whitcomb,PHI,1118
 Joel Kuhnel,SF,1119
 Brandon Waddell,NYM,1120
 Joey Gerber,FA,1121
@@ -1154,7 +1154,7 @@ David Price,FA,1152
 Pedro Avila,FA,1153
 Justin Foscue,TEX,1154
 Tony Gonsolin,KC,1155
-Leody Taveras,BAL,1156
+Leody Taveras,FA,1156
 Beau Brieske,DET,1157
 Dane Dunning,SEA,1158
 Dedniel Nunez,NYM,1159
@@ -1172,7 +1172,7 @@ Nolan Hoffman,KC,1170
 Ronan Kopp,LAD,1171
 Jorge Alcala,FA,1172
 Garrett Acton,MIN,1173
-Duncan Davitt,SF,1174
+Duncan Davitt,CIN,1174
 Ty Madden,DET,1175
 Jon Gray,FA,1176
 Jose Espada,BAL,1177
@@ -1450,13 +1450,13 @@ Sandy Leon,FA,1448
 Justin Turner,FA,1449
 Johnathan Rodriguez,ATH,1450
 Christian Koss,SF,1451
-Antonio Senzatela,MIL,1452
+Antonio Senzatela,FA,1452
 Juan Brito,CIN,1453
 Jared Oliva,FA,1454
 John Rave,KC,1455
 Jorge Barrosa,HOU,1456
 Johan Rojas,PHI,1457
-Brett Harris,SF,1458
+Brett Harris,PHI,1458
 Jorbit Vivas,WSH,1459
 MJ Melendez,NYM,1460
 Tristan Gray,MIN,1461
@@ -1509,7 +1509,7 @@ Esmerlyn Valdez,PIT,1507
 Enmanuel Valdez,PIT,1508
 Garrett Hampson,CIN,1509
 Tim Anderson,FA,1510
-Akil Baddoo,MIL,1511
+Akil Baddoo,PIT,1511
 Pedro Leon,PHI,1512
 Joey Meneses,FA,1513
 Nick Madrigal,TB,1514
@@ -1568,7 +1568,7 @@ Victor Bericoto,SF,1566
 Jase Bowen,SD,1567
 Donovan Solano,FA,1568
 Blaze Jordan,STL,1569
-Garrett Stubbs,PHI,1570
+Garrett Stubbs,FA,1570
 Jonah Bride,FA,1571
 Vimael Machin,COL,1572
 Ben Cowles,CHC,1573

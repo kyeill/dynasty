@@ -54,20 +54,20 @@ De'Aaron Fox,SA,PG,54
 Darius Acuff Jr.,SAC,PG,55
 Domantas Sabonis,SAC,"PF,C",56
 Bam Adebayo,MIA,"PF,C",57
-Dejounte Murray,NO,PG,58
+Dejounte Murray,NO,"PG,SG",58
 Jaylen Brown,PHI,"SG,SF,PF",59
 Anthony Davis,WAS,"PF,C",60
 Mikel Brown Jr.,BKN,PG,62
 Onyeka Okongwu,ATL,C,63
 Pascal Siakam,IND,"PF,C",64
 Ivica Zubac,IND,C,65
-James Harden,CLE,"PG,SG",66
-Yaxel Lendeborg,GS,PF,67
-Keaton Wagler,LAC,SG,68
-Stephen Curry,GS,PG,69
-Desmond Bane,ORL,"SG,SF",70
-Nickeil Alexander-Walker,ATL,"PG,SG",71
-Immanuel Quickley,TOR,"PG,SG",72
+Yaxel Lendeborg,GS,"SF,PF",66
+Keaton Wagler,LAC,SG,67
+Stephen Curry,GS,PG,68
+Desmond Bane,ORL,"SG,SF",69
+Nickeil Alexander-Walker,ATL,"PG,SG",70
+Immanuel Quickley,TOR,"PG,SG",71
+James Harden,CLE,"PG,SG",72
 Ajay Mitchell,OKC,"PG,SG",73
 Dyson Daniels,ATL,"SG,SF",74
 Naz Reid,CHA,"PF,C",75
@@ -91,7 +91,7 @@ Mikal Bridges,NY,"SF,PF",93
 Anthony Black,ORL,"PG,SG,SF",94
 Kyshawn George,WAS,"SG,SF,PF",95
 Jalen Suggs,ORL,"PG,SG",96
-Kyrie Irving,DAL,PG,97
+Kyrie Irving,DAL,"PG,SG",97
 Brandin Podziemski,GS,"PG,SG",98
 Jaime Jaquez Jr.,MIL,"SG,SF,PF",99
 Jabari Smith Jr.,HOU,"PF,C",100
