@@ -5,8 +5,8 @@ Jaxon Smith-Njigba,SEA,3
 Caleb Williams,CHI,4
 Ja'Marr Chase,CIN,5
 Joe Burrow,CIN,6
-Lamar Jackson,BAL,7
-Jahmyr Gibbs,DET,8
+Jahmyr Gibbs,DET,7
+Lamar Jackson,BAL,8
 Bijan Robinson,ATL,9
 Puka Nacua,LAR,10
 Jayden Daniels,WAS,11
@@ -27,9 +27,9 @@ Jonathan Taylor,IND,25
 Jalen Hurts,PHI,26
 Trey McBride,ARI,27
 Chris Olave,NO,28
-Justin Herbert,LAC,29
-Tetairoa McMillan,CAR,30
-Dak Prescott,DAL,31
+Tetairoa McMillan,CAR,29
+Dak Prescott,DAL,30
+Justin Herbert,LAC,31
 Zay Flowers,BAL,32
 Jordan Love,GB,33
 Jared Goff,DET,34
@@ -69,8 +69,8 @@ Omarion Hampton,LAC,67
 Quinshon Judkins,CLE,68
 Bhayshul Tuten,JAC,69
 A.J. Brown,NE,70
-Harold Fannin Jr.,CLE,71
-Makai Lemon,PHI,72
+Makai Lemon,PHI,71
+Harold Fannin Jr.,CLE,72
 KC Concepcion Jr.,CLE,73
 Sam LaPorta,DET,74
 Rome Odunze,CHI,75
@@ -85,10 +85,10 @@ DJ Moore,BUF,83
 Derrick Henry,BAL,84
 Michael Wilson,ARI,85
 Cam Ward,TEN,86
-Jadarian Price,SEA,87
-Matthew Stafford,LAR,88
-Kyler Murray,MIN,89
-Isaiah Likely,NYG,90
+Matthew Stafford,LAR,87
+Jadarian Price,SEA,88
+Isaiah Likely,NYG,89
+Kyler Murray,MIN,90
 Kyle Pitts Sr.,ATL,91
 Cam Skattebo,NYG,92
 Brian Thomas Jr.,JAC,93
@@ -100,8 +100,8 @@ Alec Pierce,IND,98
 Kenyon Sadiq,NYJ,99
 Jordan Addison,MIN,100
 DK Metcalf,PIT,101
-Omar Cooper Jr.,NYJ,102
-Chuba Hubbard,CAR,103
+Chuba Hubbard,CAR,102
+Omar Cooper Jr.,NYJ,103
 George Kittle,SF,104
 Malik Willis,MIA,105
 Daniel Jones,IND,106
@@ -129,37 +129,37 @@ Eli Stowers,PHI,127
 Romeo Doubs,NE,128
 Quentin Johnston,LAC,129
 David Montgomery,HOU,130
-Michael Pittman Jr.,PIT,131
-Terrance Ferguson,LAR,132
+Terrance Ferguson,LAR,131
+Michael Pittman Jr.,PIT,132
 Courtland Sutton,DEN,133
 Oronde Gadsden II,LAC,134
 Dallas Goedert,PHI,135
 Chris Godwin Jr.,TB,136
-Zach Charbonnet,SEA,137
-Jayden Reed,GB,138
-Jake Ferguson,DAL,139
+Jake Ferguson,DAL,137
+Zach Charbonnet,SEA,138
+Jayden Reed,GB,139
 De'Zhaun Stribling,SF,140
 Juwan Johnson,NO,141
 Rico Dowdle,PIT,142
-Chig Okonkwo,WAS,143
-J.J. McCarthy,NYG,144
-Woody Marks,HOU,145
-T.J. Hockenson,MIN,146
-Tony Pollard,TEN,147
-Travis Kelce,KC,148
-Emmett Johnson,KC,149
-Germie Bernard,PIT,150
-Jacory Croskey-Merritt,WAS,151
-Braelon Allen,NYJ,152
+Germie Bernard,PIT,143
+Chig Okonkwo,WAS,144
+J.J. McCarthy,NYG,145
+Woody Marks,HOU,146
+T.J. Hockenson,MIN,147
+Tony Pollard,TEN,148
+Travis Kelce,KC,149
+Emmett Johnson,KC,150
+Braelon Allen,NYJ,151
+Jacory Croskey-Merritt,WAS,152
 Rachaad White,WAS,153
-Mark Andrews,BAL,154
-Kenny Gainwell,TB,155
-Ja'Kobi Lane,BAL,156
-Tyler Allgeier,ARI,157
+Kenny Gainwell,TB,154
+Ja'Kobi Lane,BAL,155
+Mike Washington Jr.,LV,156
+Mark Andrews,BAL,157
 Stefon Diggs,WAS,158
-Mike Washington Jr.,LV,159
-Travis Hunter,JAC,160
-Adonai Mitchell,NYJ,161
+Tyler Allgeier,ARI,159
+Adonai Mitchell,NYJ,160
+Travis Hunter,JAC,161
 Jordan Mason,MIN,162
 Caleb Douglas,MIA,163
 Hunter Henry,NE,164
@@ -172,8 +172,8 @@ Jonathon Brooks,CAR,170
 Tre Tucker,LV,171
 Ollie Gordon II,MIA,172
 Dylan Sampson,CLE,173
-Chris Rodriguez Jr.,JAC,174
-Aaron Jones Sr.,MIN,175
+Aaron Jones Sr.,MIN,174
+Chris Rodriguez Jr.,JAC,175
 Jaylin Noel,HOU,176
 Deebo Samuel Sr.,SF,177
 Gunnar Helm,TEN,178
@@ -354,7 +354,7 @@ Bam Knight,ARI,352
 Barion Brown,NO,353
 Colbie Young,CIN,354
 J'Mari Taylor,JAC,355
-Audric Estime,FA,356
+Audric Estime,NO,356
 Gardner Minshew II,ARI,357
 Jaleel McLaughlin,CLE,358
 Noah Gray,KC,359
@@ -400,7 +400,7 @@ Josh Oliver,MIN,398
 KaVontae Turpin,DAL,399
 Dean Connors,LAR,400
 Jacob Cowing,SF,401
-Robert Henry Jr.,FA,402
+Robert Henry Jr.,WAS,402
 Dyami Brown,WAS,403
 Jeff Caldwell,KC,404
 Olamide Zaccheaus,ATL,405
