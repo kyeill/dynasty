@@ -2729,7 +2729,7 @@ Jostin Ogando,BOS,1B,0700k
 Ryder Ryan,PIT,RP,04aja
 Ben Shields,NYY/COL,SP,06hf1
 Austin Voth,(N/A),SP,0316l
-Ryan Webb,CLE,SP,05u98
+Ryan Webb,CLE,RP,05u98
 Mario Baez,ATL,"2B,SS",06c3t
 Dru Baker,TB/CHW,SS,05uac
 Bryant Betancourt,COL,"C,1B",0626r
@@ -3085,7 +3085,7 @@ Sean Sullivan,PIT,RP,05y41
 Carlos Taveras,MIN,OF,06rkw
 Reed Trimble,BAL,OF,05uwb
 Carson Tucker,SD,SS,05jrj
-Reid VanScoter,SEA,SP,064wg
+Reid VanScoter,SEA,RP,064wg
 Jordan Viars,PHI,1B,05une
 Mitch White,(N/A),SP,041qa
 Matt Barnes,(N/A),RP,0260w
@@ -3582,7 +3582,7 @@ Sandy Ozuna,COL,SP,06mmu
 Ovis Portes,CIN,RP,06m9q
 Zach Remillard,CHW,3B,041va
 Kevin Roberts Jr.,BAL,OF,06mv3
-Roman Angelo,ARI,SP,06gja
+Roman Angelo,ARI,RP,06gja
 Scott Bandura,SF,OF,06fqt
 Edinson Batista,HOU/TOR,SP,061zx
 Branden Boissiere,WSH,1B,05tzh
@@ -3726,7 +3726,7 @@ J.D. Thompson,MIL,SP,06r4c
 Griffin Tobias,MIL,RP,06qua
 Shohei Tomioka,ATH,RP,05ilr
 Malvin Valdez,CIN,OF,05rc2
-Cameron Wagoner,MIL,SP,051gv
+Cameron Wagoner,MIL,RP,051gv
 Trenton Wallace,TOR,RP,05yfx
 Connor Wietgrefe,PIT,SP,06pqf
 Tanner Witt,NYM,RP,05jsb
@@ -3824,7 +3824,7 @@ Jay Thomason,MIN,3B,06qpv
 Marshall Toole,NYY/TB,OF,06qrq
 Imanol Vargas,LAD/PIT,1B,061ob
 Ethan Wagner,HOU,OF,06qq0
-John West,ARI,SP,06qn7
+John West,ARI,RP,06qn7
 Case Williams,COL,RP,05mrn
 Eric Yost,SD,SP,06hom
 Cory Abbott,TEX,SP,04ef6
@@ -3936,7 +3936,7 @@ Carlos Aguiar,(N/A),OF,04mkq
 Alexander Alberto,TB,RP,05rh5
 Brady Allen,DET,OF,05y4h
 Edgar Alvarez,CHC,1B,06phb
-Ryan Andrade,TB,SP,06qhs
+Ryan Andrade,TB,RP,06qhs
 Edgar Barclay,(N/A),SP,051bv
 Matt Beaty,(N/A),1B,03qpz
 Pedro Blanco,ARI,OF,06qy8
@@ -4187,7 +4187,7 @@ Felix Tena,COL,OF,05ri0
 Junior Tilien,DET,"2B,3B",05j6x
 Enry Torres,CIN,C,06rid
 Deward Tovar,TEX,OF,06c4t
-Jayden Voelker,TB,SP,06qku
+Jayden Voelker,TB,RP,06qku
 Danny Watson,NYY,RP,06dpy
 Avery Weems,TEX,RP,0514v
 Ryan Wideman,SD,OF,06v5z
@@ -4200,7 +4200,7 @@ Gavin Adams,PIT,RP,06af9
 Cody Adcock,CIN,RP,06hve
 Anderson Areinamo,HOU,SS,06ybb
 Frankeli Arias,CHW,RP,06id7
-Jose Atencio,WSH,SP,05yls
+Jose Atencio,WSH,RP,05yls
 Matt Barr,MIN,SP,06v1w
 Tyler Bell,COL,SS,06nu9
 Moises Brito,(N/A),RP,063do
@@ -4530,7 +4530,7 @@ Joey Volchko,CHW,SP,06ber
 Jake Walsh,(N/A),RP,04ep2
 Patrick Weigel,WSH,RP,03dty
 Lucas Wepf,LAD,RP,0665v
-JP Wheat,CHC,SP,066jl
+JP Wheat,CHC,RP,066jl
 Patrick Wicklander,(N/A),RP,05u97
 Patrick Winkel,MIN,C,05xy2
 Jake Wong,(N/A),SP,04ppp
@@ -4781,7 +4781,7 @@ Cory Wall,ATL,RP,06fzj
 Spenser Watkins,(N/A),SP,05r9c
 Jacob Webb,BOS,RP,05yod
 CJ Weins,DET,RP,06f1f
-Chandler Welch,MIL,SP,06pq3
+Chandler Welch,MIL,RP,06pq3
 Alex Williams,MIA,SP,06489
 Bryce Willits,CHW/HOU,3B,066f3
 Rixon Wingrove,(N/A),1B,05h9p
@@ -4795,7 +4795,7 @@ Luis Aguilar,HOU,RP,06hwa
 Marcelo Alcala,CHW,OF,06ukl
 Derik Alcantara,CHC,OF,06uvu
 Austin Aldeano,CLE,SP,05r6k
-Jervis Alfaro,CLE,SP,06s3r
+Jervis Alfaro,CLE,RP,06s3r
 Dayquer Alfonzo,SD,C,06r5i
 Eliezer Alfonzo,BOS,SS,06rt6
 Albert Almora Jr.,MIA/ARI,OF,02i2o
@@ -5088,7 +5088,7 @@ Duane Underwood Jr.,(N/A),RP,02mwx
 Juan Uribe,CHW,2B,06c3q
 Wardquelin Vasquez,CHW,RP,06aqm
 Kevin Velasco,BAL,SP,06pg9
-Ryan Verdugo,HOU,SP,06qn8
+Ryan Verdugo,HOU,RP,06qn8
 Michael Walsh,PIT,RP,06577
 Je'Von Ward,TOR,OF,04em1
 Zack Weiss,STL,RP,02hkd
@@ -5129,7 +5129,7 @@ EJ Andrews,COL,OF,05xst
 Tomohiro Anraku,(N/A),SP,036ll
 Cesar Aquino,PIT,RP,06ptv
 Juan Araujo,(N/A),2B,06mv0
-Cristian Aray,SEA,SP,06r4b
+Cristian Aray,SEA,RP,06r4b
 Derek Arellan,MIA,RP,06o0i
 Joaquin Arias Jr.,TEX,OF,06jhk
 Luis Ariza,TB,SS,05r5y
@@ -5646,7 +5646,7 @@ Erick Alvarez,TEX,OF,067zo
 Nelson Alvarez,PHI,RP,04q53
 Alexander Alzi,BOS,OF,06r84
 Austin Amaral,WSH,RP,06hsg
-Juan Amarante,PHI,SP,06rn0
+Juan Amarante,PHI,RP,06rn0
 Jake Anchia,CLE,C,04psp
 Ben Anderson,TEX,SP,0519l
 Casey Anderson,ARI,RP,06gjs
@@ -6318,7 +6318,7 @@ Brandon White,MIA,SP,06ajt
 Hudson White,BOS,C,062k2
 Brad Wieck,(N/A),RP,03dfo
 Collin Wiles,(N/A),SP,02mwt
-Holden Wilkerson,TOR,SP,06qp4
+Holden Wilkerson,TOR,RP,06qp4
 Dixon Williams,ATL,3B,06yq5
 Justin Williams,(N/A),"1B,3B",05yj9
 Marlin Willis,(N/A),RP,04eql
@@ -6335,7 +6335,7 @@ Gabriel Yanez,MIN,RP,06av6
 R.J. Yeager,STL,"1B,3B",06bt0
 Andy Yerzy,CIN/STL,C,041q5
 Kenyon Yovan,LAA,RP,05y7g
-Alison Zacarias,COL,SP,06c3a
+Alison Zacarias,COL,RP,06c3a
 Kelvin Zapata,BAL,SP,06rwd
 Bryant Zayas,(N/A),SS,05u9i
 Eli Zielinski,(N/A),SP,06c8y
@@ -7028,7 +7028,7 @@ Andrew Marrero,STL,RP,06idy
 Elih Marrero,KC,C,04psx
 Wendell Marrero,(N/A),OF,0518e
 Shane Marshall,CHC,RP,0657y
-Duncan Marsten,CIN,SP,06kww
+Duncan Marsten,CIN,RP,06kww
 Modeifi Marte,ARI,1B,066rs
 Christian Martin,STL,2B,06qvt
 Jason Martin,(N/A),OF,0374g
@@ -7516,7 +7516,7 @@ Alex Valverde,(N/A),P,04etk
 Esnaider Vargas,WSH,SS,06vy4
 Mauricio Vargas,NYY,RP,06sjq
 Raul Vargas,(N/A),2B,06l0w
-Jose Vasquez,LAD,SP,06r7h
+Jose Vasquez,LAD,RP,06r7h
 Neifi Vasquez,TB,OF,061u2
 Felipe Vazquez,PIT,RP,02jh4
 Luis Velasquez,NYY,RP,06mbq
@@ -7542,7 +7542,7 @@ Joe Vogatsky,BOS,RP,06ooh
 Drew Vogel,HOU,SS,06qrx
 Joey Volini,MIA,SP,06zco
 Marcus Walden,SEA,RP,03c8t
-Ethan Walker,BOS,SP,06z0r
+Ethan Walker,BOS,RP,06z0r
 Chase Wallace,KC,RP,05r5c
 Nash Walters,(N/A),RP,03qk8
 Yannic Walther,MIL,C,06rhp
@@ -7553,7 +7553,7 @@ Michael Watson,STL,RP,06qiu
 Nolan Watson,(N/A),SP,03pjj
 Nate Webb,BAL,SP,04aqj
 Ryan Weber,(N/A),RP,02hux
-Jackson Wells,HOU,SP,06zfl
+Jackson Wells,HOU,RP,06zfl
 Wyatt Wendell,ARI,SP,065iu
 Aidan West,LAD,SS,06z9d
 Conner Westenburg,SD,OF,06zh7
@@ -7609,15 +7609,15 @@ Hunter Alberini,KC,RP,06zal
 Slate Alford,LAA,3B,06yzk
 Santiago Almao,TEX,SS,06ytu
 Juan Alva,MIA,SS,06yty
-Gensi Angeles,ATL,RP,06zb5
+Gensi Angeles,ATL,SP,06zb5
 Beau Ankeney,DET,1B,070d8
-Jack Anker,PIT,RP,06z3w
+Jack Anker,PIT,SP,06z3w
 Jack Arcamone,(N/A),C,070bm
 Bryce Archie,CHC/CIN,RP,06z9w
 Bryan Arendt,ATH,C,070dw
 Joe Ariola,ARI,RP,06z16
 Anson Aroz,LAD,OF,06zcg
-Anthony Astudillo,TEX,SP,07101
+Anthony Astudillo,TEX,RP,07101
 Jose Astudillo,SF,SS,070ku
 Trace Baker,TOR,RP,06zax
 Junior Barajas,SF,P,06z3v
@@ -8128,6 +8128,7 @@ Andy Fabian,BAL,RP,06ulj
 Deric Fabian,(N/A),SS,05ybu
 Samuel Fabian,STL,RP,06u6h
 Christian Fagnant,WSH,C,06qj1
+John Michael Faile,CIN,C,06rih
 Fred Fajardo,CHC,RP,06uli
 Nick Falter,SD,SP,06zg5
 Callan Fang,MIN,SP,070dx
@@ -8878,7 +8879,6 @@ Danery Meyer,SEA,RP,06qvi
 Jake Meyer,(N/A),C,0665p
 Nick Meyer,(N/A),C,04prk
 Moises Meza,COL,SP,06v2b
-John Michael Faile,CIN,C,06rih
 Ryan Middendorf,MIL,RP,066cb
 Anthony Migliaccio,(N/A),OF,05tzd
 Jose Miguel Rodriguez,NYY,SP,06uya
@@ -9737,7 +9737,7 @@ Alex Ulloa,(N/A),SS,05y65
 Cooper Underwood,(N/A),SP,070e8
 Geison Urbaez,TOR,RP,06tm9
 Nomar Urdaneta,(N/A),2B,04yrd
-Roberto Urdaneta,ATH,RP,06uqj
+Roberto Urdaneta,ATH,SP,06uqj
 Ryan Ure,TEX/KC,RP,06zfg
 Delni Uribe,CLE,SP,06r1d
 Isaias Uribe,PIT,RP,06ak6
@@ -9754,14 +9754,14 @@ Alexandre Valdiviezo,(N/A),RP,06mt0
 Cleudis Valenzuela,BAL,2B,06o0u
 Sahid Valenzuela,(N/A),SS,0519p
 Tomas Valincius,(N/A),SP,06uwo
-Shane Van Dam,KC,RP,06zat
+Shane Van Dam,KC,SP,06zat
 Ty Van Dyke,STL,SP,06ywm
 Bryson Van Sickle,COL,RP,06uxf
 JC Vanek,KC,1B,06zas
 Vince Vannelle,CHW,RP,06ups
 Edward Vargas,CHC,OF,06imt
 Giovanni Vargas,STL,RP,06c7y
-Will Varmette,SD,SP,06hei
+Will Varmette,SD,RP,06hei
 Drake Varnado,(N/A),SS,05yh9
 Amilcar Vasquez,MIN,OF,06rgk
 Brandon Vasquez,SF,OF,06r6u
@@ -9780,7 +9780,7 @@ Marco Vega,LAA,RP,066r0
 Marlon Vega,(N/A),RP,06ekt
 Onix Vega,NYM,C,04q2i
 Alfredo Velasquez,BAL,3B,066s5
-Giussepe Velasquez,PHI,SP,06ytr
+Giussepe Velasquez,PHI,RP,06ytr
 Ramses Velazquez,(N/A),OF,066su
 Ricardo Velez,STL,RP,06u7d
 Aiberson Ventura,MIN,RP,06qzq
@@ -9800,7 +9800,7 @@ Mason Vinyard,NYY,RP,06th7
 Edison Vivas,NYY,C,06rjp
 Anthony Vizcaya,(N/A),RP,05gvy
 Nate Voss,(N/A),C,05ud3
-Hayden Vucinovich,MIL,SP,06zrg
+Hayden Vucinovich,MIL,RP,06zrg
 Nico Wagner,ATL,RP,070cy
 Jesse Wainscott,SEA,RP,06s3d
 Charlie Walker,SD,RP,06zh8
@@ -9812,7 +9812,7 @@ Jacob Walsh,WSH,1B,05zq3
 Brian Walters,PHI,RP,06zqm
 Jake Walters,(N/A),SP,04ptp
 Jean Walters,ARI,"2B,3B",06lew
-Cam Walty,CLE,SP,06qol
+Cam Walty,CLE,RP,06qol
 Nian Hao Wang,(N/A),1B,06rs6
 Conner Ware,NYM,RP,06zii
 Jaren Warwick,LAA,RP,06qjl
@@ -9821,7 +9821,7 @@ Nayerich Waterfort,CIN,2B,06qgu
 Kevin Watson,(N/A),OF,04eqg
 Matthew Watson,SD,SP,06qtm
 Anthony Watts,STL,RP,06zbj
-Dylan Watts,MIL/TOR,RP,06zbi
+Dylan Watts,MIL/TOR,SP,06zbi
 Wilson Weber,MIA,C,06zim
 Robert Wegielnik,CLE,RP,06s3n
 Jeffrey Wehler,TOR,2B,06coo
@@ -9835,7 +9835,7 @@ Ryan Wentz,(N/A),SP,06heg
 Dean West,TOR,OF,05u6k
 Derek West,(N/A),P,051aj
 Jaxson West,TOR,C,06zbl
-Justin West,NYY,RP,06yw7
+Justin West,NYY,SP,06yw7
 Kyle West,NYY,1B,06yw1
 Luke Westphal,(N/A),SP,06r0n
 Cale Wetwiska,DET,SP,06zli
