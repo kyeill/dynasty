@@ -3711,7 +3711,7 @@ Marcelo Perez,SEA,SP,066lx
 Luis Ravelo,BOS,SS,05rds
 Bladimir Restituyo,MIL,OF,04ofm
 Victor Reyes,CHW,OF,02zm9
-Luke Ritter,PHI,"1B,2B,3B,OF",0515g
+Luke Ritter,(N/A),"1B,2B,3B,OF",0515g
 Lizandro Rodriguez,KC/TOR,2B,05wdm
 Luis Rodriguez,STL,UT,05yih
 Josiah Romeo,ATH,SP,06pgj
@@ -4515,7 +4515,7 @@ Kirby Snead,PHI,RP,041vf
 Carlos Tavera,BAL,RP,05y73
 Blake Taylor,(N/A),RP,03116
 Yereny Teus,TB,SP,06hzh
-Blake Townsend,PIT,RP,05ilp
+Blake Townsend,PIT,SP,05ilp
 Michael Turner,CHW,"C,1B",066cv
 Fidel Ulloa,COL,RP,06pqa
 Leonel Valera,KC,SS,04j4e
@@ -4754,7 +4754,7 @@ Reid Schaller,WSH,SP,04ppy
 Thomas Schultz,WSH,RP,06fzd
 TJ Shook,NYM,SP,05t66
 Chasen Shreve,ATL,RP,02hkk
-Seth Shuman,WSH,SP,0514g
+Seth Shuman,WSH,RP,0514g
 Andres Silvera,PIT,RP,060of
 Devin Smeltzer,DET,RP,041ry
 Sung Mun Song,SD,3B,070bf
@@ -5040,7 +5040,7 @@ Dennys Riera,SF,SS,0637i
 Will Riley,SEA,RP,06qkw
 Javier Rivera,CIN,SP,061yo
 Jesus Rivero,MIL,RP,06cee
-Domingo Robles,ATH,SP,03yri
+Domingo Robles,ATH,RP,03yri
 Eddy Rodriguez,PIT,"1B,OF",05un8
 Yordan Rodriguez,ATH,RP,06rt2
 Anderdson Rojas,ARI,SS,062l3
@@ -6218,7 +6218,7 @@ Franklin Sanchez,MIA,RP,066pj
 Heison Sanchez,DET,2B,062zg
 Wilmy Sanchez,HOU,RP,06r8c
 Michael Sandle,HOU,OF,05xue
-Nick Sando,CIN,RP,06h02
+Nick Sando,CIN,SP,06h02
 Eli Saul,ARI,RP,064nk
 Frankie Scalzo Jr.,CHC,RP,06l5o
 Brandon Schaeffer,SEA,SP,066f1
@@ -6411,7 +6411,7 @@ Manuel Baez,SEA,C,06rtm
 Michael Baez,(N/A),1B,06rj7
 Carson Bailey,(N/A),SP,06v61
 Smith Bailey,(N/A),SP,06sj5
-Alec Baker,ARI,SP,06hov
+Alec Baker,ARI,RP,06hov
 Yorsua Balanta,DET,RP,06sb7
 Gerson Balbino,COL,SP,064oh
 Dayker Baldallo,ATH,SS,060w2
@@ -7395,7 +7395,7 @@ Logan Sawyer,STL,RP,067yj
 Shay Schanaman,ATL,RP,06gj0
 Ryan Schiefer,TB,SP,06qss
 Tyler Schoff,WSH,RP,06cq6
-Connor Schultz,CHC,RP,06s3k
+Connor Schultz,CHC,SP,06s3k
 Wesley Scott,KC,SP,066cg
 Cody Scroggins,(N/A),RP,05178
 Shane Sdao,NYM,RP,06mpt
@@ -9614,7 +9614,7 @@ Zack Stewart,(N/A),OF,06ra4
 Matt Stil,DET,RP,051g4
 Tristan Stivors,CHW,SP,066jb
 Spencer Stockton,(N/A),RP,05r3m
-Luke Stofel,DET,SP,06hix
+Luke Stofel,DET,RP,06hix
 Adam Stone,NYY,RP,05xu9
 Alex Stone,TOR,C,06qjf
 Ethan Storm,TB,SP,070dy
