@@ -87,7 +87,7 @@ Michael Harris II,ATL,85
 Nolan McLean,NYM,86
 Nick Pivetta,FA,87
 Oneil Cruz,PIT,88
-David Bednar,FA,89
+David Bednar,NYY,89
 Aroldis Chapman,BOS,90
 Devin Williams,NYM,91
 Nico Hoerner,CHC,92
@@ -157,7 +157,7 @@ Brenton Doyle,CWS,155
 Josh Hader,HOU,156
 Matt McLain,CIN,157
 Ivan Herrera,STL,158
-Emilio Pagan,FA,159
+Emilio Pagan,DET,159
 Edward Cabrera,CHC,160
 Kyle Stowers,MIA,161
 Xavier Edwards,MIA,162
@@ -326,7 +326,7 @@ Brooks Lee,MIN,324
 Clayton Beeter,WSH,325
 Bailey Ober,MIN,326
 Tyler Mahle,FA,327
-Ryan Jeffers,FA,328
+Ryan Jeffers,MIN,328
 Jameson Taillon,FA,329
 Luis Severino,ATH,330
 Quinn Priester,MIL,331
@@ -382,7 +382,7 @@ Carlos Narvaez,BAL,380
 Spencer Horwitz,PIT,381
 Victor Vodnik,MIA,382
 Nolan Gorman,STL,383
-Dustin May,FA,384
+Dustin May,CWS,384
 Kyle Finnegan,DET,385
 Andrew Benintendi,CWS,386
 Luisangel Acuna,CWS,387
@@ -716,7 +716,7 @@ Emmanuel Rodriguez,MIN,714
 Jacob Webb,CHC,715
 Jonny DeLuca,TB,716
 Jerar Encarnacion,SF,717
-Josh White,BAL,718
+Josh White,TEX,718
 Luis Torrens,NYM,719
 Colby Thomas,PHI,720
 Enyel De Los Santos,FA,721
@@ -975,7 +975,7 @@ Andrew Morris,MIN,973
 Rob Refsnyder,FA,974
 Luis Gastelum,STL,975
 Bailey Falter,FA,976
-Rece Hinds,BAL,977
+Rece Hinds,FA,977
 Ty Johnson,TB,978
 Josiah Gray,WSH,979
 Randal Grichuk,FA,980
@@ -990,7 +990,7 @@ John Brebbia,FA,988
 Andrew Knizner,FA,989
 Kervin Castro,NYY,990
 Leo Rivas,SEA,991
-Philip Abner,BAL,992
+Philip Abner,WSH,992
 Jaden Hill,COL,993
 Brandyn Garcia,ARI,994
 Jeimer Candelario,FA,995
@@ -1108,7 +1108,7 @@ Clayton Kershaw,FA,1106
 Scott Alexander,FA,1107
 Leandro Lopez,TEX,1108
 Domingo Gonzalez,FA,1109
-Cameron Foster,BAL,1110
+Cameron Foster,ATL,1110
 Brandon Walter,HOU,1111
 Josue De Paula,LAD,1112
 Kemp Alderman,MIA,1113
@@ -1134,7 +1134,7 @@ Osvaldo Bido,CWS,1132
 Nacho Alvarez Jr.,LAA,1133
 Austin Peterson,CLE,1134
 Cole Wilcox,SEA,1135
-Angel Bastardo,BOS,1136
+Angel Bastardo,KC,1136
 Maximo Acosta,MIA,1137
 Eduarniel Nunez,FA,1138
 Joey Wiemer,FA,1139
@@ -1469,7 +1469,7 @@ DJ LeMahieu,FA,1467
 Mark Canha,FA,1468
 Kyle Farmer,FA,1469
 Gio Urshela,FA,1470
-Chas McCormick,FA,1471
+Chas McCormick,PIT,1471
 Brendan Rodgers,BOS,1472
 Ildemaro Vargas,FA,1473
 Yanquiel Fernandez,FA,1474
