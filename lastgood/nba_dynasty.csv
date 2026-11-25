@@ -7,7 +7,7 @@ Nikola Jokic,DEN,C,5
 Cade Cunningham,DET,"PG,SG",6
 Anthony Edwards,MIN,"PG,SG",7
 Tyrese Maxey,PHI,PG,8
-Cameron Boozer,MEM,PF,9
+Cameron Boozer,MEM,"PF,C",9
 Jayson Tatum,BOS,"SF,PF",10
 Scottie Barnes,TOR,"SF,PF,C",11
 Alperen Sengün,HOU,"PF,C",12
@@ -16,7 +16,7 @@ Jalen Johnson,ATL,"SF,PF",14
 Evan Mobley,CLE,"PF,C",15
 Caleb Wilson,CHI,PF,16
 Chet Holmgren,OKC,"PF,C",17
-Dylan Harper,SA,"PG,SG",18
+Dylan Harper,SA,"PG,SG,SF",18
 Donovan Mitchell,CLE,"PG,SG",19
 Giannis Antetokounmpo,MIA,"PF,C",20
 Amen Thompson,HOU,"PG,SG",21
@@ -26,7 +26,7 @@ Kon Knueppel,CHA,"SG,SF",24
 Karl-Anthony Towns,NY,"PF,C",25
 Trae Young,WAS,PG,26
 Franz Wagner,ORL,"SF,PF",27
-Darryn Peterson,UTA,SG,28
+Darryn Peterson,UTA,"PG,SG",28
 Jamal Murray,DEN,PG,29
 Jalen Duren,DET,C,30
 Deni Avdija,POR,"SG,SF,PF",31
@@ -54,29 +54,29 @@ Jalen Williams,OKC,"SF,PF",54
 Matas Buzelis,CHI,"SF,PF",55
 Domantas Sabonis,SAC,"PF,C",56
 Bam Adebayo,MIA,"PF,C",57
-Dejounte Murray,NO,"PG,SG",58
-Jaylen Brown,PHI,"SG,SF,PF",59
-Anthony Davis,WAS,"PF,C",60
-Mikel Brown Jr.,BKN,PG,62
-Onyeka Okongwu,ATL,C,63
-Pascal Siakam,IND,"PF,C",64
-Ivica Zubac,IND,C,65
-Yaxel Lendeborg,GS,"SF,PF",66
+Jaylen Brown,PHI,"SG,SF,PF",58
+Anthony Davis,WAS,"PF,C",59
+Mikel Brown Jr.,BKN,PG,61
+Onyeka Okongwu,ATL,C,62
+Pascal Siakam,IND,"PF,C",63
+Ivica Zubac,IND,C,64
+Yaxel Lendeborg,GS,"SF,PF",65
+Brayden Burries,MIL,SG,66
 Keaton Wagler,LAC,SG,67
 Stephen Curry,GS,PG,68
 Desmond Bane,ORL,"SG,SF",69
 Nickeil Alexander-Walker,ATL,"PG,SG",70
 Immanuel Quickley,TOR,"PG,SG",71
-Ajay Mitchell,OKC,"PG,SG",72
-Dyson Daniels,ATL,"SG,SF",73
-Ty Jerome,MEM,"PG,SG",74
-James Harden,CLE,"PG,SG",75
-Naz Reid,CHA,"PF,C",76
-OG Anunoby,NY,"SF,PF",77
-Michael Porter Jr.,BKN,"SF,PF",78
-Kel'el Ware,MIL,C,79
-Derrick White,BOS,"PG,SG",80
-Brayden Burries,MIL,SG,81
+Dejounte Murray,NO,"PG,SG",72
+Ajay Mitchell,OKC,"PG,SG",73
+Dyson Daniels,ATL,"SG,SF",74
+Ty Jerome,MEM,"PG,SG",75
+James Harden,CLE,"PG,SG",76
+Naz Reid,CHA,"PF,C",77
+OG Anunoby,NY,"SF,PF",78
+Michael Porter Jr.,BKN,"SF,PF",79
+Kel'el Ware,MIL,C,80
+Derrick White,BOS,"PG,SG",81
 Kevin Durant,HOU,"SG,SF,PF",82
 Jaden McDaniels,MIN,SF,83
 Zion Williamson,NO,"PF,C",84

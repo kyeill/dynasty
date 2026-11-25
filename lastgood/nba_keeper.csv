@@ -14,8 +14,8 @@ Dylan Harper,SA,"PG,SG,SF",12
 Tyrese Haliburton,IND,"PG,SG",13
 Alperen Sengün,HOU,"PF,C",14
 Chet Holmgren,OKC,"PF,C",15
-Cameron Boozer,MEM,"PF,C",16
-Amen Thompson,HOU,"PG,SG",17
+Amen Thompson,HOU,"PG,SG",16
+Cameron Boozer,MEM,"PF,C",17
 Evan Mobley,CLE,"PF,C",18
 Giannis Antetokounmpo,MIA,"PF,C",19
 Deni Avdija,POR,"SG,SF,PF",20
@@ -31,10 +31,10 @@ Trey Murphy III,NO,"SG,SF",30
 Karl-Anthony Towns,NY,"PF,C",31
 VJ Edgecombe,PHI,"PG,SG",32
 Alexandre Sarr,WAS,C,33
-Josh Giddey,CHI,"PG,SG",35
-Jalen Duren,DET,C,36
-Franz Wagner,ORL,"SF,PF",37
-Austin Reaves,LAL,"PG,SG,SF",38
+Jalen Duren,DET,C,35
+Austin Reaves,LAL,"PG,SG,SF",36
+Josh Giddey,CHI,"PG,SG",37
+Franz Wagner,ORL,"SF,PF",38
 Kon Knueppel,CHA,"SG,SF",39
 Darryn Peterson,UTA,"PG,SG",40
 Jaylen Brown,PHI,"SG,SF,PF",41
@@ -49,9 +49,9 @@ Darius Acuff Jr.,SAC,PG,49
 Domantas Sabonis,SAC,"PF,C",51
 Ausar Thompson,DET,"SG,SF,PF",52
 Donovan Clingan,POR,C,53
-Trae Young,WAS,PG,54
-Lauri Markkanen,UTA,"SF,PF",55
-Darius Garland,LAC,PG,56
+Lauri Markkanen,UTA,"SF,PF",54
+Darius Garland,LAC,PG,55
+Trae Young,WAS,PG,56
 Zach Edey,MEM,C,57
 Dyson Daniels,ATL,"SG,SF",58
 Tyler Herro,MIL,"PG,SG",59
@@ -66,39 +66,39 @@ James Harden,CLE,"PG,SG",67
 Jaren Jackson Jr.,UTA,"PF,C",68
 Michael Porter Jr.,BKN,"SF,PF",69
 Jaden McDaniels,MIN,SF,70
-Kevin Durant,HOU,"SG,SF,PF",71
-Zion Williamson,NO,"PF,C",72
+Zion Williamson,NO,"PF,C",71
+Kevin Durant,HOU,"SG,SF,PF",72
 Onyeka Okongwu,ATL,C,73
 Ivica Zubac,IND,C,74
 Ty Jerome,MEM,"PG,SG",76
-Kel'el Ware,MIL,C,77
-Derik Queen,NO,"PF,C",78
-Anthony Davis,WAS,"PF,C",79
+Keaton Wagler,LAC,SG,77
+Kel'el Ware,MIL,C,78
+Derik Queen,NO,"PF,C",79
 Collin Murray-Boyles,TOR,"PF,C",80
-Keaton Wagler,LAC,SG,81
-Ace Bailey,UTA,"SF,PF",82
-Pascal Siakam,IND,"PF,C",83
+Jeremiah Fears,NO,"PG,SG",81
+Anthony Davis,WAS,"PF,C",82
+Ace Bailey,UTA,"SF,PF",83
 Ajay Mitchell,OKC,"PG,SG",84
 Immanuel Quickley,TOR,"PG,SG",85
-Jeremiah Fears,NO,"PG,SG",86
-Kingston Flemings,ATL,PG,87
-Kawhi Leonard,TOR,"SG,SF,PF",88
-De'Aaron Fox,SA,PG,89
+De'Aaron Fox,SA,PG,86
+Pascal Siakam,IND,"PF,C",87
+Kingston Flemings,ATL,PG,88
+Kawhi Leonard,TOR,"SG,SF,PF",89
 Anthony Black,ORL,"PG,SG,SF",90
 Ja Morant,POR,PG,91
 Naz Reid,CHA,"PF,C",92
 Jabari Smith Jr.,HOU,"PF,C",93
 Kyrie Irving,DAL,"PG,SG",94
 Cason Wallace,OKC,"PG,SG,SF",96
-Julius Randle,BKN,PF,97
-Joel Embiid,PHI,C,98
-Jarrett Allen,CLE,C,99
-Reed Sheppard,HOU,"PG,SG",100
-Jonathan Kuminga,MIN,"SF,PF",101
-Coby White,CHA,"PG,SG",102
-Mikel Brown Jr.,BKN,PG,103
-Jaime Jaquez Jr.,MIL,"SG,SF,PF",104
-Brayden Burries,MIL,SG,105
+Mikel Brown Jr.,BKN,PG,97
+Julius Randle,BKN,PF,98
+Joel Embiid,PHI,C,99
+Brayden Burries,MIL,SG,100
+Jarrett Allen,CLE,C,101
+Reed Sheppard,HOU,"PG,SG",102
+Jonathan Kuminga,MIN,"SF,PF",103
+Coby White,CHA,"PG,SG",104
+Jaime Jaquez Jr.,MIL,"SG,SF,PF",105
 Aday Mara,OKC,C,106
 RJ Barrett,TOR,"SG,SF,PF",107
 Brandin Podziemski,GS,"PG,SG",108
@@ -106,375 +106,375 @@ Peyton Watson,CLE,"SF,PF",109
 Jalen Suggs,ORL,"PG,SG",110
 Jalen Green,PHO,"SG,SF",111
 Isaiah Hartenstein,OKC,C,112
-Ayo Dosunmu,MIN,"PG,SG",113
-Morez Johnson Jr.,DAL,PF,114
+Morez Johnson Jr.,DAL,PF,113
+Ayo Dosunmu,MIN,"PG,SG",114
 Payton Pritchard,BOS,PG,115
-Christian Braun,DEN,"SG,SF,PF",116
-Mikal Bridges,NY,"SF,PF",117
-Devin Vassell,SA,"SG,SF",118
-Derrick White,BOS,"PG,SG",119
-Fred VanVleet,HOU,PG,120
-Dejounte Murray,NO,"PG,SG",121
-Moussa Diabaté,CHA,C,122
-Nicolas Claxton,CHI,C,123
+Devin Vassell,SA,"SG,SF",116
+Derrick White,BOS,"PG,SG",117
+Christian Braun,DEN,"SG,SF,PF",118
+Fred VanVleet,HOU,PG,119
+Dejounte Murray,NO,"PG,SG",120
+Shaedon Sharpe,POR,"PG,SG",121
+Mikal Bridges,NY,"SF,PF",122
+Moussa Diabaté,CHA,C,123
 Tre Johnson,WAS,"PG,SG,SF",124
 Brandon Ingram,LAC,"SG,SF,PF",125
 Keegan Murray,SAC,"SF,PF",126
-Shaedon Sharpe,POR,"PG,SG",127
-Egor Demin,BKN,"PG,SG",128
+Egor Demin,BKN,"PG,SG",127
+Nicolas Claxton,CHI,C,128
 Miles Bridges,PHO,PF,129
 Joan Beringer,MIN,"PF,C",130
 Ryan Rollins,MIL,"PG,SG",131
 Toumani Camara,POR,"SF,PF",132
+LeBron James,PHI,"SF,PF",133
 Paul George,BOS,"SF,PF",134
-Day'Ron Sharpe,BKN,C,135
-Khaman Maluach,PHO,C,136
-LeBron James,PHI,"SF,PF",137
-Yves Missi,NO,C,138
-Zach LaVine,SAC,"PG,SG,SF",139
-Jaylon Tyson,CLE,"SG,SF,PF",140
-Andrew Nembhard,IND,"PG,SG",141
+Zach LaVine,SAC,"PG,SG,SF",135
+Davion Mitchell,MIA,PG,136
+Khaman Maluach,PHO,C,138
+Day'Ron Sharpe,BKN,C,139
+Yves Missi,NO,C,140
+Jaylon Tyson,CLE,"SG,SF,PF",141
 Dereck Lively II,DAL,C,142
 Pelle Larsson,MIA,"SG,SF",143
 Jaylen Wells,MEM,"SG,SF",146
-Davion Mitchell,MIA,PG,147
+Andrew Nembhard,IND,"PG,SG",148
 Nate Ament,MIL,SF,149
 Yanic Konan Niederhauser,LAC,C,150
 Scoot Henderson,POR,PG,153
 Maxime Raynaud,SAC,C,154
 Allen Graves,TOR,PF,155
-Josh Hart,NY,"SG,SF",156
-Neemias Queta,BOS,C,157
-Daniss Jenkins,DET,"PG,SG",158
-Terrence Shannon Jr.,MIN,"SG,SF",159
-Max Christie,DAL,"SG,SF",160
-John Collins,DET,"PF,C",161
+Neemias Queta,BOS,C,156
+Josh Hart,NY,"SG,SF",157
+Damian Lillard,POR,PG,158
+Daniss Jenkins,DET,"PG,SG",159
+Terrence Shannon Jr.,MIN,"SG,SF",160
+Jared McCain,OKC,"PG,SG",161
 Aaron Nesmith,IND,"SG,SF",162
-Jared McCain,OKC,"PG,SG",163
-Damian Lillard,POR,PG,164
-Bilal Coulibaly,WAS,"SG,SF",165
+John Collins,DET,"PF,C",163
+Bilal Coulibaly,WAS,"SG,SF",164
+Max Christie,DAL,"SG,SF",165
 Rui Hachimura,LAC,"SF,PF",166
 Tristan Da Silva,ORL,"SF,PF",167
-P.J. Washington,DAL,"PF,C",168
-Jakob Poeltl,TOR,C,169
-Cameron Carr,LAL,SG,170
+Jakob Poeltl,TOR,C,168
+Cameron Carr,LAL,SG,169
+P.J. Washington,DAL,"PF,C",170
 Collin Gillespie,PHO,"PG,SG",171
-Tari Eason,HOU,"SG,SF,PF",172
-Mark Williams,PHO,C,173
+Mark Williams,PHO,C,172
+Ryan Kalkbrenner,CHA,C,173
 Cameron Johnson,DEN,"SF,PF",174
-Ryan Kalkbrenner,CHA,C,175
+Anfernee Simons,PHI,"PG,SG",175
 Hannes Steinbach,CHA,PF,176
-Anfernee Simons,PHI,"PG,SG",177
-Herbert Jones,NO,"SG,SF",178
-Carter Bryant,SA,"SF,PF",179
+Carter Bryant,SA,"SF,PF",177
+Aaron Gordon,DEN,"PF,C",178
+Herbert Jones,NO,"SG,SF",179
 Zaccharie Risacher,DAL,"SF,PF",180
-Aaron Gordon,DEN,"PF,C",181
-Grayson Allen,CHA,"SG,SF",182
-Hugo González,BOS,"SG,SF",183
-Isaiah Stewart,MEM,"PF,C",184
-Jarace Walker,IND,"SF,PF",185
-Noah Clowney,BKN,"PF,C",186
-Ebuka Okorie,DET,PG,187
-Andrew Wiggins,MIA,"SG,SF,PF",188
-Sergio de Larrea,DAL,PG,189
+Hugo González,BOS,"SG,SF",181
+Isaiah Stewart,MEM,"PF,C",182
+Grayson Allen,CHA,"SG,SF",183
+Jarace Walker,IND,"SF,PF",184
+Noah Clowney,BKN,"PF,C",185
+Ebuka Okorie,DET,PG,186
+Tari Eason,HOU,"SG,SF,PF",187
+Sergio de Larrea,DAL,PG,188
+Dylan Cardwell,SAC,"PF,C",189
 Isaiah Collier,UTA,"PG,SG",190
-Dylan Cardwell,SAC,"PF,C",191
+Norman Powell,CHI,"SG,SF",191
 Jimmy Butler,GS,"SF,PF",192
-Norman Powell,CHI,"SG,SF",193
-Daniel Gafford,DAL,C,194
-Dillon Brooks,PHO,"SF,PF",195
-Bennedict Mathurin,NO,"SG,SF",196
-Karim Lopez,MEM,SF,197
-Myles Turner,MIL,C,198
-Kasparas Jakucionis,MIL,"PG,SG",199
-Rasheer Fleming,PHO,"PF,C",200
-Wendell Carter Jr.,ORL,C,201
-Justin Champagnie,WAS,"SF,PF",202
-Scotty Pippen Jr.,MEM,PG,203
+Daniel Gafford,DAL,C,193
+Dillon Brooks,PHO,"SF,PF",194
+Kasparas Jakucionis,MIL,"PG,SG",195
+Andrew Wiggins,MIA,"SG,SF,PF",196
+Bennedict Mathurin,NO,"SG,SF",197
+Karim Lopez,MEM,SF,198
+Myles Turner,MIL,C,199
+Wendell Carter Jr.,ORL,C,200
+Rasheer Fleming,PHO,"PF,C",201
+Scotty Pippen Jr.,MEM,PG,202
+Justin Champagnie,WAS,"SF,PF",203
 Gui Santos,GS,"SF,PF",204
 Jayden Quaintance,SA,PF,205
-Ja'Kobe Walter,TOR,"PG,SG",207
-Cam Spencer,MEM,"PG,SG",208
-Trevon Brazile,DEN,PF,209
-Christian Anderson,CHA,PG,211
+Christian Anderson,CHA,PG,206
+Ja'Kobe Walter,TOR,"PG,SG",208
+Cam Spencer,MEM,"PG,SG",209
+Trevon Brazile,DEN,PF,210
 Will Riley,WAS,"SF,PF",212
 Oso Ighodaro,PHO,C,213
-Carlton Carrington,WAS,"PG,SG",214
-Rudy Gobert,MIN,C,215
-Isaiah Stevens,SAC,PG,216
-Aaron Wiggins,ATL,"SG,SF",217
-Tobias Harris,SA,PF,218
-CJ McCollum,ATL,"PG,SG",219
-Deandre Ayton,WAS,C,220
+Isaiah Stevens,SAC,PG,214
+Aaron Wiggins,ATL,"SG,SF",215
+Tobias Harris,SA,PF,216
+Carlton Carrington,WAS,"PG,SG",217
+Rudy Gobert,MIN,C,218
+Deandre Ayton,WAS,C,219
+CJ McCollum,ATL,"PG,SG",220
 Jaylin Galloway,MIL,,221
 Labaron Philon Jr.,PHI,PG,222
 Nolan Traoré,BKN,PG,223
 Spencer Jones,DEN,"SF,PF",224
-Isaiah Evans,MIN,SG,225
-Santi Aldama,DAL,PF,226
-Collin Sexton,LAL,"PG,SG",227
-Liam McNeeley,CHA,SF,228
-Leonard Miller,CHI,"SF,PF",229
-Malik Monk,SAC,"PG,SG",230
-Danny Wolf,BKN,"PF,C",231
+Danny Wolf,BKN,"PF,C",225
+Isaiah Evans,MIN,SG,226
+Donte DiVincenzo,MIN,"SG,SF",227
+Santi Aldama,DAL,PF,228
+Collin Sexton,LAL,"PG,SG",229
+Liam McNeeley,CHA,SF,230
+Robert Williams III,POR,C,231
 Dailyn Swain,CHI,SF,232
 Zuby Ejiofor,ATL,PF,233
-Donte DiVincenzo,MIN,"SG,SF",234
-Kyle Filipowski,UTA,"PF,C",235
-Chris Livingston,CLE,SF,236
+Kyle Filipowski,UTA,"PF,C",234
+Leonard Miller,CHI,"SF,PF",235
+Kevin Porter Jr.,MIL,"PG,SG",236
 Cam Whitmore,DEN,"SF,PF",237
-Kevin Porter Jr.,MIL,"PG,SG",238
+Tyler Wahl,MIN,,238
 Bryce Hopkins,DEN,SF,239
-Tyler Wahl,MIN,,240
-Montrezl Harrell,FA,C,241
+Montrezl Harrell,FA,C,240
+Bennett Stirtz,OKC,PG,241
 Myron Gardner,MIA,"SG,SF",242
 Kobe Sanders,LAC,"SG,SF",243
 Taelon Peter,SA,,244
-Adam Flagler,SAC,,245
-Malcolm Hill,NO,,246
-Bennett Stirtz,OKC,PG,247
-Robert Williams III,POR,C,248
-Kobi Simmons,FA,PG,249
-Chris Cenac Jr.,BOS,PF,250
-Jamaree Bouyea,PHO,PG,251
-DeMar DeRozan,DEN,"SF,PF",252
-Khem Birch,FA,C,253
-Justin Edwards,PHI,"SF,PF",254
-AJ Johnson,NO,"PG,SG",255
-Jamison Battle,TOR,"SF,PF",256
-Javonte Green,DET,"SG,SF",257
-D.J. Carton,TOR,,258
+Malcolm Hill,NO,,245
+Adam Flagler,SAC,,246
+Chris Cenac Jr.,BOS,PF,247
+Jamaree Bouyea,PHO,PG,248
+Khem Birch,FA,C,249
+Kobi Simmons,FA,PG,250
+DeMar DeRozan,DEN,"SF,PF",251
+AJ Johnson,NO,"PG,SG",252
+Justin Edwards,PHI,"SF,PF",253
+Kevon Harris,HOU,SG,254
+Jamison Battle,TOR,"SF,PF",255
+Javonte Green,DET,"SG,SF",256
+D.J. Carton,TOR,,257
+Tosan Evbuomwan,CHA,"SF,PF",258
 Branden Carlson,POR,C,259
-Tosan Evbuomwan,CHA,"SF,PF",260
+Thomas Sorber,OKC,C,260
 Brooks Barnhizer,OKC,,261
 Koa Peat,PHO,PF,262
 Jordan Miller,LAC,"SG,SF",263
-Jalen Bridges,PHO,SF,264
-Reece Beekman,WAS,PG,265
-Nikola Topic,OKC,PG,266
-Kevon Harris,HOU,SG,267
+Nikola Topic,OKC,PG,264
+Jalen Bridges,PHO,SF,265
+Reece Beekman,WAS,PG,266
+Alex Ducas,OKC,,267
 Dillon Mitchell,BOS,PF,268
-Ernest Udeh Jr.,CLE,C,269
-Thomas Sorber,OKC,C,270
-Miles Kelly,DAL,,271
-Mason Jones,SAC,"SG,SF",272
-Alex Ducas,OKC,,273
-Jacob Toppin,ATL,,274
-Jaylin Williams,DEN,,275
-Richie Saunders,MEM,SG,276
-R.J. Hampton,FA,"PG,SG",277
-Mac McClung,CHI,"PG,SG",278
-Braxton Key,GS,"SF,PF",279
-Trey Alexander,UTA,"PG,SG",280
-Victor Oladipo,FA,"PG,SG",281
-Jaden Ivey,CHI,"PG,SG",282
-Malique Lewis,MIL,PF,283
-Jazian Gortman,DAL,,284
+Miles Kelly,DAL,,269
+Mason Jones,SAC,"SG,SF",270
+Jaylin Williams,DEN,,271
+Richie Saunders,MEM,SG,272
+Ernest Udeh Jr.,CLE,C,273
+Maliq Brown,SA,SF,274
+Trey Alexander,UTA,"PG,SG",275
+R.J. Hampton,FA,"PG,SG",276
+Mac McClung,CHI,"PG,SG",277
+Braxton Key,GS,"SF,PF",278
+Victor Oladipo,FA,"PG,SG",279
+Jaden Ivey,CHI,"PG,SG",280
+Ulrich Chomche,TOR,C,281
+Malique Lewis,MIL,PF,282
+Anton Watson,NY,,283
+Leaky Black,SAC,"SF,PF",284
 Daeqwon Plowden,SAC,"SG,SF",285
 Pat Spencer,PHO,"PG,SG",286
 Alex O'Connell,NY,,287
-Nique Clifford,OKC,"SG,SF",288
+Jazian Gortman,DAL,,288
 Noa Essengue,CHI,PF,289
 Sion James,CHA,"SG,SF",290
 Johni Broome,LAC,C,291
-Anton Watson,NY,,292
+Nique Clifford,OKC,"SG,SF",292
 Bruce Thornton,HOU,PG,293
-Maliq Brown,SA,SF,294
-Brandon Boston Jr,NO,SG,295
-Ulrich Chomche,TOR,C,296
-Nate Hinton,HOU,"SG,SF",297
-Otto Porter Jr.,FA,"SG,SF",298
-Cody Williams,MIN,"SG,SF",299
+Chris Livingston,CLE,SF,294
+Jordan Nwora,FA,"SF,PF",295
+Brandon Boston Jr,NO,SG,296
+Otto Porter Jr.,FA,"SG,SF",297
+Nate Hinton,HOU,"SG,SF",298
+Malik Monk,SAC,"PG,SG",299
 Justin Minaya,POR,"SG,SF",300
-Jordan Nwora,FA,"SF,PF",301
-Joshua Jefferson,BKN,PF,302
-Leaky Black,SAC,"SF,PF",303
+Jesse Edwards,MIN,C,301
+Cody Williams,MIN,"SG,SF",302
+Joshua Jefferson,BKN,PF,303
 Blake Hinson,UTA,,304
 Jase Richardson,ORL,"PG,SG",305
-Alijah Martin,TOR,"PG,SG",306
-Otega Oweh,OKC,SG,307
-Tristan Vukcevic,WAS,C,308
-Taylor Hendricks,MEM,"PF,C",309
-Gradey Dick,LAC,"SG,SF",310
-Jesse Edwards,MIN,C,311
-Antonio Reeves,CHA,"SG,SF",312
-Jae Crowder,SAC,"SF,PF",313
-Doug McDermott,SAC,"SF,PF",314
+Drake Powell,BKN,"PG,SG",306
+Alijah Martin,TOR,"PG,SG",307
+Otega Oweh,OKC,SG,308
+Antonio Reeves,CHA,"SG,SF",309
+Taylor Hendricks,MEM,"PF,C",310
+Tristan Vukcevic,WAS,C,311
+Jae Crowder,SAC,"SF,PF",312
+Doug McDermott,SAC,"SF,PF",313
+Gradey Dick,LAC,"SG,SF",314
 Sam Hauser,BOS,"SF,PF",315
 Graham Ike,GS,PF,316
 Tarris Reed Jr.,SA,C,317
-Drake Powell,BKN,"PG,SG",318
+Walter Clayton Jr.,DAL,"PG,SG",318
 Ryan Nembhard,DEN,PG,319
-Moussa Cisse,DAL,C,320
-Drew Peterson,CHA,,321
-Chimezie Metu,FA,"PF,C",322
-Kevin Knox II,GS,SF,323
-Bradley Beal,LAC,"SG,SF",324
-Sharife Cooper,WAS,PG,325
-Walter Clayton Jr.,DAL,"PG,SG",326
-Vsevolod Ishchenko,DAL,PG,327
-Ryan Conwell,MIA,SG,328
-Micah Peavy,OKC,"SF,PF",329
-Colin Castleton,ORL,"PF,C",330
-DJ Steward,CHI,,331
-Jeff Dowtin Jr.,PHI,"PG,SG",332
-Isaiah Crawford,HOU,,333
-Elijah Harkless,DET,"PG,SG",334
-Juan Toscano-Anderson,FA,SF,335
-Lindy Waters III,SA,"SG,SF",336
-Nikola Djurisic,ATL,SF,337
-Ron Holland II,DET,"SF,PF",338
-Ron Harper Jr.,BOS,SF,339
-Christian Koloko,NO,C,340
-Saben Lee,FA,PG,341
-Max Fiedler,PHI,,342
-Chris Youngblood,POR,SG,343
+Drew Peterson,CHA,,320
+Chimezie Metu,FA,"PF,C",321
+Kevin Knox II,GS,SF,322
+Moussa Cisse,DAL,C,323
+Sharife Cooper,WAS,PG,324
+Vsevolod Ishchenko,DAL,PG,325
+Micah Peavy,OKC,"SF,PF",326
+Colin Castleton,ORL,"PF,C",327
+DJ Steward,CHI,,328
+Jeff Dowtin Jr.,PHI,"PG,SG",329
+Isaiah Crawford,HOU,,330
+Elijah Harkless,DET,"PG,SG",331
+Saben Lee,FA,PG,332
+Juan Toscano-Anderson,FA,SF,333
+Bradley Beal,LAC,"SG,SF",334
+Lindy Waters III,SA,"SG,SF",335
+Nikola Djurisic,ATL,SF,336
+Ron Holland II,DET,"SF,PF",337
+Ron Harper Jr.,BOS,SF,338
+Christian Koloko,NO,C,339
+Joshua Primo,FA,SG,340
+Max Fiedler,PHI,,341
+Chris Youngblood,POR,SG,342
+Ryan Conwell,MIA,SG,343
 Jack Kayil,NY,SG,344
 Thanasis Antetokounmpo,MIL,PF,345
 Joe Harris,FA,"SG,SF",346
 Justin Holiday,FA,"SG,SF",347
-Hamidou Diallo,FA,SG,348
-Joshua Primo,FA,SG,349
-Cam Christie,LAC,"SG,SF",350
-Baba Miller,LAC,PF,351
-Alex Fudge,DAL,,352
-Tolu Smith,DET,,353
-Tristan Enaruna,CLE,,354
-Mohamed Diawara,NY,PF,355
-Hunter Sallis,PHI,,356
-Mark Sears,MIL,,357
+Jordan Poole,NO,"PG,SG",348
+Furkan Korkmaz,FA,"SG,SF",349
+Hamidou Diallo,FA,SG,350
+Cam Christie,LAC,"SG,SF",351
+Baba Miller,LAC,PF,352
+Alex Fudge,DAL,,353
+Tolu Smith,DET,,354
+Tristan Enaruna,CLE,,355
+Mohamed Diawara,NY,PF,356
+Hunter Sallis,PHI,,357
 Tyler Bilodeau,BKN,PF,358
-N'Faly Dante,ATL,C,359
-Brice Sensabaugh,UTA,"SG,SF,PF",360
-Josh Christopher,MIA,"PG,SG",361
-Furkan Korkmaz,FA,"SG,SF",362
-Jordan Poole,NO,"PG,SG",363
-Bruno Fernando,TOR,C,364
-Malachi Flynn,SA,PG,365
-Tristen Newton,HOU,"SG,SF",366
-Adem Bona,PHI,C,367
-Noah Penda,ORL,"SF,PF",368
-Asa Newell,ATL,"PF,C",369
+Adem Bona,PHI,C,359
+Josh Christopher,MIA,"PG,SG",360
+Malachi Flynn,SA,PG,361
+Keshad Johnson,MIA,"SF,PF",362
+N'Faly Dante,ATL,C,363
+Tristen Newton,HOU,"SG,SF",364
+Brice Sensabaugh,UTA,"SG,SF,PF",365
+Bruno Fernando,TOR,C,366
+Meleek Thomas,CLE,SG,367
+Mark Sears,MIL,,368
+Noah Penda,ORL,"SF,PF",369
 Yang Hansen,POR,C,370
-Malevy Leons,GS,PF,371
+Chris Mañon,LAL,,371
 Mark Armstrong,BKN,,372
 Oscar Tshiebwe,HOU,"PF,C",373
-Meleek Thomas,CLE,SG,374
-Keshad Johnson,MIA,"SF,PF",375
-Nate Williams,GS,SF,376
-Brandon Williams,GS,PG,377
-Darius Bazley,FA,PF,378
-Tristan Thompson,CLE,C,379
-Robin Lopez,FA,C,380
-Nikola Vucevic,ORL,C,381
-Mouhamed Gueye,ATL,"PF,C",382
-Emanuel Miller,SA,,383
+Darius Bazley,FA,PF,374
+Brandon Williams,GS,PG,375
+Mouhamed Gueye,ATL,"PF,C",376
+Nate Williams,GS,SF,377
+Tristan Thompson,CLE,C,378
+Robin Lopez,FA,C,379
+Nikola Vucevic,ORL,C,380
+Jacob Toppin,ATL,,381
+Emanuel Miller,SA,,382
+Asa Newell,ATL,"PF,C",383
 Javon Small,MEM,"PG,SG",384
-Chris Mañon,LAL,,385
+Tyrese Proctor,CLE,"PG,SG",385
 Hunter Dickinson,NO,,386
 Pete Nance,MIL,"SF,PF",387
 Jaylen Martin,WAS,,388
-Emanuel Sharp,SAC,SG,389
-Jordan Hawkins,CHI,"SG,SF",390
-Tidjane Salaun,CHA,"PF,C",391
-De'Anthony Melton,GS,"PG,SG",392
-David Duke Jr.,SA,,393
-Tyrese Proctor,CLE,"PG,SG",394
-Melvin Ajinca,DAL,SF,395
-Eugene Omoruyi,MIN,"SF,PF",396
-Theo Maledon,FA,PG,397
-Cam Thomas,MIL,"PG,SG",398
-Kobe Bufkin,UTA,"PG,SG",399
+Malevy Leons,GS,PF,389
+Emanuel Sharp,SAC,SG,390
+Jordan Hawkins,CHI,"SG,SF",391
+Tidjane Salaun,CHA,"PF,C",392
+De'Anthony Melton,GS,"PG,SG",393
+David Duke Jr.,SA,,394
+RayJ Dennis,ATL,PG,395
+Melvin Ajinca,DAL,SF,396
+Kobe Bufkin,UTA,"PG,SG",397
+Theo Maledon,FA,PG,398
+Eugene Omoruyi,MIN,"SF,PF",399
 Ben Saraf,BKN,SG,400
-RayJ Dennis,ATL,PG,401
-Aaron Nkrumah,DEN,SG,402
-Braden Smith,IND,PG,403
+Aaron Nkrumah,DEN,SG,401
+Braden Smith,IND,PG,402
+Nikola Jovic,MIA,"PF,C",403
 Isaiah Todd,FA,"PF,C",404
-Dylan Windler,FA,SF,405
-Duane Washington Jr.,FA,SG,406
-Nikola Jovic,MIA,"PF,C",407
-Samkelo Cele,NY,,408
-Jamir Watkins,WAS,"SG,SF",409
-Marcus Domask,CHI,,410
-Boo Buie,NY,,411
+Cam Thomas,MIL,"PG,SG",405
+Dylan Windler,FA,SF,406
+Duane Washington Jr.,FA,SG,407
+Jamir Watkins,WAS,"SG,SF",408
+Boo Buie,NY,,409
+Samkelo Cele,NY,,410
+Marcus Domask,CHI,,411
 Tyrese Martin,PHI,"SG,SF",412
 Miles McBride,NY,"PG,SG",413
 Evan Fournier,FA,"SG,SF",414
 Oshae Brissett,PHI,"SF,PF",415
-Trendon Watford,NO,PF,416
-Max Abmas,UTA,,417
-Patrick Williams,CHI,"SF,PF",418
-Mark Mitchell,DEN,SF,419
-Trevelin Queen,ORL,"SG,SF",420
-Julian Phillips,HOU,"SF,PF",421
-DaRon Holmes II,DEN,"PF,C",422
-Rob Dillingham,CHI,"PG,SG",423
-Hunter Tyson,BKN,PF,424
-Mitchell Robinson,BOS,C,425
-Thaddeus Young,FA,"PF,C",426
-Xavier Johnson,DAL,,427
-Chaz Lanier,DET,SG,428
-Amari Williams,BOS,,429
+Max Abmas,UTA,,416
+Patrick Williams,CHI,"SF,PF",417
+Trendon Watford,NO,PF,418
+Julian Phillips,HOU,"SF,PF",419
+DaRon Holmes II,DEN,"PF,C",420
+Trevelin Queen,ORL,"SG,SF",421
+Mark Mitchell,DEN,SF,422
+Xavier Johnson,DAL,,423
+Mitchell Robinson,BOS,C,424
+Thaddeus Young,FA,"PF,C",425
+Rob Dillingham,CHI,"PG,SG",426
+Hunter Tyson,BKN,PF,427
+Amari Williams,BOS,,428
+Chaz Lanier,DET,SG,429
 Felix Okpara,WAS,PF,430
-Ricky Council IV,ORL,"SG,SF",431
-Clint Capela,HOU,C,432
-Svi Mykhailiuk,UTA,"SG,SF",433
-Gabe McGlothan,BOS,,434
-Josh Oduro,NO,,435
-Wendell Moore Jr.,DET,"SG,SF",436
-Dalton Knecht,NY,"SG,SF",437
-GG Jackson II,MEM,"SF,PF,C",438
-Stanley Umude,SA,SG,439
-Kevin McCullar Jr.,TOR,"SF,PF",440
+Josh Oduro,NO,,431
+Gabe McGlothan,BOS,,432
+Ricky Council IV,ORL,"SG,SF",433
+Svi Mykhailiuk,UTA,"SG,SF",434
+Clint Capela,HOU,C,435
+GG Jackson II,MEM,"SF,PF,C",436
+Wendell Moore Jr.,DET,"SG,SF",437
+Dalton Knecht,NY,"SG,SF",438
+Kevin McCullar Jr.,TOR,"SF,PF",439
+Stanley Umude,SA,SG,440
 Moses Moody,GS,"SG,SF,PF",441
 Luke Kennard,PHO,"SG,SF",442
-Isaiah Roby,FA,"PF,C",443
-Usman Garuba,FA,"PF,C",444
-Craig Porter Jr.,CLE,"PG,SG",445
+Tyler Nickel,NY,SF,443
+Tre Donaldson,MIA,PG,444
+Usman Garuba,FA,"PF,C",445
 Keon Ellis,BKN,"SG,SF",446
 Cole Swider,DET,SF,447
-Tyler Nickel,NY,SF,448
-Tre Donaldson,MIA,PG,449
-Ja'Kobi Gillespie,SA,PG,450
-Kendall Brown,IND,SF,451
-Seth Lundy,LAC,SF,452
-Devin Carter,BOS,"PG,SG",453
-Jrue Holiday,POR,"PG,SG",454
+Craig Porter Jr.,CLE,"PG,SG",448
+Devin Carter,BOS,"PG,SG",449
+Isaiah Roby,FA,"PF,C",450
+Jrue Holiday,POR,"PG,SG",451
+Kendall Brown,IND,SF,452
+Seth Lundy,LAC,SF,453
+Ja'Kobi Gillespie,SA,PG,454
 Armando Bacot,MEM,,455
 Luke Travers,CLE,SF,456
-Danny Green,FA,SG,457
-Damian Jones,FA,C,458
-Trentyn Flowers,CHI,,459
+Trentyn Flowers,CHI,,457
+Danny Green,FA,SG,458
+Damian Jones,FA,C,459
 James Johnson,IND,PF,460
 James Nnaji,FA,C,461
 Quincy Guerrier,TOR,,462
 Michael Ajayi,CHA,SF,463
 Alex Karaban,SAC,SF,464
 Reggie Bullock,FA,"SF,PF",465
-Jalen Wilson,ATL,"SF,PF",466
-Vince Williams Jr.,UTA,"PG,SG",467
-Jusuf Nurkic,UTA,C,468
-Jerami Grant,MEM,"SF,PF",469
-Danuel House Jr.,FA,SF,470
+Danuel House Jr.,FA,SF,466
+Jerami Grant,MEM,"SF,PF",467
+Kristaps Porzingis,GS,C,468
+Jusuf Nurkic,UTA,C,469
+Jalen Wilson,ATL,"SF,PF",470
 Jahmir Young,MIA,,471
 Trevon Scott,BKN,SF,472
-Adou Thiero,LAL,"SF,PF",473
-Kristaps Porzingis,GS,C,474
-Jalen Smith,CHI,"PF,C",475
+Vince Williams Jr.,UTA,"PG,SG",473
+Jalen Smith,CHI,"PF,C",474
+Adou Thiero,LAL,"SF,PF",475
 Tyrese Samuel,PHO,,476
 Tobi Lawal,DAL,PF,477
-Obi Toppin,IND,"SF,PF",478
-Max Strus,LAC,"SF,PF",479
-Terry Rozier,MIA,PG,480
+Terry Rozier,MIA,PG,478
+Obi Toppin,IND,"SF,PF",479
+Max Strus,LAC,"SF,PF",480
 Jermaine Samuels Jr.,HOU,,481
 KJ Jones II,BKN,,482
 D'Angelo Russell,MEM,"PG,SG",483
 Trayce Jackson-Davis,TOR,C,484
 Nerlens Noel,FA,C,485
-Baylor Scheierman,BOS,"SG,SF",486
+Vít Krejcí,POR,"SG,SF",486
 Aaron Estrada,DET,,487
-Vít Krejcí,POR,"SG,SF",488
-Guerschon Yabusele,CHI,"PF,C",489
+Guerschon Yabusele,CHI,"PF,C",488
+Baylor Scheierman,BOS,"SG,SF",489
 Danilo Gallinari,FA,SF,490
 Tre Jones,CHI,"PG,SG",491
 Mamadi Diakite,PHO,PF,492
@@ -496,9 +496,9 @@ Keisei Tominaga,IND,,507
 Jamal Shead,TOR,PG,508
 Tyler Kolek,NY,"PG,SG",509
 JaVale McGee,FA,C,510
-Udoka Azubuike,FA,C,511
-Ryan Dunn,PHO,"SF,PF",512
-Davis Bertans,FA,"PF,C",513
+Davis Bertans,FA,"PF,C",511
+Udoka Azubuike,FA,C,512
+Ryan Dunn,PHO,"SF,PF",513
 Gary Trent Jr.,MIL,"SG,SF",514
 Johnny Furphy,IND,"SG,SF",515
 Frank Ntilikina,FA,PG,516
@@ -507,16 +507,16 @@ Tre Mann,WAS,"PG,SG",518
 Jack McVeigh,HOU,,519
 Karlo Matkovic,NO,"PF,C",520
 Josh Green,UTA,"SG,SF",521
-Isaiah Joe,DET,"SG,SF",522
-Bobi Klintman,DET,PF,523
-Bobby Portis,MIA,"PF,C",524
-Alondes Williams,WAS,"SG,SF",525
+Bobi Klintman,DET,PF,522
+Isaiah Joe,DET,"SG,SF",523
+Alondes Williams,WAS,"SG,SF",524
+Bobby Portis,MIA,"PF,C",525
 Jason Preston,UTA,PG,526
 Daishen Nix,SAC,PG,527
 Quinten Post,MEM,C,528
-Isaiah Jackson,LAC,C,529
-Keldon Johnson,SA,"SF,PF",530
-Bogdan Bogdanovic,HOU,"PG,SG,SF",531
+Keldon Johnson,SA,"SF,PF",529
+Bogdan Bogdanovic,HOU,"PG,SG,SF",530
+Isaiah Jackson,LAC,C,531
 Luke Kornet,SA,C,532
 De'Andre Hunter,SAC,"SF,PF",533
 Cody Zeller,HOU,C,534
@@ -531,40 +531,40 @@ Devonte' Graham,POR,"PG,SG",542
 Kevin Love,UTA,"PF,C",543
 Johnny Juzang,MIN,"SG,SF",544
 PJ Dozier,MIN,SG,545
-Zeke Nnaji,DEN,"PF,C",546
-Garrett Temple,TOR,"PG,SG",547
-Trey Lyles,MIN,PF,548
-Matt Ryan,NY,SF,549
-Adama Sanogo,CHI,C,550
+Garrett Temple,TOR,"PG,SG",546
+Trey Lyles,MIN,PF,547
+Adama Sanogo,CHI,C,548
+Zeke Nnaji,DEN,"PF,C",549
+Matt Ryan,NY,SF,550
 Jordan Walsh,BOS,"SF,PF",551
-A.J. Lawson,TOR,"SG,SF",552
-Quentin Grimes,LAL,"SG,SF",553
+Quentin Grimes,LAL,"SG,SF",552
+A.J. Lawson,TOR,"SG,SF",553
 Tyler Smith,DAL,PF,554
 Seth Curry,GS,"PG,SG",555
 PJ Hall,CHA,C,556
 Caris LeVert,MIL,"SG,SF",557
 Nicolas Batum,LAC,"SF,PF",558
-Vlatko Cancar,DEN,"PF,C",559
-Dillon Jones,NY,SF,560
+Dillon Jones,NY,SF,559
+Vlatko Cancar,DEN,"PF,C",560
 Jonathan Isaac,ORL,"PF,C",561
-Jabari Walker,PHI,PF,562
-Sandro Mamukelashvili,LAL,"PF,C",563
-Jeremiah Robinson-Earl,IND,PF,564
-Paul Reed,DET,"PF,C",565
-Cody Martin,IND,"SG,SF",566
-Ariel Hukporti,PHI,C,567
+Sandro Mamukelashvili,LAL,"PF,C",562
+Jabari Walker,PHI,PF,563
+Paul Reed,DET,"PF,C",564
+Jeremiah Robinson-Earl,IND,PF,565
+Ariel Hukporti,PHI,C,566
+Cody Martin,IND,"SG,SF",567
 Marcus Sasser,DAL,PG,568
-Maxwell Lewis,BKN,"SG,SF",569
-Blake Wesley,LAC,"PG,SG",570
-Gary Harris,DET,"SG,SF",571
-Dean Wade,PHI,"SF,PF",572
-Monte Morris,IND,"PG,SG",573
-Trey Jemison,TOR,"PF,C",574
-Buddy Boeheim,OKC,SF,575
-David Jones,SA,SG,576
-Zach Collins,CHI,C,577
-Dwight Powell,DAL,C,578
-Alex Len,LAL,C,579
+Blake Wesley,LAC,"PG,SG",569
+Gary Harris,DET,"SG,SF",570
+Maxwell Lewis,BKN,"SG,SF",571
+Trey Jemison,TOR,"PF,C",572
+Dean Wade,PHI,"SF,PF",573
+Monte Morris,IND,"PG,SG",574
+Zach Collins,CHI,C,575
+Dwight Powell,DAL,C,576
+Alex Len,LAL,C,577
+David Jones,SA,SG,578
+Buddy Boeheim,OKC,SF,579
 Duop Reath,PHO,"PF,C",580
 Khris Middleton,WAS,"SF,PF",581
 Aaron Holiday,HOU,PG,582
@@ -601,9 +601,9 @@ Reggie Jackson,PHI,"PG,SG",612
 Alex Caruso,OKC,"SG,SF",613
 Torrey Craig,BOS,"SF,PF",614
 Caleb Martin,DAL,"SF,PF",615
-Julian Strawther,DEN,"SG,SF",616
-Jake LaRavia,LAL,"SF,PF",617
-Josh Richardson,MIA,"PG,SG",618
+Josh Richardson,MIA,"PG,SG",616
+Julian Strawther,DEN,"SG,SF",617
+Jake LaRavia,LAL,"SF,PF",618
 Jordan Clarkson,NY,"SG,SF",619
 KJ Simpson,DEN,"PG,SG",620
 Markelle Fultz,TOR,"PG,SG",621
@@ -624,15 +624,15 @@ Kelly Oubre Jr.,IND,"SF,PF",635
 Marcus Smart,HOU,"PG,SG",636
 Daniel Theis,NO,C,637
 Ziaire Williams,LAL,"SG,SF",638
-Brandon Clarke,MEM,"PF,C",639
+Dariq Whitehead,MEM,PF,639
 Derrick Jones Jr.,LAC,"SF,PF",640
-Naji Marshall,DAL,"SG,SF,PF",641
-Dariq Whitehead,MEM,PF,642
+Brandon Clarke,MEM,"PF,C",641
+Naji Marshall,DAL,"SG,SF,PF",642
 Brook Lopez,LAC,C,643
 Moritz Wagner,BKN,C,644
 James Wiseman,NY,C,645
-Marvin Bagley III,DEN,"PF,C",646
-Bones Hyland,MIN,"PG,SG",647
+Bones Hyland,MIN,"PG,SG",646
+Marvin Bagley III,DEN,"PF,C",647
 Ben Sheppard,IND,"SG,SF",648
 Grant Williams,CHA,"PF,C",649
 Goga Bitadze,ORL,C,650
@@ -642,8 +642,8 @@ Kentavious Caldwell-Pope,PHI,"SG,SF",653
 Steven Adams,HOU,C,654
 Jarred Vanderbilt,LAL,"PF,C",655
 Klay Thompson,MIA,"SG,SF",656
-Dennis Schröder,CHA,"PG,SG",657
-Malaki Branham,ORL,"SG,SF",658
+Malaki Branham,ORL,"SG,SF",657
+Dennis Schröder,CHA,"PG,SG",658
 Jett Howard,DAL,"SG,SF",659
 Malcolm Brogdon,WAS,"PG,SG",660
 Josh Minott,BKN,"SF,PF",661
@@ -654,8 +654,8 @@ Ochai Agbaji,NY,"SG,SF",665
 Caleb Houstan,NO,SF,666
 Ben Simmons,SAC,PG,667
 Dalen Terry,GS,"SG,SF",668
-Dorian Finney-Smith,ATL,"SF,PF",669
-Russell Westbrook,SAC,"PG,SG",670
+Russell Westbrook,SAC,"PG,SG",669
+Dorian Finney-Smith,ATL,"SF,PF",670
 Kelly Olynyk,SA,"PF,C",671
 Talen Horton-Tucker,CHI,"SG,SF",672
 Vasilije Micic,MIL,"PG,SG",673
@@ -664,87 +664,87 @@ Jaxson Hayes,UTA,C,675
 Cam Reddish,LAL,"SG,SF",676
 Matisse Thybulle,LAL,"SG,SF",677
 Josh Okogie,UTA,"SG,SF",678
-Mike Conley,BOS,PG,679
-T.J. McConnell,IND,PG,680
-Kyle Anderson,TOR,"SF,PF",681
+T.J. McConnell,IND,PG,679
+Kyle Anderson,TOR,"SF,PF",680
+Mike Conley,BOS,PG,681
 David Roddy,DEN,"SF,PF",682
 Larry Nance Jr.,IND,"PF,C",683
 Mike Muscala,FA,"PF,C",684
 Thomas Bryant,CLE,C,685
-Royce O'Neale,CHA,"SF,PF",686
-Jalen McDaniels,NO,"SF,PF",687
+Jalen McDaniels,NO,"SF,PF",686
+Royce O'Neale,CHA,"SF,PF",687
 Jose Alvarado,NY,PG,688
 Dennis Smith Jr.,FA,PG,689
 Duncan Robinson,DET,"SG,SF",690
 Keita Bates-Diop,NY,"SF,PF",691
-Eric Gordon,MEM,"SG,SF",692
-Spencer Dinwiddie,CHA,"PG,SG",693
-Johnny Davis,MEM,"SG,SF",694
+Johnny Davis,MEM,"SG,SF",692
+Eric Gordon,MEM,"SG,SF",693
+Spencer Dinwiddie,CHA,"PG,SG",694
 JT Thor,WAS,PF,695
 Andre Jackson Jr.,TOR,"SG,SF",696
-Al Horford,GS,"PF,C",697
-Wesley Matthews,FA,SG,698
-Harrison Barnes,SA,PF,699
-Yuta Watanabe,FA,"SF,PF",700
-Jericho Sims,MIL,"PF,C",701
-Jock Landale,ATL,C,702
-Kris Dunn,LAC,"PG,SG",703
-Kyle Lowry,PHI,PG,704
+Harrison Barnes,SA,PF,697
+Al Horford,GS,"PF,C",698
+Wesley Matthews,FA,SG,699
+Jericho Sims,MIL,"PF,C",700
+Jock Landale,ATL,C,701
+Yuta Watanabe,FA,"SF,PF",702
+Kyle Lowry,PHI,PG,703
+Kris Dunn,LAC,"PG,SG",704
 Jevon Carter,ORL,"PG,SG",705
 Drew Eubanks,NY,C,706
 Christian Wood,LAL,"PF,C",707
-Killian Hayes,SAC,"PG,SG",708
-Dante Exum,WAS,"PG,SG",709
-Bojan Bogdanovic,BKN,"SF,PF",710
-Colby Jones,DET,"SG,SF",711
-Jalen Hood-Schifino,PHI,"SG,SF",712
-Kenneth Lofton Jr.,CHI,"PF,C",713
-Mason Plumlee,SA,C,714
-Pat Connaughton,CHA,"SG,SF",715
-Kenyon Martin Jr.,UTA,SF,716
-Mo Bamba,UTA,C,717
-TyTy Washington Jr.,LAC,"PG,SG",718
-Jaylin Williams,OKC,"PF,C",719
-Ishmail Wainright,FA,"SF,PF",720
-Patrick Baldwin Jr.,SAC,PF,721
-Isaiah Mobley,FA,"SF,PF",722
-Admiral Schofield,FA,"SF,PF",723
+Dante Exum,WAS,"PG,SG",708
+Colby Jones,DET,"SG,SF",709
+Jalen Hood-Schifino,PHI,"SG,SF",710
+Kenneth Lofton Jr.,CHI,"PF,C",711
+Mason Plumlee,SA,C,712
+Pat Connaughton,CHA,"SG,SF",713
+Kenyon Martin Jr.,UTA,SF,714
+Killian Hayes,SAC,"PG,SG",715
+Mo Bamba,UTA,C,716
+TyTy Washington Jr.,LAC,"PG,SG",717
+Jaylin Williams,OKC,"PF,C",718
+Ishmail Wainright,FA,"SF,PF",719
+Patrick Baldwin Jr.,SAC,PF,720
+Admiral Schofield,FA,"SF,PF",721
+Bojan Bogdanovic,BKN,"SF,PF",722
+Isaiah Mobley,FA,"SF,PF",723
 Delon Wright,NY,"PG,SG",724
-Jae'Sean Tate,HOU,"SG,SF,PF",725
-Maxi Kleber,LAL,"PF,C",726
-Charles Bassey,GS,C,727
-AJ Green,MIL,"PG,SG,SF",728
-Kobe Brown,IND,"SF,PF",729
-Gordon Hayward,FA,"SF,PF",730
-Richaun Holmes,WAS,C,731
-John Konchar,NY,"SG,SF",732
-Bol Bol,PHO,"PF,C",733
+Maxi Kleber,LAL,"PF,C",725
+Bol Bol,PHO,"PF,C",726
+Jae'Sean Tate,HOU,"SG,SF,PF",727
+Charles Bassey,GS,C,728
+AJ Green,MIL,"PG,SG,SF",729
+Kobe Brown,IND,"SF,PF",730
+Gordon Hayward,FA,"SF,PF",731
+Richaun Holmes,WAS,C,732
+John Konchar,NY,"SG,SF",733
 Olivier-Maxence Prosper,MEM,"SF,PF,C",734
-Jalen Slawson,IND,"SF,PF",735
-Isaiah Livers,PHO,"SF,PF",736
+Gabe Vincent,ATL,"PG,SG",735
+Lonnie Walker IV,DEN,SG,736
 Xavier Tillman Sr.,POR,"PF,C",737
-Gabe Vincent,ATL,"PG,SG",738
-Lonnie Walker IV,DEN,SG,739
-Tim Hardaway Jr.,MIA,"SG,SF",740
-Chris Duarte,CHI,SG,741
-MarJon Beauchamp,PHI,"SG,SF",742
-Emoni Bates,CLE,"SG,SF",743
-Marcus Morris Sr.,NY,"PF,C",744
-Haywood Highsmith,PHO,"SF,PF",745
-Kira Lewis Jr,FA,"PG,SG",746
+Tim Hardaway Jr.,MIA,"SG,SF",738
+Isaiah Livers,PHO,"SF,PF",739
+Chris Duarte,CHI,SG,740
+Jalen Slawson,IND,"SF,PF",741
+Marcus Morris Sr.,NY,"PF,C",742
+Kira Lewis Jr,FA,"PG,SG",743
+MarJon Beauchamp,PHI,"SG,SF",744
+Emoni Bates,CLE,"SG,SF",745
+Haywood Highsmith,PHO,"SF,PF",746
 Jalen Pickett,LAC,"PG,SG",747
-Ömer Yurtseven,GS,C,748
-Aleksandar Vezenkov,FA,"SF,PF",749
+Kevon Looney,LAL,"PF,C",748
+Cedi Osman,FA,"SF,PF",749
 Nassir Little,MIA,"SF,PF",750
-Kevon Looney,LAL,"PF,C",751
-Gary Payton II,GS,"SG,SF",752
-Cedi Osman,FA,"SF,PF",753
-Simone Fontecchio,MIA,"SF,PF",754
+Simone Fontecchio,MIA,"SF,PF",751
+Aleksandar Vezenkov,FA,"SF,PF",752
+Ömer Yurtseven,GS,C,753
+Gary Payton II,GS,"SG,SF",754
 Aleksej Pokuševski,FA,"PF,C",755
-Orlando Robinson,ORL,C,756
-Jordan McLaughlin,SA,"PG,SG",757
-Shake Milton,LAL,"PG,SG",758
-Jordan Goodwin,PHO,"PG,SG",759
+Jordan McLaughlin,SA,"PG,SG",756
+Orlando Robinson,ORL,C,757
+Jordan Goodwin,PHO,"PG,SG",758
+Shake Milton,LAL,"PG,SG",759
 Alec Burks,MIA,"SG,SF",760
 Kenrich Williams,OKC,"PF,C",761
 Kessler Edwards,DEN,"PF,C",762
